@@ -44,6 +44,7 @@ defmodule Mangopay do
   end
 
   def request(tuple) when is_tuple(tuple) do
+IO.puts "ok"
     request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
   end
 

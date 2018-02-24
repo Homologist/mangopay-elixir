@@ -3,48 +3,68 @@ defmodule Mangopay.Query.Base do
   defmacro __using__(opts \\ nil) do
     quote do
       import Mangopay.Query.Interface
-      def _get(url_list) when is_list(url_list) do
+      def _get_path(url_list) when is_list(url_list) do
         {:get, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), ""}
       end
 
-      def _get(id) do
+      def _get_path(id) do
         {:get, "/" <> resource <> "/#{id}", ""}
       end
 
-      def _create(params) do
+      def _get(url_params) do
+          _get_path(url_params) |> Mangopay.request
+      end
+
+      def _create_path(params) do
         {:post, "/" <> resource, params}
       end
 
-      def _create(params, url_list) when is_list(url_list) do
+      def _create_path(params, url_list) when is_list(url_list) do
         {:post, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), params}
       end
 
-      def _create(params, id) do
+      def _create_path(params, id) do
         {:post, "/" <> resource <> "#{id}", params}
       end
 
-      def _update(params, id, url_list) when is_list(url_list) do
+      def _create(params, url_list \\ nil) do
+        case url_list do
+          nil -> _create_path(params)
+          _   -> _create_path(params, url_list)
+        end
+        |> Mangopay.request
+      end
+
+      def _update_path(params, url_list) when is_list(url_list) do
         {:put, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), params}
       end
 
-      def _update(params, url_list) when is_list(url_list) do
-        {:put, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), params}
-      end
-
-      def _update(params, id) do
+      def _update_path(params, id) do
         {:put, "/" <> resource <> "/#{id}", params}
       end
 
-      def _all(url_list) when is_list(url_list) do
+      def _update(params, id_or_url_list) do
+        _update_path(params, id_or_url_list) |> Mangopay.request
+      end
+
+      def _all_path(url_list) when is_list(url_list) do
         {:get, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), ""}
       end
 
-      def _all(id) do
+      def _all_path(id) do
         {:get, "/" <> resource <> "/#{id}", ""}
       end
 
-      def _all do
+      def _all_path do
         {:get, "/" <> resource, ""}
+      end
+
+      def _all(id_or_url_list \\ nil) do
+        case id_or_url_list do
+          nil -> _all_path
+          _ -> _all_path(id_or_url_list)
+        end
+        |> Mangopay.request
       end
 
       def resource do
@@ -85,8 +105,6 @@ defmodule Mangopay.Query.Base do
       def bank_account(id), do: bank_account <> "/#{id}"
       def pre_authorization(), do: "preauthorizations"
       def pre_authorization(id), do: pre_authorization <> "/#{id}"
-#combination
-#bankaccount
       def user_resource(user_id, resource_id), do: [user(user_id), resource, "#{resource_id}"]
     end
   end
