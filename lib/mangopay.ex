@@ -1,9 +1,5 @@
 defmodule Mangopay do
 
-  @base_header Application.get_env(:mangopay, :headers)
-  @base_url    "https://api.sandbox.mangopay.com"
-  @client      Application.get_env(:mangopay, :client)
-  @version     "v2.01"
   @token
 
   @moduledoc """
@@ -20,21 +16,37 @@ defmodule Mangopay do
 
   """
 
+  def base_header do
+    Application.get_env(:mangopay, :headers)
+  end
+
+  def base_url do
+    "https://api.sandbox.mangopay.com"
+  end
+
+  def client do
+    Application.get_env(:mangopay, :client)
+  end
+
+  def version do
+    "v2.01"
+  end
+
   def version_and_client_id do
-    "/#{@version}/#{Mangopay.client_id}"
+    "/#{version}/#{Mangopay.client_id}"
   end
 
   def head do
-    @base_header
+    base_header
   end
 
   def authorization_header do
-    Map.merge(@base_header, %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "User-Agent": "Elixir", "Authorization": "Basic #{encoded_login_and_passphrase}", "Content-Type": "application/x-www-form-urlencoded", "Host": "api.sandbox.mangopay.com", "Content-Length": "29"})
+    Map.merge(base_header, %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "User-Agent": "Elixir", "Authorization": "Basic #{encoded_login_and_passphrase}", "Content-Type": "application/x-www-form-urlencoded", "Host": "api.sandbox.mangopay.com", "Content-Length": "29"})
   end
 
   def encoded_login_and_passphrase do
-    login      = @client[:id]
-    passphrase = @client[:passphrase]
+    login      = client[:id]
+    passphrase = client[:passphrase]
     encode login, passphrase
   end
 
@@ -44,22 +56,22 @@ defmodule Mangopay do
   end
 
   def request(tuple) when is_tuple(tuple) do
-IO.puts "ok"
     request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
   end
 
   def request(method, url, body \\ "", headers \\ "") do
-    url = @base_url <> version_and_client_id <> url
+    url = base_url <> version_and_client_id <> url
     case headers do
       "" -> auth_token = authorization
-            headers = Map.merge(@base_header, %{"Authorization": "#{auth_token["token_type"]} #{auth_token["access_token"]}"})
+            headers = Map.merge(base_header, %{"Authorization": "#{auth_token["token_type"]} #{auth_token["access_token"]}"})
       _   -> nil
     end
+    body = Poison.encode!(body)
     _request(method, url, body, headers)
   end
 
   def _header_authorization auth_token, :put do
-    @base_header = Map.merge(@base_header, %{"Content-Length": 0, "Authorization": "#{auth_token["token_type"]} #{auth_token["access_token"]}"})
+    base_header = Map.merge(base_header, %{"Content-Length": 0, "Authorization": "#{auth_token["token_type"]} #{auth_token["access_token"]}"})
   end
 
   def _request(:post, url, body, headers), do: HTTPoison.post(url, body, headers)
@@ -76,6 +88,6 @@ IO.puts "ok"
   end
 
   def client_id do
-    @client[:id]
+    client[:id]
   end
 end

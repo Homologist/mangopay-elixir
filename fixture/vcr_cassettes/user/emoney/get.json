@@ -1,0 +1,75 @@
+[
+  {
+    "request": {
+      "body": "\"{}\"",
+      "headers": {
+        "Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+        "Authorization": "Basic c2RrLXVuaXQtdGVzdHM6Y3FGZkZyV2ZDY2I3VWFkSE54eDJDOUxvNkRqdzhaZHVMaTdKOVVTVG11OGJoeHhwanU=",
+        "Content-Length": "29",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Host": "api.sandbox.mangopay.com",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/v2.01/oauth/token"
+    },
+    "response": {
+      "binary": true,
+      "body": "g20AAABsH4sIAAAAAAAAAxzKQQqAIBAF0Lv8tYtqxNTLSE1fiKBEWxTR3YPe+j2YVNlaOo+NOyKsCjWL8zYslp3zYeHsBp9lFHVZYPDXdN6FiJg5VVYY8CprZUvrjtj3IbwfAAAA//8DAF3RgxlbAAAA",
+      "headers": {
+        "Date": "Sun, 25 Feb 2018 15:25:59 GMT",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=df46e71ce073735d93553131ed3b851da1519572359; expires=Mon, 25-Feb-19 15:25:59 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f2bae2bfbc43c05-CDG",
+        "Content-Encoding": "gzip"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 4c3ecf36849d4e0689deb628f373c6f3",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests//users/43865131/emoney"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"UserId\":\"43865131\",\"CreditedEMoney\":{\"Currency\":\"EUR\",\"Amount\":0},\"DebitedEMoney\":{\"Currency\":\"EUR\",\"Amount\":0}}",
+      "headers": {
+        "Date": "Sun, 25 Feb 2018 15:25:59 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "114",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=df46e71ce073735d93553131ed3b851da1519572359; expires=Mon, 25-Feb-19 15:25:59 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "3",
+        "X-RateLimit-Remaining": "2297",
+        "X-RateLimit-Reset": "1519573200",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f2bae2d5c9d3c05-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

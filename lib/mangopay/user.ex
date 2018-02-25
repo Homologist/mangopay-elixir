@@ -1,6 +1,6 @@
 defmodule Mangopay.User do
   use Mangopay.Query.Base, "users"
-  set_action "users", [{:all}]
+  set_action "users", [{:get}, {:all}]
 
   def get_emoney id do
     _get [resource, "#{id}", "emoney"]
