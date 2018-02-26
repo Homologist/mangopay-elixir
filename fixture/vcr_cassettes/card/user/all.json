@@ -10,26 +10,29 @@
       "method": "get",
       "options": [],
       "request_body": "",
-      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/43879059/emoney"
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/43879057/cards"
     },
     "response": {
       "binary": false,
-      "body": "{\"UserId\":\"43879059\",\"CreditedEMoney\":{\"Currency\":\"EUR\",\"Amount\":0},\"DebitedEMoney\":{\"Currency\":\"EUR\",\"Amount\":0}}",
+      "body": "[]",
       "headers": {
-        "Date": "Mon, 26 Feb 2018 00:03:13 GMT",
+        "Date": "Mon, 26 Feb 2018 00:03:09 GMT",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "114",
+        "Content-Length": "2",
         "Connection": "keep-alive",
-        "Set-Cookie": "__cfduid=d52abf4eaf1a574c3e4dbc54362943e701519603393; expires=Tue, 26-Feb-19 00:03:13 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Set-Cookie": "__cfduid=dbe826be2856404a2c705fbc15c2d1e1c1519603389; expires=Tue, 26-Feb-19 00:03:09 GMT; path=/; domain=.mangopay.com; HttpOnly",
         "Cache-Control": "no-cache",
         "Pragma": "no-cache",
         "Expires": "-1",
-        "X-RateLimit": "26",
-        "X-RateLimit-Remaining": "2274",
+        "X-RateLimit": "19",
+        "X-RateLimit-Remaining": "2281",
         "X-RateLimit-Reset": "1519604280",
+        "X-Number-Of-Pages": "1",
+        "X-Number-Of-Items": "0",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/43879057/cards?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/43879057/cards?page=1&per_page=10>; rel=\"last\"",
         "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
         "Server": "cloudflare",
-        "CF-RAY": "3f2ea3dbc85c3bc9-CDG"
+        "CF-RAY": "3f2ea3bd5e6c3bc9-CDG"
       },
       "status_code": 200,
       "type": "ok"

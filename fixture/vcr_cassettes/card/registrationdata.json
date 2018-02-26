@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"data\":\"ObMObfSdwRfyE4QClGtUc0y07Rc7pLIYX1S-nj8IfaMyBgdy-5X8NRoEIf7OuQHXODZo6RTmJeQvmf_w2Au9Ti056p41xuIR8nvrE6Gpork\",\"cardNumber\":4970100000000154,\"cardExpirationDate\":1218,\"cardCvx\":123,\"accessKeyRef\":\"1X0m87dmM2LiwFgxPLBJ\"}",
+      "headers": {
+        "Authorization": "bearer 7898d917d7bf439da8be5483924912eb",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://homologation-webpayment.payline.com/webpayment/getToken"
+    },
+    "response": {
+      "binary": false,
+      "body": "errorCode=09101",
+      "headers": {
+        "Date": "Mon, 26 Feb 2018 00:03:08 GMT",
+        "Set-Cookie": "JSESSIONID=A1AB17D5DDF0B5B81BFB3882EF45EDA5; Path=/; Secure; HttpOnly",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Length": "15",
+        "Vary": "Accept-Encoding,User-Agent",
+        "Content-Type": "text/plain; charset=UTF-8"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

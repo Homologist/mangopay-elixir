@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"RegistrationData\":null}",
+      "headers": {
+        "Authorization": "bearer 7898d917d7bf439da8be5483924912eb",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cardregistrations/43879065"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Message\":\"One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.\",\"Type\":\"param_error\",\"Id\":\"1f5c0be5-728c-4f25-bc78-3d61d0f66fd9#1519603388\",\"Date\":1519603389.0,\"errors\":{\"RegistrationData\":\"The value  is not valid\"}}",
+      "headers": {
+        "Date": "Mon, 26 Feb 2018 00:03:08 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "283",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dc47630c2c246ee7dfdc23571e010f44d1519603388; expires=Tue, 26-Feb-19 00:03:08 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f2ea3bb6de53bc9-CDG"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]

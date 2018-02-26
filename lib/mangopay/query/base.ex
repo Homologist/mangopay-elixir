@@ -4,7 +4,7 @@ defmodule Mangopay.Query.Base do
     quote do
       import Mangopay.Query.Interface
       def _get_path(url_list) when is_list(url_list) do
-        {:get, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), ""}
+        {:get, List.foldl(url_list, "", fn x, acc -> "#{acc}" <> "/#{x}" end), ""}
       end
 
       def _get_path(id) do
@@ -20,7 +20,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _create_path(params, url_list) when is_list(url_list) do
-        {:post, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), params}
+        {:post, List.foldl(url_list, "", fn x, acc -> "#{acc}" <> "/#{x}" end), params}
       end
 
       def _create_path(params, id) do
@@ -36,7 +36,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _update_path(params, url_list) when is_list(url_list) do
-        {:put, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), params}
+        {:put, List.foldl(url_list, "", fn x, acc -> "#{acc}" <> "/#{x}" end), params}
       end
 
       def _update_path(params, id) do
@@ -48,7 +48,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _all_path(url_list) when is_list(url_list) do
-        {:get, "/" <> List.foldl(url_list, "",fn x, acc -> "#{acc}" <> "/#{x}" end), ""}
+        {:get, List.foldl(url_list, "", fn x, acc -> "#{acc}" <> "/#{x}" end), ""}
       end
 
       def _all_path(id) do

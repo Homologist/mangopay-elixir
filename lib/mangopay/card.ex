@@ -1,24 +1,24 @@
 defmodule Mangopay.Card do
   use Mangopay.Query.Base, "cards"
-  set_action "cards", [{:get}, {:create}, {:update},{:all}]
+  set_action "cards", [{:get}, {:all}]
   def get_registration id do
     _get ["cardregistrations", id]
   end
 
   def create params do
-    _create params, "cardregistrations"
+    _create params, ["cardregistrations"]
   end
 
   def update id, params do
     _update params, ["cardregistrations", id]
   end
 
-  def all_fingerprints do
-    _all [resource, "fingerprints"]
+  def all_by_fingerprints id do
+    _all [resource, "fingerprints", id]
   end
 
   def all_by_user id do
-    _all [Mangopay.User.path, "#{id}", resource]
+    _all [Mangopay.User.path, id, resource]
   end
 
   def deactivate id, params do
