@@ -9,7 +9,11 @@ defmodule Helper do
 
       def get_json path do
         a = fixture_path(path) |> File.read! |> Poison.decode! |> List.last
-        b = a["response"]["body"] |> Poison.decode!
+        b = a["response"]["body"]
+        case Poison.decode b do
+          {:ok, val}        -> val
+          {:error, message} -> b
+        end
       end
 
       def created_natural_user do
@@ -20,12 +24,24 @@ defmodule Helper do
         get_json "/user/legal/create.json"
       end
 
-      def created_card do
-        get_json "/card/create.json"
+      def created_registration_card do
+        get_json "/card/registration/create.json"
       end
 
-      def created_card_bis do
+      def created_registration_card_bis do
         get_json "/card/create_bis.json"
+      end
+
+      def created_registration_card_registrationdata do
+        get_json "/card/registrationdata.json"
+      end
+
+      def created_card do
+        get_json "/card/get.json"
+      end
+
+      def updated_card do
+        get_json "/card/update.json"
       end
 
       def user_natural_hash do
@@ -94,12 +110,12 @@ defmodule Helper do
         %{"Tag": "custom meta", "UserId": created_natural_user["Id"], "Currency": "EUR", "CardType": "CB_VISA_MASTERCARD"}
       end
 
-      def card_registration_data do
-          "data=#{created_card["PreregistrationData"]}&accessKeyRef=#{created_card["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
+      def created_registration_card_preregistrationdata do
+        "data=#{created_registration_card["PreregistrationData"]}&accessKeyRef=#{created_registration_card["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
       end
 
       def update_card_hash do
-        %{"Tag": "custom meta", "RegistrationData": created_natural_user["PreregistrationData"]}
+        %{"RegistrationData": created_registration_card_registrationdata}
       end
 
       def deactivate_card_hash do

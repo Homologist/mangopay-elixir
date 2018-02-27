@@ -67,12 +67,12 @@ defmodule Mangopay do
     cond do
       String.contains?(url, "https") -> headers = Map.update!(headers, :"Content-Type", fn _ -> "application/x-www-form-urlencoded" end)
       headers = Map.merge(headers, %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Accept": "*/*", "Host": "homologation-webpayment.payline.com"})
-IO.inspect Poison.encode! headers
-IO.puts "aaaaaaaaaaaaaaaaaa"
       !String.contains?(url, "https")-> url = base_url <> version_and_client_id <> url
-    body = Poison.encode!(body)
     end
-IO.puts url
+    cond do
+      is_map body    -> body = Poison.encode!(body)
+      is_binary body -> nil
+    end
     _request(method, url, body, headers)
   end
 
