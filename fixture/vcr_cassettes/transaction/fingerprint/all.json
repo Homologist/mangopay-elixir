@@ -3,7 +3,7 @@
     "request": {
       "body": "",
       "headers": {
-        "Authorization": "bearer 7898d917d7bf439da8be5483924912eb",
+        "Authorization": "bearer 9813cb04aa334389a722a3e05960ee0b",
         "Content-Type": "application/json",
         "User-Agent": "Elixir"
       },
@@ -14,19 +14,19 @@
     },
     "response": {
       "binary": false,
-      "body": "{\"Message\":\"The ressource does not exist\",\"Type\":\"ressource_not_found\",\"Id\":\"6766952f-82ff-4abc-8179-7dd5cc6a4915#1519603390\",\"Date\":1519603391.0,\"errors\":{\"RessourceNotFound\":\"Cannot found the ressource Card with the id=fingerprints \"}}",
+      "body": "{\"Message\":\"The ressource does not exist\",\"Type\":\"ressource_not_found\",\"Id\":\"59e42601-06d4-425f-8475-2a58a16393b2#1519699008\",\"Date\":1519699009.0,\"errors\":{\"RessourceNotFound\":\"Cannot found the ressource Card with the id=fingerprints \"}}",
       "headers": {
-        "Date": "Mon, 26 Feb 2018 00:03:10 GMT",
+        "Date": "Tue, 27 Feb 2018 02:36:48 GMT",
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "237",
         "Connection": "keep-alive",
-        "Set-Cookie": "__cfduid=dc9d257146e69abe97ffe0199da5b28191519603390; expires=Tue, 26-Feb-19 00:03:10 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Set-Cookie": "__cfduid=d72cc010737d137c4c65ea6fc936bd4a41519699008; expires=Wed, 27-Feb-19 02:36:48 GMT; path=/; domain=.mangopay.com; HttpOnly",
         "Cache-Control": "no-cache",
         "Pragma": "no-cache",
         "Expires": "-1",
         "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
         "Server": "cloudflare",
-        "CF-RAY": "3f2ea3c689113bc9-CDG"
+        "CF-RAY": "3f37c2322d473c05-CDG"
       },
       "status_code": 404,
       "type": "ok"

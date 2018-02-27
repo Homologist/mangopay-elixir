@@ -3,7 +3,7 @@
     "request": {
       "body": "",
       "headers": {
-        "Authorization": "bearer 7898d917d7bf439da8be5483924912eb",
+        "Authorization": "bearer 9813cb04aa334389a722a3e05960ee0b",
         "Content-Type": "application/json",
         "User-Agent": "Elixir"
       },
@@ -16,17 +16,17 @@
       "binary": false,
       "body": "{\"Message\":\"No HTTP resource was found that matches the request URI 'https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/'\"}",
       "headers": {
-        "Date": "Mon, 26 Feb 2018 00:03:11 GMT",
+        "Date": "Tue, 27 Feb 2018 02:36:47 GMT",
         "Content-Type": "application/json",
         "Content-Length": "132",
         "Connection": "keep-alive",
-        "Set-Cookie": "__cfduid=dfbe448b75a638d97977e2a9c20b18eca1519603391; expires=Tue, 26-Feb-19 00:03:11 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Set-Cookie": "__cfduid=dcf6bf08acce97b6818ff6112c15a44821519699007; expires=Wed, 27-Feb-19 02:36:47 GMT; path=/; domain=.mangopay.com; HttpOnly",
         "Cache-Control": "no-cache",
         "Pragma": "no-cache",
         "Expires": "-1",
         "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
         "Server": "cloudflare",
-        "CF-RAY": "3f2ea3ca0a583bc9-CDG"
+        "CF-RAY": "3f37c22e9cd03c05-CDG"
       },
       "status_code": 404,
       "type": "ok"

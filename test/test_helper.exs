@@ -29,25 +29,7 @@ defmodule Helper do
       end
 
       def user_natural_hash do
-        %{
-          "Tag": "custom meta",
-          "FirstName": "Joe",
-          "LastName": "Blogs",
-          "Address": %{
-            "AddressLine1": "1 Mangopay Street",
-            "AddressLine2": "The Loop",
-            "City": "Paris",
-            "Region": "Ile de France",
-            "PostalCode": "75001",
-            "Country": "FR"
-          },
-          "Birthday": 1463496101,
-          "Nationality": "GB",
-          "CountryOfResidence": "FR",
-          "Occupation": "Carpenter",
-          "IncomeRange": 2,
-          "Email": "support@mangopay.com"
-        }
+        %{"Tag": "Test natural user","Email": "my@email.com","FirstName": "John","LastName": "Doe","Address": %{"AddressLine1": "Le Palais Royal","AddressLine2": "8 Rue de Montpensier","City": "Paris","Region": "","PostalCode": "75001","Country": "FR"},"Birthday": 1300186358,"Birthplace": "Paris","Nationality": "FR","CountryOfResidence": "FR","Occupation": "Worker","IncomeRange": 1}
       end
 
       def user_legal_hash do
@@ -113,13 +95,7 @@ defmodule Helper do
       end
 
       def card_registration_data do
-        %{
-          data: created_card["PreregistrationData"],
-          accessKeyRef: created_card["AccessKey"],
-          cardNumber: 4970100000000154,
-          cardExpirationDate: 1217,
-          cardCvx: 123
-        }
+          "data=#{created_card["PreregistrationData"]}&accessKeyRef=#{created_card["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
       end
 
       def update_card_hash do
