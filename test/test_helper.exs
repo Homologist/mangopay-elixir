@@ -132,97 +132,105 @@ defmodule Helper do
 
       def bank_account_iban_hash do
         %{
-"Tag": "custom meta",
-"OwnerAddress": %{
-"AddressLine1": "1 Mangopay Street",
-"AddressLine2": "The Loop",
-"City": "Paris",
-"Region": "Ile de France",
-"PostalCode": "75001",
-"Country": "FR"
-},
-"OwnerName": "Joe Blogs",
-"IBAN": "FR3020041010124530725S03383",
-"BIC": "CRLYFRPP"
-}
+          "Tag": "custom meta",
+          "OwnerAddress": %{
+            "AddressLine1": "1 Mangopay Street",
+            "AddressLine2": "The Loop",
+            "City": "Paris",
+            "Region": "Ile de France",
+            "PostalCode": "75001",
+            "Country": "FR"
+          },
+          "OwnerName": "Joe Blogs",
+          "IBAN": "FR3020041010124530725S03383",
+          "BIC": "CRLYFRPP"
+        }
       end
 
       def bank_account_us_hash do
         %{
-"Tag": "custom meta",
-"OwnerAddress": %{
-"AddressLine1": "1 Mangopay Street",
-"AddressLine2": "The Loop",
-"City": "Paris",
-"Region": "Ile de France",
-"PostalCode": "75001",
-"Country": "FR"
-},
-"OwnerName": "Joe Blogs",
-"AccountNumber": "11696419",
-"ABA": "071000288",
-"DepositAccountType": "CHECKING"
-}
+          "Tag": "custom meta",
+          "OwnerAddress": %{
+            "AddressLine1": "1 Mangopay Street",
+            "AddressLine2": "The Loop",
+            "City": "Paris",
+            "Region": "Ile de France",
+            "PostalCode": "75001",
+            "Country": "FR"
+          },
+          "OwnerName": "Joe Blogs",
+          "AccountNumber": "11696419",
+          "ABA": "071000288",
+          "DepositAccountType": "CHECKING"
+        }
       end
 
       def bank_account_ca_hash do
         %{
-"Tag": "custom meta",
-"OwnerAddress": %{
-"AddressLine1": "1 Mangopay Street",
-"AddressLine2": "The Loop",
-"City": "Paris",
-"Region": "Ile de France",
-"PostalCode": "75001",
-"Country": "FR"
-},
-"OwnerName": "Joe Blogs",
-"BranchCode": "00152",
-"InstitutionNumber": "614",
-"AccountNumber": "11696419",
-"BankName": "The Big Bank"
-}
+          "Tag": "custom meta",
+          "OwnerAddress": %{
+            "AddressLine1": "1 Mangopay Street",
+            "AddressLine2": "The Loop",
+            "City": "Paris",
+            "Region": "Ile de France",
+            "PostalCode": "75001",
+            "Country": "FR"
+          },
+          "OwnerName": "Joe Blogs",
+          "BranchCode": "00152",
+          "InstitutionNumber": "614",
+          "AccountNumber": "11696419",
+          "BankName": "The Big Bank"
+        }
       end
 
       def bank_account_gb_hash do
         %{
-"Tag": "custom meta",
-"OwnerAddress": %{
-"AddressLine1": "1 Mangopay Street",
-"AddressLine2": "The Loop",
-"City": "Paris",
-"Region": "Ile de France",
-"PostalCode": "75001",
-"Country": "FR"
-},
-"OwnerName": "Joe Blogs",
-"SortCode": "010039",
-"AccountNumber": "11696419"
-}
+          "Tag": "custom meta",
+          "OwnerAddress": %{
+            "AddressLine1": "1 Mangopay Street",
+            "AddressLine2": "The Loop",
+            "City": "Paris",
+            "Region": "Ile de France",
+            "PostalCode": "75001",
+            "Country": "FR"
+          },
+          "OwnerName": "Joe Blogs",
+          "SortCode": "010039",
+          "AccountNumber": "11696419"
+        }
       end
 
       def bank_account_other_hash do
         %{
-"Tag": "custom meta",
-"OwnerAddress": %{
-"AddressLine1": "1 Mangopay Street",
-"AddressLine2": "The Loop",
-"City": "Paris",
-"Region": "Ile de France",
-"PostalCode": "75001",
-"Country": "FR"
-},
-"OwnerName": "Joe Blogs",
-"Country": "FR",
-"BIC": "CRLYFRPP",
-"AccountNumber": "11696419"
-}
+          "Tag": "custom meta",
+          "OwnerAddress": %{
+            "AddressLine1": "1 Mangopay Street",
+            "AddressLine2": "The Loop",
+            "City": "Paris",
+            "Region": "Ile de France",
+            "PostalCode": "75001",
+            "Country": "FR"
+          },
+          "OwnerName": "Joe Blogs",
+          "Country": "FR",
+          "BIC": "CRLYFRPP",
+          "AccountNumber": "11696419"
+        }
       end
 
       def deactivate_bank_account_hash do
         %{
-"Active": false
-}
+          "Active": false
+        }
+      end
+
+      def update_client_hash do
+        %{"PlatformDescription": "We are a marketplace specialised in rare flipflops for Europe and America. "}
+      end
+
+      def update_logo_client_hash do
+        %{"File": "/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAEBAQEBAQEBAQEBAQECAgMCAgICAgQDAwIDBQQFBQUE BAQFBgcGBQUHBgQEBgkGBwgICAgIBQYJCgkICgcICAj/2wBDAQEBAQICAgQCAgQIBQQFCAgICAgI CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAj/wgARCAAyADIDAREA AhEBAxEB/8QAGwAAAgMBAQEA"}
       end
     end
   end

@@ -1,8 +1,15 @@
 defmodule Mangopay.Client do
   use Mangopay.Query.Base, "clients"
-  set_action "clients", [{:get}, {:update}]
 
-  def update_logo id, params do
-    _update params, [resource, id]
+  def get do
+    _get nil
+  end
+
+  def update params do
+    _update(params, nil)
+  end
+
+  def update_logo params do
+    _update params, nil
   end
 end
