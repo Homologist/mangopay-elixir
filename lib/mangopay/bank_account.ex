@@ -21,7 +21,11 @@ defmodule Mangopay.BankAccount do
     _create params, user_resource(id, "gb")
   end
 
-  def all id do
+  def create_other id, params do
+    _create params, user_resource(id, "other")
+  end
+
+  def all_by_user id do
     _all [user(id), resource]
   end
 
