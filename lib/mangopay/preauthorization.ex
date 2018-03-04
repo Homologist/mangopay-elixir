@@ -1,9 +1,9 @@
 defmodule Mangopay.PreAuthorization do
   use Mangopay.Query.Base, "preauthorizations"
-  set_action "preauthorizations", [{:get}, {:create, "card/direct"}]
+  set_action "preauthorizations", [{:get}, {:create, "/card/direct"}]
 
   def cancel id, params do
-    _update id, params
+    _update params, id
   end
 
   def all_by_card id do

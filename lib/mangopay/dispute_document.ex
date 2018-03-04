@@ -22,6 +22,6 @@ defmodule Mangopay.DisputeDocument do
     _create %{}, [resource(id), "consult"]
   end
 
-  def resource_document(dispute_id), do: [resource(dispute_id), "documents"]
+  def resource_document(dispute_id), do: ["disputes", dispute_id, "documents"]
   def resource_document(dispute_id, dispute_document_id), do: resource_document(dispute_id) ++ ["#{dispute_document_id}"]
 end

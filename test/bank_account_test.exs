@@ -11,10 +11,13 @@ defmodule BankAccountTest do
     use_cassette "user/legal/create" do
       Mangopay.User.Legal.create user_legal_hash
     end
+    :ok
+  end
+
+  def create do
     use_cassette "bank_account/iban/create" do
       Mangopay.BankAccount.create_iban created_user["Id"], bank_account_iban_hash
     end
-    :ok
   end
 
   test "get by user bank_account" do

@@ -22,11 +22,11 @@ defmodule Mangopay.Dispute do
     _all [wallet(id), resource]
   end
 
-  def all_waiting_settlement do
+  def all_by_pending_settlement do
     _all [resource, "pendingsettlement"]
   end
 
-  def resource_submit(id) do
+  defp resource_submit(id) do
     [resource(id), "submit"]
   end
 end

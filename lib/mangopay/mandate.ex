@@ -10,7 +10,7 @@ defmodule Mangopay.Mandate do
     _all [user(id), resource]
   end
 
-  def all_by_bank_account user_id, bank_account_id do
+  def all_by_user_and_bank_account user_id, bank_account_id do
     _all [user(user_id), bank_account(bank_account_id),resource]
   end
 end

@@ -85,7 +85,7 @@ defmodule Mangopay.Query.Base do
       def card(id), do: card <> "/#{id}"
       def payin(), do: "payins"
       def payin(id), do: payin <> "/#{id}"
-      def transfer(), do: "transfer"
+      def transfer(), do: "transfers"
       def transfer(id), do: transfer <> "/#{id}"
       def payout(), do: "payouts"
       def payout(id), do: payout <> "/#{id}"

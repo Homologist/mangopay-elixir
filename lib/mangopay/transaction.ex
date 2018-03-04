@@ -18,8 +18,8 @@ defmodule Mangopay.Transaction do
     _all [client(id), resource]
   end
 
-  def all_by_client_wallet id do
-    _all [client_wallet(id), resource]
+  def all_by_client_wallet funds_type, currency do
+    _all ["clients", "wallets", funds_type, currency, resource]
   end
 
   def all_by_pre_authorization id do

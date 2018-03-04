@@ -2,8 +2,8 @@ defmodule Mangopay.Sso do
   use Mangopay.Query.Base, "clients/ssos"
   set_action "clients/ssos", [{:get}, {:create}, {:update},{:all}]
 
-  def extend_inviation id, params do
-   _update params, [resource, "#{id}", "extendinvitation"]
+  def extend_invitation id do
+   _update %{}, [resource, "#{id}", "extendinvitation"]
   end
 
   def all_by_permission_group(id) do

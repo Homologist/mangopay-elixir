@@ -7,45 +7,43 @@ defmodule Mangopay.PayIn do
   end
 
   defmodule Card do
-    use Mangopay.Query.Base, "payins/card"
-    set_action "payins/card", [{:get}]
-
-    def create_web params do
-      _create params, [resource, "web"]
+    defmodule Web do
+      use Mangopay.Query.Base, "payins/card/web"
+      set_action "payins/card/web", [{:create}]
     end
 
-    def create_direct params do
-      _create params, [resource, "direct"]
+    defmodule Direct do
+      use Mangopay.Query.Base, "payins/card/direct"
+      set_action "payins/card/direct", [{:create}]
     end
 
-    def create_preauthorized params do
-      _create params, [resource, "preauthorized"]
+    defmodule PreAuthorized do
+      use Mangopay.Query.Base, "payins/preauthorized/direct"
+      set_action "payins/preauthorized/direct", [{:create}]
     end
   end
 
   defmodule BankWire do
-    use Mangopay.Query.Base, "payins/bank_wire"
-    set_action "payins/bankwire", [{:get}]
-
-    def create_web params do
-      _create params, [client, resource]
+    defmodule Wallet do
+      use Mangopay.Query.Base, "clients/payins/bankwire/direct"
+      set_action "clients/payins/bankwire/direct", [{:create}]
     end
 
-    def create_direct params do
-      _create params, [resource, "direct"]
+    defmodule Direct do
+      use Mangopay.Query.Base, "payins/bankwire/direct"
+      set_action "payins/bankwire/direct", [{:create}]
     end
   end
 
-  defmodule Direct.Debit do
-    use Mangopay.Query.Base, "payins/diretdebit"
-    set_action "payins/directdebit", [{:get}]
-
-    def create_web params do
-      _create params, [resource, "web"]
+  defmodule DirectDebit do
+    defmodule Web do
+      use Mangopay.Query.Base, "payins/directdebit/web"
+      set_action "payins/directdebit/web", [{:create}]
     end
 
-    def create_direct params do
-      _create params, [resource, "direct"]
+    defmodule Direct do
+      use Mangopay.Query.Base, "payins/directdebit/direct"
+      set_action "payins/directdebit/direct", [{:create}]
     end
   end
 end
