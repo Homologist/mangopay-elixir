@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"Test natural user\",\"Occupation\":\"Worker\",\"Nationality\":\"FR\",\"LastName\":\"Doe\",\"IncomeRange\":1,\"FirstName\":\"John\",\"Email\":\"my@email.com\",\"CountryOfResidence\":\"FR\",\"Birthplace\":\"Paris\",\"Birthday\":1300186358,\"Address\":{\"Region\":\"\",\"PostalCode\":\"755001\",\"Country\":\"FR\",\"City\":\"Paris\",\"AddressLine2\":\"8 Rue de Montpensier\",\"AddressLine1\":\"Le Palais Royal\"}}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/natural"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Address\":{\"AddressLine1\":\"Le Palais Royal\",\"AddressLine2\":\"8 Rue de Montpensier\",\"City\":\"Paris\",\"Region\":\"\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"FirstName\":\"John\",\"LastName\":\"Doe\",\"Birthday\":1300186358,\"Nationality\":\"FR\",\"CountryOfResidence\":\"FR\",\"Occupation\":\"Worker\",\"IncomeRange\":1,\"ProofOfIdentity\":null,\"ProofOfAddress\":null,\"Capacity\":\"NORMAL\",\"PersonType\":\"NATURAL\",\"Email\":\"my@email.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"44488751\",\"Tag\":\"Test natural user\",\"CreationDate\":1520378959}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:19 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "487",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d7506cabca0655dcae672d62ea6923bf11520378959; expires=Wed, 06-Mar-19 23:29:19 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "146",
+        "X-RateLimit-Remaining": "2154",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789a8edfe13c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

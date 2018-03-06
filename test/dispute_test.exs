@@ -7,13 +7,13 @@ defmodule DisputeTest do
     use_cassette "dispute/all" do
       Mangopay.Dispute.all
     end
-    created_dispute_user
+    created_dispute_user()
     :ok
   end
 
   test "update dispute" do
     use_cassette "dispute/update" do
-      assert  {:ok, response} = Mangopay.Dispute.update created_dispute_user[:Id], update_dispute_hash()
+      assert  {:ok, response} = Mangopay.Dispute.update created_dispute_user()[:Id], update_dispute_hash()
       assert Poison.decode!(response.body)["Tag"] == update_dispute_hash()["Tag"]
     end
   end
@@ -27,7 +27,7 @@ defmodule DisputeTest do
 
   test "all dispute by user" do
     use_cassette "dispute/user/all" do
-      assert {:ok, response} = Mangopay.Dispute.all_by_user created_dispute_user["Id"]
+      assert {:ok, response} = Mangopay.Dispute.all_by_user created_dispute_user()["Id"]
       assert length(Poison.decode!(response.body)) > 0
     end
   end
@@ -61,14 +61,14 @@ defmodule DisputeTest do
   end
 
   def created_dispute_user do
-    response = created_dispute_transaction
+    response = created_dispute_transaction()
     id = response["AuthorId"]
     {:ok, response} = Mangopay.User.get(id)
     Poison.decode!(response.body)
   end
 
   def created_dispute_wallet do
-    response  = created_dispute_transaction
+    response  = created_dispute_transaction()
     id = response["DebitedWalletId"]
     {:ok, response} = Mangopay.Wallet.get(id)
     Poison.decode!(response.body)

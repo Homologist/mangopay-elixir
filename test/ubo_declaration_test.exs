@@ -11,7 +11,7 @@ defmodule UboDeclarationTest do
       Mangopay.UboDeclaration.all
     end
     use_cassette "ubo_declaration/user/get" do
-      get_ubo_declaration
+      get_ubo_declaration()
     end
     use_cassette "ubo_declaration/update" do
       Mangopay.UboDeclaration.update created_ubo_declaration()["Id"], update_ubo_declaration_hash()

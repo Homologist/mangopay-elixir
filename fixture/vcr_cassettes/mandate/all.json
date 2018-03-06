@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/mandates"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"Id\":\"11889570\",\"CreationDate\":1460481324,\"Status\":\"FAILED\",\"UserId\":\"11889506\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11914281\",\"CreationDate\":1460555853,\"Status\":\"FAILED\",\"UserId\":\"11914191\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11914286\",\"CreationDate\":1460555855,\"Status\":\"FAILED\",\"UserId\":\"11914191\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11914289\",\"CreationDate\":1460555856,\"Status\":\"FAILED\",\"UserId\":\"11914191\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11914295\",\"CreationDate\":1460555862,\"Status\":\"FAILED\",\"UserId\":\"11914291\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11914303\",\"CreationDate\":1460555869,\"Status\":\"FAILED\",\"UserId\":\"11914297\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11914395\",\"CreationDate\":1460555930,\"Status\":\"FAILED\",\"UserId\":\"11914297\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11915244\",\"CreationDate\":1460556656,\"Status\":\"FAILED\",\"UserId\":\"11915242\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11915248\",\"CreationDate\":1460556658,\"Status\":\"FAILED\",\"UserId\":\"11915246\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"},{\"Id\":\"11915251\",\"CreationDate\":1460556660,\"Status\":\"FAILED\",\"UserId\":\"11915246\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":null,\"ResultCode\":\"001807\",\"ResultMessage\":\"User has let the mandate session expire without confirming\"}]",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:16 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2431",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dfa05c405ac10a54420378ed8d1f4da421520379016; expires=Wed, 06-Mar-19 23:30:16 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "190",
+        "X-RateLimit-Remaining": "2110",
+        "X-RateLimit-Reset": "1520379900",
+        "X-Number-Of-Pages": "2328",
+        "X-Number-Of-Items": "23280",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/mandates?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/mandates?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/mandates?page=2328&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789bf29d973c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

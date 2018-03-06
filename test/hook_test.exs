@@ -8,7 +8,7 @@ defmodule HookTest do
       Mangopay.Hook.create hook_hash()
     end
     use_cassette "hook/all" do
-      assert {:ok, response} = Mangopay.Hook.all
+      Mangopay.Hook.all
     end
     :ok
   end

@@ -13,15 +13,15 @@ defmodule PreauthorizationTest do
     end
 
     use_cassette "card/registrationdata" do
-      Mangopay.request {:post, created_registration_card["CardRegistrationURL"] , created_registration_card_preregistrationdata}
+      Mangopay.request {:post, created_registration_card()["CardRegistrationURL"] , created_registration_card_preregistrationdata()}
     end
 
     use_cassette "card/update" do
-      Mangopay.Card.update created_registration_card["Id"], update_card_hash()
+      Mangopay.Card.update created_registration_card()["Id"], update_card_hash()
     end
 
     use_cassette "card/get" do
-      Mangopay.Card.get updated_card["CardId"]
+      Mangopay.Card.get updated_card()["CardId"]
     end
 
     use_cassette "preauthorization/create" do
@@ -29,7 +29,7 @@ defmodule PreauthorizationTest do
     end
 
     use_cassette "preauthorization/cancel" do
-      Mangopay.PreAuthorization.cancel created_preauthorization["Id"], cancel_preauthorization_hash()
+      Mangopay.PreAuthorization.cancel created_preauthorization()["Id"], cancel_preauthorization_hash()
     end
     :ok
   end
@@ -43,28 +43,28 @@ defmodule PreauthorizationTest do
 
   test "cancel preauthorization" do
     use_cassette "preauthorization/cancel" do
-      assert  {:ok, response} = Mangopay.PreAuthorization.cancel created_preauthorization["Id"], cancel_preauthorization_hash()
+      assert  {:ok, response} = Mangopay.PreAuthorization.cancel created_preauthorization()["Id"], cancel_preauthorization_hash()
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end
 
   test "get user" do
     use_cassette "preauthorization/get" do
-      assert {:ok, response} = Mangopay.PreAuthorization.get created_preauthorization["Id"]
+      assert {:ok, response} = Mangopay.PreAuthorization.get created_preauthorization()["Id"]
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
   end
 
   test "all preauthorization by user" do
     use_cassette "preauthorization/user/all" do
-      assert {:ok, response} = Mangopay.PreAuthorization.all_by_user created_user["Id"]
+      assert {:ok, response} = Mangopay.PreAuthorization.all_by_user created_user()["Id"]
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all preauthorization by card" do
     use_cassette "preauthorization/card/all" do
-      assert {:ok, response} = Mangopay.PreAuthorization.all_by_card created_card["Id"]
+      assert {:ok, response} = Mangopay.PreAuthorization.all_by_card created_card()["Id"]
       assert length(Poison.decode!(response.body)) > 0
     end
   end

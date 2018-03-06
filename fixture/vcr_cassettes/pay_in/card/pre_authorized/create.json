@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"PreauthorizationId\":\"44488765\",\"Fees\":{\"Currency\":\"EUR\",\"Amount\":3},\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":550},\"CreditedWalletId\":\"44488734\",\"AuthorId\":\"44488732\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payins/preauthorized/direct"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488766\",\"Tag\":\"custom meta\",\"CreationDate\":1520379000,\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"AuthorId\":\"44488732\",\"CreditedUserId\":\"44488732\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":550},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":547},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":3},\"Status\":\"SUCCEEDED\",\"ExecutionDate\":1520379003,\"Type\":\"PAYIN\",\"Nature\":\"REGULAR\",\"CreditedWalletId\":\"44488734\",\"DebitedWalletId\":null,\"PaymentType\":\"PREAUTHORIZED\",\"ExecutionType\":\"DIRECT\",\"PreauthorizationId\":\"44488765\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:03 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "515",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d19632c14116f725239ba1cff9c30af6f1520379000; expires=Wed, 06-Mar-19 23:30:00 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "181",
+        "X-RateLimit-Remaining": "2119",
+        "X-RateLimit-Reset": "1520379900",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789b903f713c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

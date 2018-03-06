@@ -21,8 +21,8 @@ defmodule UserTest do
 
   test "update natural user" do
     use_cassette "user/natural/update" do
-      assert  {:ok, response} = Mangopay.User.Natural.update created_natural_user["Id"], update_user_natural_hash()
-      assert Poison.decode!(response.body)["Id"] == created_natural_user["Id"]
+      assert  {:ok, response} = Mangopay.User.Natural.update created_natural_user()["Id"], update_user_natural_hash()
+      assert Poison.decode!(response.body)["Id"] == created_natural_user()["Id"]
     end
   end
 
@@ -34,22 +34,22 @@ defmodule UserTest do
 
   test "update legal user" do
     use_cassette "user/legal/update" do
-      assert  {:ok, response} = Mangopay.User.Legal.update created_legal_user["Id"], update_user_legal_hash()
-      assert Poison.decode!(response.body)["Id"] == created_legal_user["Id"]
+      assert  {:ok, response} = Mangopay.User.Legal.update created_legal_user()["Id"], update_user_legal_hash()
+      assert Poison.decode!(response.body)["Id"] == created_legal_user()["Id"]
     end
   end
 
   test "get  user" do
     use_cassette "user/get" do
-      assert {:ok, response} = Mangopay.User.get created_legal_user["Id"]
-      assert Poison.decode!(response.body)["Id"] == created_legal_user["Id"]
+      assert {:ok, response} = Mangopay.User.get created_legal_user()["Id"]
+      assert Poison.decode!(response.body)["Id"] == created_legal_user()["Id"]
     end
   end
 
   test "get emoney  user" do
     use_cassette "user/emoney/get" do
-      assert {:ok, response} = Mangopay.User.get_emoney created_legal_user["Id"]
-      assert Poison.decode!(response.body)["UserId"] == created_legal_user["Id"]
+      assert {:ok, response} = Mangopay.User.get_emoney created_legal_user()["Id"]
+      assert Poison.decode!(response.body)["UserId"] == created_legal_user()["Id"]
     end
   end
 

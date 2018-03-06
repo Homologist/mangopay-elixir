@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payouts/44488760"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488760\",\"Tag\":\"custom meta\",\"CreationDate\":1520378977,\"AuthorId\":\"44488732\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":12},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":9},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":3},\"Status\":\"CREATED\",\"ResultCode\":null,\"ResultMessage\":null,\"ExecutionDate\":null,\"Type\":\"PAYOUT\",\"Nature\":\"REGULAR\",\"CreditedWalletId\":null,\"DebitedWalletId\":\"44488734\",\"PaymentType\":\"BANK_WIRE\",\"BankAccountId\":\"44488735\",\"BankWireRef\":\"invoice 7282\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:13 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "485",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=db5200c7ea3ffc708114a5c4a67d9801b1520379012; expires=Wed, 06-Mar-19 23:30:12 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "187",
+        "X-RateLimit-Remaining": "2113",
+        "X-RateLimit-Reset": "1520379900",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789bda4c473c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

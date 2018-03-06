@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/hooks"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"Url\":\"http://www.my-site.com/hooks/\",\"Status\":\"ENABLED\",\"Validity\":\"INVALID\",\"EventType\":\"PAYIN_NORMAL_SUCCEEDED\",\"Id\":\"1626293\",\"Tag\":\"custom meta\",\"CreationDate\":1393337128},{\"Url\":\"http://www.wp.pl\",\"Status\":\"ENABLED\",\"Validity\":\"VALID\",\"EventType\":\"PAYIN_NORMAL_CREATED\",\"Id\":\"1626304\",\"Tag\":\"test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2test tag changed2\",\"CreationDate\":1393337333},{\"Url\":\"https://www.mangopay.com/\",\"Status\":\"DISABLED\",\"Validity\":\"VALID\",\"EventType\":\"PAYOUT_NORMAL_CREATED\",\"Id\":\"1679437\",\"Tag\":\"Test hook\",\"CreationDate\":1394024415},{\"Url\":\"http://111.111.111.11/no_name/non/listenKycDocumentHook\",\"Status\":\"ENABLED\",\"Validity\":\"INVALID\",\"EventType\":\"KYC_CREATED\",\"Id\":\"2404596\",\"Tag\":null,\"CreationDate\":1400836102},{\"Url\":\"https://www.mangopay.com/\",\"Status\":\"ENABLED\",\"Validity\":\"VALID\",\"EventType\":\"KYC_FAILED\",\"Id\":\"3258842\",\"Tag\":\"kyc failed\",\"CreationDate\":1407867691},{\"Url\":\"https://requestb.in/wf24z1wf\",\"Status\":\"DISABLED\",\"Validity\":\"VALID\",\"EventType\":\"PAYIN_NORMAL_FAILED\",\"Id\":\"3259087\",\"Tag\":\"test\",\"CreationDate\":1407869421},{\"Url\":\"https://www.mangopay.com/\",\"Status\":\"DISABLED\",\"Validity\":\"VALID\",\"EventType\":\"KYC_VALIDATION_ASKED\",\"Id\":\"3434416\",\"Tag\":null,\"CreationDate\":1409582100},{\"Url\":\"https://www.mangopay.com/\",\"Status\":\"DISABLED\",\"Validity\":\"VALID\",\"EventType\":\"TRANSFER_REFUND_FAILED\",\"Id\":\"3435888\",\"Tag\":null,\"CreationDate\":1409586993},{\"Url\":\"https://www.mangopay.com/\",\"Status\":\"DISABLED\",\"Validity\":\"VALID\",\"EventType\":\"PAYOUT_NORMAL_SUCCEEDED\",\"Id\":\"3452382\",\"Tag\":\"7887878787\",\"CreationDate\":1409752546},{\"Url\":\"https://requestb.in/19r3qlf1\",\"Status\":\"ENABLED\",\"Validity\":\"INVALID\",\"EventType\":\"PAYOUT_NORMAL_FAILED\",\"Id\":\"3458988\",\"Tag\":null,\"CreationDate\":1409826352}]",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:27 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1911",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d5e960ecea1f6dc5a37f4d9c40426f00b1520379027; expires=Wed, 06-Mar-19 23:30:27 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "201",
+        "X-RateLimit-Remaining": "2099",
+        "X-RateLimit-Reset": "1520379900",
+        "X-Number-Of-Pages": "5",
+        "X-Number-Of-Items": "46",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/hooks?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/hooks?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/hooks?page=5&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789c3abbdf3c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

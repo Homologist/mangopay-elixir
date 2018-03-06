@@ -25,14 +25,14 @@ defmodule Helper do
       end
 
       def created_user_bis do
-        created_natural_user_bis
+        created_natural_user_bis()
       end
 
       def created_natural_user_bis do
         get_json "/user/natural/create_bis.json"
       end
 
-      def created_legal_user do
+      def created_legal_user() do
         get_json "/user/legal/create.json"
       end
 
@@ -50,6 +50,10 @@ defmodule Helper do
 
       def created_card do
         get_json "/card/get.json"
+      end
+
+      def created_card_bis do
+        get_json "/card/create_bis.json"
       end
 
       def updated_card do
@@ -202,7 +206,6 @@ defmodule Helper do
             "Country": "FR"
           },
           "LegalPersonType": "BUSINESS",
-          "Name": "Mangopay Ltd",
           "LegalRepresentativeAddress": %{
             "AddressLine1": "1 Mangopay Street",
             "AddressLine2": "The Loop",
@@ -211,7 +214,7 @@ defmodule Helper do
             "PostalCode": "755001",
             "Country": "FR"
           },
-        "LegalRepresentativeBirthday": 1463496101, "LegalRepresentativeCountryOfResidence": "ES", "LegalRepresentativeNationality": "FR", "LegalRepresentativeEmail": "support@mangopay.com", "LegalRepresentativeFirstName": "Joe", "LegalRepresentativeLastName": "Blogs", "LegalPersonType": "BUSINESS", "CompanyNumber": "LU72HN11"}
+        "LegalRepresentativeBirthday": 1463496101, "LegalRepresentativeCountryOfResidence": "ES", "LegalRepresentativeNationality": "FR", "LegalRepresentativeEmail": "support@mangopay.com", "LegalRepresentativeFirstName": "Joe", "LegalRepresentativeLastName": "Blogs", "CompanyNumber": "LU72HN11"}
       end
 
       def update_user_natural_hash do
@@ -679,7 +682,7 @@ defmodule Helper do
             "Currency": "EUR",
             "Amount": 3
           },
-          "PreauthorizationId": created_preauthorization_bis["Id"]
+          "PreauthorizationId": created_preauthorization_bis()["Id"]
         }
       end
 
@@ -825,7 +828,7 @@ defmodule Helper do
       end
 
       def get_ubo_declaration do
-        Mangopay.UboDeclaration.get first_ubo_declaration["Id"]
+        Mangopay.UboDeclaration.get first_ubo_declaration()["Id"]
       end
     end
   end

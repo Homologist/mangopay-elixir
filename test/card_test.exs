@@ -17,28 +17,34 @@ defmodule CardTest do
     end
 
     use_cassette "card/registrationdata" do
-      a = Mangopay.request {:post, created_registration_card()["CardRegistrationURL"] , created_registration_card_preregistrationdata}
+      Mangopay.request {:post, created_registration_card()["CardRegistrationURL"] , created_registration_card_preregistrationdata()}
     end
 
     use_cassette "card/update" do
       Mangopay.Card.update created_registration_card()["Id"], update_card_hash()
     end
+ 
+    use_cassette "card/create" do
+      Mangopay.Card.get updated_card()["CardId"]
+    end
 
     use_cassette "card/get" do
-      Mangopay.Card.get updated_card["CardId"]
+      Mangopay.Card.get updated_card()["CardId"]
     end
     :ok
   end
 
   test "create card" do
-    use_cassette "card/create" do
-      assert  {:ok, _} = Mangopay.Card.create card_hash()
+    use_cassette "card/registration/create" do
+      assert  {:ok, response} = Mangopay.Card.create card_hash()
+      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
     end
   end
 
   test "get card" do
     use_cassette "card/get" do
-      assert  {:ok, response} = Mangopay.Card.get created_card()["Id"]
+      assert  {:ok, response} = Mangopay.Card.get updated_card()["CardId"]
+      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
     end
   end
 
@@ -80,10 +86,12 @@ defmodule CardTest do
   test "deactivate card" do
     use_cassette "card/create_bis" do
       assert  {:ok, response} = Mangopay.Card.create card_hash()
+      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
     end
 
     use_cassette "card/deactivate" do
-      assert  {:ok, response} = Mangopay.Card.deactivate created_registration_card_bis()["Id"], deactivate_card_hash()
+      assert  {:ok, response} = Mangopay.Card.deactivate created_card_bis()["Id"], deactivate_card_hash()
+      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
     end
   end
 end

@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"Sort\":\"CreationDate:DESC\",\"Preview\":false,\"Filters\":{\"OwnerId\":\"blabla\",\"MinBalanceCurrency\":\"EUR\",\"MinBalanceAmount\":123,\"MaxBalanceCurrency\":\"EUR\",\"MaxBalanceAmount\":123,\"Currency\":\"EUR\",\"BeforeDate\":1463440221,\"AfterDate\":1431817821},\"DownloadFormat\":\"CSV\",\"Columns\":[\"Id\",\"Tag\",\"CreationDate\",\"Owners\",\"Description\",\"BalanceAmount\",\"BalanceCurrency\",\"Currency\",\"FundsType\"],\"CallbackURL\":\"http://www.my-site.com/callbackURL/\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/reports/wallets"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488763\",\"CreationDate\":1520378983,\"Tag\":\"custom meta\",\"ReportDate\":null,\"Status\":\"PENDING\",\"DownloadFormat\":\"CSV\",\"DownloadURL\":null,\"CallbackURL\":\"http://www.my-site.com/callbackURL/\",\"ReportType\":\"WALLETS\",\"Sort\":\"CreationDate:DESC\",\"Preview\":false,\"Filters\":{\"BeforeDate\":1463440221,\"AfterDate\":1431817821,\"OwnerId\":\"blabla\",\"Currency\":\"EUR\",\"MinBalanceAmount\":123,\"MinBalanceCurrency\":\"EUR\",\"MaxBalanceAmount\":123,\"MaxBalanceCurrency\":\"EUR\"},\"Columns\":[\"Id\",\"Tag\",\"CreationDate\",\"Owners\",\"Description\",\"BalanceAmount\",\"BalanceCurrency\",\"Currency\",\"FundsType\"],\"ResultCode\":null,\"ResultMessage\":null}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:44 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "612",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d4a5b524a44488ee08e870f3521e0fdad1520378983; expires=Wed, 06-Mar-19 23:29:43 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "169",
+        "X-RateLimit-Remaining": "2131",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789b295dcf3c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

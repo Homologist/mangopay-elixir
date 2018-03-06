@@ -20,6 +20,7 @@ defmodule ClientWalletTest do
   test "get client_wallet by funds type by currency" do
     use_cassette "client_wallet/funds_type/currency/get" do
       assert  {:ok, response} = Mangopay.ClientWallet.get_by_funds_type_and_currency created_client_wallet()["FundsType"], created_client_wallet()["Balance"]["Currency"]
+      assert length(Poison.decode!(response.body)) > 0
     end
   end
 

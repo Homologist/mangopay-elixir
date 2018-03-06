@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"TemplateURLOptions\":{\"Payline\":\"https://www.mysite.com/template/\"},\"Tag\":\"custom meta\",\"StatementDescriptor\":\"Mar2016\",\"SecureMode\":\"DEFAULT\",\"ReturnURL\":\"http://www.my-site.com/returnURL/\",\"Fees\":{\"Currency\":\"EUR\",\"Amount\":3},\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":550},\"Culture\":\"EN\",\"CreditedWalletId\":\"44488734\",\"CreditedUserId\":\"44488732\",\"CardType\":\"CB_VISA_MASTERCARD\",\"AuthorId\":\"44488732\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payins/card/web"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488764\",\"Tag\":\"custom meta\",\"CreationDate\":1520378996,\"AuthorId\":\"44488732\",\"CreditedUserId\":\"44488732\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":550},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":547},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":3},\"Status\":\"CREATED\",\"ResultCode\":null,\"ResultMessage\":null,\"ExecutionDate\":null,\"Type\":\"PAYIN\",\"Nature\":\"REGULAR\",\"CreditedWalletId\":\"44488734\",\"DebitedWalletId\":null,\"PaymentType\":\"CARD\",\"ExecutionType\":\"WEB\",\"RedirectURL\":\"https://homologation-secure-p.payline.com/webpayment/step2.do?reqCode=prepareStep2&token=10WyA2KVhkBjLljH81851520378997183\",\"ReturnURL\":\"http://www.my-site.com/returnURL/?transactionId=44488764\",\"TemplateURL\":\"https://www.mysite.com/template/?transactionId=44488764\",\"CardType\":\"CB_VISA_MASTERCARD\",\"Culture\":\"EN\",\"SecureMode\":\"DEFAULT\",\"StatementDescriptor\":\"Mar2016\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:57 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "838",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d5bd8c2410562978b9899bc6bc147ded91520378996; expires=Wed, 06-Mar-19 23:29:56 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "179",
+        "X-RateLimit-Remaining": "2121",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789b79ee533c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -7,6 +7,6 @@ defmodule Mangopay.ClientWallet do
   end
 
   def get_by_funds_type_and_currency funds_type, currency_iso_code do
-    _get [resource, "#{currency_iso_code}", "#{funds_type}"]
+    _get [resource, "#{funds_type}", "#{currency_iso_code}"]
   end
 end

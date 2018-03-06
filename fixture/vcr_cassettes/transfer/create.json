@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"Fees\":{\"Currency\":\"EUR\",\"Amount\":2},\"DebitedWalletId\":\"44488734\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":499},\"CreditedWalletId\":\"44488752\",\"CreditedUserId\":\"44488732\",\"AuthorId\":\"44488732\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/transfers"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488755\",\"Tag\":\"custom meta\",\"CreationDate\":1520378965,\"AuthorId\":\"44488732\",\"CreditedUserId\":\"44488732\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":499},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":497},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":2},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1520378965,\"Type\":\"TRANSFER\",\"Nature\":\"REGULAR\",\"DebitedWalletId\":\"44488734\",\"CreditedWalletId\":\"44488752\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:25 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "437",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d194b48065992a43eba55592875846e3c1520378965; expires=Wed, 06-Mar-19 23:29:25 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "150",
+        "X-RateLimit-Remaining": "2150",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789ab6d81e3c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

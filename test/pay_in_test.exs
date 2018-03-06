@@ -15,7 +15,7 @@ defmodule PayInTest do
     end
 
     use_cassette "card/registrationdata" do
-      Mangopay.request {:post, created_registration_card()["CardRegistrationURL"] , created_registration_card_preregistrationdata}
+      Mangopay.request {:post, created_registration_card()["CardRegistrationURL"] , created_registration_card_preregistrationdata()}
     end
 
     use_cassette "card/update" do
@@ -23,7 +23,7 @@ defmodule PayInTest do
     end
 
     use_cassette "card/get" do
-      Mangopay.Card.get updated_card["CardId"]
+      Mangopay.Card.get updated_card()["CardId"]
     end
 
     use_cassette "wallet/create" do

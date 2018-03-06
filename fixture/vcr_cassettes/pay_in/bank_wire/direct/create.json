@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"DeclaredFees\":{\"Currency\":\"EUR\",\"Amount\":3},\"DeclaredDebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":550},\"CreditedWalletId\":\"44488734\",\"AuthorId\":\"44488732\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payins/bankwire/direct"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488783\",\"Tag\":\"custom meta\",\"CreationDate\":1520379005,\"ResultCode\":null,\"ResultMessage\":null,\"AuthorId\":\"44488732\",\"CreditedUserId\":\"44488732\",\"DebitedFunds\":{\"Currency\":\"XXX\",\"Amount\":0},\"CreditedFunds\":{\"Currency\":\"XXX\",\"Amount\":0},\"Fees\":{\"Currency\":\"XXX\",\"Amount\":0},\"Status\":\"CREATED\",\"ExecutionDate\":null,\"Type\":\"PAYIN\",\"Nature\":\"REGULAR\",\"CreditedWalletId\":\"44488734\",\"DebitedWalletId\":null,\"PaymentType\":\"BANK_WIRE\",\"ExecutionType\":\"DIRECT\",\"DeclaredDebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":550},\"DeclaredFees\":{\"Currency\":\"EUR\",\"Amount\":3},\"WireReference\":\"287ef7ed5e\",\"BankAccount\":{\"OwnerAddress\":{\"AddressLine1\":\"1 Mango Street\",\"AddressLine2\":null,\"City\":\"Paris\",\"Region\":null,\"PostalCode\":\"75010\",\"Country\":\"FR\"},\"Type\":\"IBAN\",\"OwnerName\":\"MANGOPAY\",\"IBAN\":\"FR7618829754160173622224251\",\"BIC\":\"CMBRFR2BCME\"}}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:05 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "831",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d2584660d425c975cb9b4a76ad3134a981520379005; expires=Wed, 06-Mar-19 23:30:05 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "183",
+        "X-RateLimit-Remaining": "2117",
+        "X-RateLimit-Reset": "1520379900",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789bb05bad3c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

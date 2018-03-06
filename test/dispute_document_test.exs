@@ -11,7 +11,7 @@ defmodule DisputeDocumentTest do
       Mangopay.DisputeDocument.all_by_dispute created_dispute()["Id"]
     end
     use_cassette "dispute_document/create" do
-      get_dispute_document
+      get_dispute_document()
     end
 #    use_cassette "dispute_document/create" do
 #      Mangopay.DisputeDocument.create created_dispute()["Id"], dispute_document_hash()

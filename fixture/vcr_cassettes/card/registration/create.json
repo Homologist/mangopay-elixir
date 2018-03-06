@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"UserId\":\"44488732\",\"Tag\":\"custom meta\",\"Currency\":\"EUR\",\"CardType\":\"CB_VISA_MASTERCARD\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cardregistrations"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488738\",\"Tag\":\"custom meta\",\"CreationDate\":1520378942,\"UserId\":\"44488732\",\"AccessKey\":\"1X0m87dmM2LiwFgxPLBJ\",\"PreregistrationData\":\"c9KuNKYJ7Ur8QlG3XTkcYGaHW7vF_JWiY0WiasVm9rFKVF1QFfTVzYPX9slYGsQ4ODZo6RTmJeQvmf_w2Au9Ti056p41xuIR8nvrE6Gpork\",\"RegistrationData\":null,\"CardId\":null,\"CardType\":\"CB_VISA_MASTERCARD\",\"CardRegistrationURL\":\"https://homologation-webpayment.payline.com/webpayment/getToken\",\"ResultCode\":null,\"ResultMessage\":null,\"Currency\":\"EUR\",\"Status\":\"CREATED\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:02 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "483",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d3a7043f975a18a765b9f51d435b6ee541520378942; expires=Wed, 06-Mar-19 23:29:02 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "119",
+        "X-RateLimit-Remaining": "2181",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789a24b9983c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

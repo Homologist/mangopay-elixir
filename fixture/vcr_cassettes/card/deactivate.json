@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "{\"Active\":\"false\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/44488841"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Message\":\"The ressource does not exist\",\"Type\":\"ressource_not_found\",\"Id\":\"c4d71172-2c82-42e2-971f-ccec020cdd90#1520379045\",\"Date\":1520379046.0,\"errors\":{\"RessourceNotFound\":\"Cannot found the ressource Card with the id=44488841 \"}}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:45 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "233",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=daa4090921aad5be522519e947dbc52851520379045; expires=Wed, 06-Mar-19 23:30:45 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789cac3d8e3bb1-CDG"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]

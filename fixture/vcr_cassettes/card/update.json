@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"RegistrationData\":\"data=VLTIjgpf1ag15dmwRyhmOZW4M4V5f9LBA_MF4gndYyYsG1v9X85H9YSI0eS8Tkr8j4j-tfpv-J9M_BDNSxLnUzLwb9ln6HNDKqh0KyvaYYjhL2uKfZKvQpoGMY1buEeU_uh-M22NjZ6dU5YsJBBYuA\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cardregistrations/44488738"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488738\",\"Tag\":\"custom meta\",\"CreationDate\":1520378942,\"UserId\":\"44488732\",\"AccessKey\":\"1X0m87dmM2LiwFgxPLBJ\",\"PreregistrationData\":\"c9KuNKYJ7Ur8QlG3XTkcYGaHW7vF_JWiY0WiasVm9rFKVF1QFfTVzYPX9slYGsQ4ODZo6RTmJeQvmf_w2Au9Ti056p41xuIR8nvrE6Gpork\",\"RegistrationData\":\"data=VLTIjgpf1ag15dmwRyhmOZW4M4V5f9LBA_MF4gndYyYsG1v9X85H9YSI0eS8Tkr8j4j-tfpv-J9M_BDNSxLnUzLwb9ln6HNDKqh0KyvaYYjhL2uKfZKvQpoGMY1buEeU_uh-M22NjZ6dU5YsJBBYuA\",\"CardId\":\"44488740\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardRegistrationURL\":\"https://homologation-webpayment.payline.com/webpayment/getToken\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"Currency\":\"EUR\",\"Status\":\"VALIDATED\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:04 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "653",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dc7d93ca921b5f416591d26b435139b141520378944; expires=Wed, 06-Mar-19 23:29:04 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "120",
+        "X-RateLimit-Remaining": "2180",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789a309e873c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

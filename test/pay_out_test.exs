@@ -8,7 +8,7 @@ defmodule PayOutTest do
       Mangopay.User.Natural.create user_natural_hash()
     end
     use_cassette "bank_account/iban/create" do
-      Mangopay.BankAccount.create_iban created_user["Id"], bank_account_iban_hash()
+      Mangopay.BankAccount.create_iban created_user()["Id"], bank_account_iban_hash()
     end
     use_cassette "card/registration/create" do
       Mangopay.Card.create card_hash()
@@ -23,7 +23,7 @@ defmodule PayOutTest do
     end
 
     use_cassette "card/get" do
-      Mangopay.Card.get updated_card["CardId"]
+      Mangopay.Card.get updated_card()["CardId"]
     end
 
     use_cassette "wallet/create" do

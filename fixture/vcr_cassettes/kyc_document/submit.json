@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"Status\":\"VALIDATION_ASKED\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/44488732/kyc/documents/44488822"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Type\":\"IDENTITY_PROOF\",\"UserId\":\"44488732\",\"Id\":\"44488822\",\"Tag\":\"custom meta\",\"CreationDate\":1520379020,\"ProcessedDate\":null,\"Status\":\"VALIDATION_ASKED\",\"RefusedReasonType\":null,\"RefusedReasonMessage\":null}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:23 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "209",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dde33a98d339a8351b1794a90fd10d0b71520379023; expires=Wed, 06-Mar-19 23:30:23 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "196",
+        "X-RateLimit-Remaining": "2104",
+        "X-RateLimit-Reset": "1520379900",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789c231ab43c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

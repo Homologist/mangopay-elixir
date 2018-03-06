@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"Fees\":{\"Currency\":\"EUR\",\"Amount\":2},\"DebitedWalletId\":\"44488734\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":499},\"CreditedWalletId\":\"44488752\",\"CreditedUserId\":\"44488732\",\"AuthorId\":\"44488732\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/transfers/44488755/refunds"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488758\",\"Tag\":\"custom meta\",\"CreationDate\":1520378975,\"AuthorId\":\"44488732\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":497},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":499},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":-2},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1520378975,\"Type\":\"TRANSFER\",\"Nature\":\"REFUND\",\"InitialTransactionId\":\"44488755\",\"InitialTransactionType\":\"TRANSFER\",\"InitialTransactionNature\":\"REGULAR\",\"DebitedWalletId\":\"44488752\",\"CreditedWalletId\":\"44488734\",\"RefundReason\":{\"RefundReasonMessage\":null,\"RefundReasonType\":\"OTHER\"}}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:36 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "609",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=defd012de5f846bb308f0335e66124f331520378975; expires=Wed, 06-Mar-19 23:29:35 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "158",
+        "X-RateLimit-Remaining": "2142",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789af65ace3c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

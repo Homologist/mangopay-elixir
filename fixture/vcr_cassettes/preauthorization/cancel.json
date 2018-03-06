@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"PaymentStatus\":\"CANCELED\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/preauthorizations/44488741"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488741\",\"Tag\":\"custom meta\",\"CreationDate\":1520378944,\"AuthorId\":\"44488732\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":5550},\"AuthorizationDate\":1520378945,\"Status\":\"SUCCEEDED\",\"PaymentStatus\":\"CANCELED\",\"ExpirationDate\":1520940545,\"PayInId\":null,\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"SecureMode\":\"DEFAULT\",\"CardId\":\"44488740\",\"SecureModeReturnURL\":null,\"SecureModeRedirectURL\":null,\"SecureModeNeeded\":false,\"PaymentType\":\"CARD\",\"ExecutionType\":\"DIRECT\",\"StatementDescriptor\":null}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:49 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "500",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dd1b371cd2591ac79906d94f3925757511520378988; expires=Wed, 06-Mar-19 23:29:48 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "172",
+        "X-RateLimit-Remaining": "2128",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789b46ea783c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

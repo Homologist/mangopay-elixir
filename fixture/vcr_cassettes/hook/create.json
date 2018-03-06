@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "{\"Url\":\"http://www.my-site.com/hooks/\",\"Tag\":\"custom meta\",\"EventType\":\"PAYIN_NORMAL_CREATED\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/hooks"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Message\":\"One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.\",\"Type\":\"param_error\",\"Id\":\"18ea46bc-8f46-496e-b697-c3d766205328#1520379027\",\"Date\":1520379028.0,\"errors\":{\"EventType\":\"A hook has already been registered for this EventType\"}}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:27 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "306",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d5e960ecea1f6dc5a37f4d9c40426f00b1520379027; expires=Wed, 06-Mar-19 23:30:27 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789c37eacd3c77-CDG"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]

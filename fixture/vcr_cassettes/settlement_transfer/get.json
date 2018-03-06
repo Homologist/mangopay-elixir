@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/settlements/44488756"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"44488756\",\"Tag\":\"custom meta\",\"CreationDate\":1520378968,\"ResultCode\":\"003012\",\"ResultMessage\":\"The repudiation has already been successfully settled\",\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":12},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":12},\"Status\":\"FAILED\",\"ExecutionDate\":null,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\",\"RepudiationId\":\"9179742\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:29:29 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "495",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=df3e72056442116c515ff51e16c3fe17f1520378969; expires=Wed, 06-Mar-19 23:29:29 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "156",
+        "X-RateLimit-Remaining": "2144",
+        "X-RateLimit-Reset": "1520379840",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789ace5a603c77-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

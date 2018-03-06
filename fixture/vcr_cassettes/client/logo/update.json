@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"File\":\"/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAEBAQEBAQEBAQEBAQECAgMCAgICAgQDAwIDBQQFBQUE BAQFBgcGBQUHBgQEBgkGBwgICAgIBQYJCgkICgcICAj/2wBDAQEBAQICAgQCAgQIBQQFCAgICAgI CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAj/wgARCAAyADIDAREA AhEBAxEB/8QAGwAAAgMBAQEA\"}",
+      "headers": {
+        "Authorization": "bearer 5dbdeabbc4a0493ab2f56a901339058d",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/clients/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"ClientId\":\"sdk-unit-tests\",\"Name\":\"Account for unit tests on SDK\",\"RegisteredName\":null,\"TechEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"AdminEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"BillingEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"FraudEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"HeadquartersAddress\":{\"AddressLine1\":null,\"AddressLine2\":null,\"City\":null,\"Region\":null,\"PostalCode\":null,\"Country\":null},\"TaxNumber\":\"12345\",\"PlatformCategorization\":{\"BusinessType\":null,\"Sector\":null},\"PlatformURL\":\"http://sdk-unit-tests.com\",\"PlatformDescription\":\"We are a marketplace specialised in rare flipflops for Europe and America. \",\"CompanyReference\":null,\"PrimaryThemeColour\":\"#afafae\",\"PrimaryButtonColour\":\"#afafae\",\"Logo\":\"https://res.cloudinary.com/mangopay-dev/image/upload/v1520358605/nroklgwhc5lfvuo3txib.png\"}",
+      "headers": {
+        "Date": "Tue, 06 Mar 2018 23:30:55 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "879",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d9166781933fa8e043913d1442465fcf41520379055; expires=Wed, 06-Mar-19 23:30:55 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "243",
+        "X-RateLimit-Remaining": "2057",
+        "X-RateLimit-Reset": "1520379900",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "3f789ce91bb83bb1-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
