@@ -12,14 +12,14 @@ defmodule ClientWalletTest do
 
   test "get client_wallet by fund type" do
     use_cassette "client_wallet/get" do
-      assert  {:ok, response} = Mangopay.ClientWallet.get_by_funds_type created_client_wallet["FundsType"]
-      assert Poison.decode!(response.body)[:Tag] == created_client_wallet["Tag"]
+      assert  {:ok, response} = Mangopay.ClientWallet.get_by_funds_type created_client_wallet()["FundsType"]
+      assert Poison.decode!(response.body)[:Tag] == created_client_wallet()["Tag"]
     end
   end
 
   test "get client_wallet by funds type by currency" do
     use_cassette "client_wallet/funds_type/currency/get" do
-      assert  {:ok, response} = Mangopay.ClientWallet.get_by_funds_type_and_currency created_client_wallet["FundsType"], created_client_wallet["Balance"]["Currency"]
+      assert  {:ok, response} = Mangopay.ClientWallet.get_by_funds_type_and_currency created_client_wallet()["FundsType"], created_client_wallet()["Balance"]["Currency"]
     end
   end
 

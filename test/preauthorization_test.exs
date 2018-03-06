@@ -5,11 +5,11 @@ defmodule PreauthorizationTest do
 
   setup_all do
     use_cassette "user/natural/create" do
-      Mangopay.User.Natural.create user_natural_hash
+      Mangopay.User.Natural.create user_natural_hash()
     end
 
     use_cassette "card/registration/create" do
-      Mangopay.Card.create card_hash
+      Mangopay.Card.create card_hash()
     end
 
     use_cassette "card/registrationdata" do
@@ -17,7 +17,7 @@ defmodule PreauthorizationTest do
     end
 
     use_cassette "card/update" do
-      Mangopay.Card.update created_registration_card["Id"], update_card_hash
+      Mangopay.Card.update created_registration_card["Id"], update_card_hash()
     end
 
     use_cassette "card/get" do
@@ -25,25 +25,25 @@ defmodule PreauthorizationTest do
     end
 
     use_cassette "preauthorization/create" do
-      Mangopay.PreAuthorization.create preauthorization_hash
+      Mangopay.PreAuthorization.create preauthorization_hash()
     end
 
     use_cassette "preauthorization/cancel" do
-      Mangopay.PreAuthorization.cancel created_preauthorization["Id"], cancel_preauthorization_hash
+      Mangopay.PreAuthorization.cancel created_preauthorization["Id"], cancel_preauthorization_hash()
     end
     :ok
   end
 
   test "create preauthorization" do
     use_cassette "preauthorization/create" do
-      assert {:ok, response} = Mangopay.PreAuthorization.create preauthorization_hash
+      assert {:ok, response} = Mangopay.PreAuthorization.create preauthorization_hash()
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end
 
   test "cancel preauthorization" do
     use_cassette "preauthorization/cancel" do
-      assert  {:ok, response} = Mangopay.PreAuthorization.cancel created_preauthorization["Id"], cancel_preauthorization_hash
+      assert  {:ok, response} = Mangopay.PreAuthorization.cancel created_preauthorization["Id"], cancel_preauthorization_hash()
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end

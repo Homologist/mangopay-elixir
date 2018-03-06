@@ -17,7 +17,7 @@ defmodule Helper do
       end
 
       def created_user do
-        created_natural_user
+        created_natural_user()
       end
 
       def created_natural_user do
@@ -219,15 +219,15 @@ defmodule Helper do
       end
 
       def card_hash do
-        %{"Tag": "custom meta", "UserId": created_natural_user["Id"], "Currency": "EUR", "CardType": "CB_VISA_MASTERCARD"}
+        %{"Tag": "custom meta", "UserId": created_natural_user()["Id"], "Currency": "EUR", "CardType": "CB_VISA_MASTERCARD"}
       end
 
       def created_registration_card_preregistrationdata do
-        "data=#{created_registration_card["PreregistrationData"]}&accessKeyRef=#{created_registration_card["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
+        "data=#{created_registration_card()["PreregistrationData"]}&accessKeyRef=#{created_registration_card()["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
       end
 
       def update_card_hash do
-        %{"RegistrationData": created_registration_card_registrationdata}
+        %{"RegistrationData": created_registration_card_registrationdata()}
       end
 
       def deactivate_card_hash do
@@ -340,7 +340,7 @@ defmodule Helper do
       def wallet_hash do
         %{
           "Tag": "custom meta",
-          "Owners": [ created_user["Id"] ],
+          "Owners": [ created_user()["Id"] ],
           "Description": "My big project",
           "Currency": "EUR"
         }
@@ -349,7 +349,7 @@ defmodule Helper do
       def wallet_hash_bis do
         %{
           "Tag": "custom meta",
-          "Owners": [ created_user_bis["Id"] ],
+          "Owners": [ created_user_bis()["Id"] ],
           "Description": "My big project",
           "Currency": "EUR"
         }
@@ -365,7 +365,7 @@ defmodule Helper do
       def mandate_hash do
         %{
           "Tag": "custom meta",
-          "BankAccountId": created_bank_account["Id"],
+          "BankAccountId": created_bank_account()["Id"],
           "Culture": "EN",
           "ReturnURL": "http://www.my-site.com/returnURL/"
         }
@@ -400,7 +400,7 @@ defmodule Helper do
       end
 
       def update_mandate_hash do
-      %{}
+        %{}
       end
 
       def mandate_hash do
@@ -421,7 +421,7 @@ defmodule Helper do
       def ubo_declaration_hash do
         %{
           "Tag": "custom meta",
-          "DeclaredUBOs": [ created_user["Id"] ]
+          "DeclaredUBOs": [ created_user()["Id"] ]
         }
       end
 
@@ -429,7 +429,7 @@ defmodule Helper do
         %{
           "Tag": "custom meta",
           "Status": "CREATED",
-          "DeclaredUBOs": [ List.first(created_ubo_declaration["DeclaredUBOs"])["UserId"] ]
+          "DeclaredUBOs": [ List.first(created_ubo_declaration()["DeclaredUBOs"])["UserId"] ]
         }
       end
 
@@ -437,15 +437,15 @@ defmodule Helper do
         %{
           "Tag": "custom meta",
           "Status": "CREATED",
-          "DeclaredUBOs": [ List.first(created_ubo_declaration["DeclaredUBOs"])["UserId"] ]
+          "DeclaredUBOs": [ List.first(created_ubo_declaration()["DeclaredUBOs"])["UserId"] ]
         }
       end
 
       def transfer_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
-          "CreditedUserId": created_user["Id"],
+          "AuthorId": created_user()["Id"],
+          "CreditedUserId": created_user()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 499
@@ -454,8 +454,8 @@ defmodule Helper do
             "Currency": "EUR",
             "Amount": 2
           },
-          "DebitedWalletId": created_wallet["Id"],
-          "CreditedWalletId": created_wallet_bis["Id"]
+          "DebitedWalletId": created_wallet()["Id"],
+          "CreditedWalletId": created_wallet_bis()["Id"]
         }
       end
 
@@ -478,8 +478,8 @@ defmodule Helper do
           "MinFeesCurrency": "EUR",
           "MaxFeesAmount": 4550,
           "MaxFeesCurrency": "EUR",
-          "AuthorId": created_user["Id"],
-          "WalletId": created_wallet["Id"]
+          "AuthorId": created_user()["Id"],
+          "WalletId": created_wallet()["Id"]
           },
           "Columns": [ "Id", "CreationDate" ]
         }
@@ -565,8 +565,8 @@ defmodule Helper do
           "Tag": "custom meta",
           "FirstName": "Joe",
           "LastName": "Blogs",
-          "Email": "#{created_user["Id"]}@mangopay.com",
-          "PermissionGroupId": created_permission_group["Id"]
+          "Email": "#{created_user()["Id"]}@mangopay.com",
+          "PermissionGroupId": created_permission_group()["Id"]
         }
       end
 
@@ -575,7 +575,7 @@ defmodule Helper do
           "Tag": "custom meta",
           "FirstName": "Joe",
           "LastName": "Blogs",
-          "PermissionGroupId": created_permission_group["Id"],
+          "PermissionGroupId": created_permission_group()["Id"],
           "Active": true
         }
       end
@@ -583,7 +583,7 @@ defmodule Helper do
       def preauthorization_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
+          "AuthorId": created_user()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 5550
@@ -599,7 +599,7 @@ defmodule Helper do
             }
           },
           "SecureMode": "DEFAULT",
-          "CardId": created_card["Id"],
+          "CardId": created_card()["Id"],
           "SecureModeReturnURL": "http://www.my-site.com/returnURL"
         }
       end
@@ -614,8 +614,8 @@ defmodule Helper do
       def pay_in_card_web_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
-          "CreditedUserId": created_user["Id"],
+          "AuthorId": created_user()["Id"],
+          "CreditedUserId": created_user()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -625,7 +625,7 @@ defmodule Helper do
             "Amount": 3
           },
           "ReturnURL": "http://www.my-site.com/returnURL/",
-          "CreditedWalletId": created_wallet["Id"],
+          "CreditedWalletId": created_wallet()["Id"],
           "CardType": "CB_VISA_MASTERCARD",
           "SecureMode": "DEFAULT",
           "Culture": "EN",
@@ -639,8 +639,8 @@ defmodule Helper do
       def pay_in_card_direct_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
-          "CreditedWalletId": created_wallet["Id"],
+          "AuthorId": created_user()["Id"],
+          "CreditedWalletId": created_wallet()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -650,7 +650,7 @@ defmodule Helper do
             "Amount": 3
           },
           "SecureModeReturnURL": "http://www.my-site.com/returnURL",
-          "CardId": created_card["Id"],
+          "CardId": created_card()["Id"],
           "SecureMode": "DEFAULT",
           "Billing": %{
             "Address": %{
@@ -669,8 +669,8 @@ defmodule Helper do
       def pay_in_card_preauthorized_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
-          "CreditedWalletId": created_wallet["Id"],
+          "AuthorId": created_user()["Id"],
+          "CreditedWalletId": created_wallet()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -686,8 +686,8 @@ defmodule Helper do
       def pay_in_bank_wire_direct_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
-          "CreditedWalletId": created_wallet["Id"],
+          "AuthorId": created_user()["Id"],
+          "CreditedWalletId": created_wallet()["Id"],
           "DeclaredDebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -717,7 +717,7 @@ defmodule Helper do
       def pay_in_directdebit_web_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
+          "AuthorId": created_user()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -727,7 +727,7 @@ defmodule Helper do
             "Amount": 3
           },
           "ReturnURL": "http://www.my-site.com/returnURL/",
-          "CreditedWalletId": created_wallet["Id"],
+          "CreditedWalletId": created_wallet()["Id"],
           "DirectDebitType": "SOFORT",
           "SecureMode": "DEFAULT",
           "Culture": "EN",
@@ -740,8 +740,8 @@ defmodule Helper do
       def pay_in_directdebit_direct_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
-          "CreditedWalletId": created_wallet["Id"],
+          "AuthorId": created_user()["Id"],
+          "CreditedWalletId": created_wallet()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -750,7 +750,7 @@ defmodule Helper do
             "Currency": "EUR",
             "Amount": 3
           },
-          "MandateId": created_mandate["Id"],
+          "MandateId": created_mandate()["Id"],
           "StatementDescriptor": "Nov2016"
         }
       end
@@ -758,7 +758,7 @@ defmodule Helper do
       def pay_out_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
+          "AuthorId": created_user()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 12
@@ -767,8 +767,8 @@ defmodule Helper do
             "Currency": "EUR",
             "Amount": 3
           },
-          "BankAccountId": created_bank_account["Id"],
-          "DebitedWalletId": created_wallet["Id"],
+          "BankAccountId": created_bank_account()["Id"],
+          "DebitedWalletId": created_wallet()["Id"],
           "BankWireRef": "invoice 7282"
         }
       end
@@ -776,7 +776,7 @@ defmodule Helper do
       def refund_pay_in_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_user["Id"],
+          "AuthorId": created_user()["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 450
@@ -789,13 +789,13 @@ defmodule Helper do
       end
 
       def refund_transfer_hash do
-        %{"Tag": "custom meta", "AuthorId": created_user["Id"]}
+        %{"Tag": "custom meta", "AuthorId": created_user()["Id"]}
       end
 
       def settlement_transfer_hash do
         %{
           "Tag": "custom meta",
-          "AuthorId": created_repudiation["AuthorId"],
+          "AuthorId": created_repudiation()["AuthorId"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 12
@@ -808,7 +808,7 @@ defmodule Helper do
       end
 
       def get_dispute_document do
-        {:ok, response} = Mangopay.DisputeDocument.all_by_dispute created_dispute["Id"]
+        {:ok, response} = Mangopay.DisputeDocument.all_by_dispute created_dispute()["Id"]
         id              = List.first(Poison.decode!(response.body))["Id"]
         Mangopay.DisputeDocument.get id
       end
