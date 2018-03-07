@@ -8,7 +8,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _get_path(id) do
-        {:get, "/" <> resource <> "/#{id}", ""}
+        {:get, "/" <> resource() <> "/#{id}", ""}
       end
 
       def _get(url_params) do
@@ -16,7 +16,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _create_path(params) do
-        {:post, "/" <> resource, params}
+        {:post, "/" <> resource(), params}
       end
 
       def _create_path(params, url_list) when is_list(url_list) do
@@ -24,7 +24,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _create_path(params, id) do
-        {:post, "/" <> resource <> "#{id}", params}
+        {:post, "/" <> resource() <> "#{id}", params}
       end
 
       def _create(params, url_list \\ nil) do
@@ -40,7 +40,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def _update_path(params, id) do
-        {:put, "/" <> resource <> "/#{id}", params}
+        {:put, "/" <> resource() <> "/#{id}", params}
       end
 
       def _update(params, id_or_url_list) do
@@ -52,16 +52,16 @@ defmodule Mangopay.Query.Base do
       end
 
       def _all_path(id) do
-        {:get, "/" <> resource <> "/#{id}", ""}
+        {:get, "/" <> resource() <> "/#{id}", ""}
       end
 
       def _all_path do
-        {:get, "/" <> resource, ""}
+        {:get, "/" <> resource(), ""}
       end
 
       def _all(id_or_url_list \\ nil) do
         case id_or_url_list do
-          nil -> _all_path
+          nil -> _all_path()
           _ -> _all_path(id_or_url_list)
         end
         |> Mangopay.request
@@ -72,7 +72,7 @@ defmodule Mangopay.Query.Base do
       end
 
       def resource(id) do
-        "#{resource}/#{id}"
+        "#{resource()}/#{id}"
       end
 
       def path do
@@ -80,32 +80,32 @@ defmodule Mangopay.Query.Base do
       end
 
       def user(), do: "users"
-      def user(id), do: user <> "/#{id}"
+      def user(id), do: user() <> "/#{id}"
       def card(), do: "cards"
-      def card(id), do: card <> "/#{id}"
+      def card(id), do: card() <> "/#{id}"
       def payin(), do: "payins"
-      def payin(id), do: payin <> "/#{id}"
+      def payin(id), do: payin() <> "/#{id}"
       def transfer(), do: "transfers"
-      def transfer(id), do: transfer <> "/#{id}"
+      def transfer(id), do: transfer() <> "/#{id}"
       def payout(), do: "payouts"
-      def payout(id), do: payout <> "/#{id}"
+      def payout(id), do: payout() <> "/#{id}"
       def repudiation(), do: "repudiations"
-      def repudiation(id), do: repudiation <> "/#{id}"
+      def repudiation(id), do: repudiation() <> "/#{id}"
       def dispute(), do: "disputes"
-      def dispute(id), do: dispute <> "/#{id}"
+      def dispute(id), do: dispute() <> "/#{id}"
       def mandate(), do: "mandates"
-      def mandate(id), do: mandate <> "/#{id}"
+      def mandate(id), do: mandate() <> "/#{id}"
       def wallet(), do: "wallets"
-      def wallet(id), do: wallet <> "/#{id}"
+      def wallet(id), do: wallet() <> "/#{id}"
       def client(), do: "clients"
-      def client(id), do: client <> "/#{id}"
+      def client(id), do: client() <> "/#{id}"
       def client_wallet(), do: "clients/wallets"
-      def client_wallet(id), do: client_wallet <> "/#{id}"
+      def client_wallet(id), do: client_wallet() <> "/#{id}"
       def bank_account(), do: "bankaccounts"
-      def bank_account(id), do: bank_account <> "/#{id}"
+      def bank_account(id), do: bank_account() <> "/#{id}"
       def pre_authorization(), do: "preauthorizations"
-      def pre_authorization(id), do: pre_authorization <> "/#{id}"
-      def user_resource(user_id, resource_id), do: [user(user_id), resource, "#{resource_id}"]
+      def pre_authorization(id), do: pre_authorization() <> "/#{id}"
+      def user_resource(user_id, resource_id), do: [user(user_id), resource(), "#{resource_id}"]
     end
   end
 end

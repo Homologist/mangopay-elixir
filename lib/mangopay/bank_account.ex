@@ -26,7 +26,7 @@ defmodule Mangopay.BankAccount do
   end
 
   def all_by_user id do
-    _all [user(id), resource]
+    _all [user(id), resource()]
   end
 
   def deactivate id, bank_account_id, params do
@@ -34,6 +34,6 @@ defmodule Mangopay.BankAccount do
   end
 
   def user_resource(user_id, resource_id) do
-    [user(user_id), resource, resource_id]
+    [user(user_id), resource(), resource_id]
   end
 end

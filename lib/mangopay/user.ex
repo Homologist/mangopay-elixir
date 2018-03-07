@@ -3,7 +3,7 @@ defmodule Mangopay.User do
   set_action "users", [{:get}, {:all}]
 
   def get_emoney id do
-    _get [resource, "#{id}", "emoney"]
+    _get [resource(), "#{id}", "emoney"]
   end
 
   defmodule Natural do

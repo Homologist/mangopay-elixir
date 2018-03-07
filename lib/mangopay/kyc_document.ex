@@ -3,7 +3,7 @@ defmodule Mangopay.KycDocument do
   set_action "kyc/documents", [{:get}, {:all}]
 
   def create_to_user user_id, params do
-    _create params, [user(user_id), resource]
+    _create params, [user(user_id), resource()]
   end
 
   def submit user_id, kyc_document_id, params do
@@ -15,6 +15,6 @@ defmodule Mangopay.KycDocument do
   end
 
   def all_by_user user_id do
-    [user(user_id), resource] |> _all
+    [user(user_id), resource()] |> _all
   end
 end
