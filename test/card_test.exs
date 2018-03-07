@@ -23,10 +23,24 @@ defmodule CardTest do
     use_cassette "card/update" do
       Mangopay.Card.update created_registration_card()["Id"], update_card_hash()
     end
- 
+
     use_cassette "card/create" do
       Mangopay.Card.get updated_card()["CardId"]
     end
+
+
+
+    use_cassette "card/create_bis" do
+      {:ok, response} = Mangopay.Card.create card_hash()
+      body = Poison.decode!(response.body)
+      {:ok, response} = Mangopay.request {:post, body["CardRegistrationURL"] , "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"}
+      data = response.body
+      {:ok, response} = Mangopay.Card.update body["Id"], %{"RegistrationData": data}
+      body = Poison.decode!(response.body)
+      Mangopay.Card.get body["CardId"]
+    end
+
+
 
     use_cassette "card/get" do
       Mangopay.Card.get updated_card()["CardId"]
@@ -84,11 +98,6 @@ defmodule CardTest do
   end
 
   test "deactivate card" do
-    use_cassette "card/create_bis" do
-      assert  {:ok, response} = Mangopay.Card.create card_hash()
-      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
-    end
-
     use_cassette "card/deactivate" do
       assert  {:ok, response} = Mangopay.Card.deactivate created_card_bis()["Id"], deactivate_card_hash()
       assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]

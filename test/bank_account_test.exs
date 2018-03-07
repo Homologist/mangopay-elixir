@@ -23,7 +23,7 @@ defmodule BankAccountTest do
   test "get by user bank_account" do
     use_cassette "bank_account/user/get" do
       assert {:ok, response} = Mangopay.BankAccount.get_by_user created_user()["Id"], created_bank_account()["Id"]
-      assert length(Poison.decode!(response.body)) > 0
+      assert Poison.decode!(response.body)["UserId"] == created_user["Id"]
     end
   end
 
