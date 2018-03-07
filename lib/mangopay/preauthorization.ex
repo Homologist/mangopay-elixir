@@ -7,10 +7,10 @@ defmodule Mangopay.PreAuthorization do
   end
 
   def all_by_card id do
-    _all [card(id), resource]
+    _all [card(id), resource()]
   end
 
   def all_by_user id do
-    _all [user(id), resource]
+    _all [user(id), resource()]
   end
 end

@@ -21,9 +21,9 @@ defmodule BankAccountTest do
   end
 
   test "get by user bank_account" do
-    use_cassette "bank_account/user/get" do
+    use_cassette "bank_account/get" do
       assert {:ok, response} = Mangopay.BankAccount.get_by_user created_user()["Id"], created_bank_account()["Id"]
-      assert Poison.decode!(response.body)["UserId"] == created_user["Id"]
+      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
     end
   end
 
@@ -72,7 +72,7 @@ defmodule BankAccountTest do
   test "deactivate bank_account" do
     use_cassette "bank_account/deactivate" do
       assert  {:ok, response} = Mangopay.BankAccount.deactivate created_user()["Id"], created_bank_account()["Id"], deactivate_bank_account_hash()
-      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
+      assert(Poison.decode!(response.body)["UserId"] == created_user()["Id"])
     end
   end
 end
