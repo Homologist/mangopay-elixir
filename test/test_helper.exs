@@ -406,15 +406,6 @@ defmodule Helper do
         %{}
       end
 
-      def mandate_hash do
-        %{
-          "Tag": "custom meta",
-          "BankAccountId": "14213351",
-          "Culture": "EN",
-          "ReturnURL": "http://www.my-site.com/returnURL/"
-        }
-      end
-
       def update_dispute_hash do
         %{
           "Tag": "custom meta"
@@ -425,14 +416,6 @@ defmodule Helper do
         %{
           "Tag": "custom meta",
           "DeclaredUBOs": [ created_user()["Id"] ]
-        }
-      end
-
-      def ubo_declaration_hash do
-        %{
-          "Tag": "custom meta",
-          "Status": "CREATED",
-          "DeclaredUBOs": [ List.first(created_ubo_declaration()["DeclaredUBOs"])["UserId"] ]
         }
       end
 
@@ -558,9 +541,6 @@ defmodule Helper do
 
       def extend_invitation_sso_hash do
         %{}
-      end
-
-      def permission_group_hash do
       end
 
       def sso_hash do
