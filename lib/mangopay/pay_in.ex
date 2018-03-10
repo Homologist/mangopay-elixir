@@ -3,7 +3,7 @@ defmodule Mangopay.PayIn do
   set_action "payins", [{:get}]
 
   def card_details(payin_id) do
-    _get [resource, "card/web", payin_id, "extended"]
+    _get [resource(), "card/web", payin_id, "extended"]
   end
 
   defmodule Card do
