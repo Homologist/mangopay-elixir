@@ -18,7 +18,6 @@ defmodule Mangopay.Mixfile do
   def application do
     [
       env: [{:client, %{"id": "sdk-unit-tests", "passphrase": "cqFfFrWfCcb7UadHNxx2C9Lo6Djw8ZduLi7J9USTmu8bhxxpju"}}],
-#      mod: {Mangopay, []},
       extra_applications: [:logger]
     ]
   end
