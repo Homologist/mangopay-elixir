@@ -1,6 +1,8 @@
 defmodule Mangopay do
   @token
-
+  @base_header %{"User-Agent": "Elixir", "Content-Type": "application/json"}
+  @authorization_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Content-Type": "application/x-www-form-urlencoded", "Host": "api.sandbox.mangopay.com", "Content-Length": "29"}
+  @payline_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Accept": "*/*", "Host": "homologation-webpayment.payline.com"}
   @moduledoc """
   Documentation for Mangopay.
   """
@@ -16,7 +18,7 @@ defmodule Mangopay do
   """
 
   def base_header do
-    Application.get_env(:mangopay, :headers)
+    @base_header
   end
 
   def base_url do
@@ -40,7 +42,7 @@ defmodule Mangopay do
   end
 
   def authorization_header do
-    Map.merge(base_header, %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "User-Agent": "Elixir", "Authorization": "Basic #{encoded_login_and_passphrase}", "Content-Type": "application/x-www-form-urlencoded", "Host": "api.sandbox.mangopay.com", "Content-Length": "29"})
+    Map.merge(@base_header, @authorization_header) |> Map.merge(%{"Authorization": "Basic #{encoded_login_and_passphrase}"})
   end
 
   def encoded_login_and_passphrase do
@@ -58,33 +60,53 @@ defmodule Mangopay do
     request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
   end
 
-  def request(method, url, body \\ "", headers \\ "") do
+  def new_request(method, url, body, headers) do
+    headers = authorization_params(headers)
+    {method, url, body, headers} = payline_params(method, url, body, headers)
+    body = new_body body
+    {method, url, body, headers}
+  end
+
+  defp authorization_params headers do
     case headers do
-      "" -> auth_token = authorization
-            headers = Map.merge(base_header, %{"Authorization": "#{auth_token}"})
-      _   -> nil
+      ""  -> Map.merge(base_header, %{"Authorization": "#{authorization}"})
+      _   -> headers
     end
+  end
+
+  defp payline_params method, url, body, headers do
     cond do
-      String.contains?(url, "https") -> headers = Map.update!(headers, :"Content-Type", fn _ -> "application/x-www-form-urlencoded" end)
-      headers = Map.merge(headers, %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Accept": "*/*", "Host": "homologation-webpayment.payline.com"})
-      !String.contains?(url, "https")-> url = base_url <> version_and_client_id <> url
+      String.contains?(url, "payline") -> headers = Map.update!(headers, :"Content-Type", fn _ -> "application/x-www-form-urlencoded" end)
+      headers = Map.merge(headers, @payline_header )
+      !String.contains?(url, "payline")-> url = base_url <> version_and_client_id <> url
     end
+    {method, url, body, headers}
+  end
+
+  def new_body body do
     cond do
-      is_map body    -> body = Poison.encode!(body)
-      is_binary body -> nil
+      is_map body    -> Poison.encode!(body)
+      is_binary body -> body
     end
+  end
+
+  def request(method, url, body \\ "", headers \\ "") do
+    {method, url, body, headers} = new_request(method, url, body, headers)
     _request(method, url, body, headers)
   end
 
-  def _request(:post, url, body, headers), do: HTTPoison.post(url, body, headers)
-  def _request(:get, url, body, headers), do: HTTPoison.get(url, headers)
-  def _request(:put, url, body, headers), do: HTTPoison.put(url, body, headers)
+  def request!(method, url, body \\ "", headers \\ "") do
+    {method, url, body, headers} = new_request(method, url, body, headers)
+    _request!(method, url, body, headers)
+  end
+
+  def _request(method, url, body, headers), do: HTTPoison.request(method, url, body, headers)
+  def _request!(method, url, body, headers), do: HTTPoison.request!(method, url, body, headers)
 
   def process do
-    headers = authorization_header
-    Map.put(headers, Authorization, "Basic #{encoded_login_and_passphrase}")
+    Map.put(authorization_header, Authorization, "Basic #{encoded_login_and_passphrase}")
     url                = "/v2.01/oauth/token"
-    {status, response} = request(:post, url, "{}", headers)
+    {_, response} = request(:post, url, "{}", authorization_header)
     body               = response.body
     token              = :zlib.gunzip(body) |> Poison.decode!
     :ok = Agent.update(:token, fn _ -> "#{token["token_type"]} #{token["access_token"]}" end)
@@ -94,9 +116,9 @@ defmodule Mangopay do
   def authorization do
     case Agent.start(fn -> "" end, name: :token) do
       {:ok, _} -> process
-      _ -> case Agent.get(:token, &(&1)) do
-        "" -> process
-        _  -> Agent.get(:token, &(&1))
+      _        -> case Agent.get(:token, &(&1)) do
+      ""       -> process
+      _        -> Agent.get(:token, &(&1))
       end
     end
   end
