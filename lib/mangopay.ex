@@ -7,16 +7,10 @@ defmodule Mangopay do
 
   @moduledoc """
   Documentation for Mangopay.
-  """
+  The elixir client for Mangopay API.
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Mangopay.hello
-      :world
-
+  The goal of this project is to allow user to communicate with Mangopay API
+  in elixir.
   """
 
   def base_header do
