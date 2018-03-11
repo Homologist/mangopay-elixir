@@ -53,7 +53,7 @@ defmodule Mangopay do
   end
 
   defp new_request(method, url, body, headers) do
-    method |> {url, decode_map(body), headers}
+    {method, url, decode_map(body), headers}
       |> authorization_params()
       |> payline_params()
   end
