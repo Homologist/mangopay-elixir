@@ -1,6 +1,6 @@
 defmodule Mangopay.Sso do
   use Mangopay.Query.Base, "clients/ssos"
-  set_action "clients/ssos", [{:get}, {:create}, {:update},{:all}]
+  set_action "clients/ssos", [{:get}, {:create}, {:update}, {:all}]
 
   def extend_invitation id do
    _update %{}, [resource(), "#{id}", "extendinvitation"]

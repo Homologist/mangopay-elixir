@@ -27,7 +27,7 @@ defmodule Mangopay.Mixfile do
     [
 		  {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
-      {:decorator, "~> 0.0"},
+      {:credo, "~> 0.8.10", only: :dev},
       {:exvcr, "~> 0.8", only: :test}
     ]
   end

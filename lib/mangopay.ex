@@ -44,7 +44,7 @@ defmodule Mangopay do
   end
 
   defp authorization_header do
-    Map.merge(@base_header, @authorization_header) |> Map.merge(%{"Authorization": "Basic #{encoded_login_and_passphrase()}"})
+    @base_header |> Map.merge(@authorization_header) |> Map.merge(%{"Authorization": "Basic #{encoded_login_and_passphrase()}"})
   end
 
   defp encoded_login_and_passphrase do
@@ -59,7 +59,9 @@ defmodule Mangopay do
   end
 
   defp new_request(method, url, body, headers) do
-    {method, url, decode_map(body), headers} |> authorization_params() |> payline_params()
+    method |> {url, decode_map(body), headers}
+      |> authorization_params()
+      |> payline_params()
   end
 
   defp authorization_params {method, url, body, headers} do
@@ -71,14 +73,17 @@ defmodule Mangopay do
   end
 
   defp payline_params {method, url, body, headers} do
-    cond do
-      String.contains?(url, "payline") -> {method, url, body, cond_payline(headers)}
-      !String.contains?(url, "payline")-> {method, cond_mangopay(url), body, headers}
+    if String.contains?(url, "payline") do
+      {method, url, body, cond_payline(headers)}
+    else
+      {method, cond_mangopay(url), body, headers}
     end
   end
 
   defp cond_payline headers do
-    Map.update!(headers, :"Content-Type", fn _ -> "application/x-www-form-urlencoded" end) |> Map.merge(@payline_header )
+    headers
+    |> Map.update!(:"Content-Type", fn _ -> "application/x-www-form-urlencoded" end)
+    |> Map.merge(@payline_header)
   end
 
   defp cond_mangopay url do
@@ -87,8 +92,9 @@ defmodule Mangopay do
 
   defp decode_map body do
     cond do
-      is_map body    -> Poison.encode!(body)
+      is_map body    -> Poison.encode! body
       is_binary body -> body
+      is_list body   -> Poison.encode! body
     end
   end
 
@@ -105,7 +111,7 @@ defmodule Mangopay do
   defp _request(method, url, body, headers), do: HTTPoison.request(method, url, body, headers)
 
   def post_authorization do
-    request!(:post, "/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response
+    :post |> request!("/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response
   end
 
   defp get_decoded_response response do
@@ -113,7 +119,8 @@ defmodule Mangopay do
   end
 
   defp get_token token do
-    :ok   = Agent.update(:token, fn _ -> %{token: "#{token["token_type"]} #{token["access_token"]}", expires: "#{Time.add(Time.utc_now, token["expires_in"])}"} end)
+    update_map = %{token: "#{token["token_type"]} #{token["access_token"]}", expires: "#{Time.add(Time.utc_now, token["expires_in"])}"}
+    :ok = Agent.update(:token, fn _ -> update_map end)
     "#{token["token_type"]} #{token["access_token"]}"
   end
 
@@ -122,10 +129,14 @@ defmodule Mangopay do
     case Agent.start(fn -> nil end, name: :token) do
       {:ok, _} -> post_authorization() |> get_token()
       _        -> case Agent.get(:token, &(&1)) do
-                    %{token: _, expires: expire_date} when expire_date < time -> post_authorization() |> get_token()
-                    %{token: token_string, expires: _} when token_string == nil  -> post_authorization() |> get_token()
-                    _   -> Agent.get(:token, &(&1))[:token]
-                  end
+        %{token: _, expires: expire_date} when expire_date < time
+          -> post_authorization()
+            |> get_token()
+        %{token: token_string, expires: _} when token_string == nil
+          -> post_authorization()
+            |> get_token()
+        _ -> Agent.get(:token, &(&1))[:token]
+      end
     end
   end
 

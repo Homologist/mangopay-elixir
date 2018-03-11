@@ -1,4 +1,7 @@
 defmodule Mangopay.Card do
+  alias Mangopay.User, as: User
+  alias Mangopay.Transaction, as: Transaction
+
   use Mangopay.Query.Base, "cards"
   set_action "cards", [{:get}]
   def get_registration id do
@@ -18,11 +21,11 @@ defmodule Mangopay.Card do
   end
 
   def all_by_user id do
-    _all [Mangopay.User.path(), id, resource()]
+    _all [User.path(), id, resource()]
   end
 
   def all_user_by_fingerprint fingerprint do
-    _all [resource(), "fingerprints", fingerprint, Mangopay.User.path()]
+    _all [resource(), "fingerprints", fingerprint, User.path()]
   end
 
   def deactivate id, params do
@@ -30,6 +33,6 @@ defmodule Mangopay.Card do
   end
 
   def all_transactions_by_fingerprint fingerprint do
-    _all [resource(), "fingerprints", "#{fingerprint}", Mangopay.Transaction.path()]
+    _all [resource(), "fingerprints", "#{fingerprint}", Transaction.path()]
   end
 end
