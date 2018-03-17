@@ -1,24 +1,24 @@
 defmodule ClientTest do
-  use Helper
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  use Helper
 
   test "get client" do
-    use_cassette "client/get" do
+    use_cassette "#{module_name(__MODULE__)}/client/get" do
       assert  {:ok, response} = Mangopay.Client.get
       assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
     end
   end
 
   test "update client" do
-    use_cassette "client/update" do
+    use_cassette "#{module_name(__MODULE__)}/client/update" do
       assert {:ok, response} = Mangopay.Client.update update_client_hash()
       assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
     end
   end
 
   test "update_logo client iban" do
-    use_cassette "client/logo/update" do
+    use_cassette "#{module_name(__MODULE__)}/client/logo/update" do
       assert  {:ok, response} = Mangopay.Client.update_logo update_logo_client_hash()
       assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
     end

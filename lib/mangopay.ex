@@ -7,16 +7,10 @@ defmodule Mangopay do
 
   @moduledoc """
   Documentation for Mangopay.
-  """
+  The elixir client for Mangopay API.
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Mangopay.hello
-      :world
-
+  The goal of this project is to allow user to communicate with Mangopay API
+  in elixir.
   """
 
   def base_header do
@@ -58,8 +52,12 @@ defmodule Mangopay do
     request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
   end
 
+  def request!(tuple) when is_tuple(tuple) do
+    request!(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
+  end
+
   defp new_request(method, url, body, headers) do
-    method |> {url, decode_map(body), headers}
+    {method, url, decode_map(body), headers}
       |> authorization_params()
       |> payline_params()
   end
@@ -108,7 +106,12 @@ defmodule Mangopay do
     response
   end
 
-  defp _request(method, url, body, headers), do: HTTPoison.request(method, url, body, headers)
+  defp _request(method, url, body, headers) do
+    case Mix.env do
+      :dev  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
+      :test -> HTTPoison.request(method, url, body, headers, [{"timeout", 10600}])
+    end
+  end
 
   def post_authorization do
     :post |> request!("/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response

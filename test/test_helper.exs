@@ -17,148 +17,150 @@ defmodule Helper do
       end
 
       def created_user do
-        created_natural_user()
+        created_natural_user(__MODULE__)
       end
 
-      def created_natural_user do
-        get_json "/user/natural/create.json"
+      def created_natural_user(module_name\\nil) do
+        get_json Enum.join(["", module_name(__MODULE__), "user", "natural", "create.json"], "/")
       end
 
       def created_user_bis do
-        created_natural_user_bis()
+        created_natural_user_bis(__MODULE__)
       end
 
-      def created_natural_user_bis do
-        get_json "/user/natural/create_bis.json"
+
+      def created_natural_user_bis(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "user", "natural", "create_bis.json"], & !is_nil(&1)), "/")
       end
 
-      def created_legal_user() do
-        get_json "/user/legal/create.json"
+      def created_legal_user(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "user", "legal", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_registration_card do
-        get_json "/card/registration/create.json"
+      def created_registration_card(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "card", "registration", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_registration_card_bis do
-        get_json "/card/create_bis.json"
+      def created_registration_card_bis(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "card", "create_bis.json"], & !is_nil(&1)), "/")
       end
 
-      def created_registration_card_registrationdata do
-        get_json "/card/registrationdata.json"
+      def created_registration_card_registrationdata(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "card", "registrationdata.json"], & !is_nil(&1)), "/")
       end
 
-      def created_card do
-        get_json "/card/get.json"
+      def created_card(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "card", "get.json"], & !is_nil(&1)), "/")
       end
 
-      def created_card_bis do
-        get_json "/card/create_bis.json"
+      def created_card_bis(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "card", "create_bis.json"], & !is_nil(&1)), "/")
       end
 
-      def updated_card do
-        get_json "/card/update.json"
+      def created_bank_account(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "bank_account", "iban", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_bank_account do
-        get_json "/bank_account/iban/create.json"
+      def created_wallet(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "wallet", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_wallet do
-        get_json "/wallet/create.json"
+      def created_wallet_bis(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "wallet", "create_bis.json"], & !is_nil(&1)), "/")
       end
 
-      def created_wallet_bis do
-        get_json "/wallet/create_bis.json"
+      def created_mandate(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "mandate", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_mandate do
-        get_json "/mandate/create.json"
+      def created_hook(module_name \\ nil) do
+        List.first(get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "hook", "all.json"], & !is_nil(&1)), "/"))
       end
 
-      def created_hook do
-        List.first(get_json "/hook/all.json")
+      def created_preauthorization(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "preauthorization", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_preauthorization do
-        get_json "/preauthorization/create.json"
+      def created_preauthorization_bis(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "preauthorization", "create_bis.json"], & !is_nil(&1)), "/")
       end
 
-      def created_preauthorization_bis do
-        get_json "/preauthorization/create_bis.json"
+      def created_client_wallet(module_name \\ nil) do
+        List.first(get_json(Enum.join(Enum.filter(["", module_name(__MODULE__), "client_wallet", "all.json"], & !is_nil(&1)), "/")))
       end
 
-      def created_client_wallet do
-        List.first(get_json("/client_wallet/all.json"))
+      def updated_card(module_name \\ nil) do
+        get_json(Enum.join(Enum.filter(["", module_name(__MODULE__), "card", "update.json"], & !is_nil(&1)), "/"))
       end
 
-      def created_dispute do
-        List.first(get_json("/dispute/all.json"))
+      def created_dispute(module_name \\ nil) do
+        List.first(get_json(Enum.join(Enum.filter(["", module_name(__MODULE__), "dispute", "all.json"], & !is_nil(&1)), "/")))
       end
 
-      def created_transfer do
-        get_json "/transfer/create.json"
+      def created_transfer(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "transfer", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_repudiation do
-        get_json "/repudiation/get.json"
+      def created_repudiation(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "repudiation", "get.json"], & !is_nil(&1)), "/")
       end
 
-      def created_reporting_transaction do
-        get_json "/reporting/transaction/create.json"
+      def created_reporting_transaction(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "reporting", "transaction", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_reporting_wallet do
-        get_json "/reporting/wallet/create.json"
+      def created_reporting_wallet(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "reporting", "wallet", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_dispute_document do
-        get_json "/dispute_document/create.json"
+      def created_dispute_document(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "dispute_document", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_dispute_document_page do
-        get_json "/dispute_document_page/get.json"
+      def created_dispute_document_page(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "dispute_document_page", "get.json"], & !is_nil(&1)), "/")
       end
 
-      def created_kyc_document do
-        get_json "/kyc_document/user/create.json"
+      def created_kyc_document(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "kyc_document", "user", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_kyc_document_page do
-        get_json "/kyc_document_page/user/create.json"
+      def created_kyc_document_page(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "kyc_document_page", "user", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_ubo_declaration do
-        get_json "/ubo_declaration/user/get.json"
+      def created_ubo_declaration(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "ubo_declaration", "user", "get.json"], & !is_nil(&1)), "/")
       end
 
-      def created_sso do
-        get_json "/sso/create.json"
+      def created_sso(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "sso", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_permission_group do
-        get_json "/permission_group/create.json"
+      def created_permission_group(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "permission_group", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_client do
-        get_json "/client/get.json"
+      def created_client(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "client", "get.json"], & !is_nil(&1)), "/")
       end
 
-      def created_pay_in do
-        get_json "/pay_in/card/direct/create.json"
+      def created_pay_in(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "pay_in", "card", "direct", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_pay_out do
-        get_json "/pay_out/create.json"
+      def created_pay_out(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "pay_out", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_refund do
-        get_json "/refund/pay_in/create.json"
+      def created_refund(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "refund", "pay_in", "create.json"], & !is_nil(&1)), "/")
       end
 
-      def created_settlement_transfer do
-        get_json "/settlement_transfer/create.json"
+      def created_settlement_transfer(module_name \\ nil) do
+        get_json Enum.join(Enum.filter(["", module_name(__MODULE__), "settlement_transfer", "create.json"], & !is_nil(&1)), "/")
       end
+
 
       def user_natural_hash do
         %{"Tag": "Test natural user","Email": "my@email.com","FirstName": "John","LastName": "Doe","Address": %{"AddressLine1": "Le Palais Royal","AddressLine2": "8 Rue de Montpensier","City": "Paris","Region": "","PostalCode": "755001","Country": "FR"},"Birthday": 1300186358,"Birthplace": "Paris","Nationality": "FR","CountryOfResidence": "FR","Occupation": "Worker","IncomeRange": 1}
@@ -222,15 +224,23 @@ defmodule Helper do
       end
 
       def card_hash do
-        %{"Tag": "custom meta", "UserId": created_natural_user()["Id"], "Currency": "EUR", "CardType": "CB_VISA_MASTERCARD"}
+        %{"Tag": "custom meta", "UserId": created_natural_user(to_string(__MODULE__))["Id"], "Currency": "EUR", "CardType": "CB_VISA_MASTERCARD"}
       end
 
       def created_registration_card_preregistrationdata do
         "data=#{created_registration_card()["PreregistrationData"]}&accessKeyRef=#{created_registration_card()["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
       end
 
+      def created_registration_card_preregistrationdata(registration_card) do
+        "data=#{registration_card["PreregistrationData"]}&accessKeyRef=#{registration_card["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
+      end
+
       def update_card_hash do
         %{"RegistrationData": created_registration_card_registrationdata()}
+      end
+
+      def update_card_hash(registration_data) do
+        %{"RegistrationData": registration_data}
       end
 
       def deactivate_card_hash do
@@ -368,7 +378,7 @@ defmodule Helper do
       def mandate_hash do
         %{
           "Tag": "custom meta",
-          "BankAccountId": created_bank_account()["Id"],
+          "BankAccountId": created_bank_account(__MODULE__)["Id"],
           "Culture": "EN",
           "ReturnURL": "http://www.my-site.com/returnURL/"
         }
@@ -608,7 +618,7 @@ defmodule Helper do
             "Amount": 3
           },
           "ReturnURL": "http://www.my-site.com/returnURL/",
-          "CreditedWalletId": created_wallet()["Id"],
+          "CreditedWalletId": created_wallet(__MODULE__)["Id"],
           "CardType": "CB_VISA_MASTERCARD",
           "SecureMode": "DEFAULT",
           "Culture": "EN",
@@ -623,7 +633,7 @@ defmodule Helper do
         %{
           "Tag": "custom meta",
           "AuthorId": created_user()["Id"],
-          "CreditedWalletId": created_wallet()["Id"],
+          "CreditedWalletId": created_wallet(__MODULE__)["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -633,7 +643,7 @@ defmodule Helper do
             "Amount": 3
           },
           "SecureModeReturnURL": "http://www.my-site.com/returnURL",
-          "CardId": created_card()["Id"],
+          "CardId": created_card(__MODULE__)["Id"],
           "SecureMode": "DEFAULT",
           "Billing": %{
             "Address": %{
@@ -653,7 +663,7 @@ defmodule Helper do
         %{
           "Tag": "custom meta",
           "AuthorId": created_user()["Id"],
-          "CreditedWalletId": created_wallet()["Id"],
+          "CreditedWalletId": created_wallet(__MODULE__)["Id"],
           "DebitedFunds": %{
             "Currency": "EUR",
             "Amount": 550
@@ -662,7 +672,7 @@ defmodule Helper do
             "Currency": "EUR",
             "Amount": 3
           },
-          "PreauthorizationId": created_preauthorization_bis()["Id"]
+          "PreauthorizationId": created_preauthorization(__MODULE__)["Id"]
         }
       end
 
@@ -809,6 +819,338 @@ defmodule Helper do
 
       def get_ubo_declaration do
         Mangopay.UboDeclaration.get first_ubo_declaration()["Id"]
+      end
+
+      def update_card_cassette do
+        {:ok, response}   = Mangopay.Card.create card_hash()
+        registration_card = Poison.decode! response.body
+        response          = Mangopay.request! {:post, registration_card["CardRegistrationURL"] , created_registration_card_preregistrationdata(registration_card)}
+        registration_data       = response.body
+        Mangopay.Card.update registration_card["Id"], update_card_hash(registration_data)
+      end
+
+      def module_name(module) do
+        module |> to_string |> String.downcase |> String.split(".") |> Enum.at(1)
+      end
+
+      def create_user_cassette do
+        module_name = module_name(__MODULE__)
+        use_cassette "#{module_name}/user/natural/create" do
+          Mangopay.User.Natural.create user_natural_hash()
+        end
+      end
+
+      def create_user_bis_cassette do
+        use_cassette "#{module_name(__MODULE__)}/user/natural/create_bis" do
+          Mangopay.User.Natural.create user_natural_hash()
+        end
+      end
+
+      def create_bank_account_cassette do
+        use_cassette "#{module_name(__MODULE__)}/user/natural/create" do
+          Mangopay.User.Natural.create user_natural_hash()
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/bank_account/iban/create" do
+          Mangopay.BankAccount.create_iban created_user()["Id"], bank_account_iban_hash()
+        end
+      end
+
+      def create_mandate_cassette do
+        create_bank_account_cassette()
+        use_cassette "#{module_name(__MODULE__)}/mandate/create" do
+          Mangopay.Mandate.create mandate_hash()
+        end
+      end
+
+      def create_client_wallet_cassette do
+        use_cassette "#{module_name(__MODULE__)}/client_wallet/all" do
+          Mangopay.ClientWallet.all
+        end
+      end
+
+      def create_dispute_cassette do
+        use_cassette "#{module_name(__MODULE__)}/dispute/all" do
+          Mangopay.Dispute.all
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/dispute/create" do
+          created_dispute()
+        end
+      end
+
+      def create_dispute_bis_cassette do
+        use_cassette "#{module_name(__MODULE__)}/refund/dispute/create_bis" do
+          created_dispute_bis()
+        end
+      end
+
+      def all_client_wallet do
+        use_cassette "#{module_name(__MODULE__)}/client_wallet/all" do
+          Mangopay.ClientWallet.all
+        end
+      end
+
+      def create_preauthorization_cassette do
+        use_cassette "#{module_name(__MODULE__)}/preauthorization/create" do
+          Mangopay.PreAuthorization.create preauthorization_hash()
+        end
+      end
+
+      def cancel_preauthorization_cassette do
+        use_cassette "#{module_name(__MODULE__)}/preauthorization/cancel" do
+          Mangopay.PreAuthorization.cancel created_preauthorization()["Id"], cancel_preauthorization_hash()
+        end
+      end
+
+
+      def create_permission_group_casssette do
+        use_cassette "#{module_name(__MODULE__)}/permission_group/create" do
+          Mangopay.PermissionGroup.create permission_group_hash()
+        end
+      end
+
+      def get_permission_group_casssette do
+        use_cassette "#{module_name(__MODULE__)}/permission_group/get" do
+          Mangopay.PermissionGroup.get created_permission_group()["Id"]
+        end
+      end
+
+      def get_client_cassette do
+        use_cassette "#{module_name(__MODULE__)}/client/get" do
+          Mangopay.Client.get
+        end
+      end
+
+      def all_dispute_cassette do
+        use_cassette "#{module_name(__MODULE__)}/dispute/all" do
+          Mangopay.Dispute.all
+        end
+      end
+
+      def create_dispute_document_cassette do
+        use_cassette "#{module_name(__MODULE__)}/dispute/all" do
+          Mangopay.Dispute.all
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/dispute_document/dispute/all" do
+          Mangopay.DisputeDocument.all_by_dispute created_dispute()["Id"]
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/dispute_document/create" do
+          get_dispute_document()
+        end
+      end
+
+      def create_hook_cassette do
+        use_cassette "#{module_name(__MODULE__)}/hook/create" do
+          Mangopay.Hook.create hook_hash()
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/hook/all" do
+          Mangopay.Hook.all
+        end
+      end
+
+      def create_kyc_document_cassette do
+        use_cassette "#{module_name(__MODULE__)}/kyc_document/user/create" do
+          Mangopay.KycDocument.create_to_user created_user()["Id"], kyc_document_hash()
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/kyc_document/user/create_page" do
+          Mangopay.KycDocument.create_page_to_user_kyc_document created_user()["Id"], created_kyc_document()["Id"], kyc_document_page_hash()
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/kyc_document/submit" do
+          Mangopay.KycDocument.submit created_user()["Id"], created_kyc_document()["Id"], submit_kyc_document_hash()
+        end
+      end
+
+      def create_pay_in_web_cassette do
+        use_cassette "#{module_name(__MODULE__)}/pay_in/card/web/create" do
+          Mangopay.PayIn.Card.Web.create pay_in_card_web_hash()
+        end
+      end
+
+      def create_pay_in_direct_cassette do
+        use_cassette "#{module_name(__MODULE__)}/pay_in/card/direct/create" do
+          Mangopay.PayIn.Card.Direct.create pay_in_card_direct_hash()
+        end
+      end
+
+      def create_pay_in_preauthorized_cassette do
+        use_cassette "#{module_name(__MODULE__)}/pay_in/card/pre_authorized/create" do
+          Mangopay.PayIn.Card.PreAuthorized.create pay_in_card_preauthorized_hash()
+        end
+      end
+
+      def create_pay_out_cassette do
+        use_cassette "#{module_name(__MODULE__)}/pay_out/create" do
+          Mangopay.PayOut.create pay_out_hash()
+        end
+      end
+
+      def create_permission_group_cassette do
+        use_cassette "#{module_name(__MODULE__)}/permission_group/create" do
+          Mangopay.PermissionGroup.create permission_group_hash()
+        end
+      end
+
+      def create_pay_in_refund_cassette do
+        use_cassette "#{module_name(__MODULE__)}/refund/pay_in/create" do
+          Mangopay.Refund.PayIn.create created_pay_in()["Id"], refund_pay_in_hash()
+        end
+      end
+
+      def create_transfer_refund_cassette do
+        use_cassette "#{module_name(__MODULE__)}/refund/transfer/create" do
+          Mangopay.Refund.Transfer.create created_transfer()["Id"], transfer_hash()
+        end
+      end
+
+      def create_sso_cassette do
+        use_cassette "#{module_name(__MODULE__)}/sso/create" do
+          Mangopay.Sso.create sso_hash()
+        end
+      end
+
+      def create_transfer_cassette do
+        use_cassette "#{module_name(__MODULE__)}/transfer/create" do
+          Mangopay.Transfer.create transfer_hash()
+        end
+      end
+
+      def create_transaction_reporting_cassette do
+        use_cassette "#{module_name(__MODULE__)}/reporting/transaction/create" do
+          Mangopay.Reporting.Transaction.create reporting_transaction_hash()
+        end
+      end
+
+      def create_wallet_reporting_cassette do
+        use_cassette "#{module_name(__MODULE__)}/reporting/wallet/create" do
+          Mangopay.Reporting.Wallet.create reporting_wallet_hash()
+        end
+      end
+
+      def all_reporting_cassette do
+        use_cassette "#{module_name(__MODULE__)}/reporting/all" do
+          Mangopay.Reporting.all
+        end
+      end
+
+      def get_repudiation_cassette do
+        use_cassette "#{module_name(__MODULE__)}/repudiation/get" do
+          Mangopay.Repudiation.get created_dispute_bis()["RepudiationId"]
+        end
+      end
+
+      def create_settlement_transfer_cassette do
+        use_cassette "#{module_name(__MODULE__)}/settlement_transfer/create" do
+          Mangopay.SettlementTransfer.create created_repudiation()["Id"], settlement_transfer_hash()
+        end
+      end
+
+
+      def create_wallet_cassette do
+        use_cassette "#{module_name(__MODULE__)}/wallet/create" do
+          Mangopay.Wallet.create wallet_hash()
+        end
+      end
+
+      def create_wallet_bis_cassette do
+        use_cassette "#{module_name(__MODULE__)}/wallet/create_bis" do
+          Mangopay.Wallet.create wallet_hash_bis()
+        end
+      end
+
+      def create_card_cassette do
+        module_name = module_name(__MODULE__)
+        use_cassette "#{module_name}/user/natural/create" do
+          Mangopay.User.Natural.create user_natural_hash()
+        end
+
+        use_cassette "#{module_name}/user/legal/create" do
+          Mangopay.User.Legal.create user_legal_hash()
+        end
+
+        use_cassette "#{module_name}/card/registration/create" do
+          Mangopay.Card.create card_hash()
+        end
+
+        use_cassette "#{module_name}/card/registrationdata" do
+          {:ok, response}   = Mangopay.Card.create card_hash()
+          registration_card = Poison.decode! response.body
+          Mangopay.request {:post, registration_card["CardRegistrationURL"] , created_registration_card_preregistrationdata(registration_card)}
+        end
+
+        use_cassette "#{module_name}/card/update" do
+          update_card_cassette()
+        end
+
+        use_cassette "#{module_name}/card/create" do
+          Mangopay.Card.get updated_card()["CardId"]
+        end
+
+        use_cassette "#{module_name}/card/get" do
+          Mangopay.Card.get updated_card()["CardId"]
+        end
+      end
+
+      def create_card_bis_cassette do
+        module_name = module_name(__MODULE__)
+        use_cassette "#{module_name}/user/natural/create" do
+          Mangopay.User.Natural.create user_natural_hash()
+        end
+
+        use_cassette "#{module_name}/user/legal/create" do
+          Mangopay.User.Legal.create user_legal_hash()
+        end
+
+        use_cassette "#{module_name}/card/registration/create" do
+          Mangopay.Card.create card_hash()
+        end
+
+        use_cassette "#{module_name}/card/registrationdata" do
+          {:ok, response}   = Mangopay.Card.create card_hash()
+          registration_card = Poison.decode! response.body
+          Mangopay.request {:post, registration_card["CardRegistrationURL"] , created_registration_card_preregistrationdata(registration_card)}
+        end
+
+        use_cassette "#{module_name}/card/update" do
+          update_card_cassette()
+        end
+
+        use_cassette "#{module_name}/card/create" do
+          Mangopay.Card.get updated_card()["CardId"]
+        end
+
+        use_cassette "#{module_name}/card/create_bis" do
+          {:ok, response} = Mangopay.Card.create card_hash()
+          body = Poison.decode!(response.body)
+          {:ok, response} = Mangopay.request {:post, body["CardRegistrationURL"] , "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"}
+          data = response.body
+          {:ok, response} = Mangopay.Card.update body["Id"], %{"RegistrationData": data}
+          body = Poison.decode!(response.body)
+          Mangopay.Card.get body["CardId"]
+        end
+
+        use_cassette "#{module_name}/card/get" do
+          Mangopay.Card.get updated_card()["CardId"]
+        end
+      end
+
+      def create_ubo_declaration_cassette do
+        use_cassette "#{module_name(__MODULE__)}/ubo_declaration/user/all" do
+          Mangopay.UboDeclaration.all
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/ubo_declaration/user/get" do
+          get_ubo_declaration()
+        end
+
+        use_cassette "#{module_name(__MODULE__)}/ubo_declaration/update" do
+          Mangopay.UboDeclaration.update created_ubo_declaration()["Id"], update_ubo_declaration_hash()
+        end
       end
     end
   end
