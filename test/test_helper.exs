@@ -922,7 +922,6 @@ defmodule Helper do
         end
       end
 
-
       def all_dispute_cassette do
         use_cassette "#{module_name(__MODULE__)}/dispute/all" do
           Mangopay.Dispute.all
