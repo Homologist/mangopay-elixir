@@ -52,6 +52,10 @@ defmodule Mangopay do
     request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
   end
 
+  def request!(tuple) when is_tuple(tuple) do
+    request!(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
+  end
+
   defp new_request(method, url, body, headers) do
     {method, url, decode_map(body), headers}
       |> authorization_params()
@@ -102,7 +106,7 @@ defmodule Mangopay do
     response
   end
 
-  defp _request(method, url, body, headers), do: HTTPoison.request(method, url, body, headers)
+  defp _request(method, url, body, headers), do: HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
 
   def post_authorization do
     :post |> request!("/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response

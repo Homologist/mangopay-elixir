@@ -1,53 +1,51 @@
 defmodule DisputeTest do
-  use Helper
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  use Helper
 
   setup_all do
-    use_cassette "dispute/all" do
-      Mangopay.Dispute.all
-    end
+    all_dispute_cassette()
     created_dispute_user()
     :ok
   end
 
   test "update dispute" do
-    use_cassette "dispute/update" do
+    use_cassette "#{module_name(__MODULE__)}/dispute/update" do
       assert  {:ok, response} = Mangopay.Dispute.update created_dispute_user()[:Id], update_dispute_hash()
       assert Poison.decode!(response.body)["Tag"] == update_dispute_hash()["Tag"]
     end
   end
 
   test "get dispute" do
-    use_cassette "dispute/get" do
+    use_cassette "#{module_name(__MODULE__)}/dispute/get" do
       assert {:ok, response} = Mangopay.Dispute.get created_dispute()["Id"]
       assert Poison.decode!(response.body)["Id"] == created_dispute()["Id"]
     end
   end
 
   test "all dispute by user" do
-    use_cassette "dispute/user/all" do
+    use_cassette "#{module_name(__MODULE__)}/dispute/user/all" do
       assert {:ok, response} = Mangopay.Dispute.all_by_user created_dispute_user()["Id"]
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all dispute by wallet" do
-    use_cassette "dispute/wallet/all" do
+    use_cassette "#{module_name(__MODULE__)}/dispute/wallet/all" do
       assert {:ok, response} = Mangopay.Dispute.all_by_wallet created_dispute_wallet()["Id"]
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all dispute by pending settlement" do
-    use_cassette "dispute/pending_settlement/all" do
+    use_cassette "#{module_name(__MODULE__)}/dispute/pending_settlement/all" do
       assert {:ok, response} = Mangopay.Dispute.all_by_pending_settlement
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all dispute" do
-    use_cassette "dispute/all" do
+    use_cassette "#{module_name(__MODULE__)}/dispute/all" do
       assert {:ok, response} = Mangopay.Dispute.all
       assert length(Poison.decode!(response.body)) > 0
     end
