@@ -8,8 +8,10 @@ defmodule Mangopay.Mixfile do
       elixir: "~> 1.6",
       start_permanent: Mix.env == :prod,
       deps: deps(),
+      test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
-        vcr: :test, "vcr.delete": :test, "vcr.check": :test, "vcr.show": :test
+        vcr: :test, "vcr.delete": :test, "vcr.check": :test, "vcr.show": :test,
+        "coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test
       ]
     ]
   end
@@ -28,6 +30,7 @@ defmodule Mangopay.Mixfile do
 		  {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
       {:credo, "~> 0.8.10", only: :dev},
+      {:excoveralls, "~> 0.8", only: :test},
       {:exvcr, "~> 0.8", only: :test}
     ]
   end
