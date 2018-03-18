@@ -1,7 +1,8 @@
 defmodule KycDocumentTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use KycDocumentHelper
 
   setup_all do
     create_user_cassette()

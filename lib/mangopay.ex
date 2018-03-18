@@ -109,7 +109,7 @@ defmodule Mangopay do
   defp _request(method, url, body, headers) do
     case Mix.env do
       :dev  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
-      :test -> HTTPoison.request(method, url, body, headers, [{"timeout", 10600}])
+      :test -> HTTPoison.request(method, url, body, headers, [{"timeout", 15600}])
     end
   end
 

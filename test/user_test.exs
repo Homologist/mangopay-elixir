@@ -1,7 +1,7 @@
 defmodule UserTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
 
   setup_all do
     create_user_cassette()

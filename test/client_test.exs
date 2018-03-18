@@ -1,7 +1,7 @@
 defmodule ClientTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use ClientHelper
 
   test "get client" do
     use_cassette "#{module_name(__MODULE__)}/client/get" do

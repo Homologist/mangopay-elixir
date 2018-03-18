@@ -1,7 +1,12 @@
 defmodule SettlementTransferTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use WalletHelper
+  use TransferHelper
+  use DisputeHelper
+  use RepudiationHelper
+  use SettlementTransferHelper
 
   setup_all do
     create_user_cassette()

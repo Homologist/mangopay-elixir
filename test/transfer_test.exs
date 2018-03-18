@@ -1,7 +1,14 @@
 defmodule TransferTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use BankAccountHelper
+  use WalletHelper
+  use PreauthorizationHelper
+  use CardHelper
+  use MandateHelper
+  use PayInHelper
+  use TransferHelper
 
   setup_all do
     create_user_cassette()
