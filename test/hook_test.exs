@@ -1,7 +1,7 @@
 defmodule HookTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use HookHelper
 
   setup_all do
     create_hook_cassette()

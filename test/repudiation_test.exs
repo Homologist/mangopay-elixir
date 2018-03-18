@@ -1,7 +1,11 @@
 defmodule RepudiationTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use WalletHelper
+  use DisputeHelper
+  use TransferHelper
+  use RepudiationHelper
 
   setup_all do
     create_dispute_cassette()

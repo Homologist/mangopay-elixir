@@ -1,7 +1,14 @@
 defmodule PayOutTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use CardHelper
+  use BankAccountHelper
+  use PreauthorizationHelper
+  use MandateHelper
+  use WalletHelper
+  use PayInHelper
+  use PayOutHelper
 
   setup_all do
     create_card_cassette()

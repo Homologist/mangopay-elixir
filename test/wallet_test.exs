@@ -1,7 +1,9 @@
 defmodule WalletTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper #user
+  use BankAccountHelper #user
+  use WalletHelper
 
   setup_all do
     create_user_cassette()

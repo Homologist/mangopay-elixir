@@ -1,7 +1,9 @@
 defmodule SsoTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use PermissionGroupHelper
+  use SsoHelper
 
   setup_all do
     create_user_cassette()

@@ -1,10 +1,10 @@
 defmodule PermissionGroupTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use PermissionGroupHelper
 
   setup_all do
-    create_permission_group_casssette()
+    create_permission_group_cassette()
     get_permission_group_casssette()
     :ok
   end

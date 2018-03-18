@@ -1,7 +1,9 @@
 defmodule PreauthorizationTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper #user
+  use CardHelper
+  use PreauthorizationHelper
 
   setup_all do
     create_card_cassette()
