@@ -1,7 +1,9 @@
 defmodule ReportingTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use WalletHelper
+  use ReportingHelper
 
   setup_all do
     create_user_cassette()

@@ -1,7 +1,11 @@
 defmodule DisputeDocumentTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use WalletHelper
+  use TransferHelper
+  use DisputeHelper
+  use DisputeDocumentHelper
 
   setup_all do
      create_dispute_document_cassette()

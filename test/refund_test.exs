@@ -1,7 +1,18 @@
 defmodule RefundTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use CardHelper
+  use BankAccountHelper
+  use MandateHelper
+  use PreauthorizationHelper
+  use WalletHelper
+  use PayInHelper
+  use TransferHelper
+  use PayOutHelper
+  use DisputeHelper
+  use RepudiationHelper
+  use RefundHelper
 
   setup_all do
     create_card_cassette()

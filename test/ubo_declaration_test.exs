@@ -1,7 +1,8 @@
 defmodule UboDeclarationTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use UboDeclarationHelper
 
   setup_all do
     create_user_cassette()

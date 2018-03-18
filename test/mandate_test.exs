@@ -1,7 +1,9 @@
 defmodule MandateTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Helper
+  use UserHelper
+  use BankAccountHelper
+  use MandateHelper
 
   setup_all do
     create_mandate_cassette()

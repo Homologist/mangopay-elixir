@@ -7,7 +7,7 @@ defmodule SsoTest do
 
   setup_all do
     create_user_cassette()
-    create_permission_group_cassette()
+#    create_permission_group_cassette()
     create_sso_cassette()
     :ok
   end
