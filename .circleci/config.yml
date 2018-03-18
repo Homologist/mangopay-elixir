@@ -46,3 +46,7 @@ jobs:  # basic units of work in a run
 
       - store_test_results:  # upload test results for display in Test Summary
           path: _build/test/junit
+
+test:
+  override:
+    - mix coveralls.circle

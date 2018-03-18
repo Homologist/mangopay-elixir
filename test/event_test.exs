@@ -9,7 +9,7 @@ defmodule EventTest do
 
   test "all event" do
     use_cassette "#{module_name(__MODULE__)}/event/all" do
-      assert {:ok, response} = Mangopay.Event.all
+      assert {:ok, response} = Mangopay.Event.all()
       assert length(Poison.decode!(response.body)) > 0
     end
   end

@@ -3,6 +3,6 @@ defmodule MangopayTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   test "get authorization hash" do
-      assert Mangopay.authorization =~ ~r/bearer/
+    assert Mangopay.authorization() =~ ~r/bearer/
   end
 end

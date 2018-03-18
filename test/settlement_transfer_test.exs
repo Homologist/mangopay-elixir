@@ -19,14 +19,21 @@ defmodule SettlementTransferTest do
 
   test "get settlement_transfer" do
     use_cassette "#{module_name(__MODULE__)}/settlement_transfer/get" do
-      assert  {:ok, response} = Mangopay.SettlementTransfer.get created_settlement_transfer()["Id"]
+      assert {:ok, response} =
+               Mangopay.SettlementTransfer.get(created_settlement_transfer()["Id"])
+
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end
 
   test "create settlement_transfer" do
     use_cassette "#{module_name(__MODULE__)}/settlement_transfer/create" do
-      assert {:ok, response} = Mangopay.SettlementTransfer.create created_repudiation()["Id"], settlement_transfer_hash()
+      assert {:ok, response} =
+               Mangopay.SettlementTransfer.create(
+                 created_repudiation()["Id"],
+                 settlement_transfer_hash()
+               )
+
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end

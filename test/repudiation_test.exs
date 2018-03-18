@@ -15,7 +15,7 @@ defmodule RepudiationTest do
 
   test "get" do
     use_cassette "#{module_name(__MODULE__)}/repudiation/get" do
-      assert {:ok, response} = Mangopay.Repudiation.get created_repudiation()["Id"]
+      assert {:ok, response} = Mangopay.Repudiation.get(created_repudiation()["Id"])
       assert Poison.decode!(response.body)["Id"] == created_repudiation()["Id"]
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end

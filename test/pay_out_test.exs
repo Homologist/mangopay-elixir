@@ -21,14 +21,14 @@ defmodule PayOutTest do
 
   test "create pay_out" do
     use_cassette "#{module_name(__MODULE__)}/pay_out/create" do
-      assert {:ok, response} = Mangopay.PayOut.create pay_out_hash()
+      assert {:ok, response} = Mangopay.PayOut.create(pay_out_hash())
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
   end
 
   test "get pay_out" do
     use_cassette "#{module_name(__MODULE__)}/pay_out/get" do
-      assert {:ok, response} = Mangopay.PayOut.get created_pay_out()["Id"]
+      assert {:ok, response} = Mangopay.PayOut.get(created_pay_out()["Id"])
       assert Poison.decode!(response.body)["Id"] == created_pay_out()["Id"]
     end
   end
