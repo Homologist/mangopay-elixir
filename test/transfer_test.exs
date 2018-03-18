@@ -23,14 +23,14 @@ defmodule TransferTest do
 
   test "get transfer" do
     use_cassette "#{module_name(__MODULE__)}/transfer/get" do
-      assert  {:ok, response} = Mangopay.Transfer.get created_transfer()["Id"]
+      assert {:ok, response} = Mangopay.Transfer.get(created_transfer()["Id"])
       assert Poison.decode!(response.body)["Tag"] == transfer_hash()[:Tag]
     end
   end
 
   test "create transfer" do
     use_cassette "#{module_name(__MODULE__)}/transfer/create" do
-      assert  {:ok, response} = Mangopay.Transfer.create transfer_hash()
+      assert {:ok, response} = Mangopay.Transfer.create(transfer_hash())
       assert Poison.decode!(response.body)["Tag"] == transfer_hash()[:Tag]
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
     end
