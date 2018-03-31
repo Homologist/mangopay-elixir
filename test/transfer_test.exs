@@ -1,6 +1,8 @@
 defmodule TransferTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  import Mangopay.Factory
+  use Helper
   use UserHelper
   use BankAccountHelper
   use WalletHelper

@@ -18,7 +18,8 @@ defmodule Mangopay.Mixfile do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
-      ]
+      ],
+      elixirc_paths: ["lib", "web", "test/support", "test/factories"]
     ]
   end
 
@@ -40,7 +41,10 @@ defmodule Mangopay.Mixfile do
       {:poison, "~> 3.1"},
       {:credo, "~> 0.8.10", only: :dev},
       {:excoveralls, "~> 0.8", only: :test},
+      {:ex_machina, "~> 2.2", only: :test},
       {:exvcr, "~> 0.8", only: :test}
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
 end

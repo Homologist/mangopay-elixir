@@ -1,6 +1,7 @@
 defmodule EventTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  import Mangopay.Factory
   use Helper
 
   setup_all do

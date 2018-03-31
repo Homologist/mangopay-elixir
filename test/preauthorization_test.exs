@@ -1,7 +1,8 @@
 defmodule PreauthorizationTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  # user
+  import Mangopay.Factory
+  use Helper
   use UserHelper
   use CardHelper
   use PreauthorizationHelper
