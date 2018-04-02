@@ -1,27 +1,13 @@
 ExUnit.start()
 
 defmodule Mangopay.HookFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
-
       def created_hook(module_name \\ nil) do
         List.first(
-          get_json(
+          Factories.SharedFunctions.get_json(
             Enum.join(
-              Enum.filter(["", module_name(__MODULE__), "hook", "all.json"], &(!is_nil(&1))),
+              Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "hook", "all.json"], &(!is_nil(&1))),
               "/"
             )
           )
@@ -44,16 +30,12 @@ defmodule Mangopay.HookFactory do
         }
       end
 
-      def module_name(module) do
-        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
-      end
-
       def create_hook_cassette do
-        use_cassette "#{module_name(__MODULE__)}/hook/create" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/create" do
           Mangopay.Hook.create(hook_hash())
         end
 
-        use_cassette "#{module_name(__MODULE__)}/hook/all" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/all" do
           Mangopay.Hook.all()
         end
       end

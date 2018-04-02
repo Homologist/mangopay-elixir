@@ -1,13 +1,13 @@
 ExUnit.start()
 
 defmodule Mangopay.SettlementTransferFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
       def created_settlement_transfer(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "settlement_transfer", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "settlement_transfer", "create.json"],
               &(!is_nil(&1))
             ),
             "/"

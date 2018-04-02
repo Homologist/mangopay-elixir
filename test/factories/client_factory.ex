@@ -1,13 +1,13 @@
 defmodule Mangopay.ClientFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      require Factories.SharedFunctions
-      Factories.SharedFunctions.set
+      
+      
 
       def created_client(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "client", "get.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "client", "get.json"], &(!is_nil(&1))),
             "/"
           )
         )
@@ -28,13 +28,13 @@ defmodule Mangopay.ClientFactory do
       end
 
       def all_client_wallet do
-        use_cassette "#{module_name(__MODULE__)}/client_wallet/all" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/all" do
           Mangopay.ClientWallet.all()
         end
       end
 
       def get_client_cassette do
-        use_cassette "#{module_name(__MODULE__)}/client/get" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client/get" do
           Mangopay.Client.get()
         end
       end

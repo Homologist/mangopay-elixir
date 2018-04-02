@@ -19,7 +19,7 @@ defmodule Mangopay.Mixfile do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      elixirc_paths: ["lib", "web", "test/support/factory.ex", "test/factories/"]
+      elixirc_paths: elixirc_paths(:test)#["lib", "web", "test/support/factory.ex", "test/factories/"]
     ]
   end
 
@@ -46,5 +46,5 @@ defmodule Mangopay.Mixfile do
     ]
   end
 
-  defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "web", "test/support/factory.ex", "test/factories/"]
 end

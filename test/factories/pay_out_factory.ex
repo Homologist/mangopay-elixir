@@ -1,26 +1,12 @@
 ExUnit.start()
 
 defmodule Mangopay.PayOutFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
-
       def created_pay_out(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "pay_out", "create.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "pay_out", "create.json"], &(!is_nil(&1))),
             "/"
           )
         )
@@ -45,13 +31,9 @@ defmodule Mangopay.PayOutFactory do
       end
 
       def create_pay_out_cassette do
-        use_cassette "#{module_name(__MODULE__)}/pay_out/create" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_out/create" do
           Mangopay.PayOut.create(pay_out_hash())
         end
-      end
-
-      def module_name(module) do
-        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
       end
     end
   end

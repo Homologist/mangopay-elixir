@@ -1,11 +1,11 @@
 defmodule Mangopay.DisputeFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
       def created_dispute_factory(module_name \\ nil) do
         List.first(
-          get_json(
+          Factories.SharedFunctions.get_json(
             Enum.join(
-              Enum.filter(["", module_name(__MODULE__), "dispute", "all.json"], &(!is_nil(&1))),
+              Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "dispute", "all.json"], &(!is_nil(&1))),
               "/"
             )
           )
@@ -30,12 +30,6 @@ defmodule Mangopay.DisputeFactory do
         {:ok, response} = Mangopay.Dispute.all()
         response = Poison.decode!(response.body)
         List.last(Enum.filter(response, fn x -> x["RepudiationId"] end))
-      end
-
-      def create_transfer_refund_cassette do
-        use_cassette "#{module_name(__MODULE__)}/refund/transfer/create" do
-          Mangopay.Refund.Transfer.create(build(:created_transfer)["Id"], build(:transfer))
-        end
       end
 
       def created_dispute_transaction_factory do

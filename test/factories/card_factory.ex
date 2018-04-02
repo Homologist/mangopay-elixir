@@ -1,14 +1,14 @@
 defmodule Mangopay.CardFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      require Factories.SharedFunctions
-      Factories.SharedFunctions.set
+      
+      
 
       def created_registration_card(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "card", "registration", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "card", "registration", "create.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -17,19 +17,19 @@ defmodule Mangopay.CardFactory do
       end
 
       def created_registration_card_bis(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "card", "create_bis.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "card", "create_bis.json"], &(!is_nil(&1))),
             "/"
           )
         )
       end
 
       def created_registration_card_registrationdata(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "card", "registrationdata.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "card", "registrationdata.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -38,27 +38,27 @@ defmodule Mangopay.CardFactory do
       end
 
       def created_card(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "card", "get.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "card", "get.json"], &(!is_nil(&1))),
             "/"
           )
         )
       end
 
       def created_card_bis(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "card", "create_bis.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "card", "create_bis.json"], &(!is_nil(&1))),
             "/"
           )
         )
       end
 
       def updated_card(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "card", "update.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "card", "update.json"], &(!is_nil(&1))),
             "/"
           )
         )
@@ -112,7 +112,7 @@ defmodule Mangopay.CardFactory do
       end
 
       def create_card_cassette do
-        module_name = module_name(__MODULE__)
+        module_name = Factories.SharedFunctions.module_name(__MODULE__)
 
         use_cassette "#{module_name}/user/natural/create" do
           Mangopay.User.Natural.create(build(:user_natural))
@@ -150,7 +150,7 @@ defmodule Mangopay.CardFactory do
       end
 
       def create_card_bis_cassette do
-        module_name = module_name(__MODULE__)
+        module_name = Factories.SharedFunctions.module_name(__MODULE__)
 
         use_cassette "#{module_name}/user/natural/create" do
           Mangopay.User.Natural.create(build(:user_natural))

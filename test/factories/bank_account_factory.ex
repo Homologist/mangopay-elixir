@@ -1,13 +1,13 @@
 defmodule Mangopay.BankAccountFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      require Factories.SharedFunctions
-      Factories.SharedFunctions.set
+      
+      
       def created_bank_account_factory(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "bank_account", "iban", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "bank_account", "iban", "create.json"],
               &(!is_nil(&1))
             ),
             "/"

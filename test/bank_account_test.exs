@@ -13,13 +13,13 @@ defmodule BankAccountTest do
   end
 
   def create do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/iban/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/iban/create" do
       Mangopay.BankAccount.create_iban(build(:created_user)["Id"], build(:bank_account_iban))
     end
   end
 
   test "get by user bank_account" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/get" do
       assert {:ok, response} =
                Mangopay.BankAccount.get_by_user(
                  build(:created_user)["Id"],
@@ -31,14 +31,14 @@ defmodule BankAccountTest do
   end
 
   test "all bank_account by user" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/user/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/user/all" do
       assert {:ok, response} = Mangopay.BankAccount.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "create bank_account iban" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/iban/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/iban/create" do
       assert {:ok, response} =
                Mangopay.BankAccount.create_iban(build(:created_user)["Id"], build(:bank_account_iban))
 
@@ -47,7 +47,7 @@ defmodule BankAccountTest do
   end
 
   test "create bank_account us" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/us/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/us/create" do
       assert {:ok, response} =
                Mangopay.BankAccount.create_us(build(:created_user)["Id"], build(:bank_account_us))
 
@@ -56,7 +56,7 @@ defmodule BankAccountTest do
   end
 
   test "create bank_account ca" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/ca/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/ca/create" do
       assert {:ok, response} =
                Mangopay.BankAccount.create_ca(build(:created_user)["Id"], build(:bank_account_ca))
 
@@ -65,7 +65,7 @@ defmodule BankAccountTest do
   end
 
   test "create bank_account gb" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/gb/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/gb/create" do
       assert {:ok, response} =
                Mangopay.BankAccount.create_gb(build(:created_user)["Id"], build(:bank_account_gb))
 
@@ -74,7 +74,7 @@ defmodule BankAccountTest do
   end
 
   test "create bank_account other" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/other/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/other/create" do
       assert {:ok, response} =
                Mangopay.BankAccount.create_other(build(:created_user)["Id"], build(:bank_account_other))
 
@@ -83,7 +83,7 @@ defmodule BankAccountTest do
   end
 
   test "deactivate bank_account" do
-    use_cassette "#{module_name(__MODULE__)}/bank_account/deactivate" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/deactivate" do
       build(:created_user)["Id"]
       build(:created_bank_account)["Id"]
       build(:deactivate_bank_account)

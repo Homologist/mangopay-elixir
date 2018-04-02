@@ -22,7 +22,7 @@ defmodule PreauthorizationTest do
   end
 
   test "cancel preauthorization" do
-    use_cassette "#{module_name(__MODULE__)}/preauthorization/cancel" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/cancel" do
       assert {:ok, response} =
                Mangopay.PreAuthorization.cancel(
                  created_preauthorization()["Id"],
@@ -34,21 +34,21 @@ defmodule PreauthorizationTest do
   end
 
   test "get user" do
-    use_cassette "#{module_name(__MODULE__)}/preauthorization/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/get" do
       assert {:ok, response} = Mangopay.PreAuthorization.get(created_preauthorization()["Id"])
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
   end
 
   test "all preauthorization by user" do
-    use_cassette "#{module_name(__MODULE__)}/preauthorization/user/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/user/all" do
       assert {:ok, response} = Mangopay.PreAuthorization.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all preauthorization by card" do
-    use_cassette "#{module_name(__MODULE__)}/preauthorization/card/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/card/all" do
       assert {:ok, response} = Mangopay.PreAuthorization.all_by_card(created_card()["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end

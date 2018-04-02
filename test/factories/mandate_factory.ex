@@ -1,13 +1,13 @@
 defmodule Mangopay.MandateFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      require Factories.SharedFunctions
-      Factories.SharedFunctions.set
+      
+      
 
       def created_mandate_factory(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "mandate", "create.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "mandate", "create.json"], &(!is_nil(&1))),
             "/"
           )
         )

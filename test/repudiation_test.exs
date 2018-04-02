@@ -16,7 +16,7 @@ defmodule RepudiationTest do
   end
 
   test "get" do
-    use_cassette "#{module_name(__MODULE__)}/repudiation/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/repudiation/get" do
       assert {:ok, response} = Mangopay.Repudiation.get(build(:created_repudiation)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_repudiation)["Id"]
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"

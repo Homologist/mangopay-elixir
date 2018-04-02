@@ -13,7 +13,7 @@ defmodule MandateTest do
   end
 
   test "create mandate" do
-    use_cassette "#{module_name(__MODULE__)}/mandate/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/create" do
       assert {:ok, response} = Mangopay.Mandate.create(build(:mandate))
       assert Poison.decode!(response.body)["Status"] == "CREATED"
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
@@ -21,7 +21,7 @@ defmodule MandateTest do
   end
 
   test "cancel mandate" do
-    use_cassette "#{module_name(__MODULE__)}/mandate/cancel" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/cancel" do
       assert {:ok, response} =
                Mangopay.Mandate.cancel(build(:created_user)["Id"], build(:update_mandate))
 
@@ -30,21 +30,21 @@ defmodule MandateTest do
   end
 
   test "get user" do
-    use_cassette "#{module_name(__MODULE__)}/mandate/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/get" do
       assert {:ok, response} = Mangopay.Mandate.get(build(:created_mandate)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_mandate)["Id"]
     end
   end
 
   test "all mandate" do
-    use_cassette "#{module_name(__MODULE__)}/mandate/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/all" do
       assert {:ok, response} = Mangopay.Mandate.all()
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all mandate by user" do
-    use_cassette "#{module_name(__MODULE__)}/mandate/user/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/user/all" do
       Mangopay.Mandate.create(build(:mandate))
       assert {:ok, response} = Mangopay.Mandate.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
@@ -52,7 +52,7 @@ defmodule MandateTest do
   end
 
   test "all mandate by user and bank_account" do
-    use_cassette "#{module_name(__MODULE__)}/mandate/user/bank_account/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/user/bank_account/all" do
       assert {:ok, response} =
                Mangopay.Mandate.all_by_user_and_bank_account(
                  build(:created_user)["Id"],

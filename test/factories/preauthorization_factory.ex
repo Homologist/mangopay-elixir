@@ -1,27 +1,13 @@
 ExUnit.start()
 
 defmodule Mangopay.PreauthorizationFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
-
       def created_preauthorization(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "preauthorization", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "preauthorization", "create.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -30,10 +16,10 @@ defmodule Mangopay.PreauthorizationFactory do
       end
 
       def created_preauthorization_bis(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "preauthorization", "create_bis.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "preauthorization", "create_bis.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -73,13 +59,13 @@ defmodule Mangopay.PreauthorizationFactory do
       end
 
       def create_preauthorization_cassette do
-        use_cassette "#{module_name(__MODULE__)}/preauthorization/create" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/create" do
           Mangopay.PreAuthorization.create(preauthorization_hash())
         end
       end
 
       def cancel_preauthorization_cassette do
-        use_cassette "#{module_name(__MODULE__)}/preauthorization/cancel" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/cancel" do
           Mangopay.PreAuthorization.cancel(
             created_preauthorization()["Id"],
             cancel_preauthorization_hash()

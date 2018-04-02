@@ -24,14 +24,14 @@ defmodule TransferTest do
   end
 
   test "get transfer" do
-    use_cassette "#{module_name(__MODULE__)}/transfer/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transfer/get" do
       assert {:ok, response} = Mangopay.Transfer.get(build(:created_transfer)["Id"])
       assert Poison.decode!(response.body)["Tag"] == build(:transfer)[:Tag]
     end
   end
 
   test "create transfer" do
-    use_cassette "#{module_name(__MODULE__)}/transfer/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transfer/create" do
       assert {:ok, response} = Mangopay.Transfer.create(build(:transfer))
       assert Poison.decode!(response.body)["Tag"] == build(:transfer)[:Tag]
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"

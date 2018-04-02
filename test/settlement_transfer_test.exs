@@ -20,7 +20,7 @@ defmodule SettlementTransferTest do
   end
 
   test "get settlement_transfer" do
-    use_cassette "#{module_name(__MODULE__)}/settlement_transfer/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/settlement_transfer/get" do
       assert {:ok, response} =
                Mangopay.SettlementTransfer.get(created_settlement_transfer()["Id"])
 
@@ -29,7 +29,7 @@ defmodule SettlementTransferTest do
   end
 
   test "create settlement_transfer" do
-    use_cassette "#{module_name(__MODULE__)}/settlement_transfer/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/settlement_transfer/create" do
       assert {:ok, response} =
                Mangopay.SettlementTransfer.create(
                  build(:created_repudiation)["Id"],

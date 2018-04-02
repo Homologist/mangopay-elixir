@@ -1,11 +1,11 @@
 defmodule Mangopay.UboDeclarationFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
       def created_ubo_declaration_factory(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "ubo_declaration", "user", "get.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "ubo_declaration", "user", "get.json"],
               &(!is_nil(&1))
             ),
             "/"

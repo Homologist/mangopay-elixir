@@ -15,7 +15,7 @@ defmodule DisputeTest do
   end
 
   test "update dispute" do
-    use_cassette "#{module_name(__MODULE__)}/dispute/update" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/update" do
       assert {:ok, response} =
                Mangopay.Dispute.update(build(:created_dispute_user)[:Id], build(:update_dispute))
 
@@ -24,35 +24,35 @@ defmodule DisputeTest do
   end
 
   test "get dispute" do
-    use_cassette "#{module_name(__MODULE__)}/dispute/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/get" do
       assert {:ok, response} = Mangopay.Dispute.get(build(:created_dispute)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_dispute)["Id"]
     end
   end
 
   test "all dispute by user" do
-    use_cassette "#{module_name(__MODULE__)}/dispute/user/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/user/all" do
       assert {:ok, response} = Mangopay.Dispute.all_by_user(build(:created_dispute_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all dispute by wallet" do
-    use_cassette "#{module_name(__MODULE__)}/dispute/wallet/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/wallet/all" do
       assert {:ok, response} = Mangopay.Dispute.all_by_wallet(build(:created_dispute_wallet)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all dispute by pending settlement" do
-    use_cassette "#{module_name(__MODULE__)}/dispute/pending_settlement/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/pending_settlement/all" do
       assert {:ok, response} = Mangopay.Dispute.all_by_pending_settlement()
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all dispute" do
-    use_cassette "#{module_name(__MODULE__)}/dispute/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/all" do
       assert {:ok, response} = Mangopay.Dispute.all()
       assert length(Poison.decode!(response.body)) > 0
     end

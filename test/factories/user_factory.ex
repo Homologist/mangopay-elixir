@@ -1,15 +1,15 @@
 defmodule Mangopay.UserFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      require Factories.SharedFunctions
-      Factories.SharedFunctions.set
+      
+      
 
       def created_user_factory do
         build(:created_natural_user)
       end
 
       def created_natural_user_factory(module_name \\ nil) do
-        get_json(Enum.join(["", module_name(__MODULE__), "user", "natural", "create.json"], "/"))
+        Factories.SharedFunctions.get_json(Enum.join(["", Factories.SharedFunctions.module_name(__MODULE__), "user", "natural", "create.json"], "/"))
       end
 
       def created_user_bis_factory do
@@ -17,10 +17,10 @@ defmodule Mangopay.UserFactory do
       end
 
       def created_natural_user_bis_factory(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "user", "natural", "create_bis.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "user", "natural", "create_bis.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -29,10 +29,10 @@ defmodule Mangopay.UserFactory do
       end
 
       def created_legal_user_factory(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "user", "legal", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "user", "legal", "create.json"],
               &(!is_nil(&1))
             ),
             "/"

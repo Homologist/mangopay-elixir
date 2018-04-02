@@ -1,22 +1,22 @@
 defmodule Mangopay.WalletFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      require Factories.SharedFunctions
-      Factories.SharedFunctions.set
+      
+      
       def created_wallet(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "wallet", "create.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "wallet", "create.json"], &(!is_nil(&1))),
             "/"
           )
         )
       end
 
       def created_wallet_bis(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "wallet", "create_bis.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "wallet", "create_bis.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -50,13 +50,13 @@ defmodule Mangopay.WalletFactory do
       end
 
       def create_wallet_cassette do
-        use_cassette "#{module_name(__MODULE__)}/wallet/create" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/wallet/create" do
           Mangopay.Wallet.create(build(:wallet))
         end
       end
 
       def create_wallet_bis_cassette do
-        use_cassette "#{module_name(__MODULE__)}/wallet/create_bis" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/wallet/create_bis" do
           Mangopay.Wallet.create(build(:wallet_bis))
         end
       end

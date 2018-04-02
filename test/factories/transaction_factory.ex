@@ -1,13 +1,13 @@
 ExUnit.start()
 
 defmodule Mangopay.TransactionFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
       def fixture_path(path) do
         "fixture/vcr_cassettes" <> path
       end
 
-      def get_json(path) do
+      def Factories.SharedFunctions.get_json(path) do
         a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
         b = a["response"]["body"]
 
@@ -18,10 +18,10 @@ defmodule Mangopay.TransactionFactory do
       end
 
 #      def created_legal_user(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "user", "legal", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "user", "legal", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -31,9 +31,9 @@ defmodule Mangopay.TransactionFactory do
 
 #      def created_hook(module_name \\ nil) do
 #        List.first(
-#          get_json(
+#          Factories.SharedFunctions.get_json(
 #            Enum.join(
-#              Enum.filter(["", module_name(__MODULE__), "hook", "all.json"], &(!is_nil(&1))),
+#              Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "hook", "all.json"], &(!is_nil(&1))),
 #              "/"
 #            )
 #          )
@@ -42,10 +42,10 @@ defmodule Mangopay.TransactionFactory do
 
 #      def created_client_wallet(module_name \\ nil) do
 #        List.first(
-#          get_json(
+#          Factories.SharedFunctions.get_json(
 #            Enum.join(
 #              Enum.filter(
-#                ["", module_name(__MODULE__), "client_wallet", "all.json"],
+#                ["", Factories.SharedFunctions.module_name(__MODULE__), "client_wallet", "all.json"],
 #                &(!is_nil(&1))
 #              ),
 #              "/"
@@ -55,37 +55,37 @@ defmodule Mangopay.TransactionFactory do
 #      end
 
 #      def updated_card(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
-#            Enum.filter(["", module_name(__MODULE__), "card", "update.json"], &(!is_nil(&1))),
+#            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "card", "update.json"], &(!is_nil(&1))),
 #            "/"
 #          )
 #        )
 #      end
 
 #      def created_transfer(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
-#            Enum.filter(["", module_name(__MODULE__), "transfer", "create.json"], &(!is_nil(&1))),
+#            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "transfer", "create.json"], &(!is_nil(&1))),
 #            "/"
 #          )
 #        )
 #      end
 #
 #      def created_repudiation(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
-#            Enum.filter(["", module_name(__MODULE__), "repudiation", "get.json"], &(!is_nil(&1))),
+#            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "repudiation", "get.json"], &(!is_nil(&1))),
 #            "/"
 #          )
 #        )
 #      end
 
 #      def created_reporting_transaction(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "reporting", "transaction", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "reporting", "transaction", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -94,10 +94,10 @@ defmodule Mangopay.TransactionFactory do
 #      end
 
 #      def created_reporting_wallet(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "reporting", "wallet", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "reporting", "wallet", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -106,10 +106,10 @@ defmodule Mangopay.TransactionFactory do
 #      end
 
 #      def created_kyc_document(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "kyc_document", "user", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "kyc_document", "user", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -118,10 +118,10 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def created_kyc_document_page(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "kyc_document_page", "user", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "kyc_document_page", "user", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -130,10 +130,10 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def created_ubo_declaration(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "ubo_declaration", "user", "get.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "ubo_declaration", "user", "get.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -142,19 +142,19 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def created_sso(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
-#            Enum.filter(["", module_name(__MODULE__), "sso", "create.json"], &(!is_nil(&1))),
+#            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "sso", "create.json"], &(!is_nil(&1))),
 #            "/"
 #          )
 #        )
 #      end
 #
 #      def created_permission_group(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "permission_group", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "permission_group", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -163,10 +163,10 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def created_refund(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "refund", "pay_in", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "refund", "pay_in", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -175,10 +175,10 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def created_settlement_transfer(module_name \\ nil) do
-#        get_json(
+#        Factories.SharedFunctions.get_json(
 #          Enum.join(
 #            Enum.filter(
-#              ["", module_name(__MODULE__), "settlement_transfer", "create.json"],
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "settlement_transfer", "create.json"],
 #              &(!is_nil(&1))
 #            ),
 #            "/"
@@ -470,56 +470,51 @@ defmodule Mangopay.TransactionFactory do
 #        Mangopay.Card.update(registration_card["Id"], update_card_hash(registration_data))
 #      end
 #
-#      def module_name(module) do
+#      def Factories.SharedFunctions.module_name(module) do
 #        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
 #      end
 #
 #      def create_user_bis_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/user/natural/create_bis" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/natural/create_bis" do
 #          Mangopay.User.Natural.create(build(:user_natural))
 #        end
 #      end
 #
-#      def create_client_wallet_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/client_wallet/all" do
-#          Mangopay.ClientWallet.all()
-#        end
-#      end
 #
 #      def create_permission_group_casssette do
-#        use_cassette "#{module_name(__MODULE__)}/permission_group/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/create" do
 #          Mangopay.PermissionGroup.create(permission_group_hash())
 #        end
 #      end
 #
 #      def get_permission_group_casssette do
-#        use_cassette "#{module_name(__MODULE__)}/permission_group/get" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/get" do
 #          Mangopay.PermissionGroup.get(created_permission_group()["Id"])
 #        end
 #      end
 #
 #      def all_dispute_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/dispute/all" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/all" do
 #          Mangopay.Dispute.all()
 #        end
 #      end
 #
 #      def create_hook_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/hook/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/create" do
 #          Mangopay.Hook.create(hook_hash())
 #        end
 #
-#        use_cassette "#{module_name(__MODULE__)}/hook/all" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/all" do
 #          Mangopay.Hook.all()
 #        end
 #      end
 #
 #      def create_kyc_document_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/kyc_document/user/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create" do
 #          Mangopay.KycDocument.create_to_user(build(:created_user)["Id"], build(:kyc_document))
 #        end
 #
-#        use_cassette "#{module_name(__MODULE__)}/kyc_document/user/create_page" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_page" do
 #          Mangopay.KycDocument.create_page_to_user_kyc_document(
 #            build(:created_user)["Id"],
 #            build(:created_kyc_document)["Id"],
@@ -527,7 +522,7 @@ defmodule Mangopay.TransactionFactory do
 #          )
 #        end
 #
-#        use_cassette "#{module_name(__MODULE__)}/kyc_document/submit" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/submit" do
 #          Mangopay.KycDocument.submit(
 #            build(:created_user)["Id"],
 #            build(:created_kyc_document)["Id"],
@@ -537,61 +532,61 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def create_permission_group_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/permission_group/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/create" do
 #          Mangopay.PermissionGroup.create(permission_group_hash())
 #        end
 #      end
 #
 #      def create_pay_in_refund_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/refund/pay_in/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/refund/pay_in/create" do
 #          Mangopay.Refund.PayIn.create(build(:created_pay_in)["Id"], build(:refund_pay_in))
 #        end
 #      end
 #
 #      def create_transfer_refund_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/refund/transfer/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/refund/transfer/create" do
 #          Mangopay.Refund.Transfer.create(build(:created_transfer)["Id"], build(:transfer))
 #        end
 #      end
 #
 #      def create_sso_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/sso/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/sso/create" do
 #          Mangopay.Sso.create(sso_hash())
 #        end
 #      end
 #
 #      def create_transfer_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/transfer/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transfer/create" do
 #          Mangopay.Transfer.create(build(:transfer))
 #        end
 #      end
 #
       def create_transaction_reporting_cassette do
-        use_cassette "#{module_name(__MODULE__)}/reporting/transaction/create" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
           Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
         end
       end
 #
 #      def create_wallet_reporting_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/reporting/wallet/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/wallet/create" do
 #          Mangopay.Reporting.Wallet.create(build(:reporting_wallet))
 #        end
 #      end
 #
 #      def all_reporting_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/reporting/all" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/all" do
 #          Mangopay.Reporting.all()
 #        end
 #      end
 #
 #      def get_repudiation_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/repudiation/get" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/repudiation/get" do
 #          Mangopay.Repudiation.get(build(:created_dispute_bis)["RepudiationId"])
 #        end
 #      end
 #
 #      def create_settlement_transfer_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/settlement_transfer/create" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/settlement_transfer/create" do
 #          Mangopay.SettlementTransfer.create(
 #            build(:created_repudiation)["Id"],
 #            build(:settlement_transfer)
@@ -600,15 +595,15 @@ defmodule Mangopay.TransactionFactory do
 #      end
 #
 #      def create_ubo_declaration_cassette do
-#        use_cassette "#{module_name(__MODULE__)}/ubo_declaration/user/all" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/user/all" do
 #          Mangopay.UboDeclaration.all()
 #        end
 #
-#        use_cassette "#{module_name(__MODULE__)}/ubo_declaration/user/get" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/user/get" do
 #          get_ubo_declaration()
 #        end
 #
-#        use_cassette "#{module_name(__MODULE__)}/ubo_declaration/update" do
+#        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/update" do
 #          Mangopay.UboDeclaration.update(
 #            build(:created_ubo_declaration)["Id"],
 #            build(:update_ubo_declaration)

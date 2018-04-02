@@ -11,7 +11,7 @@ defmodule ClientWalletTest do
   end
 
   test "get client_wallet by fund type" do
-    use_cassette "#{module_name(__MODULE__)}/client_wallet/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/get" do
       assert {:ok, response} =
                Mangopay.ClientWallet.get_by_funds_type(created_client_wallet()["FundsType"])
 
@@ -20,7 +20,7 @@ defmodule ClientWalletTest do
   end
 
   test "get client_wallet by funds type by currency" do
-    use_cassette "#{module_name(__MODULE__)}/client_wallet/funds_type/currency/get" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/funds_type/currency/get" do
       assert {:ok, response} =
                Mangopay.ClientWallet.get_by_funds_type_and_currency(
                  created_client_wallet()["FundsType"],
@@ -32,7 +32,7 @@ defmodule ClientWalletTest do
   end
 
   test "all client wallet" do
-    use_cassette "#{module_name(__MODULE__)}/client_wallet/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/all" do
       assert {:ok, response} = Mangopay.ClientWallet.all()
       assert length(Poison.decode!(response.body)) > 0
     end

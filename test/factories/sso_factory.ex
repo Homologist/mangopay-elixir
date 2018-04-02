@@ -1,26 +1,12 @@
 ExUnit.start()
 
 defmodule Mangopay.SsoFactory do
-  defmacro __using__(opts \\ nil) do
+  defmacro __using__([]) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
-
       def created_sso(module_name \\ nil) do
-        get_json(
+        Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "sso", "create.json"], &(!is_nil(&1))),
+            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "sso", "create.json"], &(!is_nil(&1))),
             "/"
           )
         )
@@ -50,12 +36,8 @@ defmodule Mangopay.SsoFactory do
         }
       end
 
-      def module_name(module) do
-        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
-      end
-
       def create_sso_cassette do
-        use_cassette "#{module_name(__MODULE__)}/sso/create" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/sso/create" do
           Mangopay.Sso.create(sso_hash())
         end
       end
