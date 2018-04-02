@@ -1,39 +1,26 @@
-ExUnit.start()
-
-defmodule UserHelper do
-  defmacro __using__(opts \\ nil) do
+defmodule Mangopay.UserFactory do
+  defmacro __using__([]) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
+      
+      
+
+      def created_user_factory do
+        build(:created_natural_user)
       end
 
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
+      def created_natural_user_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(Enum.join(["", Factories.SharedFunctions.module_name(__MODULE__), "user", "natural", "create.json"], "/"))
       end
 
-      def created_user do
-        created_natural_user(__MODULE__)
+      def created_user_bis_factory do
+        build(:created_natural_user_bis)
       end
 
-      def created_natural_user(module_name \\ nil) do
-        get_json(Enum.join(["", module_name(__MODULE__), "user", "natural", "create.json"], "/"))
-      end
-
-      def created_user_bis do
-        created_natural_user_bis(__MODULE__)
-      end
-
-      def created_natural_user_bis(module_name \\ nil) do
-        get_json(
+      def created_natural_user_bis_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "user", "natural", "create_bis.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "user", "natural", "create_bis.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -41,11 +28,11 @@ defmodule UserHelper do
         )
       end
 
-      def created_legal_user(module_name \\ nil) do
-        get_json(
+      def created_legal_user_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "user", "legal", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "user", "legal", "create.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -53,7 +40,7 @@ defmodule UserHelper do
         )
       end
 
-      def user_natural_hash do
+      def user_natural_factory do
         %{
           Tag: "Test natural user",
           Email: "my@email.com",
@@ -76,7 +63,7 @@ defmodule UserHelper do
         }
       end
 
-      def user_legal_hash do
+      def user_legal_factory do
         %{
           Tag: "custom meta",
           HeadquartersAddress: %{
@@ -108,7 +95,7 @@ defmodule UserHelper do
         }
       end
 
-      def update_user_legal_hash do
+      def update_user_legal_factory do
         %{
           Tag: "custom meta",
           Name: "Mangopay Ltd",
@@ -139,7 +126,7 @@ defmodule UserHelper do
         }
       end
 
-      def update_user_natural_hash do
+      def update_user_natural_factory do
         %{
           Tag: "custom meta",
           FirstName: "Joe",
@@ -159,24 +146,6 @@ defmodule UserHelper do
           IncomeRange: 2,
           Email: "support@mangopay.com"
         }
-      end
-
-      def module_name(module) do
-        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
-      end
-
-      def create_user_cassette do
-        module_name = module_name(__MODULE__)
-
-        use_cassette "#{module_name}/user/natural/create" do
-          Mangopay.User.Natural.create(user_natural_hash())
-        end
-      end
-
-      def create_user_bis_cassette do
-        use_cassette "#{module_name(__MODULE__)}/user/natural/create_bis" do
-          Mangopay.User.Natural.create(user_natural_hash())
-        end
       end
     end
   end

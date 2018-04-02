@@ -49,4 +49,5 @@ jobs:  # basic units of work in a run
 
 test:
   override:
+    - mix format --check-formatted --dry-run
     - mix coveralls.circle

@@ -1,27 +1,11 @@
-ExUnit.start()
-
-defmodule ReportingHelper do
-  defmacro __using__(opts \\ nil) do
+defmodule Mangopay.ReportingFactory do
+  defmacro __using__([]) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
-
-      def created_reporting_transaction(module_name \\ nil) do
-        get_json(
+      def created_reporting_transaction_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "reporting", "transaction", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "reporting", "transaction", "create.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -29,11 +13,11 @@ defmodule ReportingHelper do
         )
       end
 
-      def created_reporting_wallet(module_name \\ nil) do
-        get_json(
+      def created_reporting_wallet_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", module_name(__MODULE__), "reporting", "wallet", "create.json"],
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "reporting", "wallet", "create.json"],
               &(!is_nil(&1))
             ),
             "/"
@@ -41,19 +25,19 @@ defmodule ReportingHelper do
         )
       end
 
-      def created_kyc_document(module_name \\ nil) do
-        get_json(
-          Enum.join(
-            Enum.filter(
-              ["", module_name(__MODULE__), "kyc_document", "user", "create.json"],
-              &(!is_nil(&1))
-            ),
-            "/"
-          )
-        )
-      end
+#      def created_kyc_document(module_name \\ nil) do
+#        Factories.SharedFunctions.get_json(
+#          Enum.join(
+#            Enum.filter(
+#              ["", Factories.SharedFunctions.module_name(__MODULE__), "kyc_document", "user", "create.json"],
+#              &(!is_nil(&1))
+#            ),
+#            "/"
+#          )
+#        )
+#      end
 
-      def reporting_transaction_hash do
+      def reporting_transaction_factory do
         %{
           Tag: "custom meta",
           CallbackURL: "http://www.my-site.com/callbackURL/",
@@ -72,14 +56,14 @@ defmodule ReportingHelper do
             MinFeesCurrency: "EUR",
             MaxFeesAmount: 4550,
             MaxFeesCurrency: "EUR",
-            AuthorId: created_user()["Id"],
+            AuthorId: build(:created_user)["Id"],
             WalletId: created_wallet()["Id"]
           },
           Columns: ["Id", "CreationDate"]
         }
       end
 
-      def reporting_wallet_hash do
+      def reporting_wallet_factory do
         %{
           Tag: "custom meta",
           CallbackURL: "http://www.my-site.com/callbackURL/",
@@ -110,24 +94,20 @@ defmodule ReportingHelper do
         }
       end
 
-      def module_name(module) do
-        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
-      end
-
       def create_transaction_reporting_cassette do
-        use_cassette "#{module_name(__MODULE__)}/reporting/transaction/create" do
-          Mangopay.Reporting.Transaction.create(reporting_transaction_hash())
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
+          Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
         end
       end
 
       def create_wallet_reporting_cassette do
-        use_cassette "#{module_name(__MODULE__)}/reporting/wallet/create" do
-          Mangopay.Reporting.Wallet.create(reporting_wallet_hash())
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/wallet/create" do
+          Mangopay.Reporting.Wallet.create(build(:reporting_wallet))
         end
       end
 
       def all_reporting_cassette do
-        use_cassette "#{module_name(__MODULE__)}/reporting/all" do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/all" do
           Mangopay.Reporting.all()
         end
       end

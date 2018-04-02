@@ -1,8 +1,10 @@
 defmodule KycDocumentTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use UserHelper
-  use KycDocumentHelper
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.KycDocumentFactory
+  use Helper
 
   setup_all do
     create_user_cassette()
@@ -11,21 +13,21 @@ defmodule KycDocumentTest do
   end
 
   test "create kyc_document to user" do
-    use_cassette "#{module_name(__MODULE__)}/kyc_document/user/create" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create" do
       assert {:ok, response} =
-               Mangopay.KycDocument.create_to_user(created_user()["Id"], kyc_document_hash())
+               Mangopay.KycDocument.create_to_user(build(:created_user)["Id"], build(:kyc_document))
 
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
   end
 
   test "submit kyc_document to user kyc document" do
-    use_cassette "#{module_name(__MODULE__)}/kyc_document/submit" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/submit" do
       assert {:ok, response} =
                Mangopay.KycDocument.submit(
-                 created_user()["Id"],
-                 created_kyc_document()["Id"],
-                 submit_kyc_document_hash()
+                 build(:created_user)["Id"],
+                 build(:created_kyc_document)["Id"],
+                 build(:submit_kyc_document)
                )
 
       assert Poison.decode!(response.body)["Status"] == "VALIDATION_ASKED"
@@ -33,12 +35,12 @@ defmodule KycDocumentTest do
   end
 
   test "create page to user kyc_document" do
-    use_cassette "#{module_name(__MODULE__)}/kyc_document/user/create_page" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_page" do
       assert {:ok, response} =
                Mangopay.KycDocument.create_page_to_user_kyc_document(
-                 created_user()["Id"],
-                 created_kyc_document()["Id"],
-                 kyc_document_page_hash()
+                 build(:created_user)["Id"],
+                 build(:created_kyc_document)["Id"],
+                 build(:kyc_document_page)
                )
 
       assert response.body == ""
@@ -46,21 +48,21 @@ defmodule KycDocumentTest do
   end
 
   test "get user" do
-    use_cassette "#{module_name(__MODULE__)}/kyc_document/get" do
-      assert {:ok, response} = Mangopay.KycDocument.get(created_kyc_document()["Id"])
-      assert Poison.decode!(response.body)["Id"] == created_kyc_document()["Id"]
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/get" do
+      assert {:ok, response} = Mangopay.KycDocument.get(build(:created_kyc_document)["Id"])
+      assert Poison.decode!(response.body)["Id"] == build(:created_kyc_document)["Id"]
     end
   end
 
   test "all kyc_document by user" do
-    use_cassette "#{module_name(__MODULE__)}/kyc_document/user/all" do
-      assert {:ok, response} = Mangopay.KycDocument.all_by_user(created_user()["Id"])
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/all" do
+      assert {:ok, response} = Mangopay.KycDocument.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
 
   test "all kyc_document" do
-    use_cassette "#{module_name(__MODULE__)}/kyc_document/all" do
+    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/all" do
       assert {:ok, response} = Mangopay.KycDocument.all()
       assert length(Poison.decode!(response.body)) > 0
     end
