@@ -1,5 +1,4 @@
 defmodule Mangopay.Query.Base do
-
   defmacro __using__(opts \\ nil) do
     quote do
       import Mangopay.Query.Interface
@@ -13,6 +12,10 @@ defmodule Mangopay.Query.Base do
 
       def _get(url_params) do
           url_params |> _get_path() |> Mangopay.request
+      end
+
+      def _get!(url_params) do
+          url_params |> _get_path() |> Mangopay.request!
       end
 
       def _create_path(params) do
@@ -36,6 +39,15 @@ defmodule Mangopay.Query.Base do
         |> Mangopay.request
       end
 
+      def _create!(params, url_list \\ nil) do
+        url_list
+        |> case do
+          nil -> _create_path(params)
+          _   -> _create_path(params, url_list)
+        end
+        |> Mangopay.request!
+      end
+
       def _update_path(params, url_list) when is_list(url_list) do
         {:put, List.foldl(url_list, "", fn x, acc -> "#{acc}" <> "/#{x}" end), params}
       end
@@ -46,6 +58,10 @@ defmodule Mangopay.Query.Base do
 
       def _update(params, id_or_url_list) do
         params |> _update_path(id_or_url_list) |> Mangopay.request
+      end
+
+      def _update!(params, id_or_url_list) do
+        params |> _update_path(id_or_url_list) |> Mangopay.request!
       end
 
       def _all_path(url_list) when is_list(url_list) do
@@ -67,6 +83,15 @@ defmodule Mangopay.Query.Base do
           _ -> _all_path(id_or_url_list)
         end
         |> Mangopay.request
+      end
+
+      def _all!(id_or_url_list \\ nil) do
+        id_or_url_list
+        |> case do
+          nil -> _all_path()
+          _ -> _all_path(id_or_url_list)
+        end
+        |> Mangopay.request!
       end
 
       def resource do

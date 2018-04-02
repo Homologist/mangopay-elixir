@@ -32,8 +32,4 @@ defmodule Mangopay.BankAccount do
   def deactivate id, bank_account_id, params do
     _update params, user_resource(id, bank_account_id)
   end
-
-  def user_resource(user_id, resource_id) do
-    [user(user_id), resource(), resource_id]
-  end
 end

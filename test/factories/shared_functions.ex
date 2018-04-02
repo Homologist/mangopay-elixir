@@ -10,7 +10,7 @@ defmodule Factories.SharedFunctions do
 
         case Poison.decode(b) do
           {:ok, val} -> val
-          {:error, message} -> b
+          {:error, _} -> b
         end
       end
 
