@@ -56,7 +56,7 @@ defmodule Mangopay do
     request!(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
   end
 
-  defp new_request(method, url, body, headers) do
+  defp full_header_request(method, url, body, headers) do
     {method, url, decode_map(body), headers}
       |> authorization_params()
       |> payline_params()
@@ -97,7 +97,7 @@ defmodule Mangopay do
   end
 
   def request(method, url, body \\ "", headers \\ "") do
-    {method, url, body, headers} = new_request(method, url, body, headers)
+    {method, url, body, headers} = full_header_request(method, url, body, headers)
     _request(method, url, body, headers)
   end
 
