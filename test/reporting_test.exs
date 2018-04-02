@@ -1,11 +1,11 @@
 defmodule ReportingTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.WalletFactory
+  use Mangopay.ReportingFactory
   use Helper
-  use UserHelper
-  use WalletHelper
-  use ReportingHelper
 
   setup_all do
     create_user_cassette()
@@ -18,23 +18,23 @@ defmodule ReportingTest do
 
   test "create reporting transaction" do
     use_cassette "#{module_name(__MODULE__)}/reporting/transaction/create" do
-      assert {:ok, response} = Mangopay.Reporting.Transaction.create(reporting_transaction_hash())
+      assert {:ok, response} = Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
   end
 
   test "create reporting wallet" do
     use_cassette "#{module_name(__MODULE__)}/reporting/wallet/create" do
-      assert {:ok, response} = Mangopay.Reporting.Wallet.create(reporting_wallet_hash())
+      assert {:ok, response} = Mangopay.Reporting.Wallet.create(build(:reporting_wallet))
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
   end
 
   test "get reporting" do
     use_cassette "#{module_name(__MODULE__)}/reporting/get" do
-      assert {:ok, response} = Mangopay.Reporting.get(created_reporting_transaction()["Id"])
+      assert {:ok, response} = Mangopay.Reporting.get(build(:created_reporting_transaction)["Id"])
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
-      assert Poison.decode!(response.body)["Id"] == created_reporting_transaction()["Id"]
+      assert Poison.decode!(response.body)["Id"] == build(:created_reporting_transaction)["Id"]
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
     end
   end

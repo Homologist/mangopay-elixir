@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule ClientWalletHelper do
+defmodule Mangopay.ClientWalletFactory do
   defmacro __using__(opts \\ nil) do
     quote do
       def fixture_path(path) do

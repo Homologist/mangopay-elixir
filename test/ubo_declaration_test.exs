@@ -1,10 +1,10 @@
 defmodule UboDeclarationTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.UboDeclarationFactory
   use Helper
-  use UserHelper
-  use UboDeclarationHelper
 
   setup_all do
     create_user_cassette()
@@ -14,14 +14,14 @@ defmodule UboDeclarationTest do
 
   test "get ubo_declaration" do
     use_cassette "#{module_name(__MODULE__)}/ubo_declaration/get" do
-      assert {:ok, response} = Mangopay.UboDeclaration.get(created_ubo_declaration()["Id"])
+      assert {:ok, response} = Mangopay.UboDeclaration.get(build(:created_ubo_declaration)["Id"])
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
   end
 
   test "create ubo_declaration" do
     #    use_cassette "#{module_name(__MODULE__)}/ubo_declaration/user/create" do
-    #      assert  {:ok, response} = Mangopay.UboDeclaration.create_to_user created_user()["Id"], ubo_declaration_hash()
+    #      assert  {:ok, response} = Mangopay.UboDeclaration.create_to_user build(:created_user)["Id"], ubo_declaration_hash()
     #      assert Poison.decode!(response.body)["Status"] == "CREATED"
     #    end
   end
@@ -30,8 +30,8 @@ defmodule UboDeclarationTest do
     use_cassette "#{module_name(__MODULE__)}/ubo_declaration/update" do
       assert {:ok, response} =
                Mangopay.UboDeclaration.update(
-                 created_ubo_declaration()["Id"],
-                 update_ubo_declaration_hash()
+                 build(:created_ubo_declaration)["Id"],
+                 build(:update_ubo_declaration)
                )
 
       assert Poison.decode!(response.body)["Status"] == "CREATED"

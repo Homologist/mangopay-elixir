@@ -1,11 +1,12 @@
 defmodule CardTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  
+  use Mangopay.Factory
   use Helper
-  use UserHelper
-  use BankAccountHelper
-  use CardHelper
+  use Mangopay.UserFactory
+  use Mangopay.BankAccountFactory
+  use Mangopay.CardFactory
 
   setup_all do
     create_card_bis_cassette()
@@ -15,14 +16,14 @@ defmodule CardTest do
   test "create card" do
     use_cassette "#{module_name(__MODULE__)}/card/registration/create" do
       assert {:ok, response} = Mangopay.Card.create(card_hash())
-      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
+      assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
   end
 
   test "get card" do
     use_cassette "#{module_name(__MODULE__)}/card/get" do
       assert {:ok, response} = Mangopay.Card.get(updated_card()["CardId"])
-      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
+      assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
   end
 
@@ -66,7 +67,7 @@ defmodule CardTest do
       assert {:ok, response} =
                Mangopay.Card.deactivate(created_card_bis()["Id"], deactivate_card_hash())
 
-      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
+      assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
   end
 end

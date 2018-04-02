@@ -1,11 +1,11 @@
 defmodule MandateTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.BankAccountFactory
+  use Mangopay.MandateFactory
   use Helper
-  use UserHelper
-  use BankAccountHelper
-  use MandateHelper
 
   setup_all do
     create_mandate_cassette()
@@ -14,25 +14,25 @@ defmodule MandateTest do
 
   test "create mandate" do
     use_cassette "#{module_name(__MODULE__)}/mandate/create" do
-      assert {:ok, response} = Mangopay.Mandate.create(mandate_hash())
+      assert {:ok, response} = Mangopay.Mandate.create(build(:mandate))
       assert Poison.decode!(response.body)["Status"] == "CREATED"
-      assert Poison.decode!(response.body)["UserId"] == created_user()["Id"]
+      assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
   end
 
   test "cancel mandate" do
     use_cassette "#{module_name(__MODULE__)}/mandate/cancel" do
       assert {:ok, response} =
-               Mangopay.Mandate.cancel(created_user()["Id"], update_mandate_hash())
+               Mangopay.Mandate.cancel(build(:created_user)["Id"], build(:update_mandate))
 
-      assert Poison.decode!(response.body)["Tag"] == cancel_mandate_hash()["Tag"]
+      assert Poison.decode!(response.body)["Tag"] == build(:cancel_mandate)["Tag"]
     end
   end
 
   test "get user" do
     use_cassette "#{module_name(__MODULE__)}/mandate/get" do
-      assert {:ok, response} = Mangopay.Mandate.get(created_mandate()["Id"])
-      assert Poison.decode!(response.body)["Id"] == created_mandate()["Id"]
+      assert {:ok, response} = Mangopay.Mandate.get(build(:created_mandate)["Id"])
+      assert Poison.decode!(response.body)["Id"] == build(:created_mandate)["Id"]
     end
   end
 
@@ -45,8 +45,8 @@ defmodule MandateTest do
 
   test "all mandate by user" do
     use_cassette "#{module_name(__MODULE__)}/mandate/user/all" do
-      Mangopay.Mandate.create(mandate_hash())
-      assert {:ok, response} = Mangopay.Mandate.all_by_user(created_user()["Id"])
+      Mangopay.Mandate.create(build(:mandate))
+      assert {:ok, response} = Mangopay.Mandate.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
@@ -55,8 +55,8 @@ defmodule MandateTest do
     use_cassette "#{module_name(__MODULE__)}/mandate/user/bank_account/all" do
       assert {:ok, response} =
                Mangopay.Mandate.all_by_user_and_bank_account(
-                 created_user()["Id"],
-                 created_bank_account()["Id"]
+                 build(:created_user)["Id"],
+                 build(:created_bank_account)["Id"]
                )
 
       assert length(Poison.decode!(response.body)) > 0

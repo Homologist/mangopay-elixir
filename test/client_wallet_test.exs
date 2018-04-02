@@ -1,9 +1,9 @@
 defmodule ClientWalletTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.ClientWalletFactory
   use Helper
-  use ClientWalletHelper
 
   setup_all do
     create_client_wallet_cassette()

@@ -1,11 +1,11 @@
 defmodule SsoTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.PermissionGroupFactory
+  use Mangopay.SsoFactory
   use Helper
-  use UserHelper
-  use PermissionGroupHelper
-  use SsoHelper
 
   setup_all do
     create_user_cassette()

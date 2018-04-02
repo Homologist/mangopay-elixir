@@ -1,16 +1,16 @@
 defmodule PayOutTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.CardFactory
+  use Mangopay.BankAccountFactory
+  use Mangopay.PreauthorizationFactory
+  use Mangopay.MandateFactory
+  use Mangopay.WalletFactory
+  use Mangopay.PayInFactory
+  use Mangopay.PayOutFactory
   use Helper
-  use UserHelper
-  use CardHelper
-  use BankAccountHelper
-  use PreauthorizationHelper
-  use MandateHelper
-  use WalletHelper
-  use PayInHelper
-  use PayOutHelper
 
   setup_all do
     create_card_cassette()

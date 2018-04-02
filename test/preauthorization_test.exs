@@ -1,11 +1,11 @@
 defmodule PreauthorizationTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.CardFactory
+  use Mangopay.PreauthorizationFactory
   use Helper
-  use UserHelper
-  use CardHelper
-  use PreauthorizationHelper
 
   setup_all do
     create_card_cassette()
@@ -42,7 +42,7 @@ defmodule PreauthorizationTest do
 
   test "all preauthorization by user" do
     use_cassette "#{module_name(__MODULE__)}/preauthorization/user/all" do
-      assert {:ok, response} = Mangopay.PreAuthorization.all_by_user(created_user()["Id"])
+      assert {:ok, response} = Mangopay.PreAuthorization.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end

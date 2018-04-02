@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule SsoHelper do
+defmodule Mangopay.SsoFactory do
   defmacro __using__(opts \\ nil) do
     quote do
       def fixture_path(path) do
@@ -35,7 +35,7 @@ defmodule SsoHelper do
           Tag: "custom meta",
           FirstName: "Joe",
           LastName: "Blogs",
-          Email: "#{created_user()["Id"]}@mangopay.com",
+          Email: "#{build(:created_user)["Id"]}@mangopay.com",
           PermissionGroupId: created_permission_group()["Id"]
         }
       end

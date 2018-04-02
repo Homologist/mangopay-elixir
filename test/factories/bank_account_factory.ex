@@ -1,8 +1,21 @@
 defmodule Mangopay.BankAccountFactory do
-  defmacro __using__(_opts) do
+  defmacro __using__(opts \\ nil) do
     quote do
+      require Factories.SharedFunctions
+      Factories.SharedFunctions.set
+      def created_bank_account_factory(module_name \\ nil) do
+        get_json(
+          Enum.join(
+            Enum.filter(
+              ["", module_name(__MODULE__), "bank_account", "iban", "create.json"],
+              &(!is_nil(&1))
+            ),
+            "/"
+          )
+        )
+      end
 
-      def bank_account_iban_hash do
+      def bank_account_iban_factory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
@@ -19,7 +32,7 @@ defmodule Mangopay.BankAccountFactory do
         }
       end
 
-      def bank_account_us_hash do
+      def bank_account_us_factory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
@@ -37,7 +50,7 @@ defmodule Mangopay.BankAccountFactory do
         }
       end
 
-      def bank_account_ca_hash do
+      def bank_account_ca_factory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
@@ -56,7 +69,7 @@ defmodule Mangopay.BankAccountFactory do
         }
       end
 
-      def bank_account_gb_hash do
+      def bank_account_gb_factory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
@@ -73,7 +86,7 @@ defmodule Mangopay.BankAccountFactory do
         }
       end
 
-      def bank_account_other_hash do
+      def bank_account_other_factory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
@@ -91,7 +104,7 @@ defmodule Mangopay.BankAccountFactory do
         }
       end
 
-      def deactivate_bank_account_hash do
+      def deactivate_bank_account_factory do
         %{
           Active: false
         }

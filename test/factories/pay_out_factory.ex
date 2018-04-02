@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule TransferHelper do
+defmodule Mangopay.PayOutFactory do
   defmacro __using__(opts \\ nil) do
     quote do
       def fixture_path(path) do
@@ -17,41 +17,41 @@ defmodule TransferHelper do
         end
       end
 
-      def created_transfer(module_name \\ nil) do
+      def created_pay_out(module_name \\ nil) do
         get_json(
           Enum.join(
-            Enum.filter(["", module_name(__MODULE__), "transfer", "create.json"], &(!is_nil(&1))),
+            Enum.filter(["", module_name(__MODULE__), "pay_out", "create.json"], &(!is_nil(&1))),
             "/"
           )
         )
       end
 
-      def transfer_hash do
+      def pay_out_hash do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
-          CreditedUserId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 499
+            Amount: 12
           },
           Fees: %{
             Currency: "EUR",
-            Amount: 2
+            Amount: 3
           },
+          BankAccountId: build(:created_bank_account)["Id"],
           DebitedWalletId: created_wallet()["Id"],
-          CreditedWalletId: created_wallet_bis()["Id"]
+          BankWireRef: "invoice 7282"
         }
+      end
+
+      def create_pay_out_cassette do
+        use_cassette "#{module_name(__MODULE__)}/pay_out/create" do
+          Mangopay.PayOut.create(pay_out_hash())
+        end
       end
 
       def module_name(module) do
         module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
-      end
-
-      def create_transfer_cassette do
-        use_cassette "#{module_name(__MODULE__)}/transfer/create" do
-          Mangopay.Transfer.create(transfer_hash())
-        end
       end
     end
   end

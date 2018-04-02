@@ -1,6 +1,45 @@
 defmodule Mangopay.UserFactory do
-  defmacro __using__(_opts) do
+  defmacro __using__(opts \\ nil) do
     quote do
+      require Factories.SharedFunctions
+      Factories.SharedFunctions.set
+
+      def created_user_factory do
+        build(:created_natural_user)
+      end
+
+      def created_natural_user_factory(module_name \\ nil) do
+        get_json(Enum.join(["", module_name(__MODULE__), "user", "natural", "create.json"], "/"))
+      end
+
+      def created_user_bis_factory do
+        build(:created_natural_user_bis)
+      end
+
+      def created_natural_user_bis_factory(module_name \\ nil) do
+        get_json(
+          Enum.join(
+            Enum.filter(
+              ["", module_name(__MODULE__), "user", "natural", "create_bis.json"],
+              &(!is_nil(&1))
+            ),
+            "/"
+          )
+        )
+      end
+
+      def created_legal_user_factory(module_name \\ nil) do
+        get_json(
+          Enum.join(
+            Enum.filter(
+              ["", module_name(__MODULE__), "user", "legal", "create.json"],
+              &(!is_nil(&1))
+            ),
+            "/"
+          )
+        )
+      end
+
       def user_natural_factory do
         %{
           Tag: "Test natural user",
@@ -107,42 +146,6 @@ defmodule Mangopay.UserFactory do
           IncomeRange: 2,
           Email: "support@mangopay.com"
         }
-      end
-
-      def created_user do
-        created_natural_user(__MODULE__)
-      end
-
-      def created_natural_user(module_name \\ nil) do
-        get_json(Enum.join(["", module_name(__MODULE__), "user", "natural", "create.json"], "/"))
-      end
-
-      def created_user_bis do
-        created_natural_user_bis(__MODULE__)
-      end
-
-      def created_natural_user_bis(module_name \\ nil) do
-        get_json(
-          Enum.join(
-            Enum.filter(
-              ["", module_name(__MODULE__), "user", "natural", "create_bis.json"],
-              &(!is_nil(&1))
-            ),
-            "/"
-          )
-        )
-      end
-
-      def created_legal_user(module_name \\ nil) do
-        get_json(
-          Enum.join(
-            Enum.filter(
-              ["", module_name(__MODULE__), "user", "legal", "create.json"],
-              &(!is_nil(&1))
-            ),
-            "/"
-          )
-        )
       end
     end
   end

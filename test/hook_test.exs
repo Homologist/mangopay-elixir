@@ -1,9 +1,9 @@
 defmodule HookTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.HookFactory
   use Helper
-  use HookHelper
 
   setup_all do
     create_hook_cassette()

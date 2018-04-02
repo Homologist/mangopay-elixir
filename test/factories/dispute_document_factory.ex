@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule DisputeDocumentHelper do
+defmodule Mangopay.DisputeDocumentFactory do
   defmacro __using__(opts \\ nil) do
     quote do
       def fixture_path(path) do
@@ -56,7 +56,7 @@ defmodule DisputeDocumentHelper do
       end
 
       def get_dispute_document do
-        {:ok, response} = Mangopay.DisputeDocument.all_by_dispute(created_dispute()["Id"])
+        {:ok, response} = Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
         id = List.first(Poison.decode!(response.body))["Id"]
         Mangopay.DisputeDocument.get(id)
       end
@@ -71,7 +71,7 @@ defmodule DisputeDocumentHelper do
         end
 
         use_cassette "#{module_name(__MODULE__)}/dispute_document/dispute/all" do
-          Mangopay.DisputeDocument.all_by_dispute(created_dispute()["Id"])
+          Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
         end
 
         use_cassette "#{module_name(__MODULE__)}/dispute_document/create" do

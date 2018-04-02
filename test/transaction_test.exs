@@ -1,18 +1,18 @@
 defmodule TransactionTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.CardFactory
+  use Mangopay.WalletFactory
+  use Mangopay.ClientFactory
+  use Mangopay.BankAccountFactory
+  use Mangopay.TransferFactory
+  use Mangopay.MandateFactory
+  use Mangopay.DisputeFactory
+  use Mangopay.PreauthorizationFactory
+  use Mangopay.ClientWalletFactory
   use Helper
-  use UserHelper
-  use CardHelper
-  use WalletHelper
-  use ClientHelper
-  use BankAccountHelper
-  use TransferHelper
-  use MandateHelper
-  use DisputeHelper
-  use PreauthorizationHelper
-  use ClientWalletHelper
 
   setup_all do
     create_card_cassette()
@@ -29,7 +29,7 @@ defmodule TransactionTest do
 
   test "all transaction by user" do
     use_cassette "#{module_name(__MODULE__)}/transaction/user/all" do
-      assert {:ok, response} = Mangopay.Transaction.all_by_user(created_user()["Id"])
+      assert {:ok, response} = Mangopay.Transaction.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
   end
@@ -43,7 +43,7 @@ defmodule TransactionTest do
 
   test "all transaction by dispute" do
     use_cassette "#{module_name(__MODULE__)}/transaction/dispute/all" do
-      assert {:ok, response} = Mangopay.Transaction.all_by_dispute(created_dispute()["Id"])
+      assert {:ok, response} = Mangopay.Transaction.all_by_dispute(build(:created_dispute)["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
   end
@@ -79,7 +79,7 @@ defmodule TransactionTest do
   test "all transaction by bank_account" do
     use_cassette "#{module_name(__MODULE__)}/transaction/bank_account/all" do
       assert {:ok, response} =
-               Mangopay.Transaction.all_by_bank_account(created_bank_account()["Id"])
+               Mangopay.Transaction.all_by_bank_account(build(:created_bank_account)["Id"])
 
       assert length(Poison.decode!(response.body)) == 0
     end
@@ -94,7 +94,7 @@ defmodule TransactionTest do
 
   test "all transaction by mandate" do
     use_cassette "#{module_name(__MODULE__)}/transaction/mandate/all" do
-      assert {:ok, response} = Mangopay.Transaction.all_by_mandate(created_mandate()["Id"])
+      assert {:ok, response} = Mangopay.Transaction.all_by_mandate(build(:created_mandate)["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
   end

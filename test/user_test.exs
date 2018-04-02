@@ -1,19 +1,15 @@
-Code.require_file("test/support/factory.exs")
 defmodule UserTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-
   use Mangopay.Factory
+  use Mangopay.UserFactory
   use Helper
-  use UserHelper
-
   setup_all do
     create_user_cassette()
 
     use_cassette "#{module_name(__MODULE__)}/user/legal/create" do
       Mangopay.User.Legal.create(build(:user_legal))
     end
-
     :ok
   end
 
@@ -27,11 +23,11 @@ defmodule UserTest do
     use_cassette "#{module_name(__MODULE__)}/user/natural/update" do
       assert {:ok, response} =
                Mangopay.User.Natural.update(
-                 created_natural_user()["Id"],
+                 build(:created_natural_user)["Id"],
                  build(:update_user_natural)
                )
 
-      assert Poison.decode!(response.body)["Id"] == created_natural_user()["Id"]
+      assert Poison.decode!(response.body)["Id"] == build(:created_natural_user)["Id"]
     end
   end
 
@@ -44,23 +40,23 @@ defmodule UserTest do
   test "update legal user" do
     use_cassette "#{module_name(__MODULE__)}/user/legal/update" do
       assert {:ok, response} =
-               Mangopay.User.Legal.update(created_legal_user()["Id"], build(:update_user_legal))
+               Mangopay.User.Legal.update(build(:created_legal_user)["Id"], build(:update_user_legal))
 
-      assert Poison.decode!(response.body)["Id"] == created_legal_user()["Id"]
+      assert Poison.decode!(response.body)["Id"] == build(:created_legal_user)["Id"]
     end
   end
 
   test "get  user" do
     use_cassette "#{module_name(__MODULE__)}/user/get" do
-      assert {:ok, response} = Mangopay.User.get(created_legal_user()["Id"])
-      assert Poison.decode!(response.body)["Id"] == created_legal_user()["Id"]
+      assert {:ok, response} = Mangopay.User.get(build(:created_legal_user)["Id"])
+      assert Poison.decode!(response.body)["Id"] == build(:created_legal_user)["Id"]
     end
   end
 
   test "get emoney  user" do
     use_cassette "#{module_name(__MODULE__)}/user/emoney/get" do
-      assert {:ok, response} = Mangopay.User.get_emoney(created_legal_user()["Id"])
-      assert Poison.decode!(response.body)["UserId"] == created_legal_user()["Id"]
+      assert {:ok, response} = Mangopay.User.get_emoney(build(:created_legal_user)["Id"])
+      assert Poison.decode!(response.body)["UserId"] == build(:created_legal_user)["Id"]
     end
   end
 

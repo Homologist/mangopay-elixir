@@ -1,9 +1,9 @@
 defmodule PermissionGroupTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.PermissionGroupFactory
   use Helper
-  use PermissionGroupHelper
 
   setup_all do
     create_permission_group_cassette()

@@ -1,29 +1,29 @@
 defmodule DisputeDocumentTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.WalletFactory
+  use Mangopay.TransferFactory
+  use Mangopay.DisputeFactory
+  use Mangopay.DisputeDocumentFactory
   use Helper
-  use UserHelper
-  use WalletHelper
-  use TransferHelper
-  use DisputeHelper
-  use DisputeDocumentHelper
 
   setup_all do
     create_dispute_document_cassette()
     #    use_cassette "#{module_name(__MODULE__)}/dispute_document/create" do
-    #      Mangopay.DisputeDocument.create created_dispute()["Id"], dispute_document_hash()
+    #      Mangopay.DisputeDocument.create build(:created_dispute)["Id"], dispute_document_hash()
     #    end
     #    use_cassette "#{module_name(__MODULE__)}/dispute_document_page/create" do
-    #      Mangopay.DisputeDocument.create_page created_dispute()["Id"], created_dispute()_document["Id"], dispute_document_page_hash()
+    #      Mangopay.DisputeDocument.create_page build(:created_dispute)["Id"], build(:created_dispute)_document["Id"], dispute_document_page_hash()
     #    end
     :ok
   end
 
   test "create dispute_document to dispute" do
     use_cassette "#{module_name(__MODULE__)}/dispute_document/dispute/create" do
-      #      assert {:ok, response} = Mangopay.DisputeDocument.create created_dispute()["Id"], dispute_document_hash()
-      #      assert List.first(Poison.decode!(response.body)["Owners"]) == created_dispute()["Id"]
+      #      assert {:ok, response} = Mangopay.DisputeDocument.create build(:created_dispute)["Id"], dispute_document_hash()
+      #      assert List.first(Poison.decode!(response.body)["Owners"]) == build(:created_dispute)["Id"]
     end
   end
 
@@ -31,7 +31,7 @@ defmodule DisputeDocumentTest do
     use_cassette "#{module_name(__MODULE__)}/dispute_document/dispute/submit" do
       assert {:ok, response} =
                Mangopay.DisputeDocument.submit(
-                 created_dispute()["Id"],
+                 build(:created_dispute)["Id"],
                  created_dispute_document()["Id"]
                )
 
@@ -41,8 +41,8 @@ defmodule DisputeDocumentTest do
 
   test "create page to dispute dispute_document" do
     use_cassette "#{module_name(__MODULE__)}/dispute_document_page/create" do
-      #      assert {:ok, response} = Mangopay.DisputeDocument.create_page created_dispute()["Id"], created_dispute_document()["Id"], dispute_document_page_hash()
-      #     assert List.first(Poison.decode!(response.body)["Owners"]) == created_dispute()["Id"]
+      #      assert {:ok, response} = Mangopay.DisputeDocument.create_page build(:created_dispute)["Id"], created_dispute_document()["Id"], dispute_document_page_hash()
+      #     assert List.first(Poison.decode!(response.body)["Owners"]) == build(:created_dispute)["Id"]
     end
   end
 
@@ -62,7 +62,7 @@ defmodule DisputeDocumentTest do
 
   test "all dispute_document by dispute" do
     use_cassette "#{module_name(__MODULE__)}/dispute_document/dispute/all" do
-      assert {:ok, response} = Mangopay.DisputeDocument.all_by_dispute(created_dispute()["Id"])
+      assert {:ok, response} = Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end

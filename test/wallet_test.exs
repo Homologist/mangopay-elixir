@@ -1,11 +1,11 @@
 defmodule WalletTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.UserFactory
+  use Mangopay.BankAccountFactory
+  use Mangopay.WalletFactory
   use Helper
-  use UserHelper
-  use BankAccountHelper
-  use WalletHelper
 
   setup_all do
     create_user_cassette()
@@ -15,15 +15,15 @@ defmodule WalletTest do
 
   test "create wallet" do
     use_cassette "#{module_name(__MODULE__)}/wallet/create" do
-      assert {:ok, response} = Mangopay.Wallet.create(wallet_hash())
-      assert List.first(Poison.decode!(response.body)["Owners"]) == created_user()["Id"]
+      assert {:ok, response} = Mangopay.Wallet.create(build(:wallet))
+      assert List.first(Poison.decode!(response.body)["Owners"]) == build(:created_user)["Id"]
     end
   end
 
   test "update wallet" do
     use_cassette "#{module_name(__MODULE__)}/wallet/update" do
-      assert {:ok, response} = Mangopay.Wallet.update(created_user()["Id"], update_wallet_hash())
-      assert Poison.decode!(response.body)["Tag"] == update_wallet_hash()["Tag"]
+      assert {:ok, response} = Mangopay.Wallet.update(build(:created_user)["Id"], build(:update_wallet))
+      assert Poison.decode!(response.body)["Tag"] == build(:update_wallet)["Tag"]
     end
   end
 
@@ -36,7 +36,7 @@ defmodule WalletTest do
 
   test "all wallet by user" do
     use_cassette "#{module_name(__MODULE__)}/wallet/user/all" do
-      assert {:ok, response} = Mangopay.Wallet.all_by_user(created_user()["Id"])
+      assert {:ok, response} = Mangopay.Wallet.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end

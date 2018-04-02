@@ -1,9 +1,9 @@
 defmodule ClientTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  import Mangopay.Factory
+  use Mangopay.Factory
+  use Mangopay.ClientFactory
   use Helper
-  use ClientHelper
 
   test "get client" do
     use_cassette "#{module_name(__MODULE__)}/client/get" do

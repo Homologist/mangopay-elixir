@@ -1,23 +1,9 @@
 ExUnit.start()
 
-defmodule PayInHelper do
+defmodule Mangopay.PayInFactory do
   defmacro __using__(opts \\ nil) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
-
-      def created_pay_in(module_name \\ nil) do
+      def created_pay_in_factory(module_name \\ nil) do
         get_json(
           Enum.join(
             Enum.filter(
@@ -29,11 +15,11 @@ defmodule PayInHelper do
         )
       end
 
-      def pay_in_card_web_hash do
+      def pay_in_card_web_factory do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
-          CreditedUserId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
+          CreditedUserId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
             Amount: 550
@@ -54,10 +40,10 @@ defmodule PayInHelper do
         }
       end
 
-      def pay_in_card_direct_hash do
+      def pay_in_card_direct_factory do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           CreditedWalletId: created_wallet(__MODULE__)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
@@ -84,10 +70,10 @@ defmodule PayInHelper do
         }
       end
 
-      def pay_in_card_preauthorized_hash do
+      def pay_in_card_preauthorized_factory do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           CreditedWalletId: created_wallet(__MODULE__)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
@@ -101,10 +87,10 @@ defmodule PayInHelper do
         }
       end
 
-      def pay_in_bank_wire_direct_hash do
+      def pay_in_bank_wire_direct_factory do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           CreditedWalletId: created_wallet()["Id"],
           DeclaredDebitedFunds: %{
             Currency: "EUR",
@@ -117,7 +103,7 @@ defmodule PayInHelper do
         }
       end
 
-      def pay_in_bank_wire_wallet_hash do
+      def pay_in_bank_wire_wallet_factory do
         %{
           Tag: "custom meta",
           CreditedWalletId: "CREDIT_EUR",
@@ -132,10 +118,10 @@ defmodule PayInHelper do
         }
       end
 
-      def pay_in_directdebit_web_hash do
+      def pay_in_directdebit_web_factory do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
             Amount: 550
@@ -155,10 +141,10 @@ defmodule PayInHelper do
         }
       end
 
-      def pay_in_directdebit_direct_hash do
+      def pay_in_directdebit_direct_factory do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           CreditedWalletId: created_wallet()["Id"],
           DebitedFunds: %{
             Currency: "EUR",
@@ -168,27 +154,9 @@ defmodule PayInHelper do
             Currency: "EUR",
             Amount: 3
           },
-          MandateId: created_mandate()["Id"],
+          MandateId: build(:created_mandate)["Id"],
           StatementDescriptor: "Nov2016"
         }
-      end
-
-      def create_pay_in_web_cassette do
-        use_cassette "#{module_name(__MODULE__)}/pay_in/card/web/create" do
-          Mangopay.PayIn.Card.Web.create(pay_in_card_web_hash())
-        end
-      end
-
-      def create_pay_in_direct_cassette do
-        use_cassette "#{module_name(__MODULE__)}/pay_in/card/direct/create" do
-          Mangopay.PayIn.Card.Direct.create(pay_in_card_direct_hash())
-        end
-      end
-
-      def create_pay_in_preauthorized_cassette do
-        use_cassette "#{module_name(__MODULE__)}/pay_in/card/pre_authorized/create" do
-          Mangopay.PayIn.Card.PreAuthorized.create(pay_in_card_preauthorized_hash())
-        end
       end
     end
   end

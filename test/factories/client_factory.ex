@@ -1,21 +1,8 @@
-ExUnit.start()
-
-defmodule ClientHelper do
+defmodule Mangopay.ClientFactory do
   defmacro __using__(opts \\ nil) do
     quote do
-      def fixture_path(path) do
-        "fixture/vcr_cassettes" <> path
-      end
-
-      def get_json(path) do
-        a = fixture_path(path) |> File.read!() |> Poison.decode!() |> List.last()
-        b = a["response"]["body"]
-
-        case Poison.decode(b) do
-          {:ok, val} -> val
-          {:error, message} -> b
-        end
-      end
+      require Factories.SharedFunctions
+      Factories.SharedFunctions.set
 
       def created_client(module_name \\ nil) do
         get_json(
@@ -38,10 +25,6 @@ defmodule ClientHelper do
           File:
             "/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAEBAQEBAQEBAQEBAQECAgMCAgICAgQDAwIDBQQFBQUE BAQFBgcGBQUHBgQEBgkGBwgICAgIBQYJCgkICgcICAj/2wBDAQEBAQICAgQCAgQIBQQFCAgICAgI CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAj/wgARCAAyADIDAREA AhEBAxEB/8QAGwAAAgMBAQEA"
         }
-      end
-
-      def module_name(module) do
-        module |> to_string |> String.downcase() |> String.split(".") |> Enum.at(1)
       end
 
       def all_client_wallet do

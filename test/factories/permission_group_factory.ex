@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule PermissionGroupHelper do
+defmodule Mangopay.PermissionGroupFactory do
   defmacro __using__(opts \\ nil) do
     quote do
       def fixture_path(path) do
@@ -32,14 +32,14 @@ defmodule PermissionGroupHelper do
       def permission_group_hash do
         %{
           Tag: "custom meta",
-          Name: "Users only"
+          Name: "users only"
         }
       end
 
       def update_permission_group_hash do
         %{
           Tag: "custom meta update",
-          Name: "Users only"
+          Name: "users only"
         }
       end
 

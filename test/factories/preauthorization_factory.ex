@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule PreauthorizationHelper do
+defmodule Mangopay.PreauthorizationFactory do
   defmacro __using__(opts \\ nil) do
     quote do
       def fixture_path(path) do
@@ -44,7 +44,7 @@ defmodule PreauthorizationHelper do
       def preauthorization_hash do
         %{
           Tag: "custom meta",
-          AuthorId: created_user()["Id"],
+          AuthorId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
             Amount: 5550
