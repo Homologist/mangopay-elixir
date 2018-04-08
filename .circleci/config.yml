@@ -47,9 +47,11 @@ jobs:  # basic units of work in a run
       - store_test_results:  # upload test results for display in Test Summary
           path: _build/test/junit
 
+      - run: MIX_ENV=docs mix deps.get
+
+      - run: MIX_ENV=docs mix inch.report
+
 test:
   override:
     - mix format --check-formatted --dry-run
     - mix coveralls.circle
-    - MIX_ENV=docs mix deps.get
-    - MIX_ENV=docs mix inch.report
