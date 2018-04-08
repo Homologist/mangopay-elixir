@@ -1,3 +1,4 @@
+# [![CircleCI Build Status](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://circleci.com/gh/circleci/circleci-docs) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/circleci/circleci-docs/master/LICENSE)[![Coverage Status](https://coveralls.io/repos/github/Homologist/mangopay-elixir/badge.svg?branch=master)](https://coveralls.io/github/Homologist/mangopay-elixir?branch=master)
 # Mangopay
 
 **TODO: Add description**
@@ -18,4 +19,4 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/mangopay](https://hexdocs.pm/mangopay).
-[![Coverage Status](https://coveralls.io/repos/github/Homologist/mangopay-elixir/badge.svg?branch=master)](https://coveralls.io/github/Homologist/mangopay-elixir?branch=master)
+
