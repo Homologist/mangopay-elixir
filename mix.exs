@@ -40,6 +40,7 @@ defmodule Mangopay.Mixfile do
       {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
       {:credo, "~> 0.8.10", only: :dev},
+      {:inch_ex, only: :docs},
       {:excoveralls, "~> 0.8", only: :test},
       {:ex_machina, "~> 2.2"},
       {:exvcr, "~> 0.8", only: :test}

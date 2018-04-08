@@ -51,3 +51,5 @@ test:
   override:
     - mix format --check-formatted --dry-run
     - mix coveralls.circle
+    - MIX_ENV=docs mix deps.get
+    - MIX_ENV=docs mix inch.report
