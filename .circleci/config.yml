@@ -44,6 +44,7 @@ jobs:  # basic units of work in a run
 
 #      - run: mix test  # run all tests in project
       - run: mix format --check-formatted --dry-run
+
       - run: mix coveralls.circle
 #      - store_test_results:  # upload test results for display in Test Summary
 #          path: _build/test/lib/junit
