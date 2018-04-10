@@ -51,8 +51,7 @@ jobs:  # basic units of work in a run
       - run: MIX_ENV=docs mix deps.get
 
       - run: MIX_ENV=docs mix inch.report
-
-test:
-  override:
-    - mix format --check-formatted --dry-run
-    - mix coveralls.circle
+#test:
+#  override:
+#    - mix format --check-formatted --dry-run
+#    - mix coveralls.circle
