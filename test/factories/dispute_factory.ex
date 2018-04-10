@@ -5,7 +5,10 @@ defmodule Mangopay.DisputeFactory do
         List.first(
           Factories.SharedFunctions.get_json(
             Enum.join(
-              Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "dispute", "all.json"], &(!is_nil(&1))),
+              Enum.filter(
+                ["", Factories.SharedFunctions.module_name(__MODULE__), "dispute", "all.json"],
+                &(!is_nil(&1))
+              ),
               "/"
             )
           )
@@ -38,14 +41,14 @@ defmodule Mangopay.DisputeFactory do
         {:ok, response} = Mangopay.Transaction.all_by_dispute(id)
         List.last(Poison.decode!(response.body))
       end
-    
+
       def created_dispute_user_factory do
         response = build(:created_dispute_transaction)
         id = response["AuthorId"]
         {:ok, response} = Mangopay.User.get(id)
         Poison.decode!(response.body)
       end
-    
+
       def created_dispute_wallet_factory do
         response = build(:created_dispute_transaction)
         id = response["DebitedWalletId"]

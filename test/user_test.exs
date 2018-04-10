@@ -4,12 +4,14 @@ defmodule UserTest do
   use Mangopay.Factory
   use Mangopay.UserFactory
   use Helper
+
   setup_all do
     create_user_cassette()
 
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/legal/create" do
       Mangopay.User.Legal.create(build(:user_legal))
     end
+
     :ok
   end
 
@@ -40,7 +42,10 @@ defmodule UserTest do
   test "update legal user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/legal/update" do
       assert {:ok, response} =
-               Mangopay.User.Legal.update(build(:created_legal_user)["Id"], build(:update_user_legal))
+               Mangopay.User.Legal.update(
+                 build(:created_legal_user)["Id"],
+                 build(:update_user_legal)
+               )
 
       assert Poison.decode!(response.body)["Id"] == build(:created_legal_user)["Id"]
     end

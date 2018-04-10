@@ -18,7 +18,9 @@ defmodule ReportingTest do
 
   test "create reporting transaction" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
-      assert {:ok, response} = Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
+      assert {:ok, response} =
+               Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
+
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
   end

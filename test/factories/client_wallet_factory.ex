@@ -8,7 +8,12 @@ defmodule Mangopay.ClientWalletFactory do
           Factories.SharedFunctions.get_json(
             Enum.join(
               Enum.filter(
-                ["", Factories.SharedFunctions.module_name(__MODULE__), "client_wallet", "all.json"],
+                [
+                  "",
+                  Factories.SharedFunctions.module_name(__MODULE__),
+                  "client_wallet",
+                  "all.json"
+                ],
                 &(!is_nil(&1))
               ),
               "/"

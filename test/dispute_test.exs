@@ -39,7 +39,9 @@ defmodule DisputeTest do
 
   test "all dispute by wallet" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/wallet/all" do
-      assert {:ok, response} = Mangopay.Dispute.all_by_wallet(build(:created_dispute_wallet)["Id"])
+      assert {:ok, response} =
+               Mangopay.Dispute.all_by_wallet(build(:created_dispute_wallet)["Id"])
+
       assert length(Poison.decode!(response.body)) > 0
     end
   end

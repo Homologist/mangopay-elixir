@@ -7,7 +7,12 @@ defmodule Mangopay.DisputeDocumentFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "dispute_document", "create.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "dispute_document",
+                "create.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"
@@ -19,7 +24,12 @@ defmodule Mangopay.DisputeDocumentFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "dispute_document_page", "get.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "dispute_document_page",
+                "get.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"
