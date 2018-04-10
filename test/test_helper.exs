@@ -5,6 +5,7 @@ defmodule Helper do
   defmacro __using__([]) do
     quote do
       use ExMachina
+
       def create_user_cassette do
         module_name = Factories.SharedFunctions.module_name(__MODULE__)
 

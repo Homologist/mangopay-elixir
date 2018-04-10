@@ -7,7 +7,14 @@ defmodule Mangopay.PayInFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "pay_in", "card", "direct", "create.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "pay_in",
+                "card",
+                "direct",
+                "create.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"

@@ -14,7 +14,7 @@ defmodule Mangopay.Mixfile do
         "vcr.delete": :test,
         "vcr.check": :test,
         "vcr.show": :test,
-        "coveralls": :test,
+        coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test

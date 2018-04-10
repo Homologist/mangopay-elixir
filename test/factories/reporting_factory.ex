@@ -5,7 +5,13 @@ defmodule Mangopay.ReportingFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "reporting", "transaction", "create.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "reporting",
+                "transaction",
+                "create.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"
@@ -17,7 +23,13 @@ defmodule Mangopay.ReportingFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "reporting", "wallet", "create.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "reporting",
+                "wallet",
+                "create.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"
@@ -25,17 +37,17 @@ defmodule Mangopay.ReportingFactory do
         )
       end
 
-#      def created_kyc_document(module_name \\ nil) do
-#        Factories.SharedFunctions.get_json(
-#          Enum.join(
-#            Enum.filter(
-#              ["", Factories.SharedFunctions.module_name(__MODULE__), "kyc_document", "user", "create.json"],
-#              &(!is_nil(&1))
-#            ),
-#            "/"
-#          )
-#        )
-#      end
+      #      def created_kyc_document(module_name \\ nil) do
+      #        Factories.SharedFunctions.get_json(
+      #          Enum.join(
+      #            Enum.filter(
+      #              ["", Factories.SharedFunctions.module_name(__MODULE__), "kyc_document", "user", "create.json"],
+      #              &(!is_nil(&1))
+      #            ),
+      #            "/"
+      #          )
+      #        )
+      #      end
 
       def reporting_transaction_factory do
         %{

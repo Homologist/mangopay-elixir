@@ -22,7 +22,9 @@ defmodule WalletTest do
 
   test "update wallet" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/wallet/update" do
-      assert {:ok, response} = Mangopay.Wallet.update(build(:created_user)["Id"], build(:update_wallet))
+      assert {:ok, response} =
+               Mangopay.Wallet.update(build(:created_user)["Id"], build(:update_wallet))
+
       assert Poison.decode!(response.body)["Tag"] == build(:update_wallet)["Tag"]
     end
   end

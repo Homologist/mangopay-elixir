@@ -7,7 +7,12 @@ defmodule Mangopay.PreauthorizationFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "preauthorization", "create.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "preauthorization",
+                "create.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"
@@ -19,7 +24,12 @@ defmodule Mangopay.PreauthorizationFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "preauthorization", "create_bis.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "preauthorization",
+                "create_bis.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"

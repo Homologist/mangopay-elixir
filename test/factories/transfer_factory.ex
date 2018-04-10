@@ -6,7 +6,10 @@ defmodule Mangopay.TransferFactory do
       def created_transfer_factory(module_name \\ nil) do
         Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "transfer", "create.json"], &(!is_nil(&1))),
+            Enum.filter(
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "transfer", "create.json"],
+              &(!is_nil(&1))
+            ),
             "/"
           )
         )
