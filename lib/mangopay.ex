@@ -33,10 +33,6 @@ defmodule Mangopay do
     "/#{version()}/#{Mangopay.client_id()}"
   end
 
-  def head do
-    base_header()
-  end
-
   defp authorization_header do
     @base_header |> Map.merge(@authorization_header) |> Map.merge(%{"Authorization": "Basic #{encoded_login_and_passphrase()}"})
   end
@@ -45,15 +41,14 @@ defmodule Mangopay do
     encode client()[:id], client()[:passphrase]
   end
 
-  defp encode(nil, nil), do: Base.encode64 "sdk-unit-tests:cqFfFrWfCcb7UadHNxx2C9Lo6Djw8ZduLi7J9USTmu8bhxxpju"
   defp encode(login, passphrase), do: Base.encode64 "#{login}:#{passphrase}"
 
   def request(tuple) when is_tuple(tuple) do
-    request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
+    request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2), elem(tuple, 3))
   end
 
   def request!(tuple) when is_tuple(tuple) do
-    request!(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
+    request!(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2), elem(tuple, 3))
   end
 
   defp full_header_request(method, url, body, headers) do
@@ -91,25 +86,24 @@ defmodule Mangopay do
   defp decode_map body do
     cond do
       is_map body    -> Poison.encode! body
-      is_binary body -> body
       is_list body   -> Poison.encode! body
+      is_binary body -> body
     end
   end
 
   def request(method, url, body \\ "", headers \\ "") do
     {method, url, body, headers} = full_header_request(method, url, body, headers)
-    _request(method, url, body, headers)
-  end
-
-  def request!(method, url, body \\ "", headers \\ "") do
-    {:ok, response} = request(method, url, body, headers)
-    response
-  end
-
-  defp _request(method, url, body, headers) do
     case Mix.env do
       :dev  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
       :test -> HTTPoison.request(method, url, body, headers, [{"timeout", 15600}])
+    end
+  end
+
+  def request!(method, url, body \\ "", headers \\ "") do
+    {method, url, body, headers} = full_header_request(method, url, body, headers)
+    case Mix.env do
+      :dev  -> HTTPoison.request!(method, url, body, headers, [{"timeout", 4600}])
+      :test -> HTTPoison.request!(method, url, body, headers, [{"timeout", 15600}])
     end
   end
 
