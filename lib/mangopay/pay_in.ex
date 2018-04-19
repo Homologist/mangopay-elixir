@@ -1,5 +1,5 @@
 defmodule Mangopay.PayIn do
-  use Mangopay.Query.Base, "payins"
+  use Mangopay.Query.Base
   set_action "payins", [{:get}]
 
   def card_details(payin_id) do
@@ -8,41 +8,41 @@ defmodule Mangopay.PayIn do
 
   defmodule Card do
     defmodule Web do
-      use Mangopay.Query.Base, "payins/card/web"
+      use Mangopay.Query.Base
       set_action "payins/card/web", [{:create}]
     end
 
     defmodule Direct do
-      use Mangopay.Query.Base, "payins/card/direct"
+      use Mangopay.Query.Base
       set_action "payins/card/direct", [{:create}]
     end
 
     defmodule PreAuthorized do
-      use Mangopay.Query.Base, "payins/preauthorized/direct"
+      use Mangopay.Query.Base
       set_action "payins/preauthorized/direct", [{:create}]
     end
   end
 
   defmodule BankWire do
     defmodule Wallet do
-      use Mangopay.Query.Base, "clients/payins/bankwire/direct"
+      use Mangopay.Query.Base
       set_action "clients/payins/bankwire/direct", [{:create}]
     end
 
     defmodule Direct do
-      use Mangopay.Query.Base, "payins/bankwire/direct"
+      use Mangopay.Query.Base
       set_action "payins/bankwire/direct", [{:create}]
     end
   end
 
   defmodule DirectDebit do
     defmodule Web do
-      use Mangopay.Query.Base, "payins/directdebit/web"
+      use Mangopay.Query.Base
       set_action "payins/directdebit/web", [{:create}]
     end
 
     defmodule Direct do
-      use Mangopay.Query.Base, "payins/directdebit/direct"
+      use Mangopay.Query.Base
       set_action "payins/directdebit/direct", [{:create}]
     end
   end

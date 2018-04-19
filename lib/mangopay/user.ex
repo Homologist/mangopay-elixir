@@ -1,5 +1,5 @@
 defmodule Mangopay.User do
-  use Mangopay.Query.Base, "users"
+  use Mangopay.Query.Base
   set_action "users", [{:get}, {:all}]
 
   def get_emoney id do
@@ -7,12 +7,12 @@ defmodule Mangopay.User do
   end
 
   defmodule Natural do
-    use Mangopay.Query.Base, "users/natural"
+    use Mangopay.Query.Base
     set_action "users/natural", [{:create}, {:update}]
   end
 
   defmodule Legal do
-    use Mangopay.Query.Base, "users/legal"
+    use Mangopay.Query.Base
     set_action "users/legal", [{:create}, {:update}]
   end
 end

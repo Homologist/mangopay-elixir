@@ -30,11 +30,7 @@ defmodule Mangopay do
   end
 
   def version_and_client_id do
-    "/#{version()}/#{Mangopay.client_id()}"
-  end
-
-  def head do
-    base_header()
+    "/#{version()}/#{Mangopay.client()[:id]}"
   end
 
   defp authorization_header do
@@ -45,36 +41,44 @@ defmodule Mangopay do
     encode client()[:id], client()[:passphrase]
   end
 
-  defp encode(nil, nil), do: Base.encode64 "sdk-unit-tests:cqFfFrWfCcb7UadHNxx2C9Lo6Djw8ZduLi7J9USTmu8bhxxpju"
   defp encode(login, passphrase), do: Base.encode64 "#{login}:#{passphrase}"
 
-  def request(tuple) when is_tuple(tuple) do
-    request(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
+  def request {method, url, query} do
+    case {method, query} do
+      {:get, nil} -> request(:get, url)
+      {:"get!", nil} -> request(:"get!", url)
+      {:get, _} -> request(:get, url, query)
+      {:"get!", _} -> request(:"get!", url, query)
+    end
   end
 
-  def request!(tuple) when is_tuple(tuple) do
-    request!(elem(tuple, 0), elem(tuple, 1), elem(tuple, 2))
+  def request {method, url, body, headers} do
+    request(method, url, body, headers)
   end
 
-  defp full_header_request(method, url, body, headers) do
-    {method, url, decode_map(body), headers}
+  def request! {method, url, body, headers} do
+    request!(method, url, body, headers)
+  end
+
+  defp full_header_request(method, url, body, headers, query) do
+    {method, url, decode_map(body), headers, query}
       |> authorization_params()
       |> payline_params()
   end
 
-  defp authorization_params {method, url, body, headers} do
+  defp authorization_params {method, url, body, headers, query} do
     headers = case headers do
-      ""  -> Map.merge(base_header(), %{"Authorization": "#{authorization()}"})
-      _   -> headers
+      %{"Authorization": _}   -> headers
+      _  -> Map.merge(base_header(), %{"Authorization": "#{authorization()}"})
     end
-    {method, url, body, headers}
+    {method, url, body, headers, query}
   end
 
-  defp payline_params {method, url, body, headers} do
+  defp payline_params {method, url, body, headers, query} do
     if String.contains?(url, "payline") do
-      {method, url, body, cond_payline(headers)}
+      {method, url, body, cond_payline(headers), query}
     else
-      {method, cond_mangopay(url), body, headers}
+      {method, cond_mangopay(url), body, headers, query}
     end
   end
 
@@ -91,26 +95,34 @@ defmodule Mangopay do
   defp decode_map body do
     cond do
       is_map body    -> Poison.encode! body
-      is_binary body -> body
       is_list body   -> Poison.encode! body
+      is_binary body -> body
     end
   end
 
-  def request(method, url, body \\ "", headers \\ "") do
-    {method, url, body, headers} = full_header_request(method, url, body, headers)
-    _request(method, url, body, headers)
-  end
-
-  def request!(method, url, body \\ "", headers \\ "") do
-    {:ok, response} = request(method, url, body, headers)
-    response
-  end
-
-  defp _request(method, url, body, headers) do
-    case Mix.env do
-      :dev  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
-      :test -> HTTPoison.request(method, url, body, headers, [{"timeout", 15600}])
+  def filter_and_send(method, url, body, headers, query, bang) do
+    cond do
+      bang ->
+        case {Mix.env, method} do
+          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [{"timeout", 4600}])
+          {:test, _} -> HTTPoison.request!(method, url, body, headers, [{"timeout", 15600}])
+        end
+      true                                      ->
+        case {Mix.env, method, query} do
+          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
+          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [{"timeout", 15600}])
+        end
     end
+  end
+
+  def request(method, url, body \\ "", headers \\ "", query \\ "") do
+    {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
+    filter_and_send(method, url, body, headers, query, false)
+  end
+
+  def request!(method, url, body \\ "", headers \\ "", query \\ "") do
+    {method, url, body, headers, _} = full_header_request(method, url, body, headers, query)
+    filter_and_send(method, url, body, headers, query, true)
   end
 
   def post_authorization do
@@ -141,9 +153,5 @@ defmodule Mangopay do
         _ -> Agent.get(:token, &(&1))[:token]
       end
     end
-  end
-
-  def client_id do
-    client()[:id]
   end
 end

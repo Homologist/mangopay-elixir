@@ -1,6 +1,7 @@
 defmodule Mangopay.Query.Interface do
   defmacro set_action(path, actions_list) do
-    quote bind_quoted: [actions_list: actions_list] do
+    quote bind_quoted: [actions_list: actions_list, path: path] do
+      Mangopay.Query.Path.set_path(unquote(path))
       actions_list |> Enum.each(fn
         {action} = {:get} -> def unquote(action)(id), do: _get(id)
                              def unquote(:"#{action}!")(id), do: _get!(id)
