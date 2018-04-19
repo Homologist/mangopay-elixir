@@ -1,7 +1,7 @@
 defmodule CardTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  
+
   use Mangopay.Factory
   use Helper
   use Mangopay.UserFactory

@@ -15,7 +15,10 @@ defmodule KycDocumentTest do
   test "create kyc_document to user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create" do
       assert {:ok, response} =
-               Mangopay.KycDocument.create_to_user(build(:created_user)["Id"], build(:kyc_document))
+               Mangopay.KycDocument.create_to_user(
+                 build(:created_user)["Id"],
+                 build(:kyc_document)
+               )
 
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end

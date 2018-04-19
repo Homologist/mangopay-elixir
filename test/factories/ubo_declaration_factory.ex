@@ -5,7 +5,13 @@ defmodule Mangopay.UboDeclarationFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "ubo_declaration", "user", "get.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "ubo_declaration",
+                "user",
+                "get.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"

@@ -11,6 +11,7 @@ defmodule DisputeDocumentTest do
 
   setup_all do
     create_dispute_document_cassette()
+
     #    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute_document/create" do
     #      Mangopay.DisputeDocument.create build(:created_dispute)["Id"], dispute_document_hash()
     #    end
@@ -62,7 +63,9 @@ defmodule DisputeDocumentTest do
 
   test "all dispute_document by dispute" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute_document/dispute/all" do
-      assert {:ok, response} = Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
+      assert {:ok, response} =
+               Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
+
       assert length(Poison.decode!(response.body)) > 0
     end
   end

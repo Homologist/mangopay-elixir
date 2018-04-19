@@ -1,3 +1,4 @@
+# [![CircleCI](https://circleci.com/gh/Homologist/mangopay-elixir.svg?style=svg)](https://circleci.com/gh/Homologist/mangopay-elixir) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/circleci/circleci-docs/master/LICENSE) [![Coverage Status](https://coveralls.io/repos/github/Homologist/mangopay-elixir/badge.svg?branch=master)](https://coveralls.io/github/Homologist/mangopay-elixir?branch=master) [![Inline docs](http://inch-ci.org/github/Homologist/mangopay-elixir.svg?branch=master)](http://inch-ci.org/github/Homologist/mangopay-elixir) 
 # Mangopay
 
 **TODO: Add description**

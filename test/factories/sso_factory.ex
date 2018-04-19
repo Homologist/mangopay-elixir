@@ -6,7 +6,10 @@ defmodule Mangopay.SsoFactory do
       def created_sso(module_name \\ nil) do
         Factories.SharedFunctions.get_json(
           Enum.join(
-            Enum.filter(["", Factories.SharedFunctions.module_name(__MODULE__), "sso", "create.json"], &(!is_nil(&1))),
+            Enum.filter(
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "sso", "create.json"],
+              &(!is_nil(&1))
+            ),
             "/"
           )
         )

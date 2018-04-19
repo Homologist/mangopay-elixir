@@ -52,7 +52,10 @@ defmodule RefundTest do
   test "create refund transfer direct" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/refund/transfer/create" do
       assert {:ok, response} =
-               Mangopay.Refund.Transfer.create(build(:created_transfer)["Id"], build(:refund_transfer))
+               Mangopay.Refund.Transfer.create(
+                 build(:created_transfer)["Id"],
+                 build(:refund_transfer)
+               )
 
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
@@ -81,7 +84,9 @@ defmodule RefundTest do
 
   test "all by repudiation" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/refund/repudiation/all" do
-      assert {:ok, response} = Mangopay.Refund.all_by_repudiation(build(:created_repudiation)["Id"])
+      assert {:ok, response} =
+               Mangopay.Refund.all_by_repudiation(build(:created_repudiation)["Id"])
+
       assert length(Poison.decode!(response.body)) == 0
     end
   end

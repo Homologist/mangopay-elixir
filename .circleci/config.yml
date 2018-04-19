@@ -42,12 +42,9 @@ jobs:  # basic units of work in a run
           key: v1-build-cache
           paths: "_build"
 
-      - run: mix test  # run all tests in project
+      - run: mix coveralls.circle
+      - run: mix format --check-formatted --dry-run
 
-      - store_test_results:  # upload test results for display in Test Summary
-          path: _build/test/junit
+      - run: MIX_ENV=docs mix deps.get
 
-test:
-  override:
-    - mix format --check-formatted --dry-run
-    - mix coveralls.circle
+      - run: MIX_ENV=docs mix inch.report

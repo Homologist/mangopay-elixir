@@ -7,7 +7,12 @@ defmodule Mangopay.PermissionGroupFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "permission_group", "create.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "permission_group",
+                "create.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"
