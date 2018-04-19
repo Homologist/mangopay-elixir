@@ -1,5 +1,5 @@
 defmodule Mangopay.DisputeDocument do
-  use Mangopay.Query.Base, "dispute-documents"
+  use Mangopay.Query.Base
   set_action "dispute-documents", [{:get}]
 
   def create id, params do
@@ -14,8 +14,8 @@ defmodule Mangopay.DisputeDocument do
     _update %{"Status": "CREATED"}, resource_document(dispute_id, dispute_document_id)
   end
 
-  def all_by_dispute id do
-    _all resource_document(id)
+  def all_by_dispute id, query \\ nil do
+    _all resource_document(id), query
   end
 
   def consult id do

@@ -1,5 +1,5 @@
 defmodule Mangopay.Dispute do
-  use Mangopay.Query.Base, "disputes"
+  use Mangopay.Query.Base
   set_action "disputes", [{:get}, {:update}, {:all}]
 
   def close id do
@@ -14,16 +14,16 @@ defmodule Mangopay.Dispute do
     _update %{}, resource_submit(id)
   end
 
-  def all_by_user id do
-    _all [user(id), resource()]
+  def all_by_user id, query \\ nil do
+    _all [Mangopay.User.path(id), resource()], query
   end
 
-  def all_by_wallet id do
-    _all [wallet(id), resource()]
+  def all_by_wallet id, query \\ nil do
+    _all [Mangopay.Wallet.path(id), resource()], query
   end
 
-  def all_by_pending_settlement do
-    _all [resource(), "pendingsettlement"]
+  def all_by_pending_settlement query \\ nil do
+    _all [resource(), "pendingsettlement"], query
   end
 
   defp resource_submit(id) do

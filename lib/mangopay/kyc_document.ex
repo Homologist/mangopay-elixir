@@ -1,9 +1,9 @@
 defmodule Mangopay.KycDocument do
-  use Mangopay.Query.Base, "kyc/documents"
+  use Mangopay.Query.Base
   set_action "kyc/documents", [{:get}, {:all}]
 
   def create_to_user user_id, params do
-    _create params, [user(user_id), resource()]
+    _create params, [Mangopay.User.path(user_id), resource()]
   end
 
   def submit user_id, kyc_document_id, params do
@@ -14,7 +14,7 @@ defmodule Mangopay.KycDocument do
     _create params, user_resource(user_id, kyc_document_id) ++ ["pages"]
   end
 
-  def all_by_user user_id do
-    [user(user_id), resource()] |> _all
+  def all_by_user user_id, query \\ nil do
+    [Mangopay.User.path(user_id), resource()] |> _all(query)
   end
 end
