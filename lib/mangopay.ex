@@ -104,13 +104,13 @@ defmodule Mangopay do
     cond do
       bang ->
         case {Mix.env, method} do
-          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [{"timeout", 4600}])
-          {:test, _} -> HTTPoison.request!(method, url, body, headers, [{"timeout", 15600}])
+          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [{"timeout", 4600, "recv_timeout", 5000}])
+          {:test, _} -> HTTPoison.request!(method, url, body, headers, [{"timeout", 15600, "recv_timeout", 50000}])
         end
-      true                                      ->
+      true ->
         case {Mix.env, method, query} do
-          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600}])
-          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [{"timeout", 15600}])
+          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600, "recv_timeout", 4600}])
+          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [{"timeout", 15600, "recv_timeout", 4600}])
         end
     end
   end
