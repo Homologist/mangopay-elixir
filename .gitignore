@@ -22,3 +22,6 @@ erl_crash.dump
 
 #remove fixture of vcr
 fixture
+
+#remove local config folder
+config/*
