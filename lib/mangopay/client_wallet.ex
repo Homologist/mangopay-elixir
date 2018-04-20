@@ -1,6 +1,6 @@
 defmodule Mangopay.ClientWallet do
   use Mangopay.Query.Base
-  set_action "client/wallets", [{:all}]
+  set_action "clients/wallets", [{:all}]
 
   def get_by_funds_type funds_type do
     _get [resource(), "#{funds_type}"]
