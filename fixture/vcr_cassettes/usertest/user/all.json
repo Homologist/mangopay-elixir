@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"PersonType\":\"NATURAL\",\"Email\":\"fn.ln@email5555.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1148742\",\"Tag\":\"Updated natural user333 - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED - CHANGED\",\"CreationDate\":1384782258},{\"PersonType\":\"NATURAL\",\"Email\":\"my@email.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1148743\",\"Tag\":\"Test natural user\",\"CreationDate\":1384782265},{\"PersonType\":\"NATURAL\",\"Email\":\"my@email.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1148745\",\"Tag\":\"Test natural user\",\"CreationDate\":1384782355},{\"PersonType\":\"NATURAL\",\"Email\":\"my@email.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1148751\",\"Tag\":\"Test natural user\",\"CreationDate\":1384782624},{\"PersonType\":\"LEGAL\",\"Email\":\"legal_name5555@email.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1148752\",\"Tag\":\"Updated legal user555\",\"CreationDate\":1384782624},{\"PersonType\":\"NATURAL\",\"Email\":\"john.doe@sample.org2\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1149356\",\"Tag\":null,\"CreationDate\":1384785849},{\"PersonType\":\"NATURAL\",\"Email\":\"john.doe@sample.org\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1151062\",\"Tag\":null,\"CreationDate\":1384790444},{\"PersonType\":\"NATURAL\",\"Email\":\"john.doe@sample.org\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1151066\",\"Tag\":null,\"CreationDate\":1384790515},{\"PersonType\":\"NATURAL\",\"Email\":\"john.doe@sample.org\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1151091\",\"Tag\":null,\"CreationDate\":1384790581},{\"PersonType\":\"NATURAL\",\"Email\":\"fqsd@sfddsf.fr\",\"KYCLevel\":\"LIGHT\",\"Id\":\"1151097\",\"Tag\":\"sfs\",\"CreationDate\":1384790611}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:27:50 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1475",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d43cedc3183c9ec77270eccaa8da7bc0e1524259669; expires=Sat, 20-Apr-19 21:27:49 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "253",
+        "X-RateLimit-Remaining": "2047",
+        "X-RateLimit-Reset": "1524260520",
+        "X-Number-Of-Pages": "17857",
+        "X-Number-Of-Items": "178568",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users?page=17857&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab2797b78b765-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

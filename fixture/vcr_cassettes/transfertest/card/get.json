@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/47401911"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"ExpirationDate\":\"1219\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"VISA\",\"Country\":\"FRA\",\"Product\":\"I\",\"BankCode\":\"unknown\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"UNKNOWN\",\"UserId\":\"47401903\",\"Id\":\"47401911\",\"Tag\":null,\"CreationDate\":1524259688,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:28:09 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "331",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d92182a89445878afe0c85205796981001524259689; expires=Sat, 20-Apr-19 21:28:09 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "287",
+        "X-RateLimit-Remaining": "2013",
+        "X-RateLimit-Reset": "1524260580",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab2f35af8b765-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/fingerprints/c188a617d3ed42169a7d91f7485c65f3"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164186\",\"Id\":\"1164192\",\"Tag\":null,\"CreationDate\":1384953399,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164186\",\"Id\":\"1164198\",\"Tag\":null,\"CreationDate\":1384953404,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164186\",\"Id\":\"1164202\",\"Tag\":null,\"CreationDate\":1384953409,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164186\",\"Id\":\"1164206\",\"Tag\":null,\"CreationDate\":1384953413,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164211\",\"Id\":\"1164214\",\"Tag\":null,\"CreationDate\":1384953434,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164211\",\"Id\":\"1164218\",\"Tag\":null,\"CreationDate\":1384953438,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164230\",\"Id\":\"1164233\",\"Tag\":null,\"CreationDate\":1384953469,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164236\",\"Id\":\"1164239\",\"Tag\":null,\"CreationDate\":1384953579,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164242\",\"Id\":\"1164245\",\"Tag\":null,\"CreationDate\":1384953585,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"},{\"ExpirationDate\":\"1214\",\"Alias\":\"497010XXXXXX0154\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardProvider\":\"CB\",\"Country\":\"\",\"Product\":\"\",\"BankCode\":\"\",\"Active\":true,\"Currency\":\"EUR\",\"Validity\":\"VALID\",\"UserId\":\"1164249\",\"Id\":\"1164252\",\"Tag\":null,\"CreationDate\":1384953591,\"Fingerprint\":\"c188a617d3ed42169a7d91f7485c65f3\"}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:30:06 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "3151",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d6d24324bea27568aef8bcc76f21352341524259804; expires=Sat, 20-Apr-19 21:30:04 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "460",
+        "X-RateLimit-Remaining": "1840",
+        "X-RateLimit-Reset": "1524260700",
+        "X-Number-Of-Pages": "9224",
+        "X-Number-Of-Items": "92233",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/fingerprints/c188a617d3ed42169a7d91f7485c65f3?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/fingerprints/c188a617d3ed42169a7d91f7485c65f3?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cards/fingerprints/c188a617d3ed42169a7d91f7485c65f3?page=9224&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab5c4aee7a8b1-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

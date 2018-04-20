@@ -1,0 +1,75 @@
+[
+  {
+    "request": {
+      "body": "{}",
+      "headers": {
+        "Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+        "Authorization": "Basic c2RrLXVuaXQtdGVzdHM6Y3FGZkZyV2ZDY2I3VWFkSE54eDJDOUxvNkRqdzhaZHVMaTdKOVVTVG11OGJoeHhwanU=",
+        "Content-Length": "29",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Host": "api.sandbox.mangopay.com",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/v2.01/oauth/token"
+    },
+    "response": {
+      "binary": true,
+      "body": "g20AAABsH4sIAAAAAAAAAxzKQQqAIBAF0Lv8tQu1htTLyGQjSGCiLYro7kFv/R5wSjJGPI9dKgIm62jV5ETnbU5E3lpDs+eJmfRiMxT+Gs+7CQJW4S4dCnK10mXEUhGM8f79AAAA//8DAGGsxkZbAAAA",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:27:43 GMT",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d7fc3467d4580d81bccbb413418e2e03a1524259663; expires=Sat, 20-Apr-19 21:27:43 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab2513e2eb765-CDG",
+        "Content-Encoding": "gzip"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "{\"Tag\":\"Test natural user\",\"Occupation\":\"Worker\",\"Nationality\":\"FR\",\"LastName\":\"Doe\",\"IncomeRange\":1,\"FirstName\":\"John\",\"Email\":\"my@email.com\",\"CountryOfResidence\":\"FR\",\"Birthplace\":\"Paris\",\"Birthday\":1300186358,\"Address\":{\"Region\":\"\",\"PostalCode\":\"755001\",\"Country\":\"FR\",\"City\":\"Paris\",\"AddressLine2\":\"8 Rue de Montpensier\",\"AddressLine1\":\"Le Palais Royal\"}}",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/natural"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Address\":{\"AddressLine1\":\"Le Palais Royal\",\"AddressLine2\":\"8 Rue de Montpensier\",\"City\":\"Paris\",\"Region\":\"\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"FirstName\":\"John\",\"LastName\":\"Doe\",\"Birthday\":1300186358,\"Nationality\":\"FR\",\"CountryOfResidence\":\"FR\",\"Occupation\":\"Worker\",\"IncomeRange\":1,\"ProofOfIdentity\":null,\"ProofOfAddress\":null,\"Capacity\":\"NORMAL\",\"PersonType\":\"NATURAL\",\"Email\":\"my@email.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"47401880\",\"Tag\":\"Test natural user\",\"CreationDate\":1524259663}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:27:43 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "487",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d7fc3467d4580d81bccbb413418e2e03a1524259663; expires=Sat, 20-Apr-19 21:27:43 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "242",
+        "X-RateLimit-Remaining": "2058",
+        "X-RateLimit-Reset": "1524260520",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab2524f07b765-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"Description\":\"My big project\"}",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/wallets/47401880"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Message\":\"The ressource does not exist\",\"Type\":\"ressource_not_found\",\"Id\":\"3a58627f-cbd4-41e1-8a9f-d0195bb9e178#1524259664\",\"Date\":1524259665.0,\"errors\":{\"RessourceNotFound\":\"Cannot found the ressource Wallet with the id=47401880 \"}}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:27:44 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "235",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d05f968c2ede36b856fc47e461744cd341524259664; expires=Sat, 20-Apr-19 21:27:44 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab259fd1ab765-CDG"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]

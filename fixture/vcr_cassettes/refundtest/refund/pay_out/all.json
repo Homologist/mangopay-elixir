@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payouts/47401941/refunds"
+    },
+    "response": {
+      "binary": false,
+      "body": "[]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:28:34 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d78e091d50544f417700c3b533a0521bc1524259714; expires=Sat, 20-Apr-19 21:28:34 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "328",
+        "X-RateLimit-Remaining": "1972",
+        "X-RateLimit-Reset": "1524260580",
+        "X-Number-Of-Pages": "1",
+        "X-Number-Of-Items": "0",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payouts/47401941/refunds?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/payouts/47401941/refunds?page=1&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab3901b29b765-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

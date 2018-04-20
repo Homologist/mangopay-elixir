@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/clients/ssos"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"Id\":\"20128135\",\"FirstName\":\"current\",\"LastName\":\"user 123\",\"Tag\":\"\",\"Active\":true,\"Email\":\"support@mangopay.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"ACCEPTED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":1524142116,\"CreationDate\":1404219211},{\"Id\":\"20349583\",\"FirstName\":\"firstName\",\"LastName\":\"lastName\",\"Tag\":null,\"Active\":true,\"Email\":\"email@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"READ\",\"LastLoginDate\":null,\"CreationDate\":1485847243},{\"Id\":\"20349603\",\"FirstName\":\"firstName\",\"LastName\":\"lastName\",\"Tag\":null,\"Active\":true,\"Email\":\"email_636214478485177263@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485847450},{\"Id\":\"20349704\",\"FirstName\":\"firstName-GetAll\",\"LastName\":\"lastName-GetAll\",\"Tag\":null,\"Active\":true,\"Email\":\"email-GetAll_636214484094327158@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485848010},{\"Id\":\"20349784\",\"FirstName\":\"firstName\",\"LastName\":\"lastName\",\"Tag\":null,\"Active\":true,\"Email\":\"email_636214489009463956@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485848501},{\"Id\":\"20349787\",\"FirstName\":\"firstName\",\"LastName\":\"lastName\",\"Tag\":null,\"Active\":true,\"Email\":\"email_636214489178565409@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485848518},{\"Id\":\"20349788\",\"FirstName\":\"firstName-Get\",\"LastName\":\"lastName-Get\",\"Tag\":null,\"Active\":true,\"Email\":\"email-Get_636214489188684930@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485848518},{\"Id\":\"20349789\",\"FirstName\":\"firstName-GetAll\",\"LastName\":\"lastName-GetAll\",\"Tag\":null,\"Active\":true,\"Email\":\"email-GetAll_636214489192177466@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485848519},{\"Id\":\"20349790\",\"FirstName\":\"firstName-GetAll\",\"LastName\":\"lastName-GetAll\",\"Tag\":null,\"Active\":true,\"Email\":\"email-GetAll_636214489196770912@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485848519},{\"Id\":\"20349883\",\"FirstName\":\"firstName\",\"LastName\":\"lastName\",\"Tag\":null,\"Active\":true,\"Email\":\"email_636214497314166895@email.com\",\"ClientId\":\"sdk-unit-tests\",\"InvitationStatus\":\"EXPIRED\",\"PermissionGroupId\":\"ADMIN\",\"LastLoginDate\":null,\"CreationDate\":1485849332}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:28:17 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2705",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d21b8c42a0e75bfd67b1b25051194ded11524259697; expires=Sat, 20-Apr-19 21:28:17 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "303",
+        "X-RateLimit-Remaining": "1997",
+        "X-RateLimit-Reset": "1524260580",
+        "X-Number-Of-Pages": "164",
+        "X-Number-Of-Items": "1631",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/clients/ssos?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/clients/ssos?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/clients/ssos?page=164&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab3228919b765-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

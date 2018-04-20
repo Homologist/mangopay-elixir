@@ -1,0 +1,105 @@
+[
+  {
+    "request": {
+      "body": "{\"UserId\":\"47401958\",\"Tag\":\"custom meta\",\"Currency\":\"EUR\",\"CardType\":\"CB_VISA_MASTERCARD\"}",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cardregistrations"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"47401966\",\"Tag\":\"custom meta\",\"CreationDate\":1524259741,\"UserId\":\"47401958\",\"AccessKey\":\"1X0m87dmM2LiwFgxPLBJ\",\"PreregistrationData\":\"HBalUf7sKsj1NiktfVS7-9ATZ_xdJTbGHjriMqMRUBpCtbO2wsmsi1x1XgvsUNNdODZo6RTmJeQvmf_w2Au9Ti056p41xuIR8nvrE6Gpork\",\"RegistrationData\":null,\"CardId\":null,\"CardType\":\"CB_VISA_MASTERCARD\",\"CardRegistrationURL\":\"https://homologation-webpayment.payline.com/webpayment/getToken\",\"ResultCode\":null,\"ResultMessage\":null,\"Currency\":\"EUR\",\"Status\":\"CREATED\"}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:01 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "483",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dd6b08f5d2964fe639ece61e8b0f6f7a31524259741; expires=Sat, 20-Apr-19 21:29:01 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "366",
+        "X-RateLimit-Remaining": "1934",
+        "X-RateLimit-Reset": "1524260640",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab439d9adb771-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "data=HBalUf7sKsj1NiktfVS7-9ATZ_xdJTbGHjriMqMRUBpCtbO2wsmsi1x1XgvsUNNdODZo6RTmJeQvmf_w2Au9Ti056p41xuIR8nvrE6Gpork&accessKeyRef=1X0m87dmM2LiwFgxPLBJ&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123",
+      "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Host": "homologation-webpayment.payline.com",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://homologation-webpayment.payline.com/webpayment/getToken"
+    },
+    "response": {
+      "binary": false,
+      "body": "data=VLTIjgpf1ag15dmwRyhmOSSkx8JyrNMZpiYk4tISQfEpuFgoatMEn2BZppDML_86PAC02GHF3dQKjMsKJfg8RpThDnW0MU8QG7sJsz7Y3Fnr-s3NMmCw4jZ533H5Ug8i0ftIYwFxOdfmDQ5GtM_cIg",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:02 GMT",
+        "Set-Cookie": "JSESSIONID=1FBB37EF7698FF917139F95BA3BC2AF6; Path=/; Secure; HttpOnly",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Length": "155",
+        "Vary": "Accept-Encoding,User-Agent",
+        "Content-Type": "text/plain; charset=UTF-8"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "{\"RegistrationData\":\"data=VLTIjgpf1ag15dmwRyhmOSSkx8JyrNMZpiYk4tISQfEpuFgoatMEn2BZppDML_86PAC02GHF3dQKjMsKJfg8RpThDnW0MU8QG7sJsz7Y3Fnr-s3NMmCw4jZ533H5Ug8i0ftIYwFxOdfmDQ5GtM_cIg\"}",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/cardregistrations/47401966"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Id\":\"47401966\",\"Tag\":\"custom meta\",\"CreationDate\":1524259741,\"UserId\":\"47401958\",\"AccessKey\":\"1X0m87dmM2LiwFgxPLBJ\",\"PreregistrationData\":\"HBalUf7sKsj1NiktfVS7-9ATZ_xdJTbGHjriMqMRUBpCtbO2wsmsi1x1XgvsUNNdODZo6RTmJeQvmf_w2Au9Ti056p41xuIR8nvrE6Gpork\",\"RegistrationData\":\"data=VLTIjgpf1ag15dmwRyhmOSSkx8JyrNMZpiYk4tISQfEpuFgoatMEn2BZppDML_86PAC02GHF3dQKjMsKJfg8RpThDnW0MU8QG7sJsz7Y3Fnr-s3NMmCw4jZ533H5Ug8i0ftIYwFxOdfmDQ5GtM_cIg\",\"CardId\":\"47401968\",\"CardType\":\"CB_VISA_MASTERCARD\",\"CardRegistrationURL\":\"https://homologation-webpayment.payline.com/webpayment/getToken\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"Currency\":\"EUR\",\"Status\":\"VALIDATED\"}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:02 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "653",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d5ae942749ce036d8823222fe6214f4051524259742; expires=Sat, 20-Apr-19 21:29:02 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "367",
+        "X-RateLimit-Remaining": "1933",
+        "X-RateLimit-Reset": "1524260640",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab43c5cccb771-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

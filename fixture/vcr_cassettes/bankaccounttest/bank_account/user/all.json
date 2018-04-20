@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/47402034/bankaccounts"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"OwnerAddress\":{\"AddressLine1\":\"1 Mangopay Street\",\"AddressLine2\":\"The Loop\",\"City\":\"Paris\",\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"IBAN\":\"FR3020041010124530725S03383\",\"BIC\":\"CRLYFRPP\",\"UserId\":\"47402034\",\"OwnerName\":\"Joe Blogs\",\"Type\":\"IBAN\",\"Id\":\"47402036\",\"Tag\":\"custom meta\",\"CreationDate\":1524259810,\"Active\":true},{\"OwnerAddress\":{\"AddressLine1\":\"1 Mangopay Street\",\"AddressLine2\":\"The Loop\",\"City\":\"Paris\",\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"AccountNumber\":\"11696419\",\"InstitutionNumber\":\"614\",\"BranchCode\":\"00152\",\"BankName\":\"The Big Bank\",\"UserId\":\"47402034\",\"OwnerName\":\"Joe Blogs\",\"Type\":\"CA\",\"Id\":\"47402037\",\"Tag\":\"custom meta\",\"CreationDate\":1524259810,\"Active\":true},{\"OwnerAddress\":{\"AddressLine1\":\"1 Mangopay Street\",\"AddressLine2\":\"The Loop\",\"City\":\"Paris\",\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"AccountNumber\":\"11696419\",\"ABA\":\"071000288\",\"DepositAccountType\":\"CHECKING\",\"UserId\":\"47402034\",\"OwnerName\":\"Joe Blogs\",\"Type\":\"US\",\"Id\":\"47402040\",\"Tag\":\"custom meta\",\"CreationDate\":1524259811,\"Active\":true},{\"OwnerAddress\":{\"AddressLine1\":\"1 Mangopay Street\",\"AddressLine2\":\"The Loop\",\"City\":\"Paris\",\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"AccountNumber\":\"11696419\",\"SortCode\":\"010039\",\"UserId\":\"47402034\",\"OwnerName\":\"Joe Blogs\",\"Type\":\"GB\",\"Id\":\"47402046\",\"Tag\":\"custom meta\",\"CreationDate\":1524259812,\"Active\":true},{\"OwnerAddress\":{\"AddressLine1\":\"1 Mangopay Street\",\"AddressLine2\":\"The Loop\",\"City\":\"Paris\",\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"AccountNumber\":\"11696419\",\"BIC\":\"CRLYFRPP\",\"Country\":\"FR\",\"UserId\":\"47402034\",\"OwnerName\":\"Joe Blogs\",\"Type\":\"OTHER\",\"Id\":\"47402050\",\"Tag\":\"custom meta\",\"CreationDate\":1524259812,\"Active\":true}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:30:13 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1788",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d463b13247d047b2fb52fd338a9e2dd641524259813; expires=Sat, 20-Apr-19 21:30:13 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "468",
+        "X-RateLimit-Remaining": "1832",
+        "X-RateLimit-Reset": "1524260700",
+        "X-Number-Of-Pages": "1",
+        "X-Number-Of-Items": "5",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/47402034/bankaccounts?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/47402034/bankaccounts?page=1&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab5f99d07a8b1-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

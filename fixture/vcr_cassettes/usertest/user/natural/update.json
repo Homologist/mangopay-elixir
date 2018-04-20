@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"Occupation\":\"Carpenter\",\"Nationality\":\"GB\",\"LastName\":\"Blogs\",\"IncomeRange\":2,\"FirstName\":\"Joe\",\"Email\":\"support@mangopay.com\",\"CountryOfResidence\":\"FR\",\"Birthday\":1463496101,\"Address\":{\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\",\"City\":\"Paris\",\"AddressLine2\":\"The Loop\",\"AddressLine1\":\"1 Mangopay Street\"}}",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "put",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/users/natural/47401882"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Address\":{\"AddressLine1\":\"1 Mangopay Street\",\"AddressLine2\":\"The Loop\",\"City\":\"Paris\",\"Region\":\"Ile de France\",\"PostalCode\":\"755001\",\"Country\":\"FR\"},\"FirstName\":\"Joe\",\"LastName\":\"Blogs\",\"Birthday\":1463496101,\"Nationality\":\"GB\",\"CountryOfResidence\":\"FR\",\"Occupation\":\"Carpenter\",\"IncomeRange\":2,\"ProofOfIdentity\":null,\"ProofOfAddress\":null,\"Capacity\":\"NORMAL\",\"PersonType\":\"NATURAL\",\"Email\":\"support@mangopay.com\",\"KYCLevel\":\"LIGHT\",\"Id\":\"47401882\",\"Tag\":\"custom meta\",\"CreationDate\":1524259666}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:27:49 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "496",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d841ea58055e00568715f0935eb01a5a51524259668; expires=Sat, 20-Apr-19 21:27:48 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "251",
+        "X-RateLimit-Remaining": "2049",
+        "X-RateLimit-Reset": "1524260520",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab272ed9eb765-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

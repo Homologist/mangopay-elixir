@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "{\"Tag\":\"custom meta\",\"ReturnURL\":\"http://www.my-site.com/returnURL/\",\"Culture\":\"EN\",\"BankAccountId\":\"47401972\"}",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/mandates/directdebit/web"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Scheme\":null,\"BankAccountId\":\"47401972\",\"BankReference\":null,\"Culture\":\"EN\",\"DocumentURL\":\"https://api.sandbox.mangopay.com/public/mandates/e8a73d/6b5ba23c01fa4068ad2a522b86bbd7aa/document\",\"ReturnURL\":\"http://www.my-site.com/returnURL/?MandateId=47401976\",\"RedirectURL\":\"https://api.sandbox.mangopay.com/public/mandates/e8a73d/6b5ba23c01fa4068ad2a522b86bbd7aa/confirmation\",\"Id\":\"47401976\",\"CreationDate\":1524259748,\"Status\":\"CREATED\",\"UserId\":\"47401958\",\"ExecutionType\":\"WEB\",\"MandateType\":\"DIRECT_DEBIT\",\"Tag\":\"custom meta\",\"ResultCode\":null,\"ResultMessage\":null}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:08 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "568",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d4b9966b50c92376459a332a923f0b7531524259747; expires=Sat, 20-Apr-19 21:29:07 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "377",
+        "X-RateLimit-Remaining": "1923",
+        "X-RateLimit-Reset": "1524260640",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab460aefdb771-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

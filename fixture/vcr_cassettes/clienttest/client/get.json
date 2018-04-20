@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/clients/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"PlatformType\":\"OTHER\",\"ClientId\":\"sdk-unit-tests\",\"Name\":\"Account for unit tests on SDK\",\"RegisteredName\":null,\"TechEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"AdminEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"BillingEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"FraudEmails\":[\"technical@mangopay.com\",\"support@mangopay.com\"],\"HeadquartersAddress\":{\"AddressLine1\":null,\"AddressLine2\":null,\"City\":null,\"Region\":null,\"PostalCode\":null,\"Country\":null},\"TaxNumber\":\"12345\",\"PlatformCategorization\":{\"BusinessType\":null,\"Sector\":null},\"PlatformURL\":\"http://sdk-unit-tests.com\",\"PlatformDescription\":\"We are a marketplace specialised in rare flipflops for Europe and America. \",\"CompanyReference\":null,\"PrimaryThemeColour\":\"#123456\",\"PrimaryButtonColour\":\"#654321\",\"Logo\":\"https://res.cloudinary.com/mangopay-dev/image/upload/v1524151827/xs6sanwvbfm8xj0uxyuh.png\"}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:30:16 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "902",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dae36d021d5298bb264f0056becbaf7761524259816; expires=Sat, 20-Apr-19 21:30:16 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "474",
+        "X-RateLimit-Remaining": "1826",
+        "X-RateLimit-Reset": "1524260700",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab60ecca8a8b1-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

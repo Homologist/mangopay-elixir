@@ -1,0 +1,155 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"InitialTransactionId\":\"9089736\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9089738\",\"Tag\":\"New tag 1523445021\",\"CreationDate\":1445521657,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089740\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089742\",\"Tag\":null,\"CreationDate\":1445521660,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089744\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"VOID\",\"ResultMessage\":\"test\",\"Id\":\"9089746\",\"Tag\":null,\"CreationDate\":1445521663,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089748\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089751\",\"Tag\":null,\"CreationDate\":1445521666,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089753\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9089755\",\"Tag\":null,\"CreationDate\":1445521669,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089757\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089759\",\"Tag\":null,\"CreationDate\":1445521673,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089822\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9089825\",\"Tag\":null,\"CreationDate\":1445521893,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089851\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089853\",\"Tag\":\"New tag: 635812075469042956\",\"CreationDate\":1445521987,\"RepudiationId\":null},{\"InitialTransactionId\":\"9179729\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"CONTESTABLE\",\"ContestDeadlineDate\":1453680000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9179732\",\"Tag\":null,\"CreationDate\":1445952845,\"RepudiationId\":\"9179734\"},{\"InitialTransactionId\":\"9179737\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"NOT_CONTESTABLE\",\"ContestDeadlineDate\":1453680000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9179739\",\"Tag\":null,\"CreationDate\":1445952854,\"RepudiationId\":\"9179742\"}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:52 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4981",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d7561e6300f67770ea84b9b408888a9601524259792; expires=Sat, 20-Apr-19 21:29:52 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "438",
+        "X-RateLimit-Remaining": "1862",
+        "X-RateLimit-Reset": "1524260640",
+        "X-Number-Of-Pages": "48",
+        "X-Number-Of-Items": "480",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes?page=48&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab5788c31b771-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes/9179739/transactions"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"Id\":\"9179742\",\"Tag\":null,\"CreationDate\":1445952854,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1445952854,\"Type\":\"PAYOUT\",\"Nature\":\"REPUDIATION\",\"CreditedWalletId\":null,\"DebitedWalletId\":\"CREDIT_EUR\"},{\"Id\":\"10751463\",\"Tag\":\"Custom tag data\",\"CreationDate\":1454598458,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1454598461,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11261744\",\"Tag\":null,\"CreationDate\":1457428110,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457428110,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11262137\",\"Tag\":null,\"CreationDate\":1457428603,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457428604,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11263224\",\"Tag\":null,\"CreationDate\":1457430364,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457430364,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11263578\",\"Tag\":null,\"CreationDate\":1457430978,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457430979,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11263641\",\"Tag\":null,\"CreationDate\":1457431081,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457431081,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11264045\",\"Tag\":null,\"CreationDate\":1457431593,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457431593,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11264198\",\"Tag\":null,\"CreationDate\":1457431718,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457431719,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"},{\"Id\":\"11264269\",\"Tag\":null,\"CreationDate\":1457431782,\"AuthorId\":\"6031087\",\"CreditedUserId\":null,\"DebitedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"CreditedFunds\":{\"Currency\":\"EUR\",\"Amount\":1},\"Fees\":{\"Currency\":\"EUR\",\"Amount\":0},\"Status\":\"SUCCEEDED\",\"ResultCode\":\"000000\",\"ResultMessage\":\"Success\",\"ExecutionDate\":1457431782,\"Type\":\"TRANSFER\",\"Nature\":\"SETTLEMENT\",\"CreditedWalletId\":\"CREDIT_EUR\",\"DebitedWalletId\":\"6031088\"}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:53 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4231",
+        "Connection": "close",
+        "Set-Cookie": "__cfduid=d612483ceaca38ce24f425182e48569a31524259793; expires=Sat, 20-Apr-19 21:29:53 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "439",
+        "X-RateLimit-Remaining": "1861",
+        "X-RateLimit-Reset": "1524260640",
+        "X-Number-Of-Pages": "185",
+        "X-Number-Of-Items": "1849",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes/9179739/transactions?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes/9179739/transactions?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/disputes/9179739/transactions?page=185&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab57c18f9b771-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/wallets/6031088"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"Description\":\"New description to test\",\"Owners\":[\"6031087\"],\"Balance\":{\"Currency\":\"EUR\",\"Amount\":297566},\"Currency\":\"EUR\",\"FundsType\":\"DEFAULT\",\"Id\":\"6031088\",\"Tag\":null,\"CreationDate\":1425982893}",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:53 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "198",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=da94a0e8ec82747668703ba102ce22c2b1524259793; expires=Sat, 20-Apr-19 21:29:53 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "440",
+        "X-RateLimit-Remaining": "1860",
+        "X-RateLimit-Reset": "1524260640",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab57faf57a8b1-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "bearer 3285b058e0fd4c559221549a3aa5072f",
+        "Content-Type": "application/json",
+        "User-Agent": "Elixir"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/wallets/6031088/disputes"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"InitialTransactionId\":\"9089736\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9089738\",\"Tag\":\"New tag 1523445021\",\"CreationDate\":1445521657,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089740\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089742\",\"Tag\":null,\"CreationDate\":1445521660,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089744\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"VOID\",\"ResultMessage\":\"test\",\"Id\":\"9089746\",\"Tag\":null,\"CreationDate\":1445521663,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089748\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089751\",\"Tag\":null,\"CreationDate\":1445521666,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089753\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9089755\",\"Tag\":null,\"CreationDate\":1445521669,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089757\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":100},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089759\",\"Tag\":null,\"CreationDate\":1445521673,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089822\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9089825\",\"Tag\":null,\"CreationDate\":1445521893,\"RepudiationId\":null},{\"InitialTransactionId\":\"9089851\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"RETRIEVAL\",\"ContestDeadlineDate\":1453248000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9089853\",\"Tag\":\"New tag: 635812075469042956\",\"CreationDate\":1445521987,\"RepudiationId\":null},{\"InitialTransactionId\":\"9179729\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"CONTESTABLE\",\"ContestDeadlineDate\":1453680000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":10},\"Status\":\"SUBMITTED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":null,\"ResultMessage\":null,\"Id\":\"9179732\",\"Tag\":null,\"CreationDate\":1445952845,\"RepudiationId\":\"9179734\"},{\"InitialTransactionId\":\"9179737\",\"InitialTransactionType\":\"PAYIN\",\"InitialTransactionNature\":\"REGULAR\",\"DisputeType\":\"NOT_CONTESTABLE\",\"ContestDeadlineDate\":1453680000,\"DisputedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"ContestedFunds\":{\"Currency\":\"EUR\",\"Amount\":200},\"Status\":\"CLOSED\",\"StatusMessage\":null,\"DisputeReason\":{\"DisputeReasonMessage\":null,\"DisputeReasonType\":\"DUPLICATE\"},\"ResultCode\":\"LOST\",\"ResultMessage\":null,\"Id\":\"9179739\",\"Tag\":null,\"CreationDate\":1445952854,\"RepudiationId\":\"9179742\"}]",
+      "headers": {
+        "Date": "Fri, 20 Apr 2018 21:29:54 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4981",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=da94a0e8ec82747668703ba102ce22c2b1524259793; expires=Sat, 20-Apr-19 21:29:53 GMT; path=/; domain=.mangopay.com; HttpOnly",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-RateLimit": "441",
+        "X-RateLimit-Remaining": "1859",
+        "X-RateLimit-Reset": "1524260640",
+        "X-Number-Of-Pages": "42",
+        "X-Number-Of-Items": "418",
+        "Link": "<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/wallets/6031088/disputes?page=1&per_page=10>; rel=\"first\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/wallets/6031088/disputes?page=2&per_page=10>; rel=\"prev\",<https://api.sandbox.mangopay.com/v2.01/sdk-unit-tests/wallets/6031088/disputes?page=42&per_page=10>; rel=\"last\"",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40eab5803fa8a8b1-CDG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
