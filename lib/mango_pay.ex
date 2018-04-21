@@ -1,36 +1,51 @@
 defmodule MangoPay do
+  @moduledoc """
+  The elixir client for MangoPay API.
+
+  This module is the root of all the application.
+
+  ## Configuring
+  Set your API key by configuring the :mangopay application. You can see the default
+  configuration in the default_config/0 private function at the bottom of
+  this file. The value for platform client id is optional.
+
+  ```
+    config :mangopay, client_id: YOUR_MANGOPAY_CLIENT_ID
+    config :mangopay, passphrase: MANGOPAY_PLATFORM_KEY
+  ```
+  """
+
   @base_header %{"User-Agent": "Elixir", "Content-Type": "application/json"}
 
   @authorization_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Content-Type": "application/x-www-form-urlencoded", "Host": "api.sandbox.mangopay.com", "Content-Length": "29"}
 
   @payline_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Accept": "*/*", "Host": "homologation-webpayment.payline.com"}
 
-  @moduledoc """
-  Documentation for MangoPay.
-  The elixir client for MangoPay API.
-
-  The goal of this project is to allow user to communicate with MangoPay API
-  in elixir.
-  """
-
   def base_header do
     @base_header
   end
 
+  @doc """
+  Returns MANGOPAY_BASE_URL
+  """
   def base_url do
     "https://api.sandbox.mangopay.com"
   end
 
+
+  @doc """
+  Returns MANGOPAY_CLIENT
+  """
   def client do
     Application.get_env(:mangopay, :client)
   end
 
-  def version do
+  def mangopay_version do
     "v2.01"
   end
 
-  def version_and_client_id do
-    "/#{version()}/#{MangoPay.client()[:id]}"
+  def mangopay_version_and_client_id do
+    "/#{mangopay_version()}/#{MangoPay.client()[:id]}"
   end
 
   defp authorization_header do
@@ -89,7 +104,7 @@ defmodule MangoPay do
   end
 
   defp cond_mangopay url do
-    base_url() <> version_and_client_id() <> url
+    base_url() <> mangopay_version_and_client_id() <> url
   end
 
   defp decode_map body do
@@ -99,8 +114,8 @@ defmodule MangoPay do
       is_binary body -> body
     end
   end
-
-  def filter_and_send(method, url, body, headers, query, bang) do
+  # default request send to mangopay
+  defp filter_and_send(method, url, body, headers, query, bang) do
     cond do
       bang ->
         case {Mix.env, method} do
@@ -125,6 +140,9 @@ defmodule MangoPay do
     filter_and_send(method, url, body, headers, query, true)
   end
 
+  @doc """
+   Ask for authorization token to MangoPay
+  """
   def post_authorization do
     :post |> request!("/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response
   end

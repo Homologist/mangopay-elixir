@@ -1,4 +1,18 @@
 defmodule MangoPay.BankAccount do
+  @moduledoc """
+  Functions for working with bank accounts at MangoPay. You can:
+
+    * get an bank accounts of a user,
+    * list bank accounts users,
+    * create an IBAN bank account,
+    * create an US bank account,
+    * create an CA bank account,
+    * create an GB bank account,
+    * create an OTHER bank account,
+    * deactivate an bank account,
+
+  MangoPay API reference: https://docs.mangopay.com/endpoints/v2.01/bank-accounts#e24_the-bankaccount-object
+  """
   use MangoPay.Query.Base, "bankaccounts"
 
   def get_by_user user_id, bank_account_id do
