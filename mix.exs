@@ -28,8 +28,10 @@ defmodule Mangopay.Mixfile do
     [
       env: [
         {:client,
-         %{id: Application.get_env(:mangopay, :client_id), passphrase: Application.get_env(:mangopay, :passphrase)}
-        }
+         %{
+           id: Application.get_env(:mangopay, :client_id),
+           passphrase: Application.get_env(:mangopay, :passphrase)
+         }}
       ],
       extra_applications: [:logger]
     ]
