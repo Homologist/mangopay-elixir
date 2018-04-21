@@ -1,13 +1,13 @@
 defmodule SettlementTransferTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Mangopay.Factory
-  use Mangopay.UserFactory
-  use Mangopay.WalletFactory
-  use Mangopay.TransferFactory
-  use Mangopay.DisputeFactory
-  use Mangopay.RepudiationFactory
-  use Mangopay.SettlementTransferFactory
+  use MangoPay.Factory
+  use MangoPay.UserFactory
+  use MangoPay.WalletFactory
+  use MangoPay.TransferFactory
+  use MangoPay.DisputeFactory
+  use MangoPay.RepudiationFactory
+  use MangoPay.SettlementTransferFactory
   use Helper
 
   setup_all do
@@ -22,7 +22,7 @@ defmodule SettlementTransferTest do
   test "get settlement_transfer" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/settlement_transfer/get" do
       assert {:ok, response} =
-               Mangopay.SettlementTransfer.get(created_settlement_transfer()["Id"])
+               MangoPay.SettlementTransfer.get(created_settlement_transfer()["Id"])
 
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
@@ -31,7 +31,7 @@ defmodule SettlementTransferTest do
   test "create settlement_transfer" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/settlement_transfer/create" do
       assert {:ok, response} =
-               Mangopay.SettlementTransfer.create(
+               MangoPay.SettlementTransfer.create(
                  build(:created_repudiation)["Id"],
                  build(:settlement_transfer)
                )

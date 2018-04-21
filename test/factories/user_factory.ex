@@ -1,4 +1,4 @@
-defmodule Mangopay.UserFactory do
+defmodule MangoPay.UserFactory do
   defmacro __using__([]) do
     quote do
       def created_user_factory do
@@ -87,7 +87,7 @@ defmodule Mangopay.UserFactory do
         %{
           Tag: "custom meta",
           HeadquartersAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -95,9 +95,9 @@ defmodule Mangopay.UserFactory do
             Country: "FR"
           },
           LegalPersonType: "BUSINESS",
-          Name: "Mangopay Ltd",
+          Name: "MangoPay Ltd",
           LegalRepresentativeAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -118,9 +118,9 @@ defmodule Mangopay.UserFactory do
       def update_user_legal_factory do
         %{
           Tag: "custom meta",
-          Name: "Mangopay Ltd",
+          Name: "MangoPay Ltd",
           HeadquartersAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -129,7 +129,7 @@ defmodule Mangopay.UserFactory do
           },
           LegalPersonType: "BUSINESS",
           LegalRepresentativeAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -152,7 +152,7 @@ defmodule Mangopay.UserFactory do
           FirstName: "Joe",
           LastName: "Blogs",
           Address: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",

@@ -1,10 +1,10 @@
 defmodule ReportingTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Mangopay.Factory
-  use Mangopay.UserFactory
-  use Mangopay.WalletFactory
-  use Mangopay.ReportingFactory
+  use MangoPay.Factory
+  use MangoPay.UserFactory
+  use MangoPay.WalletFactory
+  use MangoPay.ReportingFactory
   use Helper
 
   setup_all do
@@ -19,7 +19,7 @@ defmodule ReportingTest do
   test "create reporting transaction" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
       assert {:ok, response} =
-               Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
+               MangoPay.Reporting.Transaction.create(build(:reporting_transaction))
 
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
@@ -27,14 +27,14 @@ defmodule ReportingTest do
 
   test "create reporting wallet" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/wallet/create" do
-      assert {:ok, response} = Mangopay.Reporting.Wallet.create(build(:reporting_wallet))
+      assert {:ok, response} = MangoPay.Reporting.Wallet.create(build(:reporting_wallet))
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
   end
 
   test "get reporting" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/get" do
-      assert {:ok, response} = Mangopay.Reporting.get(build(:created_reporting_transaction)["Id"])
+      assert {:ok, response} = MangoPay.Reporting.get(build(:created_reporting_transaction)["Id"])
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
       assert Poison.decode!(response.body)["Id"] == build(:created_reporting_transaction)["Id"]
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
@@ -43,7 +43,7 @@ defmodule ReportingTest do
 
   test "all reporting" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/all" do
-      assert {:ok, response} = Mangopay.Reporting.all()
+      assert {:ok, response} = MangoPay.Reporting.all()
       assert length(Poison.decode!(response.body)) > 0
     end
   end

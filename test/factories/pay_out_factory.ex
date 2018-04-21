@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.PayOutFactory do
+defmodule MangoPay.PayOutFactory do
   defmacro __using__([]) do
     quote do
       def created_pay_out(module_name \\ nil) do
@@ -35,7 +35,7 @@ defmodule Mangopay.PayOutFactory do
 
       def create_pay_out_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_out/create" do
-          Mangopay.PayOut.create(pay_out_hash())
+          MangoPay.PayOut.create(pay_out_hash())
         end
       end
     end

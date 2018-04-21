@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.TransactionFactory do
+defmodule MangoPay.TransactionFactory do
   defmacro __using__([]) do
     quote do
       def fixture_path(path) do
@@ -190,7 +190,7 @@ defmodule Mangopay.TransactionFactory do
       #        %{
       #          Tag: "custom meta",
       #          HeadquartersAddress: %{
-      #            AddressLine1: "1 Mangopay Street",
+      #            AddressLine1: "1 MangoPay Street",
       #            AddressLine2: "The Loop",
       #            City: "Paris",
       #            Region: "Ile de France",
@@ -198,9 +198,9 @@ defmodule Mangopay.TransactionFactory do
       #            Country: "FR"
       #          },
       #          LegalPersonType: "BUSINESS",
-      #          Name: "Mangopay Ltd",
+      #          Name: "MangoPay Ltd",
       #          LegalRepresentativeAddress: %{
-      #            AddressLine1: "1 Mangopay Street",
+      #            AddressLine1: "1 MangoPay Street",
       #            AddressLine2: "The Loop",
       #            City: "Paris",
       #            Region: "Ile de France",
@@ -221,9 +221,9 @@ defmodule Mangopay.TransactionFactory do
       #      def update_user_legal_hash do
       #        %{
       #          Tag: "custom meta",
-      #          Name: "Mangopay Ltd",
+      #          Name: "MangoPay Ltd",
       #          HeadquartersAddress: %{
-      #            AddressLine1: "1 Mangopay Street",
+      #            AddressLine1: "1 MangoPay Street",
       #            AddressLine2: "The Loop",
       #            City: "Paris",
       #            Region: "Ile de France",
@@ -232,7 +232,7 @@ defmodule Mangopay.TransactionFactory do
       #          },
       #          LegalPersonType: "BUSINESS",
       #          LegalRepresentativeAddress: %{
-      #            AddressLine1: "1 Mangopay Street",
+      #            AddressLine1: "1 MangoPay Street",
       #            AddressLine2: "The Loop",
       #            City: "Paris",
       #            Region: "Ile de France",
@@ -448,26 +448,26 @@ defmodule Mangopay.TransactionFactory do
       #      end
 
       #      def first_ubo_declaration do
-      #        {:ok, response} = Mangopay.UboDeclaration.all()
+      #        {:ok, response} = MangoPay.UboDeclaration.all()
       #        response.body |> Poison.decode!() |> List.first()
       #      end
       #
       #      def get_ubo_declaration do
-      #        Mangopay.UboDeclaration.get(first_ubo_declaration()["Id"])
+      #        MangoPay.UboDeclaration.get(first_ubo_declaration()["Id"])
       #      end
       #
       #      def update_card_cassette do
-      #        {:ok, response} = Mangopay.Card.create(card_hash())
+      #        {:ok, response} = MangoPay.Card.create(card_hash())
       #        registration_card = Poison.decode!(response.body)
       #
       #        response =
-      #          Mangopay.request!(
+      #          MangoPay.request!(
       #            {:post, registration_card["CardRegistrationURL"],
       #             created_registration_card_preregistrationdata(registration_card)}
       #          )
       #
       #        registration_data = response.body
-      #        Mangopay.Card.update(registration_card["Id"], update_card_hash(registration_data))
+      #        MangoPay.Card.update(registration_card["Id"], update_card_hash(registration_data))
       #      end
       #
       #      def Factories.SharedFunctions.module_name(module) do
@@ -476,46 +476,46 @@ defmodule Mangopay.TransactionFactory do
       #
       #      def create_user_bis_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/natural/create_bis" do
-      #          Mangopay.User.Natural.create(build(:user_natural))
+      #          MangoPay.User.Natural.create(build(:user_natural))
       #        end
       #      end
       #
       #
       #      def create_permission_group_casssette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/create" do
-      #          Mangopay.PermissionGroup.create(permission_group_hash())
+      #          MangoPay.PermissionGroup.create(permission_group_hash())
       #        end
       #      end
       #
       #      def get_permission_group_casssette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/get" do
-      #          Mangopay.PermissionGroup.get(created_permission_group()["Id"])
+      #          MangoPay.PermissionGroup.get(created_permission_group()["Id"])
       #        end
       #      end
       #
       #      def all_dispute_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/all" do
-      #          Mangopay.Dispute.all()
+      #          MangoPay.Dispute.all()
       #        end
       #      end
       #
       #      def create_hook_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/create" do
-      #          Mangopay.Hook.create(hook_hash())
+      #          MangoPay.Hook.create(hook_hash())
       #        end
       #
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/all" do
-      #          Mangopay.Hook.all()
+      #          MangoPay.Hook.all()
       #        end
       #      end
       #
       #      def create_kyc_document_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create" do
-      #          Mangopay.KycDocument.create_to_user(build(:created_user)["Id"], build(:kyc_document))
+      #          MangoPay.KycDocument.create_to_user(build(:created_user)["Id"], build(:kyc_document))
       #        end
       #
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_page" do
-      #          Mangopay.KycDocument.create_page_to_user_kyc_document(
+      #          MangoPay.KycDocument.create_page_to_user_kyc_document(
       #            build(:created_user)["Id"],
       #            build(:created_kyc_document)["Id"],
       #            build(:kyc_document_page)
@@ -523,7 +523,7 @@ defmodule Mangopay.TransactionFactory do
       #        end
       #
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/submit" do
-      #          Mangopay.KycDocument.submit(
+      #          MangoPay.KycDocument.submit(
       #            build(:created_user)["Id"],
       #            build(:created_kyc_document)["Id"],
       #            build(:submit_kyc_document)
@@ -533,62 +533,62 @@ defmodule Mangopay.TransactionFactory do
       #
       #      def create_permission_group_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/create" do
-      #          Mangopay.PermissionGroup.create(permission_group_hash())
+      #          MangoPay.PermissionGroup.create(permission_group_hash())
       #        end
       #      end
       #
       #      def create_pay_in_refund_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/refund/pay_in/create" do
-      #          Mangopay.Refund.PayIn.create(build(:created_pay_in)["Id"], build(:refund_pay_in))
+      #          MangoPay.Refund.PayIn.create(build(:created_pay_in)["Id"], build(:refund_pay_in))
       #        end
       #      end
       #
       #      def create_transfer_refund_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/refund/transfer/create" do
-      #          Mangopay.Refund.Transfer.create(build(:created_transfer)["Id"], build(:transfer))
+      #          MangoPay.Refund.Transfer.create(build(:created_transfer)["Id"], build(:transfer))
       #        end
       #      end
       #
       #      def create_sso_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/sso/create" do
-      #          Mangopay.Sso.create(sso_hash())
+      #          MangoPay.Sso.create(sso_hash())
       #        end
       #      end
       #
       #      def create_transfer_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transfer/create" do
-      #          Mangopay.Transfer.create(build(:transfer))
+      #          MangoPay.Transfer.create(build(:transfer))
       #        end
       #      end
       #
       def create_transaction_reporting_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
-          Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
+          MangoPay.Reporting.Transaction.create(build(:reporting_transaction))
         end
       end
 
       #
       #      def create_wallet_reporting_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/wallet/create" do
-      #          Mangopay.Reporting.Wallet.create(build(:reporting_wallet))
+      #          MangoPay.Reporting.Wallet.create(build(:reporting_wallet))
       #        end
       #      end
       #
       #      def all_reporting_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/all" do
-      #          Mangopay.Reporting.all()
+      #          MangoPay.Reporting.all()
       #        end
       #      end
       #
       #      def get_repudiation_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/repudiation/get" do
-      #          Mangopay.Repudiation.get(build(:created_dispute_bis)["RepudiationId"])
+      #          MangoPay.Repudiation.get(build(:created_dispute_bis)["RepudiationId"])
       #        end
       #      end
       #
       #      def create_settlement_transfer_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/settlement_transfer/create" do
-      #          Mangopay.SettlementTransfer.create(
+      #          MangoPay.SettlementTransfer.create(
       #            build(:created_repudiation)["Id"],
       #            build(:settlement_transfer)
       #          )
@@ -597,7 +597,7 @@ defmodule Mangopay.TransactionFactory do
       #
       #      def create_ubo_declaration_cassette do
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/user/all" do
-      #          Mangopay.UboDeclaration.all()
+      #          MangoPay.UboDeclaration.all()
       #        end
       #
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/user/get" do
@@ -605,7 +605,7 @@ defmodule Mangopay.TransactionFactory do
       #        end
       #
       #        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/update" do
-      #          Mangopay.UboDeclaration.update(
+      #          MangoPay.UboDeclaration.update(
       #            build(:created_ubo_declaration)["Id"],
       #            build(:update_ubo_declaration)
       #          )

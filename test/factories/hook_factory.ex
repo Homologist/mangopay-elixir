@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.HookFactory do
+defmodule MangoPay.HookFactory do
   defmacro __using__([]) do
     quote do
       def created_hook(module_name \\ nil) do
@@ -35,11 +35,11 @@ defmodule Mangopay.HookFactory do
 
       def create_hook_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/create" do
-          Mangopay.Hook.create(hook_hash())
+          MangoPay.Hook.create(hook_hash())
         end
 
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/hook/all" do
-          Mangopay.Hook.all()
+          MangoPay.Hook.all()
         end
       end
     end

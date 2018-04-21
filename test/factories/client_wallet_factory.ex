@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.ClientWalletFactory do
+defmodule MangoPay.ClientWalletFactory do
   defmacro __using__([]) do
     quote do
       def created_client_wallet(module_name \\ nil) do

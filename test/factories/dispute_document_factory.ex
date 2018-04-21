@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.DisputeDocumentFactory do
+defmodule MangoPay.DisputeDocumentFactory do
   defmacro __using__([]) do
     quote do
       def created_dispute_document(module_name \\ nil) do
@@ -52,18 +52,18 @@ defmodule Mangopay.DisputeDocumentFactory do
       end
 
       def get_dispute_document do
-        {:ok, response} = Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
+        {:ok, response} = MangoPay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
         id = List.first(Poison.decode!(response.body))["Id"]
-        Mangopay.DisputeDocument.get(id)
+        MangoPay.DisputeDocument.get(id)
       end
 
       def create_dispute_document_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/all" do
-          Mangopay.Dispute.all()
+          MangoPay.Dispute.all()
         end
 
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute_document/dispute/all" do
-          Mangopay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
+          MangoPay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
         end
 
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute_document/create" do
