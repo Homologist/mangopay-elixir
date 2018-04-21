@@ -123,7 +123,8 @@ defmodule Mangopay.CardFactory do
 
         response =
           Mangopay.request!(
-            :post, registration_card["CardRegistrationURL"],
+            :post,
+            registration_card["CardRegistrationURL"],
             created_registration_card_preregistrationdata(registration_card)
           )
 
@@ -151,7 +152,8 @@ defmodule Mangopay.CardFactory do
           registration_card = Poison.decode!(response.body)
 
           Mangopay.request(
-            :post, registration_card["CardRegistrationURL"],
+            :post,
+            registration_card["CardRegistrationURL"],
             created_registration_card_preregistrationdata(registration_card)
           )
         end
@@ -189,7 +191,8 @@ defmodule Mangopay.CardFactory do
           registration_card = Poison.decode!(response.body)
 
           Mangopay.request(
-            :post, registration_card["CardRegistrationURL"],
+            :post,
+            registration_card["CardRegistrationURL"],
             created_registration_card_preregistrationdata(registration_card)
           )
         end
@@ -208,8 +211,9 @@ defmodule Mangopay.CardFactory do
 
           {:ok, response} =
             Mangopay.request(
-              :post, body["CardRegistrationURL"],
-               "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
+              :post,
+              body["CardRegistrationURL"],
+              "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
             )
 
           data = response.body
