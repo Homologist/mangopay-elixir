@@ -1,4 +1,4 @@
-defmodule Mangopay.MandateFactory do
+defmodule MangoPay.MandateFactory do
   defmacro __using__([]) do
     quote do
       def created_mandate_factory(module_name \\ nil) do

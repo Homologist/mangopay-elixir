@@ -1,4 +1,4 @@
-defmodule Mangopay.CardFactory do
+defmodule MangoPay.CardFactory do
   defmacro __using__([]) do
     quote do
       def created_registration_card(module_name \\ nil) do
@@ -118,40 +118,40 @@ defmodule Mangopay.CardFactory do
       end
 
       def update_card_cassette do
-        {:ok, response} = Mangopay.Card.create(card_hash())
+        {:ok, response} = MangoPay.Card.create(card_hash())
         registration_card = Poison.decode!(response.body)
 
         response =
-          Mangopay.request!(
+          MangoPay.request!(
             :post,
             registration_card["CardRegistrationURL"],
             created_registration_card_preregistrationdata(registration_card)
           )
 
         registration_data = response.body
-        Mangopay.Card.update(registration_card["Id"], update_card_hash(registration_data))
+        MangoPay.Card.update(registration_card["Id"], update_card_hash(registration_data))
       end
 
       def create_card_cassette do
         module_name = Factories.SharedFunctions.module_name(__MODULE__)
 
         use_cassette "#{module_name}/user/natural/create" do
-          Mangopay.User.Natural.create(build(:user_natural))
+          MangoPay.User.Natural.create(build(:user_natural))
         end
 
         use_cassette "#{module_name}/user/legal/create" do
-          Mangopay.User.Legal.create(build(:user_legal))
+          MangoPay.User.Legal.create(build(:user_legal))
         end
 
         use_cassette "#{module_name}/card/registration/create" do
-          Mangopay.Card.create(card_hash())
+          MangoPay.Card.create(card_hash())
         end
 
         use_cassette "#{module_name}/card/registrationdata" do
-          {:ok, response} = Mangopay.Card.create(card_hash())
+          {:ok, response} = MangoPay.Card.create(card_hash())
           registration_card = Poison.decode!(response.body)
 
-          Mangopay.request(
+          MangoPay.request(
             :post,
             registration_card["CardRegistrationURL"],
             created_registration_card_preregistrationdata(registration_card)
@@ -163,11 +163,11 @@ defmodule Mangopay.CardFactory do
         end
 
         use_cassette "#{module_name}/card/create" do
-          Mangopay.Card.get(updated_card()["CardId"])
+          MangoPay.Card.get(updated_card()["CardId"])
         end
 
         use_cassette "#{module_name}/card/get" do
-          Mangopay.Card.get(updated_card()["CardId"])
+          MangoPay.Card.get(updated_card()["CardId"])
         end
       end
 
@@ -175,22 +175,22 @@ defmodule Mangopay.CardFactory do
         module_name = Factories.SharedFunctions.module_name(__MODULE__)
 
         use_cassette "#{module_name}/user/natural/create" do
-          Mangopay.User.Natural.create(build(:user_natural))
+          MangoPay.User.Natural.create(build(:user_natural))
         end
 
         use_cassette "#{module_name}/user/legal/create" do
-          Mangopay.User.Legal.create(build(:user_legal))
+          MangoPay.User.Legal.create(build(:user_legal))
         end
 
         use_cassette "#{module_name}/card/registration/create" do
-          Mangopay.Card.create(card_hash())
+          MangoPay.Card.create(card_hash())
         end
 
         use_cassette "#{module_name}/card/registrationdata" do
-          {:ok, response} = Mangopay.Card.create(card_hash())
+          {:ok, response} = MangoPay.Card.create(card_hash())
           registration_card = Poison.decode!(response.body)
 
-          Mangopay.request(
+          MangoPay.request(
             :post,
             registration_card["CardRegistrationURL"],
             created_registration_card_preregistrationdata(registration_card)
@@ -202,28 +202,28 @@ defmodule Mangopay.CardFactory do
         end
 
         use_cassette "#{module_name}/card/create" do
-          Mangopay.Card.get(updated_card()["CardId"])
+          MangoPay.Card.get(updated_card()["CardId"])
         end
 
         use_cassette "#{module_name}/card/create_bis" do
-          {:ok, response} = Mangopay.Card.create(card_hash())
+          {:ok, response} = MangoPay.Card.create(card_hash())
           body = Poison.decode!(response.body)
 
           {:ok, response} =
-            Mangopay.request(
+            MangoPay.request(
               :post,
               body["CardRegistrationURL"],
               "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4970100000000154&cardExpirationDate=1219&cardCvx=123"
             )
 
           data = response.body
-          {:ok, response} = Mangopay.Card.update(body["Id"], %{RegistrationData: data})
+          {:ok, response} = MangoPay.Card.update(body["Id"], %{RegistrationData: data})
           body = Poison.decode!(response.body)
-          Mangopay.Card.get(body["CardId"])
+          MangoPay.Card.get(body["CardId"])
         end
 
         use_cassette "#{module_name}/card/get" do
-          Mangopay.Card.get(updated_card()["CardId"])
+          MangoPay.Card.get(updated_card()["CardId"])
         end
       end
     end

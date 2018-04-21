@@ -1,15 +1,15 @@
 defmodule UserTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  use Mangopay.Factory
-  use Mangopay.UserFactory
+  use MangoPay.Factory
+  use MangoPay.UserFactory
   use Helper
 
   setup_all do
     create_user_cassette()
 
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/legal/create" do
-      Mangopay.User.Legal.create(build(:user_legal))
+      MangoPay.User.Legal.create(build(:user_legal))
     end
 
     :ok
@@ -17,14 +17,14 @@ defmodule UserTest do
 
   test "create natural user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/natural/create" do
-      assert {:ok, _} = Mangopay.User.Natural.create(build(:user_natural))
+      assert {:ok, _} = MangoPay.User.Natural.create(build(:user_natural))
     end
   end
 
   test "update natural user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/natural/update" do
       assert {:ok, response} =
-               Mangopay.User.Natural.update(
+               MangoPay.User.Natural.update(
                  build(:created_natural_user)["Id"],
                  build(:update_user_natural)
                )
@@ -35,14 +35,14 @@ defmodule UserTest do
 
   test "create legal user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/legal/create" do
-      assert {:ok, _} = Mangopay.User.Legal.create(build(:user_legal))
+      assert {:ok, _} = MangoPay.User.Legal.create(build(:user_legal))
     end
   end
 
   test "update legal user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/legal/update" do
       assert {:ok, response} =
-               Mangopay.User.Legal.update(
+               MangoPay.User.Legal.update(
                  build(:created_legal_user)["Id"],
                  build(:update_user_legal)
                )
@@ -53,21 +53,21 @@ defmodule UserTest do
 
   test "get  user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/get" do
-      assert {:ok, response} = Mangopay.User.get(build(:created_legal_user)["Id"])
+      assert {:ok, response} = MangoPay.User.get(build(:created_legal_user)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_legal_user)["Id"]
     end
   end
 
   test "get emoney  user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/emoney/get" do
-      assert {:ok, response} = Mangopay.User.get_emoney(build(:created_legal_user)["Id"])
+      assert {:ok, response} = MangoPay.User.get_emoney(build(:created_legal_user)["Id"])
       assert Poison.decode!(response.body)["UserId"] == build(:created_legal_user)["Id"]
     end
   end
 
   test "all  user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/user/all" do
-      assert {:ok, response} = Mangopay.User.all()
+      assert {:ok, response} = MangoPay.User.all()
       assert Enum.count(Poison.decode!(response.body)) > 0
     end
   end

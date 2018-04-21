@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.PreauthorizationFactory do
+defmodule MangoPay.PreauthorizationFactory do
   defmacro __using__([]) do
     quote do
       def created_preauthorization(module_name \\ nil) do
@@ -47,7 +47,7 @@ defmodule Mangopay.PreauthorizationFactory do
           },
           Billing: %{
             Address: %{
-              AddressLine1: "1 Mangopay Street",
+              AddressLine1: "1 MangoPay Street",
               AddressLine2: "The Loop",
               City: "Paris",
               Region: "Ile de France",
@@ -70,13 +70,13 @@ defmodule Mangopay.PreauthorizationFactory do
 
       def create_preauthorization_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/create" do
-          Mangopay.PreAuthorization.create(preauthorization_hash())
+          MangoPay.PreAuthorization.create(preauthorization_hash())
         end
       end
 
       def cancel_preauthorization_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/cancel" do
-          Mangopay.PreAuthorization.cancel(
+          MangoPay.PreAuthorization.cancel(
             created_preauthorization()["Id"],
             cancel_preauthorization_hash()
           )

@@ -1,4 +1,4 @@
-defmodule Mangopay.WalletFactory do
+defmodule MangoPay.WalletFactory do
   defmacro __using__([]) do
     quote do
       def created_wallet(module_name \\ nil) do
@@ -52,13 +52,13 @@ defmodule Mangopay.WalletFactory do
 
       def create_wallet_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/wallet/create" do
-          Mangopay.Wallet.create(build(:wallet))
+          MangoPay.Wallet.create(build(:wallet))
         end
       end
 
       def create_wallet_bis_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/wallet/create_bis" do
-          Mangopay.Wallet.create(build(:wallet_bis))
+          MangoPay.Wallet.create(build(:wallet_bis))
         end
       end
     end

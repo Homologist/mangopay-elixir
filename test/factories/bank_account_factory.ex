@@ -1,4 +1,4 @@
-defmodule Mangopay.BankAccountFactory do
+defmodule MangoPay.BankAccountFactory do
   defmacro __using__([]) do
     quote do
       def created_bank_account_factory(module_name \\ nil) do
@@ -23,7 +23,7 @@ defmodule Mangopay.BankAccountFactory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -40,7 +40,7 @@ defmodule Mangopay.BankAccountFactory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -58,7 +58,7 @@ defmodule Mangopay.BankAccountFactory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -77,7 +77,7 @@ defmodule Mangopay.BankAccountFactory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",
@@ -94,7 +94,7 @@ defmodule Mangopay.BankAccountFactory do
         %{
           Tag: "custom meta",
           OwnerAddress: %{
-            AddressLine1: "1 Mangopay Street",
+            AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",
             City: "Paris",
             Region: "Ile de France",

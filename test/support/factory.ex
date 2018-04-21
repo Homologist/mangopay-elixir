@@ -1,4 +1,4 @@
-defmodule Mangopay.Factory do
+defmodule MangoPay.Factory do
   use ExMachina
 
   defmacro __using__([]) do

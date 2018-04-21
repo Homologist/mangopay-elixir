@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.PermissionGroupFactory do
+defmodule MangoPay.PermissionGroupFactory do
   defmacro __using__([]) do
     quote do
       def created_permission_group(module_name \\ nil) do
@@ -36,13 +36,13 @@ defmodule Mangopay.PermissionGroupFactory do
 
       def create_permission_group_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/create" do
-          Mangopay.PermissionGroup.create(permission_group_hash())
+          MangoPay.PermissionGroup.create(permission_group_hash())
         end
       end
 
       def get_permission_group_casssette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/permission_group/get" do
-          Mangopay.PermissionGroup.get(created_permission_group()["Id"])
+          MangoPay.PermissionGroup.get(created_permission_group()["Id"])
         end
       end
     end

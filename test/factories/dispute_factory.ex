@@ -1,4 +1,4 @@
-defmodule Mangopay.DisputeFactory do
+defmodule MangoPay.DisputeFactory do
   defmacro __using__([]) do
     quote do
       def created_dispute_factory(module_name \\ nil) do
@@ -30,7 +30,7 @@ defmodule Mangopay.DisputeFactory do
       end
 
       def created_dispute_bis_factory do
-        {:ok, response} = Mangopay.Dispute.all()
+        {:ok, response} = MangoPay.Dispute.all()
         response = Poison.decode!(response.body)
         List.last(Enum.filter(response, fn x -> x["RepudiationId"] end))
       end
@@ -38,21 +38,21 @@ defmodule Mangopay.DisputeFactory do
       def created_dispute_transaction_factory do
         response = build(:created_dispute_bis)
         id = response["Id"]
-        {:ok, response} = Mangopay.Transaction.all_by_dispute(id)
+        {:ok, response} = MangoPay.Transaction.all_by_dispute(id)
         List.last(Poison.decode!(response.body))
       end
 
       def created_dispute_user_factory do
         response = build(:created_dispute_transaction)
         id = response["AuthorId"]
-        {:ok, response} = Mangopay.User.get(id)
+        {:ok, response} = MangoPay.User.get(id)
         Poison.decode!(response.body)
       end
 
       def created_dispute_wallet_factory do
         response = build(:created_dispute_transaction)
         id = response["DebitedWalletId"]
-        {:ok, response} = Mangopay.Wallet.get(id)
+        {:ok, response} = MangoPay.Wallet.get(id)
         Poison.decode!(response.body)
       end
     end

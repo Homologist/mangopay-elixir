@@ -1,4 +1,4 @@
-defmodule Mangopay.ClientFactory do
+defmodule MangoPay.ClientFactory do
   defmacro __using__([]) do
     quote do
       def created_client(module_name \\ nil) do
@@ -29,13 +29,13 @@ defmodule Mangopay.ClientFactory do
 
       def all_client_wallet do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/all" do
-          Mangopay.ClientWallet.all()
+          MangoPay.ClientWallet.all()
         end
       end
 
       def get_client_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client/get" do
-          Mangopay.Client.get()
+          MangoPay.Client.get()
         end
       end
     end

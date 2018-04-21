@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.SettlementTransferFactory do
+defmodule MangoPay.SettlementTransferFactory do
   defmacro __using__([]) do
     quote do
       def created_settlement_transfer(module_name \\ nil) do

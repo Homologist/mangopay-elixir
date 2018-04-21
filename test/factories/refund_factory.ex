@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.RefundFactory do
+defmodule MangoPay.RefundFactory do
   defmacro __using__([]) do
     quote do
       def created_refund_factory(module_name \\ nil) do

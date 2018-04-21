@@ -1,4 +1,4 @@
-defmodule Mangopay.Mixfile do
+defmodule MangoPay.Mixfile do
   use Mix.Project
 
   def project do

@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.SsoFactory do
+defmodule MangoPay.SsoFactory do
   defmacro __using__([]) do
     quote do
       def created_sso(module_name \\ nil) do
@@ -41,7 +41,7 @@ defmodule Mangopay.SsoFactory do
 
       def create_sso_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/sso/create" do
-          Mangopay.Sso.create(sso_hash())
+          MangoPay.Sso.create(sso_hash())
         end
       end
     end

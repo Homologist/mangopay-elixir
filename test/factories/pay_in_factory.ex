@@ -1,6 +1,6 @@
 ExUnit.start()
 
-defmodule Mangopay.PayInFactory do
+defmodule MangoPay.PayInFactory do
   defmacro __using__([]) do
     quote do
       def created_pay_in_factory(module_name \\ nil) do
@@ -65,7 +65,7 @@ defmodule Mangopay.PayInFactory do
           SecureMode: "DEFAULT",
           Billing: %{
             Address: %{
-              AddressLine1: "1 Mangopay Street",
+              AddressLine1: "1 MangoPay Street",
               AddressLine2: "The Loop",
               City: "Paris",
               Region: "Ile de France",

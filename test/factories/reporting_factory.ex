@@ -1,4 +1,4 @@
-defmodule Mangopay.ReportingFactory do
+defmodule MangoPay.ReportingFactory do
   defmacro __using__([]) do
     quote do
       def created_reporting_transaction_factory(module_name \\ nil) do
@@ -108,19 +108,19 @@ defmodule Mangopay.ReportingFactory do
 
       def create_transaction_reporting_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
-          Mangopay.Reporting.Transaction.create(build(:reporting_transaction))
+          MangoPay.Reporting.Transaction.create(build(:reporting_transaction))
         end
       end
 
       def create_wallet_reporting_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/wallet/create" do
-          Mangopay.Reporting.Wallet.create(build(:reporting_wallet))
+          MangoPay.Reporting.Wallet.create(build(:reporting_wallet))
         end
       end
 
       def all_reporting_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/all" do
-          Mangopay.Reporting.all()
+          MangoPay.Reporting.all()
         end
       end
     end
