@@ -46,6 +46,7 @@ defmodule MangoPay.Mixfile do
       {:inch_ex, only: :docs},
       {:excoveralls, "~> 0.8", only: :test},
       {:ex_machina, "~> 2.2"},
+      {:ex_doc, "0.18.3", only: :dev},
       {:exvcr, "~> 0.8", only: :test}
     ]
   end

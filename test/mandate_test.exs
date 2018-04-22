@@ -23,7 +23,7 @@ defmodule MandateTest do
   test "cancel mandate" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/cancel" do
       assert {:ok, response} =
-               MangoPay.Mandate.cancel(build(:created_user)["Id"], build(:update_mandate))
+               MangoPay.Mandate.cancel(build(:created_user)["Id"])
 
       assert Poison.decode!(response.body)["Tag"] == build(:cancel_mandate)["Tag"]
     end
@@ -54,7 +54,7 @@ defmodule MandateTest do
   test "all mandate by user and bank_account" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/user/bank_account/all" do
       assert {:ok, response} =
-               MangoPay.Mandate.all_by_user_and_bank_account(
+               MangoPay.Mandate.all_by_bank_account(
                  build(:created_user)["Id"],
                  build(:created_bank_account)["Id"]
                )

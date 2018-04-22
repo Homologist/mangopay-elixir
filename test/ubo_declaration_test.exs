@@ -21,7 +21,7 @@ defmodule UboDeclarationTest do
 
   test "create ubo_declaration" do
     #    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/ubo_declaration/user/create" do
-    #      assert  {:ok, response} = MangoPay.UboDeclaration.create_to_user build(:created_user)["Id"], ubo_declaration_hash()
+    #      assert  {:ok, response} = MangoPay.UboDeclaration.create build(:created_user)["Id"], ubo_declaration_hash()
     #      assert Poison.decode!(response.body)["Status"] == "CREATED"
     #    end
   end

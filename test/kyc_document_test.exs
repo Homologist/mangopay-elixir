@@ -15,7 +15,7 @@ defmodule KycDocumentTest do
   test "create kyc_document to user" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create" do
       assert {:ok, response} =
-               MangoPay.KycDocument.create_to_user(
+               MangoPay.KycDocument.create(
                  build(:created_user)["Id"],
                  build(:kyc_document)
                )
@@ -40,7 +40,7 @@ defmodule KycDocumentTest do
   test "create page to user kyc_document" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_page" do
       assert {:ok, response} =
-               MangoPay.KycDocument.create_page_to_user_kyc_document(
+               MangoPay.KycDocument.create_page(
                  build(:created_user)["Id"],
                  build(:created_kyc_document)["Id"],
                  build(:kyc_document_page)

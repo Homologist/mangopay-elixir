@@ -1,8 +1,21 @@
 defmodule MangoPay.PayIn do
+  @moduledoc """
+  Functions for MangoPay pay in.
+
+  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object
+  """
   use MangoPay.Query.Base
   set_action "payins", [{:get}]
 
-  def card_details(payin_id) do
+  @doc """
+  Get card details.
+
+  ## Examples
+
+      {:ok, pay_in} = MangoPay.PayIn.get_card_details("pay_in_id")
+
+  """
+  def get_card_details(payin_id) do
     _get [resource(), "card/web", payin_id, "extended"]
   end
 

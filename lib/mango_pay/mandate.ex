@@ -1,16 +1,42 @@
 defmodule MangoPay.Mandate do
+  @moduledoc """
+  Functions for MangoPay mandate.
+
+  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/mandates#e230_the-mandate-object
+  """
   use MangoPay.Query.Base
   set_action "mandates", [{:get}, {:create, ["mandates", "directdebit/web"]}, {:all}]
 
-  def cancel mandate_id, params do
-    _update params, [resource(), "#{mandate_id}", "cancel"]
+  @doc """
+  Cancel a mandate object.
+
+  ## Examples
+      {:ok, mandate} = MangoPay.Mandate.cancel("mandate_id")
+
+  """
+  def cancel mandate_id do
+    _update %{}, [resource(), "#{mandate_id}", "cancel"]
   end
 
-  def all_by_user id, query \\ nil do
-    _all [MangoPay.User.path(id), resource()], query
+  @doc """
+  List all mandates for a user.
+
+  ## Examples
+      {:ok, mandates} = MangoPay.Mandate.all_by_user("user_id")
+
+  """
+  def all_by_user user_id, query \\ nil do
+    _all [MangoPay.User.path(user_id), resource()], query
   end
 
-  def all_by_user_and_bank_account user_id, bank_account_id, query \\ nil do
+  @doc """
+  List all mandates for a bank account.
+
+  ## Examples
+      {:ok, mandates} = MangoPay.Mandate.all_by_bank_account("user_id", "bank_account_id")
+
+  """
+  def all_by_bank_account user_id, bank_account_id, query \\ nil do
     _all [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
   end
 end
