@@ -1,8 +1,6 @@
 defmodule MangoPay.PayIn do
   @moduledoc """
-  Functions for MangoPay pay in.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object
+  Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
   """
   use MangoPay.Query.Base
   set_action "payins", [{:get}]

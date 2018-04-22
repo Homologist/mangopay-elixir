@@ -1,8 +1,6 @@
 defmodule MangoPay.User do
   @moduledoc """
-  Functions for MangoPay client.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/users#e253_the-user-object
+  Functions for MangoPay [client](https://docs.mangopay.com/endpoints/v2.01/users#e253_the-user-object).
   """
   use MangoPay.Query.Base
   set_action "users", [{:get}, {:all}]

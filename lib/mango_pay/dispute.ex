@@ -1,8 +1,6 @@
 defmodule MangoPay.Dispute do
   @moduledoc """
-  Functions for MangoPay dispute object.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/disputes#e176_the-dispute-object
+  Functions for MangoPay [dispute](https://docs.mangopay.com/endpoints/v2.01/disputes#e176_the-dispute-object) object.
   """
   use MangoPay.Query.Base
   set_action "disputes", [{:get}, {:update}, {:all}]

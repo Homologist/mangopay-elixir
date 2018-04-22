@@ -1,8 +1,6 @@
 defmodule MangoPay.DisputeDocument do
   @moduledoc """
-  Functions for MangoPay dispute document.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/dispute-documents#e214_the-dispute-document-object
+  Functions for MangoPay [dispute document](https://docs.mangopay.com/endpoints/v2.01/dispute-documents#e214_the-dispute-document-object).
   """
   use MangoPay.Query.Base
   set_action "dispute-documents", [{:get}]

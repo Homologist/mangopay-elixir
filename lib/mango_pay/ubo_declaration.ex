@@ -1,8 +1,6 @@
 defmodule MangoPay.UboDeclaration do
   @moduledoc """
-  Functions for MangoPay ubo declaration.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/ubo-declarations#e918_the-ubo-declaration-object
+  Functions for MangoPay [ubo declaration](https://docs.mangopay.com/endpoints/v2.01/ubo-declarations#e918_the-ubo-declaration-object).
   """
   use MangoPay.Query.Base
   set_action "ubodeclarations", [{:get}, {:update}, {:all}]

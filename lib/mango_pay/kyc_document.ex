@@ -1,8 +1,6 @@
 defmodule MangoPay.KycDocument do
   @moduledoc """
-  Functions for MangoPay kyc document.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/kyc-documents#e204_the-kyc-document-object
+  Functions for MangoPay [kyc document](https://docs.mangopay.com/endpoints/v2.01/kyc-documents#e204_the-kyc-document-object).
   """
   use MangoPay.Query.Base
   set_action "kyc/documents", [{:get}, {:all}]

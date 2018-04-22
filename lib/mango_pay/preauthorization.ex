@@ -1,8 +1,6 @@
 defmodule MangoPay.PreAuthorization do
   @moduledoc """
-  Functions for MangoPay preauthorization.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/preauthorizations#e183_the-preauthorization-object
+  Functions for MangoPay [pre authorization](https://docs.mangopay.com/endpoints/v2.01/preauthorizations#e183_the-preauthorization-object).
   """
   use MangoPay.Query.Base
   set_action "preauthorizations", [{:get}, {:create, "/card/direct"}]

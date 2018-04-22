@@ -1,8 +1,6 @@
 defmodule MangoPay.Reporting do
   @moduledoc """
-  Functions for MangoPay reporting.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/reporting#e824_the-report-object
+  Functions for MangoPay [reporting](https://docs.mangopay.com/endpoints/v2.01/reporting#e824_the-report-object).
   """
   use MangoPay.Query.Base
   set_action "reports", [{:get}, {:all}]
