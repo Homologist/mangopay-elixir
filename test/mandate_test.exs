@@ -22,8 +22,7 @@ defmodule MandateTest do
 
   test "cancel mandate" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/mandate/cancel" do
-      assert {:ok, response} =
-               MangoPay.Mandate.cancel(build(:created_user)["Id"])
+      assert {:ok, response} = MangoPay.Mandate.cancel(build(:created_user)["Id"])
 
       assert Poison.decode!(response.body)["Tag"] == build(:cancel_mandate)["Tag"]
     end
