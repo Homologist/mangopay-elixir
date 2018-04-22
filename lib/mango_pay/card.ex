@@ -7,14 +7,38 @@ defmodule MangoPay.Card do
   alias MangoPay.Transaction, as: Transaction
 
   use MangoPay.Query.Base
-  set_action "cards", [{:get}]
+  set_path "cards"
+
+  @doc """
+  Get a card object.
+
+  ## Examples
+
+      {:ok, card} = MangoPay.Card.get("card_id")
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a card object.
+
+  ## Examples
+
+      card = MangoPay.Card.get!("card_id")
+
+  """
+  def get! id do
+    _get! id
+  end
 
   @doc """
   Get a card registration object.
 
   ## Examples
 
-      {:ok, card} = MangoPay.Card.get("card_id")
+      {:ok, card} = MangoPay.Card.get_registration("card_id")
 
   """
   def get_registration id do

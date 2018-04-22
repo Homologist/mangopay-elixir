@@ -3,7 +3,29 @@ defmodule MangoPay.Transaction do
   Functions for MangoPay [transaction](https://docs.mangopay.com/endpoints/v2.01/transactions#e222_the-transaction-object).
   """
   use MangoPay.Query.Base
-  set_action "transactions", [{:all}]
+  set_path "transactions"
+
+  @doc """
+  List all transactions.
+
+  ## Examples
+      {:ok, transactions} = MangoPay.Transaction.all
+
+  """
+  def all id do
+    _all id
+  end
+
+  @doc """
+  List all transactions.
+
+  ## Examples
+      transactions = MangoPay.Transaction.all!
+
+  """
+  def all! id do
+    _all! id
+  end
 
   @doc """
   List all transactions by user.

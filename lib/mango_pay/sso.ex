@@ -3,7 +3,115 @@ defmodule MangoPay.Sso do
   Functions for MangoPay [Sso](https://docs.mangopay.com/endpoints/v2.01/sso#e872_the-sso-object).
   """
   use MangoPay.Query.Base
-  set_action "clients/ssos", [{:get}, {:create}, {:update}, {:all}]
+  set_path "clients/ssos"
+
+  @doc """
+  Get a sso.
+
+  ## Examples
+      {:ok, sso} = MangoPay.Sso.get(id)
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a sso.
+
+  ## Examples
+      sso = MangoPay.Sso.get!(id)
+
+  """
+  def get! id do
+    _get! id
+  end
+
+  @doc """
+  Create a sso.
+
+  ## Examples
+      params         = %{
+        "Tag": "custom meta",
+        "EventType": "PAYIN_NORMAL_CREATED",
+        "Url": "http://www.my-site.com/ssos/"
+      }
+      {:ok, sso} = MangoPay.Sso.create(params)
+
+  """
+  def create params do
+    _create params
+  end
+
+  @doc """
+  Create a sso.
+
+  ## Examples
+      params         = %{
+        "Tag": "custom meta",
+        "EventType": "PAYIN_NORMAL_CREATED",
+        "Url": "http://www.my-site.com/ssos/"
+      }
+      sso = MangoPay.Sso.create!(params)
+
+  """
+  def create! params do
+    _create! params
+  end
+
+  @doc """
+  Update a sso.
+
+  ## Examples
+      params         = %{
+        "Tag": "custom meta",
+        "Status": "ENABLED",
+        "Url": "http://www.my-site.com/ssos/"
+      }
+      {:ok, sso} = MangoPay.Sso.update(id, params)
+
+  """
+  def update id, params do
+    _update params, id
+  end
+
+  @doc """
+  Update a sso.
+
+  ## Examples
+      params         = %{
+        "Tag": "custom meta",
+        "Status": "ENABLED",
+        "Url": "http://www.my-site.com/ssos/"
+      }
+      sso = MangoPay.Sso.update(id, params)
+
+  """
+  def update! id, params do
+    _update! params, id
+  end
+
+  @doc """
+  List all ssos.
+
+  ## Examples
+      {:ok, ssos} = MangoPay.Sso.all()
+
+  """
+  def all() do
+    _all()
+  end
+
+  @doc """
+  List all ssos.
+
+  ## Examples
+      ssos = MangoPay.Sso.all!()
+
+  """
+  def all!() do
+    _all!()
+  end
 
   @doc """
   Extend sso invitation.

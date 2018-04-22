@@ -3,7 +3,57 @@ defmodule MangoPay.Dispute do
   Functions for MangoPay [dispute](https://docs.mangopay.com/endpoints/v2.01/disputes#e176_the-dispute-object) object.
   """
   use MangoPay.Query.Base
-  set_action "disputes", [{:get}, {:update}, {:all}]
+  set_path "disputes"
+
+  @doc """
+  Get a dispute.
+
+  ## Examples
+      {:ok, dispute} = MangoPay.Dispute.get(id)
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a dispute.
+
+  ## Examples
+      dispute = MangoPay.Dispute.get!(id)
+
+  """
+  def get! id do
+    _get! id
+  end
+
+  @doc """
+  Update a dispute.
+
+  ## Examples
+      params         = %{
+        "Tag": "custom meta"
+      }
+      {:ok, dispute} = MangoPay.Dispute.update(id, params)
+
+  """
+  def update id, params do
+    _update params, id
+  end
+
+  @doc """
+  Update a dispute.
+
+  ## Examples
+      params         = %{
+        "Tag": "custom meta"
+      }
+      dispute = MangoPay.Dispute.update(id, params)
+
+  """
+  def update! id, params do
+    _update! params, id
+  end
 
   @doc """
   Close a dispute.
@@ -44,6 +94,30 @@ defmodule MangoPay.Dispute do
   """
   def resubmit id do
     _update %{}, resource_submit(id)
+  end
+
+  @doc """
+  List all disputes.
+
+  ## Examples
+
+      {:ok, disputes} = MangoPay.Dispute.all()
+
+  """
+  def all() do
+    _all()
+  end
+
+  @doc """
+  List all disputes.
+
+  ## Examples
+
+      disputes = MangoPay.Dispute.all()
+
+  """
+  def all!() do
+    _all!()
   end
 
   @doc """

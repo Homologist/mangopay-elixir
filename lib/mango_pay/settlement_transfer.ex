@@ -3,7 +3,29 @@ defmodule MangoPay.SettlementTransfer do
   Functions for MangoPay [settlement transfer](https://docs.mangopay.com/endpoints/v2.01/settlement-transfers#e237_the-settlement-transfer-object).
   """
   use MangoPay.Query.Base
-  set_action "settlements", [{:get}]
+  set_path "settlements"
+
+  @doc """
+  Get a settlement_transfer.
+
+  ## Examples
+      {:ok, settlement_transfer} = MangoPay.SettlementTransfer.get(id)
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a settlement_transfer.
+
+  ## Examples
+      settlement_transfer = MangoPay.SettlementTransfer.get!(id)
+
+  """
+  def get! id do
+    _get! id
+  end
 
   @doc """
   Get a client object.

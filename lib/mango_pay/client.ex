@@ -2,7 +2,8 @@ defmodule MangoPay.Client do
   @moduledoc """
   Functions for MangoPay [client](https://docs.mangopay.com/endpoints/v2.01/clients#e200_the-client-object).
   """
-  use MangoPay.Query.Base, "clients"
+  use MangoPay.Query.Base
+  set_path "clients"
 
   @doc """
   Get a client object.

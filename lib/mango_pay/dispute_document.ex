@@ -3,7 +3,29 @@ defmodule MangoPay.DisputeDocument do
   Functions for MangoPay [dispute document](https://docs.mangopay.com/endpoints/v2.01/dispute-documents#e214_the-dispute-document-object).
   """
   use MangoPay.Query.Base
-  set_action "dispute-documents", [{:get}]
+  set_path "dispute-documents"
+
+  @doc """
+  Get a dispute.
+
+  ## Examples
+      {:ok, dispute} = MangoPay.DisputeDocument.get(id)
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a dispute.
+
+  ## Examples
+      dispute = MangoPay.DisputeDocument.get!(id)
+
+  """
+  def get! id do
+    _get! id
+  end
 
   @doc """
   Create a dispute document.

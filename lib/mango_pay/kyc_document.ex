@@ -3,7 +3,51 @@ defmodule MangoPay.KycDocument do
   Functions for MangoPay [kyc document](https://docs.mangopay.com/endpoints/v2.01/kyc-documents#e204_the-kyc-document-object).
   """
   use MangoPay.Query.Base
-  set_action "kyc/documents", [{:get}, {:all}]
+  set_path "kyc/documents"
+
+  @doc """
+  Get a kyc document.
+
+  ## Examples
+      {:ok, kyc_document} = MangoPay.KycDocument.get(id)
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a kyc document.
+
+  ## Examples
+      kyc_document = MangoPay.KycDocument.get!(id)
+
+  """
+  def get! id do
+    _get! id
+  end
+
+  @doc """
+  List all kyc_documents.
+
+  ## Examples
+      {:ok, kyc_documents} = MangoPay.KycDocuments.all()
+
+  """
+  def all() do
+    _all()
+  end
+
+  @doc """
+  List all kyc documents.
+
+  ## Examples
+      kyc_documents = MangoPay.KycDocuments.all!()
+
+  """
+  def all!() do
+    _all!()
+  end
 
   @doc """
   Create a kyc document for a user.

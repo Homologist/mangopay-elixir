@@ -3,7 +3,31 @@ defmodule MangoPay.ClientWallet do
   Functions for MangoPay client [wallets](https://docs.mangopay.com/endpoints/v2.01/client-wallets#e271_the-client-wallet-object).
   """
   use MangoPay.Query.Base
-  set_action "clients/wallets", [{:all}]
+  set_path "clients/wallets"
+
+  @doc """
+  All a client wallets.
+
+  ## Examples
+
+      {:ok, client_wallets} = MangoPay.ClientWallet.all
+
+  """
+  def all() do
+    _all()
+  end
+
+  @doc """
+  All a client wallets.
+
+  ## Examples
+
+      client_wallets = MangoPay.ClientWallet.all!
+
+  """
+  def all!() do
+    _all!()
+  end
 
   @doc """
   All a client wallet by fund type.
