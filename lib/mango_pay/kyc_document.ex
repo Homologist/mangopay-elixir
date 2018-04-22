@@ -31,22 +31,22 @@ defmodule MangoPay.KycDocument do
   List all kyc_documents.
 
   ## Examples
-      {:ok, kyc_documents} = MangoPay.KycDocuments.all
+      {:ok, kyc_documents} = MangoPay.KycDocuments.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all kyc documents.
 
   ## Examples
-      kyc_documents = MangoPay.KycDocuments.all!
+      kyc_documents = MangoPay.KycDocuments.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

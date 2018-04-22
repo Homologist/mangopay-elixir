@@ -34,8 +34,8 @@ defmodule MangoPay.User do
       {:ok, users} = MangoPay.User.all
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
@@ -45,8 +45,8 @@ defmodule MangoPay.User do
       users = MangoPay.User.all!
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

@@ -95,21 +95,21 @@ defmodule MangoPay.Hook do
   List all hooks.
 
   ## Examples
-      {:ok, hooks} = MangoPay.Hook.all
+      {:ok, hooks} = MangoPay.Hook.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all hooks.
 
   ## Examples
-      hooks = MangoPay.Hook.all!
+      hooks = MangoPay.Hook.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 end

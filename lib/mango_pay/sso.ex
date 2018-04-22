@@ -95,22 +95,22 @@ defmodule MangoPay.Sso do
   List all ssos.
 
   ## Examples
-      {:ok, ssos} = MangoPay.Sso.all
+      {:ok, ssos} = MangoPay.Sso.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all ssos.
 
   ## Examples
-      ssos = MangoPay.Sso.all!
+      ssos = MangoPay.Sso.all!()
 
   """
-  def all!do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

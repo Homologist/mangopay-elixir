@@ -1,7 +1,6 @@
 defmodule MangoPay.Query.Base do
   defmacro __using__(opts \\ nil) do
     quote do
-      import MangoPay.Query.Interface
       import MangoPay.Query.Path
       import MangoPay.Query.Get
       import MangoPay.Query.Create

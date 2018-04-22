@@ -73,22 +73,22 @@ defmodule MangoPay.UboDeclaration do
   List all ubo declarations.
 
   ## Examples
-      {:ok, ubo_declarations} = MangoPay.UboDeclaration.all
+      {:ok, ubo_declarations} = MangoPay.UboDeclaration.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all ubo declarations.
 
   ## Examples
-      ubo_declarations = MangoPay.UboDeclaration.all!
+      ubo_declarations = MangoPay.UboDeclaration.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

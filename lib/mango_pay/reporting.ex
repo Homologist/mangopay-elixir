@@ -31,22 +31,22 @@ defmodule MangoPay.Reporting do
   List all reportings.
 
   ## Examples
-      {:ok, reportings} = MangoPay.Reportings.all
+      {:ok, reportings} = MangoPay.Reportings.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all reportings.
 
   ## Examples
-      reportings = MangoPay.Reportings.all!
+      reportings = MangoPay.Reportings.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   defmodule Wallet do

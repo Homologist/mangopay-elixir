@@ -65,22 +65,22 @@ defmodule MangoPay.Mandate do
   List all mandates.
 
   ## Examples
-      {:ok, mandates} = MangoPay.Mandates.all
+      {:ok, mandates} = MangoPay.Mandates.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all mandates.
 
   ## Examples
-      mandates = MangoPay.Mandates.all!
+      mandates = MangoPay.Mandates.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

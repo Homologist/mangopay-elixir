@@ -119,21 +119,21 @@ defmodule MangoPay.PermissionGroup do
   List all permission groups.
 
   ## Examples
-      {:ok, permission_groups} = MangoPay.PermissionGroups.all
+      {:ok, permission_groups} = MangoPay.PermissionGroups.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all permission groups.
 
   ## Examples
-      permission_groups = MangoPay.PermissionGroups.all!
+      permission_groups = MangoPay.PermissionGroups.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 end

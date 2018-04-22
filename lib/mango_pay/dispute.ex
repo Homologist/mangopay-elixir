@@ -101,11 +101,11 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      {:ok, disputes} = MangoPay.Dispute.all
+      {:ok, disputes} = MangoPay.Dispute.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
@@ -113,11 +113,11 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      disputes = MangoPay.Dispute.all
+      disputes = MangoPay.Dispute.all()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

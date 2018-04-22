@@ -13,8 +13,8 @@ defmodule MangoPay.ClientWallet do
       {:ok, client_wallets} = MangoPay.ClientWallet.all
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
@@ -25,8 +25,8 @@ defmodule MangoPay.ClientWallet do
       client_wallets = MangoPay.ClientWallet.all!
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 
   @doc """

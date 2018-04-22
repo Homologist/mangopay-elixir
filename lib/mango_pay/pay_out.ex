@@ -3,7 +3,7 @@ defmodule MangoPay.PayOut do
   Functions for MangoPay [pay out](https://docs.mangopay.com/endpoints/v2.01/payouts#e227_the-payout-object).
   """
   use MangoPay.Query.Base
-  set_action "payouts", [{:get}, {:create, ["payouts", "bankwire"]}]
+  set_path "payouts"
 
   @doc """
   Get a pay_out.
@@ -50,7 +50,7 @@ defmodule MangoPay.PayOut do
 
   """
   def create params do
-    _create params
+    _create params, ["payouts", "bankwire"]
   end
 
   @doc """
@@ -76,6 +76,6 @@ defmodule MangoPay.PayOut do
 
   """
   def create! params do
-    _create! params
+    _create! params, ["payouts", "bankwire"]
   end
 end

@@ -9,21 +9,21 @@ defmodule MangoPay.Event do
   List all disputes.
 
   ## Examples
-      {:ok, events} = MangoPay.Event.all
+      {:ok, events} = MangoPay.Event.all()
 
   """
-  def all do
-    _all
+  def all() do
+    _all()
   end
 
   @doc """
   List all disputes.
 
   ## Examples
-      events = MangoPay.Event.all!
+      events = MangoPay.Event.all!()
 
   """
-  def all! do
-    _all!
+  def all!() do
+    _all!()
   end
 end
