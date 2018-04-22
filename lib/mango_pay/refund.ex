@@ -3,7 +3,29 @@ defmodule MangoPay.Refund do
   Functions for MangoPay [refund](https://docs.mangopay.com/endpoints/v2.01/refunds#e316_the-refund-object).
   """
   use MangoPay.Query.Base
-  set_action "refunds", [{:get}]
+  set_path "refunds"
+
+  @doc """
+  Get a refund.
+
+  ## Examples
+      {:ok, refund} = MangoPay.Refund.get(id)
+
+  """
+  def get id do
+    _get id
+  end
+
+  @doc """
+  Get a refund.
+
+  ## Examples
+      refund = MangoPay.Refund.get!(id)
+
+  """
+  def get! id do
+    _get! id
+  end
 
   defmodule PayIn do
     use MangoPay.Query.Base, "refunds"

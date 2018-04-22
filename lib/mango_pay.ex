@@ -5,9 +5,7 @@ defmodule MangoPay do
   This module is the root of all the application.
 
   ## Configuring
-  Set your API key by configuring the :mangopay application. You can see the default
-  configuration in the default_config/0 private function at the bottom of
-  this file. The value for platform client id is optional.
+  Set your API key by configuring the :mangopay application.
 
   ```
     config :mangopay, client_id: YOUR_MANGOPAY_CLIENT_ID
