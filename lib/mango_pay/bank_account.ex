@@ -1,8 +1,6 @@
 defmodule MangoPay.BankAccount do
   @moduledoc """
-  Functions for working with bank accounts at MangoPay.
-
-  MangoPay API reference: https://docs.mangopay.com/endpoints/v2.01/bank-accounts#e24_the-bankaccount-object
+  Functions for MangoPay [bank account](https://docs.mangopay.com/endpoints/v2.01/bank-accounts#e24_the-bankaccount-object) API.
   """
   use MangoPay.Query.Base, "bankaccounts"
 

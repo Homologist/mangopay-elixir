@@ -1,8 +1,6 @@
 defmodule MangoPay.Transaction do
   @moduledoc """
-  Functions for MangoPay transaction.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/transactions#e222_the-transaction-object
+  Functions for MangoPay [transaction](https://docs.mangopay.com/endpoints/v2.01/transactions#e222_the-transaction-object).
   """
   use MangoPay.Query.Base
   set_action "transactions", [{:all}]

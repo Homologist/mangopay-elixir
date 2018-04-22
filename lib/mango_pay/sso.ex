@@ -1,8 +1,6 @@
 defmodule MangoPay.Sso do
   @moduledoc """
-  Functions for MangoPay Sso.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/sso#e872_the-sso-object
+  Functions for MangoPay [Sso](https://docs.mangopay.com/endpoints/v2.01/sso#e872_the-sso-object).
   """
   use MangoPay.Query.Base
   set_action "clients/ssos", [{:get}, {:create}, {:update}, {:all}]

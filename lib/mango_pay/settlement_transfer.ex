@@ -1,8 +1,6 @@
 defmodule MangoPay.SettlementTransfer do
   @moduledoc """
-  Functions for MangoPay settlement transfer.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/settlement-transfers#e237_the-settlement-transfer-object
+  Functions for MangoPay [settlement transfer](https://docs.mangopay.com/endpoints/v2.01/settlement-transfers#e237_the-settlement-transfer-object).
   """
   use MangoPay.Query.Base
   set_action "settlements", [{:get}]

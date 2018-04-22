@@ -1,8 +1,6 @@
 defmodule MangoPay.Mandate do
   @moduledoc """
-  Functions for MangoPay mandate.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/mandates#e230_the-mandate-object
+  Functions for MangoPay [mandate](https://docs.mangopay.com/endpoints/v2.01/mandates#e230_the-mandate-object).
   """
   use MangoPay.Query.Base
   set_action "mandates", [{:get}, {:create, ["mandates", "directdebit/web"]}, {:all}]

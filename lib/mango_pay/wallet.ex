@@ -1,8 +1,6 @@
 defmodule MangoPay.Wallet do
   @moduledoc """
-  Functions for MangoPay wallet.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/wallets#e20_the-wallet-object
+  Functions for MangoPay [wallet](https://docs.mangopay.com/endpoints/v2.01/wallets#e20_the-wallet-object).
   """
   use MangoPay.Query.Base
   set_action "wallets", [{:get}, {:create}, {:update}]

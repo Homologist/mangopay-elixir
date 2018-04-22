@@ -1,8 +1,6 @@
 defmodule MangoPay.Refund do
   @moduledoc """
-  Functions for MangoPay refund.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/refunds#e316_the-refund-object
+  Functions for MangoPay [refund](https://docs.mangopay.com/endpoints/v2.01/refunds#e316_the-refund-object).
   """
   use MangoPay.Query.Base
   set_action "refunds", [{:get}]

@@ -1,8 +1,6 @@
 defmodule MangoPay.ClientWallet do
   @moduledoc """
-  Functions for MangoPay client wallets.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/client-wallets#e271_the-client-wallet-object
+  Functions for MangoPay client [wallets](https://docs.mangopay.com/endpoints/v2.01/client-wallets#e271_the-client-wallet-object).
   """
   use MangoPay.Query.Base
   set_action "clients/wallets", [{:all}]

@@ -1,8 +1,6 @@
 defmodule MangoPay.Card do
   @moduledoc """
-  Functions for MangoPay credit cards.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/cards#e177_the-card-registration-object
+  Functions for MangoPay [credit cards](https://docs.mangopay.com/endpoints/v2.01/cards#e177_the-card-registration-object).
   """
 
   alias MangoPay.User, as: User

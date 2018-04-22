@@ -1,8 +1,6 @@
 defmodule MangoPay.Client do
   @moduledoc """
-  Functions for MangoPay client.
-
-  MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/clients#e200_the-client-object
+  Functions for MangoPay [client](https://docs.mangopay.com/endpoints/v2.01/clients#e200_the-client-object).
   """
   use MangoPay.Query.Base, "clients"
 
