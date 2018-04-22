@@ -13,7 +13,7 @@ defmodule ClientWalletTest do
   test "get client_wallet by fund type" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/get" do
       assert {:ok, response} =
-               MangoPay.ClientWallet.get_by_funds_type(created_client_wallet()["FundsType"])
+               MangoPay.ClientWallet.all_by_funds_type(created_client_wallet()["FundsType"])
 
       assert Poison.decode!(response.body)[:Tag] == created_client_wallet()["Tag"]
     end

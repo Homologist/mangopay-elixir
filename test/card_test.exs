@@ -36,7 +36,7 @@ defmodule CardTest do
 
   test "all cards by fingerprints" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/card/fingerprint/all" do
-      assert {:ok, response} = MangoPay.Card.all_by_fingerprints(created_card()["Fingerprint"])
+      assert {:ok, response} = MangoPay.Card.all_by_fingerprint(created_card()["Fingerprint"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end
@@ -57,7 +57,7 @@ defmodule CardTest do
 
   test "all transaction by fingerprint" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transaction/fingerprint/all" do
-      assert {:ok, response} = MangoPay.Card.all_by_fingerprints(created_card()["Fingerprint"])
+      assert {:ok, response} = MangoPay.Card.all_by_fingerprint(created_card()["Fingerprint"])
       assert length(Poison.decode!(response.body)) > 0
     end
   end

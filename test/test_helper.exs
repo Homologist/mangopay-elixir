@@ -60,11 +60,11 @@ defmodule Helper do
 
       def create_kyc_document_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create" do
-          MangoPay.KycDocument.create_to_user(build(:created_user)["Id"], build(:kyc_document))
+          MangoPay.KycDocument.create(build(:created_user)["Id"], build(:kyc_document))
         end
 
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_page" do
-          MangoPay.KycDocument.create_page_to_user_kyc_document(
+          MangoPay.KycDocument.create_page(
             build(:created_user)["Id"],
             build(:created_kyc_document)["Id"],
             build(:kyc_document_page)
