@@ -1,4 +1,5 @@
 defmodule Factories.SharedFunctions do
+  @moduledoc false
   def fixture_path(path) do
     "fixture/vcr_cassettes" <> path
   end

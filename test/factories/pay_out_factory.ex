@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule MangoPay.PayOutFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_pay_out(module_name \\ nil) do

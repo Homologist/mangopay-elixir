@@ -1,4 +1,5 @@
 defmodule MangoPay.UserFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_user_factory do

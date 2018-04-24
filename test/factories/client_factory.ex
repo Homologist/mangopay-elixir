@@ -1,4 +1,5 @@
 defmodule MangoPay.ClientFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_client(module_name \\ nil) do

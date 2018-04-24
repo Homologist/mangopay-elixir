@@ -1,4 +1,5 @@
 defmodule MangoPay.CardFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_registration_card(module_name \\ nil) do

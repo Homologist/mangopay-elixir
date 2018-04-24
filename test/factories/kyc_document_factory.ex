@@ -1,4 +1,5 @@
 defmodule MangoPay.KycDocumentFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_kyc_document_factory(module_name \\ nil) do

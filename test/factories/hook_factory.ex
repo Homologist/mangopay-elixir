@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule MangoPay.HookFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_hook(module_name \\ nil) do
