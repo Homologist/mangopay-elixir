@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule MangoPay.PermissionGroupFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_permission_group(module_name \\ nil) do

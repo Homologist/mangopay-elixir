@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule MangoPay.DisputeDocumentFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_dispute_document(module_name \\ nil) do

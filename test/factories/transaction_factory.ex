@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule MangoPay.TransactionFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def fixture_path(path) do

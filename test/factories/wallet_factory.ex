@@ -1,4 +1,5 @@
 defmodule MangoPay.WalletFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_wallet(module_name \\ nil) do

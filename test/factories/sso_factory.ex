@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule MangoPay.SsoFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_sso(module_name \\ nil) do

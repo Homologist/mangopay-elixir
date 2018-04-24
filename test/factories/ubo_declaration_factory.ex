@@ -1,4 +1,5 @@
 defmodule MangoPay.UboDeclarationFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_ubo_declaration_factory(module_name \\ nil) do

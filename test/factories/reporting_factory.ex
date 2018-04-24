@@ -1,4 +1,5 @@
 defmodule MangoPay.ReportingFactory do
+  @moduledoc false
   defmacro __using__([]) do
     quote do
       def created_reporting_transaction_factory(module_name \\ nil) do
