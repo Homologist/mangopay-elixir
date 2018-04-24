@@ -15,9 +15,41 @@ defmodule MangoPay do
 
   @base_header %{"User-Agent": "Elixir", "Content-Type": "application/json"}
 
-  @authorization_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Content-Type": "application/x-www-form-urlencoded", "Host": "api.sandbox.mangopay.com", "Content-Length": "29"}
-
   @payline_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Accept": "*/*", "Host": "homologation-webpayment.payline.com"}
+
+  @doc """
+  Request to mangopay web API.
+
+  ## Examples
+
+      {:ok, response} = MangoPay.request("get", "users")
+
+  """
+  def request {method, url, body, headers} do
+    request(method, url, body, headers)
+  end
+
+  def request(method, url, body \\ "", headers \\ "", query \\ "") do
+    {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
+    filter_and_send(method, url, body, headers, query, false)
+  end
+
+  @doc """
+  Request to mangopay web API.
+
+  ## Examples
+
+      response = MangoPay.request("get", "users")
+
+  """
+  def request! {method, url, body, headers} do
+    request!(method, url, body, headers)
+  end
+
+  def request!(method, url, body \\ "", headers \\ "", query \\ "") do
+    {method, url, body, headers, _} = full_header_request(method, url, body, headers, query)
+    filter_and_send(method, url, body, headers, query, true)
+  end
 
   def base_header do
     @base_header
@@ -46,16 +78,6 @@ defmodule MangoPay do
     "/#{mangopay_version()}/#{MangoPay.client()[:id]}"
   end
 
-  defp authorization_header do
-    @base_header |> Map.merge(@authorization_header) |> Map.merge(%{"Authorization": "Basic #{encoded_login_and_passphrase()}"})
-  end
-
-  defp encoded_login_and_passphrase do
-    encode client()[:id], client()[:passphrase]
-  end
-
-  defp encode(login, passphrase), do: Base.encode64 "#{login}:#{passphrase}"
-
   def request {method, url, query} do
     case {method, query} do
       {:get, nil} -> request(:get, url)
@@ -63,14 +85,6 @@ defmodule MangoPay do
       {:get, _} -> request(:get, url, query)
       {:"get!", _} -> request(:"get!", url, query)
     end
-  end
-
-  def request {method, url, body, headers} do
-    request(method, url, body, headers)
-  end
-
-  def request! {method, url, body, headers} do
-    request!(method, url, body, headers)
   end
 
   defp full_header_request(method, url, body, headers, query) do
@@ -82,7 +96,7 @@ defmodule MangoPay do
   defp authorization_params {method, url, body, headers, query} do
     headers = case headers do
       %{"Authorization": _}   -> headers
-      _  -> Map.merge(base_header(), %{"Authorization": "#{authorization()}"})
+      _  -> Map.merge(base_header(), %{"Authorization": "#{MangoPay.Authorization.pull_token()}"})
     end
     {method, url, body, headers, query}
   end
@@ -125,49 +139,6 @@ defmodule MangoPay do
           {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600, "recv_timeout", 4600}])
           {:test, _, _} -> HTTPoison.request(method, url, body, headers, [{"timeout", :timeout, "recv_timeout", :timeout}])
         end
-    end
-  end
-
-  def request(method, url, body \\ "", headers \\ "", query \\ "") do
-    {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
-    filter_and_send(method, url, body, headers, query, false)
-  end
-
-  def request!(method, url, body \\ "", headers \\ "", query \\ "") do
-    {method, url, body, headers, _} = full_header_request(method, url, body, headers, query)
-    filter_and_send(method, url, body, headers, query, true)
-  end
-
-  @doc """
-   Ask for authorization token to MangoPay
-  """
-  def post_authorization do
-    :post |> request!("/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response
-  end
-
-  defp get_decoded_response response do
-    response.body |> :zlib.gunzip() |> Poison.decode!()
-  end
-
-  defp get_token token do
-    update_map = %{token: "#{token["token_type"]} #{token["access_token"]}", expires: "#{Time.add(Time.utc_now, token["expires_in"])}"}
-    :ok = Agent.update(:token, fn _ -> update_map end)
-    "#{token["token_type"]} #{token["access_token"]}"
-  end
-
-  def authorization do
-    time = Time.utc_now
-    case Agent.start(fn -> nil end, name: :token) do
-      {:ok, _} -> post_authorization() |> get_token()
-      _        -> case Agent.get(:token, &(&1)) do
-        %{token: _, expires: expire_date} when expire_date < time
-          -> post_authorization()
-            |> get_token()
-        %{token: token_string, expires: _} when token_string == nil
-          -> post_authorization()
-            |> get_token()
-        _ -> Agent.get(:token, &(&1))[:token]
-      end
     end
   end
 end
