@@ -84,7 +84,10 @@ defmodule BankAccountTest do
 
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/us/create" do
       assert response =
-               MangoPay.BankAccount.create_us!(build(:created_user)["Id"], build(:bank_account_us))
+               MangoPay.BankAccount.create_us!(
+                 build(:created_user)["Id"],
+                 build(:bank_account_us)
+               )
 
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
@@ -100,7 +103,10 @@ defmodule BankAccountTest do
 
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/ca/create" do
       assert response =
-               MangoPay.BankAccount.create_ca!(build(:created_user)["Id"], build(:bank_account_ca))
+               MangoPay.BankAccount.create_ca!(
+                 build(:created_user)["Id"],
+                 build(:bank_account_ca)
+               )
 
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
@@ -116,7 +122,10 @@ defmodule BankAccountTest do
 
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/bank_account/gb/create" do
       assert response =
-               MangoPay.BankAccount.create_gb!(build(:created_user)["Id"], build(:bank_account_gb))
+               MangoPay.BankAccount.create_gb!(
+                 build(:created_user)["Id"],
+                 build(:bank_account_gb)
+               )
 
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
