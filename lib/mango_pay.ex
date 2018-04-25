@@ -81,9 +81,14 @@ defmodule MangoPay do
   def request {method, url, query} do
     case {method, query} do
       {:get, nil} -> request(:get, url)
-      {:"get!", nil} -> request(:"get!", url)
       {:get, _} -> request(:get, url, query)
-      {:"get!", _} -> request(:"get!", url, query)
+    end
+  end
+
+  def request! {method, url, query} do
+    case {method, query} do
+      {:get, nil} -> request!(:get, url)
+      {:get, _} -> request!(:get, url, query)
     end
   end
 
