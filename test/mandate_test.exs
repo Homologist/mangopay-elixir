@@ -18,6 +18,7 @@ defmodule MandateTest do
       assert Poison.decode!(response.body)["Status"] == "CREATED"
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
+
     assert response = MangoPay.Mandate.create!(build(:mandate))
     assert Poison.decode!(response.body)["Status"] == "CREATED"
     assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
@@ -28,6 +29,7 @@ defmodule MandateTest do
       assert {:ok, response} = MangoPay.Mandate.cancel(build(:created_user)["Id"])
       assert Poison.decode!(response.body)["Tag"] == build(:cancel_mandate)["Tag"]
     end
+
     assert response = MangoPay.Mandate.cancel!(build(:created_user)["Id"])
     assert Poison.decode!(response.body)["Tag"] == build(:cancel_mandate)["Tag"]
   end
@@ -37,6 +39,7 @@ defmodule MandateTest do
       assert {:ok, response} = MangoPay.Mandate.get(build(:created_mandate)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_mandate)["Id"]
     end
+
     assert response = MangoPay.Mandate.get!(build(:created_mandate)["Id"])
     assert Poison.decode!(response.body)["Id"] == build(:created_mandate)["Id"]
   end
@@ -46,6 +49,7 @@ defmodule MandateTest do
       assert {:ok, response} = MangoPay.Mandate.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.Mandate.all!()
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -56,6 +60,7 @@ defmodule MandateTest do
       assert {:ok, response} = MangoPay.Mandate.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.Mandate.all_by_user!(build(:created_user)["Id"])
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -67,13 +72,16 @@ defmodule MandateTest do
                  build(:created_user)["Id"],
                  build(:created_bank_account)["Id"]
                )
+
       assert length(Poison.decode!(response.body)) > 0
     end
-      assert response =
-               MangoPay.Mandate.all_by_bank_account!(
-                 build(:created_user)["Id"],
-                 build(:created_bank_account)["Id"]
-               )
-      assert length(Poison.decode!(response.body)) > 0
+
+    assert response =
+             MangoPay.Mandate.all_by_bank_account!(
+               build(:created_user)["Id"],
+               build(:created_bank_account)["Id"]
+             )
+
+    assert length(Poison.decode!(response.body)) > 0
   end
 end

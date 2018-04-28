@@ -20,7 +20,12 @@ defmodule MangoPay.TransferFactory do
         Factories.SharedFunctions.get_json(
           Enum.join(
             Enum.filter(
-              ["", Factories.SharedFunctions.module_name(__MODULE__), "transfer", "create_bis.json"],
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "transfer",
+                "create_bis.json"
+              ],
               &(!is_nil(&1))
             ),
             "/"

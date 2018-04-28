@@ -10,6 +10,7 @@ defmodule ClientTest do
       assert {:ok, response} = MangoPay.Client.get()
       assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
     end
+
     assert response = MangoPay.Client.get!()
     assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
   end
@@ -19,6 +20,7 @@ defmodule ClientTest do
       assert {:ok, response} = MangoPay.Client.update(update_client_hash())
       assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
     end
+
     assert response = MangoPay.Client.update!(update_client_hash())
     assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
   end
@@ -28,6 +30,7 @@ defmodule ClientTest do
       assert {:ok, response} = MangoPay.Client.update_logo(update_logo_client_hash())
       assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
     end
+
     assert response = MangoPay.Client.update_logo!(update_logo_client_hash())
     assert Poison.decode!(response.body)["ClientId"] == "sdk-unit-tests"
   end

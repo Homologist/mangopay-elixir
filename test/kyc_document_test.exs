@@ -20,13 +20,16 @@ defmodule KycDocumentTest do
                  build(:created_user)["Id"],
                  build(:kyc_document)
                )
+
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
+
     assert response =
              MangoPay.KycDocument.create!(
                build(:created_user)["Id"],
                build(:kyc_document)
              )
+
     assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
@@ -38,6 +41,7 @@ defmodule KycDocumentTest do
                  build(:created_kyc_document)["Id"],
                  build(:submit_kyc_document)
                )
+
       assert Poison.decode!(response.body)["Status"] == "VALIDATION_ASKED"
     end
 
@@ -48,6 +52,7 @@ defmodule KycDocumentTest do
                  build(:created_kyc_document_bis)["Id"],
                  build(:submit_kyc_document)
                )
+
       assert Poison.decode!(response.body)["Status"] == "VALIDATION_ASKED"
     end
   end
@@ -60,6 +65,7 @@ defmodule KycDocumentTest do
                  build(:created_kyc_document)["Id"],
                  build(:kyc_document_page)
                )
+
       assert response.body == ""
     end
 
@@ -70,6 +76,7 @@ defmodule KycDocumentTest do
                  build(:created_kyc_document_bis)["Id"],
                  build(:kyc_document_page_bis)
                )
+
       assert response.body == ""
     end
   end
@@ -79,6 +86,7 @@ defmodule KycDocumentTest do
       assert {:ok, response} = MangoPay.KycDocument.get(build(:created_kyc_document)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_kyc_document)["Id"]
     end
+
     assert response = MangoPay.KycDocument.get!(build(:created_kyc_document)["Id"])
     assert Poison.decode!(response.body)["Id"] == build(:created_kyc_document)["Id"]
   end
@@ -88,6 +96,7 @@ defmodule KycDocumentTest do
       assert {:ok, response} = MangoPay.KycDocument.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.KycDocument.all_by_user!(build(:created_user)["Id"])
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -97,6 +106,7 @@ defmodule KycDocumentTest do
       assert {:ok, response} = MangoPay.KycDocument.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.KycDocument.all!()
     assert length(Poison.decode!(response.body)) > 0
   end

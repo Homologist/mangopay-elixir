@@ -29,6 +29,7 @@ defmodule PayInTest do
       assert {:ok, response} = MangoPay.PayIn.get(build(:created_pay_in)["Id"])
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
+
     assert response = MangoPay.PayIn.get!(build(:created_pay_in)["Id"])
     assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
   end
@@ -38,6 +39,7 @@ defmodule PayInTest do
       assert {:ok, response} = MangoPay.PayIn.Card.Web.create(build(:pay_in_card_web))
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
+
     assert response = MangoPay.PayIn.Card.Web.create!(build(:pay_in_card_web))
     assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
@@ -47,6 +49,7 @@ defmodule PayInTest do
       assert {:ok, response} = MangoPay.PayIn.Card.Direct.create(build(:pay_in_card_direct))
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
+
     assert response = MangoPay.PayIn.Card.Direct.create!(build(:pay_in_card_direct))
     assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
   end
@@ -55,12 +58,14 @@ defmodule PayInTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/card/pre_authorized/create" do
       assert {:ok, response} =
                MangoPay.PayIn.Card.PreAuthorized.create(build(:pay_in_card_preauthorized))
+
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
 
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/card/pre_authorized/create_bis" do
       assert response =
                MangoPay.PayIn.Card.PreAuthorized.create!(build(:pay_in_card_preauthorized_bis))
+
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
   end
@@ -69,10 +74,11 @@ defmodule PayInTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/bank_wire/wallet/create" do
       assert {:ok, response} =
                MangoPay.PayIn.BankWire.Wallet.create(build(:pay_in_bank_wire_wallet))
+
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
-    assert response =
-             MangoPay.PayIn.BankWire.Wallet.create!(build(:pay_in_bank_wire_wallet))
+
+    assert response = MangoPay.PayIn.BankWire.Wallet.create!(build(:pay_in_bank_wire_wallet))
     assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
@@ -80,10 +86,11 @@ defmodule PayInTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/bank_wire/direct/create" do
       assert {:ok, response} =
                MangoPay.PayIn.BankWire.Direct.create(build(:pay_in_bank_wire_direct))
+
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
-    assert response =
-             MangoPay.PayIn.BankWire.Direct.create!(build(:pay_in_bank_wire_direct))
+
+    assert response = MangoPay.PayIn.BankWire.Direct.create!(build(:pay_in_bank_wire_direct))
     assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
@@ -91,10 +98,11 @@ defmodule PayInTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/direct_debit/web/create" do
       assert {:ok, response} =
                MangoPay.PayIn.DirectDebit.Web.create(build(:pay_in_directdebit_web))
+
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
-    assert response =
-             MangoPay.PayIn.DirectDebit.Web.create!(build(:pay_in_directdebit_web))
+
+    assert response = MangoPay.PayIn.DirectDebit.Web.create!(build(:pay_in_directdebit_web))
     assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
@@ -102,10 +110,11 @@ defmodule PayInTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/direct_debit/direct/create" do
       assert {:ok, response} =
                MangoPay.PayIn.DirectDebit.Direct.create(build(:pay_in_directdebit_direct))
+
       assert Poison.decode!(response.body)["Status"] == "FAILED"
     end
-    assert response =
-             MangoPay.PayIn.DirectDebit.Direct.create!(build(:pay_in_directdebit_direct))
+
+    assert response = MangoPay.PayIn.DirectDebit.Direct.create!(build(:pay_in_directdebit_direct))
     assert Poison.decode!(response.body)["Status"] == "FAILED"
   end
 end

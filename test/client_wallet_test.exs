@@ -14,9 +14,13 @@ defmodule ClientWalletTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/client_wallet/get" do
       assert {:ok, response} =
                MangoPay.ClientWallet.all_by_funds_type(created_client_wallet()["FundsType"])
+
       assert Poison.decode!(response.body)[:Tag] == created_client_wallet()["Tag"]
     end
-    assert response = MangoPay.ClientWallet.all_by_funds_type!(created_client_wallet()["FundsType"])
+
+    assert response =
+             MangoPay.ClientWallet.all_by_funds_type!(created_client_wallet()["FundsType"])
+
     assert Poison.decode!(response.body)[:Tag] == created_client_wallet()["Tag"]
   end
 
@@ -27,13 +31,16 @@ defmodule ClientWalletTest do
                  created_client_wallet()["FundsType"],
                  created_client_wallet()["Balance"]["Currency"]
                )
+
       assert Poison.decode!(response.body)["FundsType"] == "FEES"
     end
+
     assert response =
              MangoPay.ClientWallet.get_by_funds_type_and_currency!(
                created_client_wallet()["FundsType"],
                created_client_wallet()["Balance"]["Currency"]
              )
+
     assert Poison.decode!(response.body)["FundsType"] == "FEES"
   end
 
@@ -42,6 +49,7 @@ defmodule ClientWalletTest do
       assert {:ok, response} = MangoPay.ClientWallet.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.ClientWallet.all!()
     assert length(Poison.decode!(response.body)) > 0
   end

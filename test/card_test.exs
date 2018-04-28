@@ -18,6 +18,7 @@ defmodule CardTest do
       assert {:ok, response} = MangoPay.Card.create(card_hash())
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
+
     assert response = MangoPay.Card.create!(card_hash())
     assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
   end
@@ -27,6 +28,7 @@ defmodule CardTest do
       assert {:ok, response} = MangoPay.Card.get(updated_card()["CardId"])
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
+
     assert {:ok, response} = MangoPay.Card.get(updated_card()["CardId"])
     assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
   end
@@ -36,6 +38,7 @@ defmodule CardTest do
       assert {:ok, response} = update_card_cassette()
       assert Poison.decode!(response.body)["Status"] == "VALIDATED"
     end
+
     assert {:ok, response} = update_card_cassette()
     assert Poison.decode!(response.body)["Status"] == "VALIDATED"
   end
@@ -45,6 +48,7 @@ defmodule CardTest do
       assert {:ok, response} = MangoPay.Card.all_by_fingerprint(created_card()["Fingerprint"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert {:ok, response} = MangoPay.Card.all_by_fingerprint(created_card()["Fingerprint"])
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -54,6 +58,7 @@ defmodule CardTest do
       assert {:ok, response} = MangoPay.Card.all_by_user(created_registration_card()["UserId"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert {:ok, response} = MangoPay.Card.all_by_user(created_registration_card()["UserId"])
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -70,6 +75,7 @@ defmodule CardTest do
       assert {:ok, response} = MangoPay.Card.all_by_fingerprint(created_card()["Fingerprint"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert {:ok, response} = MangoPay.Card.all_by_fingerprint(created_card()["Fingerprint"])
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -78,8 +84,10 @@ defmodule CardTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/card/deactivate" do
       assert {:ok, response} =
                MangoPay.Card.deactivate(created_card_bis()["Id"], deactivate_card_hash())
+
       assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
     end
+
     assert response = MangoPay.Card.deactivate!(created_card()["Id"], deactivate_card_hash())
     assert Poison.decode!(response.body)["UserId"] == build(:created_user)["Id"]
   end

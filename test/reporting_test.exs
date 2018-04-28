@@ -20,10 +20,11 @@ defmodule ReportingTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/reporting/transaction/create" do
       assert {:ok, response} =
                MangoPay.Reporting.Transaction.create(build(:reporting_transaction))
+
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
-    assert response =
-             MangoPay.Reporting.Transaction.create!(build(:reporting_transaction))
+
+    assert response = MangoPay.Reporting.Transaction.create!(build(:reporting_transaction))
     assert Poison.decode!(response.body)["Status"] == "PENDING"
   end
 
@@ -32,6 +33,7 @@ defmodule ReportingTest do
       assert {:ok, response} = MangoPay.Reporting.Wallet.create(build(:reporting_wallet))
       assert Poison.decode!(response.body)["Status"] == "PENDING"
     end
+
     assert response = MangoPay.Reporting.Wallet.create!(build(:reporting_wallet))
     assert Poison.decode!(response.body)["Status"] == "PENDING"
   end
@@ -43,6 +45,7 @@ defmodule ReportingTest do
       assert Poison.decode!(response.body)["Id"] == build(:created_reporting_transaction)["Id"]
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
     end
+
     assert response = MangoPay.Reporting.get!(build(:created_reporting_transaction)["Id"])
     assert Poison.decode!(response.body)["ResultMessage"] == "Success"
     assert Poison.decode!(response.body)["Id"] == build(:created_reporting_transaction)["Id"]
@@ -54,6 +57,7 @@ defmodule ReportingTest do
       assert {:ok, response} = MangoPay.Reporting.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.Reporting.all!()
     assert length(Poison.decode!(response.body)) > 0
   end

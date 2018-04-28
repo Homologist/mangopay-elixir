@@ -28,6 +28,7 @@ defmodule PreauthorizationTest do
                  created_preauthorization()["Id"],
                  build(:cancel_preauthorization)
                )
+
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end

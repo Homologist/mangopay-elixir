@@ -21,6 +21,7 @@ defmodule RepudiationTest do
       assert Poison.decode!(response.body)["Id"] == build(:created_repudiation)["Id"]
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
+
     assert response = MangoPay.Repudiation.get!(build(:created_repudiation)["Id"])
     assert Poison.decode!(response.body)["Id"] == build(:created_repudiation)["Id"]
     assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"

@@ -35,6 +35,7 @@ defmodule PermissionGroupTest do
       assert {:ok, response} = MangoPay.PermissionGroup.create(permission_group_hash())
       assert Poison.decode!(response.body)["tag"] == permission_group_hash()["tag"]
     end
+
     assert response = MangoPay.PermissionGroup.create!(permission_group_hash())
     assert Poison.decode!(response.body)["tag"] == permission_group_hash()["tag"]
   end
@@ -46,13 +47,16 @@ defmodule PermissionGroupTest do
                  created_permission_group()["Id"],
                  update_permission_group_hash()
                )
+
       assert Poison.decode!(response.body)["Tag"] == "custom meta update"
     end
+
     assert response =
              MangoPay.PermissionGroup.update!(
                created_permission_group()["Id"],
                update_permission_group_hash()
              )
+
     assert Poison.decode!(response.body)["Tag"] == "custom meta update"
   end
 end

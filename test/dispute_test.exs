@@ -18,10 +18,13 @@ defmodule DisputeTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/update" do
       assert {:ok, response} =
                MangoPay.Dispute.update(build(:created_dispute_user)[:Id], build(:update_dispute))
+
       assert Poison.decode!(response.body)["Tag"] == build(:update_dispute)["Tag"]
     end
+
     assert response =
              MangoPay.Dispute.update!(build(:created_dispute_user)[:Id], build(:update_dispute))
+
     assert Poison.decode!(response.body)["Tag"] == build(:update_dispute)["Tag"]
   end
 
@@ -30,6 +33,7 @@ defmodule DisputeTest do
       assert {:ok, response} = MangoPay.Dispute.get(build(:created_dispute)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_dispute)["Id"]
     end
+
     assert response = MangoPay.Dispute.get!(build(:created_dispute)["Id"])
     assert Poison.decode!(response.body)["Id"] == build(:created_dispute)["Id"]
   end
@@ -39,6 +43,7 @@ defmodule DisputeTest do
       assert {:ok, response} = MangoPay.Dispute.all_by_user(build(:created_dispute_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.Dispute.all_by_user!(build(:created_dispute_user)["Id"])
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -47,10 +52,11 @@ defmodule DisputeTest do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute/wallet/all" do
       assert {:ok, response} =
                MangoPay.Dispute.all_by_wallet(build(:created_dispute_wallet)["Id"])
+
       assert length(Poison.decode!(response.body)) > 0
     end
-    assert response =
-             MangoPay.Dispute.all_by_wallet!(build(:created_dispute_wallet)["Id"])
+
+    assert response = MangoPay.Dispute.all_by_wallet!(build(:created_dispute_wallet)["Id"])
     assert length(Poison.decode!(response.body)) > 0
   end
 
@@ -59,6 +65,7 @@ defmodule DisputeTest do
       assert {:ok, response} = MangoPay.Dispute.all_by_pending_settlement()
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.Dispute.all_by_pending_settlement!()
     assert length(Poison.decode!(response.body)) > 0
   end
@@ -68,6 +75,7 @@ defmodule DisputeTest do
       assert {:ok, response} = MangoPay.Dispute.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
     assert response = MangoPay.Dispute.all!()
     assert length(Poison.decode!(response.body)) > 0
   end
