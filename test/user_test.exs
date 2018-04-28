@@ -21,7 +21,7 @@ defmodule UserTest do
     end
 
     assert response = MangoPay.User.Natural.create!(build(:user_natural))
-    assert response["Tag"] == "Test natural user"
+    assert Poison.decode!(response.body)["Tag"] == "Test natural user"
   end
 
   test "update natural user" do
@@ -50,7 +50,7 @@ defmodule UserTest do
     end
 
     assert response = MangoPay.User.Legal.create!(build(:user_legal))
-    assert response["Tag"] == "Test legal user"
+    assert Poison.decode!(response.body)["Tag"] == "Test legal user"
   end
 
   test "update legal user" do
