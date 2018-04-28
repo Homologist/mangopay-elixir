@@ -16,7 +16,43 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/mangopay](https://hexdocs.pm/mangopay).
+An Elixir library for MangoPay [MangoPay](https://mangopay.com/).
 
+## Usage
+
+Install the dependency:
+
+```ex
+{:mangopay, "~> 0.1.0"}
+```
+
+Next, add to your applications:
+
+```ex
+defp application do
+  [applications: [:mangopay]]
+end
+```
+
+## Configuration
+
+To call mangopay setup your client id and passphrase.
+
+```ex
+use Mix.Config
+
+config :mangopay, client_id: "YOUR CONNECT CLIENT ID"
+config :mangoapy, passphrase: "YOUR KEY"
+```
+
+## The API
+The full documentation of the API is avaiable
+
+## Contributing
+
+Feedback, feature requests are welcome.
+
+
+## License
+
+Please see [LICENSE](LICENSE) for licensing details.
