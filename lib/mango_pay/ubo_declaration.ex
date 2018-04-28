@@ -105,4 +105,19 @@ defmodule MangoPay.UboDeclaration do
   def create(id, params) do
     _create params, ["users", id, "ubodeclarations"]
   end
+
+  @doc """
+  Create a ubo declaration.
+
+  ## Examples
+      params                 = %{
+        "Tag": "custom meta",
+        "DeclaredUBOs": [ "8494514" ]
+      }
+      ubo_declaration = MangoPay.UboDeclaration.create!("ubo_declaration_id", params)
+
+  """
+  def create!(id, params) do
+    _create! params, ["users", id, "ubodeclarations"]
+  end
 end

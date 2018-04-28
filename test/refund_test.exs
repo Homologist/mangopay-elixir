@@ -23,8 +23,10 @@ defmodule RefundTest do
     create_wallet_cassette()
     create_wallet_bis_cassette()
     create_pay_in_direct_cassette()
+    create_pay_in_direct_bis_cassette()
     MangoPay.PayIn.Card.Direct.create(build(:pay_in_card_direct))
     create_transfer_cassette()
+    create_transfer_bis_cassette()
     create_transfer_refund_cassette()
     create_pay_in_refund_cassette()
     create_pay_out_cassette()
@@ -38,6 +40,9 @@ defmodule RefundTest do
       assert {:ok, response} = MangoPay.Refund.get(build(:created_refund)["Id"])
       assert Poison.decode!(response.body)["Id"] == build(:created_refund)["Id"]
     end
+
+    assert response = MangoPay.Refund.get!(build(:created_refund)["Id"])
+    assert Poison.decode!(response.body)["Id"] == build(:created_refund)["Id"]
   end
 
   test "create refund in pay in direct" do
@@ -47,6 +52,14 @@ defmodule RefundTest do
 
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
+
+    assert response =
+             MangoPay.Refund.PayIn.create!(
+               build(:created_pay_in_bis)["Id"],
+               build(:refund_pay_in)
+             )
+
+    assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
   end
 
   test "create refund transfer direct" do
@@ -59,6 +72,14 @@ defmodule RefundTest do
 
       assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
     end
+
+    assert response =
+             MangoPay.Refund.Transfer.create!(
+               build(:created_transfer_bis)["Id"],
+               build(:refund_transfer)
+             )
+
+    assert Poison.decode!(response.body)["Status"] == "SUCCEEDED"
   end
 
   test "all refund by pay in" do
@@ -66,6 +87,9 @@ defmodule RefundTest do
       assert {:ok, response} = MangoPay.Refund.all_by_pay_in(build(:created_pay_in)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response = MangoPay.Refund.all_by_pay_in!(build(:created_pay_in)["Id"])
+    assert length(Poison.decode!(response.body)) > 0
   end
 
   test "all by pay_out" do
@@ -73,6 +97,9 @@ defmodule RefundTest do
       assert {:ok, response} = MangoPay.Refund.all_by_pay_out(created_pay_out()["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Refund.all_by_pay_out!(created_pay_out()["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all by transfer" do
@@ -80,6 +107,9 @@ defmodule RefundTest do
       assert {:ok, response} = MangoPay.Refund.all_by_transfer(build(:created_transfer)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response = MangoPay.Refund.all_by_transfer!(build(:created_transfer)["Id"])
+    assert length(Poison.decode!(response.body)) > 0
   end
 
   test "all by repudiation" do
@@ -89,5 +119,8 @@ defmodule RefundTest do
 
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Refund.all_by_repudiation!(build(:created_repudiation)["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 end

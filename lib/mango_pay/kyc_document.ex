@@ -65,6 +65,21 @@ defmodule MangoPay.KycDocument do
   end
 
   @doc """
+  Create a kyc document for a user.
+
+  ## Examples
+      params      = %{
+        "Tag": "custom meta",
+        "Type": "IDENTITY_PROOF"
+      }
+      kyc_document = MangoPay.KycDocument.create!("user_id", params)
+
+  """
+  def create! user_id, params do
+    _create! params, [MangoPay.User.path(user_id), resource()]
+  end
+
+  @doc """
   Submit a kyc document for a user and kyc document.
 
   ## Examples
@@ -77,6 +92,21 @@ defmodule MangoPay.KycDocument do
   """
   def submit user_id, kyc_document_id, params do
     _update params, user_resource(user_id, kyc_document_id)
+  end
+
+  @doc """
+  Submit a kyc document for a user and kyc document.
+
+  ## Examples
+      params      = %{
+        "Tag": "custom meta",
+        "Status": "VALIDATION_ASKED"
+      }
+      kyc_document = MangoPay.KycDocument.submit!("user_id", params)
+
+  """
+  def submit! user_id, kyc_document_id, params do
+    _update! params, user_resource(user_id, kyc_document_id)
   end
 
   @doc """
@@ -95,6 +125,21 @@ defmodule MangoPay.KycDocument do
   end
 
   @doc """
+  Create a page for a kyc document and user.
+
+  ## Examples
+      params      = %{
+        "Tag": "custom meta",
+        "Type": "IDENTITY_PROOF"
+      }
+      kyc_document = MangoPay.KycDocument.create_page!("user_id", "kyc_document_id", params)
+
+  """
+  def create_page! user_id, kyc_document_id, params do
+    _create! params, user_resource(user_id, kyc_document_id) ++ ["pages"]
+  end
+
+  @doc """
   All kyc documents for a user.
 
   ## Examples
@@ -103,5 +148,16 @@ defmodule MangoPay.KycDocument do
   """
   def all_by_user user_id, query \\ nil do
     [MangoPay.User.path(user_id), resource()] |> _all(query)
+  end
+
+  @doc """
+  All kyc documents for a user.
+
+  ## Examples
+      kyc_documents = MangoPay.KycDocument.all_by_user!("user_id")
+
+  """
+  def all_by_user! user_id, query \\ nil do
+    [MangoPay.User.path(user_id), resource()] |> _all!(query)
   end
 end

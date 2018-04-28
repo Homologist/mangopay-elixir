@@ -26,6 +26,10 @@ defmodule SettlementTransferTest do
 
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
+
+    assert response = MangoPay.SettlementTransfer.get!(created_settlement_transfer()["Id"])
+
+    assert Poison.decode!(response.body)["Tag"] == "custom meta"
   end
 
   test "create settlement_transfer" do
@@ -38,5 +42,13 @@ defmodule SettlementTransferTest do
 
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
+
+    assert response =
+             MangoPay.SettlementTransfer.create!(
+               build(:created_repudiation)["Id"],
+               build(:settlement_transfer)
+             )
+
+    assert Poison.decode!(response.body)["Tag"] == "custom meta"
   end
 end

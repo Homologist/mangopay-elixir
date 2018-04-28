@@ -61,7 +61,22 @@ defmodule MangoPay.User do
     _get [resource(), "#{id}", "emoney"]
   end
 
+  @doc """
+  Get emoney.
+
+  ## Examples
+
+      client = MangoPay.User.get_emoney!("user_id")
+
+  """
+  def get_emoney! id do
+    _get! [resource(), "#{id}", "emoney"]
+  end
+
   defmodule Natural do
+    @moduledoc """
+    Functions for MangoPay [client](https://docs.mangopay.com/endpoints/v2.01/users#e253_the-user-object).
+    """
     @moduledoc """
     Functions for MangoPay user natural.
 

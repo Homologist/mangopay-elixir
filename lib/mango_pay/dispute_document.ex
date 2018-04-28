@@ -43,6 +43,21 @@ defmodule MangoPay.DisputeDocument do
   end
 
   @doc """
+  Create a dispute document.
+
+  ## Examples
+      params                  = %{
+        "Tag": "custom meta",
+        "Type": "DELIVERY_PROOF"
+      }
+      dispute_document = MangoPay.DisputeDocument.create!("dispute_id", params)
+
+  """
+  def create! dispute_id, params do
+    _create! params, resource_document(dispute_id)
+  end
+
+  @doc """
   Create a page for a dispute document.
 
   ## Examples
@@ -54,6 +69,20 @@ defmodule MangoPay.DisputeDocument do
   """
   def create_page dispute_id, dispute_document_id, params do
     _create params,  resource_document(dispute_id, dispute_document_id) ++ ["pages"]
+  end
+
+  @doc """
+  Create a page for a dispute document.
+
+  ## Examples
+      params                  = %{
+        File: "blahblah"
+      }
+      dispute_document_page = MangoPay.DisputeDocument.create_page!("dispute_id", "dispute_document_id", params)
+
+  """
+  def create_page! dispute_id, dispute_document_id, params do
+    _create! params,  resource_document(dispute_id, dispute_document_id) ++ ["pages"]
   end
 
   @doc """
@@ -71,6 +100,20 @@ defmodule MangoPay.DisputeDocument do
   end
 
   @doc """
+  Submit a dispute document.
+
+  ## Examples
+      params                  = %{
+        "Status": "CREATED"
+      }
+      dispute_document = MangoPay.DisputeDocument.submit!("dispute_id", params)
+
+  """
+  def submit! dispute_id, dispute_document_id do
+    _update! %{"Status": "CREATED"}, resource_document(dispute_id, dispute_document_id)
+  end
+
+  @doc """
   All dispute documents by dispute.
 
   ## Examples
@@ -82,6 +125,17 @@ defmodule MangoPay.DisputeDocument do
   end
 
   @doc """
+  All dispute documents by dispute.
+
+  ## Examples
+      dispute_documents = MangoPay.DisputeDocument.all_by_dispute!("dispute_id")
+
+  """
+  def all_by_dispute! id, query \\ nil do
+    _all! resource_document(id), query
+  end
+
+  @doc """
   Consult a dispute document page.
 
   ## Examples
@@ -90,6 +144,17 @@ defmodule MangoPay.DisputeDocument do
   """
   def consult id do
     _create %{}, [resource(id), "consult"]
+  end
+
+  @doc """
+  Consult a dispute document page.
+
+  ## Examples
+      dispute_document = MangoPay.DisputeDocument.consult!("dispute_id")
+
+  """
+  def consult! id do
+    _create! %{}, [resource(id), "consult"]
   end
 
   def resource_document(dispute_id), do: ["disputes", dispute_id, "documents"]

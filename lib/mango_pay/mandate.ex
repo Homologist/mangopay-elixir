@@ -95,6 +95,17 @@ defmodule MangoPay.Mandate do
   end
 
   @doc """
+  Cancel a mandate object.
+
+  ## Examples
+      mandate = MangoPay.Mandate.cancel!("mandate_id")
+
+  """
+  def cancel! mandate_id do
+    _update! %{}, [resource(), "#{mandate_id}", "cancel"]
+  end
+
+  @doc """
   List all mandates for a user.
 
   ## Examples
@@ -106,6 +117,17 @@ defmodule MangoPay.Mandate do
   end
 
   @doc """
+  List all mandates for a user.
+
+  ## Examples
+      mandates = MangoPay.Mandate.all_by_user!("user_id")
+
+  """
+  def all_by_user! user_id, query \\ nil do
+    _all! [MangoPay.User.path(user_id), resource()], query
+  end
+
+  @doc """
   List all mandates for a bank account.
 
   ## Examples
@@ -114,5 +136,16 @@ defmodule MangoPay.Mandate do
   """
   def all_by_bank_account user_id, bank_account_id, query \\ nil do
     _all [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
+  end
+
+  @doc """
+  List all mandates for a bank account.
+
+  ## Examples
+      mandates = MangoPay.Mandate.all_by_bank_account!("user_id", "bank_account_id")
+
+  """
+  def all_by_bank_account! user_id, bank_account_id, query \\ nil do
+    _all! [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
   end
 end

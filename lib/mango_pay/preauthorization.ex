@@ -107,6 +107,21 @@ defmodule MangoPay.PreAuthorization do
   end
 
   @doc """
+  Cancel a preauthorization.
+
+  ## Examples
+      params                  = %{
+        "Tag": "custom meta",
+        "PaymentStatus": "CANCELED"
+      }
+      preauthorization = MangoPay.PreAuthorization.cancel!("preauthorization_id", params)
+
+  """
+  def cancel! id, params do
+    _update! params, id
+  end
+
+  @doc """
   List all preauthorizations for a credit card.
 
   ## Examples
@@ -119,6 +134,18 @@ defmodule MangoPay.PreAuthorization do
   end
 
   @doc """
+  List all preauthorizations for a credit card.
+
+  ## Examples
+
+      preauthorizations = MangoPay.PreAuthorization.all_by_card!("card_id")
+
+  """
+  def all_by_card! id, query \\ nil do
+    _all! [MangoPay.Card.path(id), resource()], query
+  end
+
+  @doc """
   List all preauthorizations for a user.
 
   ## Examples
@@ -128,5 +155,17 @@ defmodule MangoPay.PreAuthorization do
   """
   def all_by_user id, query \\ nil do
     _all [MangoPay.User.path(id), resource()], query
+  end
+
+  @doc """
+  List all preauthorizations for a user.
+
+  ## Examples
+
+      preauthorizations = MangoPay.PreAuthorization.all_by_user!("user_id")
+
+  """
+  def all_by_user! id, query \\ nil do
+    _all! [MangoPay.User.path(id), resource()], query
   end
 end

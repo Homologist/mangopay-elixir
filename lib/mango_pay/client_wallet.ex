@@ -42,6 +42,18 @@ defmodule MangoPay.ClientWallet do
   end
 
   @doc """
+  All a client wallet by fund type.
+
+  ## Examples
+
+      client_wallet = MangoPay.ClientWallet.get_by_funds_type!("funds_type")
+
+  """
+  def all_by_funds_type! funds_type do
+    _get! [resource(), "#{funds_type}"]
+  end
+
+  @doc """
   Get a client wallet by fund type and currency.
 
   ## Examples
@@ -51,5 +63,17 @@ defmodule MangoPay.ClientWallet do
   """
   def get_by_funds_type_and_currency funds_type, currency_iso_code do
     _get [resource(), "#{funds_type}", "#{currency_iso_code}"]
+  end
+
+  @doc """
+  Get a client wallet by fund type and currency.
+
+  ## Examples
+
+      client_wallet = MangoPay.ClientWallet.get_by_funds_type_and_currency!("funds_type", "currency")
+
+  """
+  def get_by_funds_type_and_currency! funds_type, currency_iso_code do
+    _get! [resource(), "#{funds_type}", "#{currency_iso_code}"]
   end
 end

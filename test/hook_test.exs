@@ -17,6 +17,11 @@ defmodule HookTest do
       assert Poison.decode!(response.body)["errors"]["EventType"] ==
                "A hook has already been registered for this EventType"
     end
+
+    assert response = MangoPay.Hook.create!(hook_hash())
+
+    assert Poison.decode!(response.body)["errors"]["EventType"] ==
+             "A hook has already been registered for this EventType"
   end
 
   test "update hook" do
@@ -24,6 +29,9 @@ defmodule HookTest do
       assert {:ok, response} = MangoPay.Hook.update(created_hook()["Id"], update_hook_hash())
       assert Poison.decode!(response.body)["Tag"] == update_hook_hash()[:Tag]
     end
+
+    assert response = MangoPay.Hook.update!(created_hook()["Id"], update_hook_hash())
+    assert Poison.decode!(response.body)["Tag"] == update_hook_hash()[:Tag]
   end
 
   test "get hook" do
@@ -31,6 +39,9 @@ defmodule HookTest do
       assert {:ok, response} = MangoPay.Hook.get(created_hook()["Id"])
       assert Poison.decode!(response.body)["Id"] == created_hook()["Id"]
     end
+
+    assert response = MangoPay.Hook.get!(created_hook()["Id"])
+    assert Poison.decode!(response.body)["Id"] == created_hook()["Id"]
   end
 
   test "all hook" do
@@ -38,5 +49,8 @@ defmodule HookTest do
       assert {:ok, response} = MangoPay.Hook.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response = MangoPay.Hook.all!()
+    assert length(Poison.decode!(response.body)) > 0
   end
 end

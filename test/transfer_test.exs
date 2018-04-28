@@ -28,6 +28,9 @@ defmodule TransferTest do
       assert {:ok, response} = MangoPay.Transfer.get(build(:created_transfer)["Id"])
       assert Poison.decode!(response.body)["Tag"] == build(:transfer)[:Tag]
     end
+
+    assert response = MangoPay.Transfer.get!(build(:created_transfer)["Id"])
+    assert Poison.decode!(response.body)["Tag"] == build(:transfer)[:Tag]
   end
 
   test "create transfer" do
@@ -36,5 +39,9 @@ defmodule TransferTest do
       assert Poison.decode!(response.body)["Tag"] == build(:transfer)[:Tag]
       assert Poison.decode!(response.body)["ResultMessage"] == "Success"
     end
+
+    assert response = MangoPay.Transfer.create!(build(:transfer))
+    assert Poison.decode!(response.body)["Tag"] == build(:transfer)[:Tag]
+    assert Poison.decode!(response.body)["ResultMessage"] == "Success"
   end
 end

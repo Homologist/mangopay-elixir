@@ -28,7 +28,7 @@ defmodule MangoPay.RefundFactory do
           AuthorId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 450
+            Amount: 300
           },
           Fees: %{
             Currency: "EUR",

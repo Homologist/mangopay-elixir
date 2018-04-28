@@ -19,6 +19,9 @@ defmodule SsoTest do
       assert {:ok, response} = MangoPay.Sso.create(sso_hash())
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
+
+    assert response = MangoPay.Sso.create!(sso_bis_hash())
+    assert Poison.decode!(response.body)["Tag"] == "custom meta"
   end
 
   test "update sso" do
@@ -26,6 +29,9 @@ defmodule SsoTest do
       assert {:ok, response} = MangoPay.Sso.update(created_sso()["Id"], update_sso_hash())
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
+
+    assert response = MangoPay.Sso.update!(created_sso()["Id"], update_sso_hash())
+    assert Poison.decode!(response.body)["Tag"] == "custom meta"
   end
 
   test "get sso" do
@@ -33,6 +39,9 @@ defmodule SsoTest do
       assert {:ok, response} = MangoPay.Sso.get(created_sso()["Id"])
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
+
+    assert response = MangoPay.Sso.get!(created_sso()["Id"])
+    assert Poison.decode!(response.body)["Tag"] == "custom meta"
   end
 
   test "all sso" do
@@ -40,6 +49,9 @@ defmodule SsoTest do
       assert {:ok, response} = MangoPay.Sso.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response = MangoPay.Sso.all!()
+    assert length(Poison.decode!(response.body)) > 0
   end
 
   test "extend invitation sso" do
@@ -47,6 +59,9 @@ defmodule SsoTest do
       assert {:ok, response} = MangoPay.Sso.extend_invitation(created_sso()["Id"])
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
+
+    assert response = MangoPay.Sso.extend_invitation!(created_sso()["Id"])
+    assert Poison.decode!(response.body)["Tag"] == "custom meta"
   end
 
   test "all by permission group sso" do
@@ -56,5 +71,8 @@ defmodule SsoTest do
 
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response = MangoPay.Sso.all_by_permission_group!(created_permission_group()["Id"])
+    assert length(Poison.decode!(response.body)) > 0
   end
 end

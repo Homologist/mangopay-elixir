@@ -16,7 +16,7 @@ defmodule PreauthorizationTest do
 
   test "create preauthorization" do
     use_cassette "preauthorization/create" do
-      assert {:ok, response} = MangoPay.PreAuthorization.create(preauthorization_hash())
+      assert {:ok, response} = MangoPay.PreAuthorization.create(build(:preauthorization))
       assert Poison.decode!(response.body)["Tag"] == "custom meta"
     end
   end
@@ -26,7 +26,7 @@ defmodule PreauthorizationTest do
       assert {:ok, response} =
                MangoPay.PreAuthorization.cancel(
                  created_preauthorization()["Id"],
-                 cancel_preauthorization_hash()
+                 build(:cancel_preauthorization)
                )
 
       assert Poison.decode!(response.body)["Tag"] == "custom meta"

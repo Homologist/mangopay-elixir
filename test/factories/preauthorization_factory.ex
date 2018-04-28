@@ -38,7 +38,7 @@ defmodule MangoPay.PreauthorizationFactory do
         )
       end
 
-      def preauthorization_hash do
+      def preauthorization_factory do
         %{
           Tag: "custom meta",
           AuthorId: build(:created_user)["Id"],
@@ -62,24 +62,18 @@ defmodule MangoPay.PreauthorizationFactory do
         }
       end
 
-      def cancel_preauthorization_hash do
+      def cancel_preauthorization_factory do
         %{
           Tag: "custom meta",
           PaymentStatus: "CANCELED"
         }
       end
 
-      def create_preauthorization_cassette do
-        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/create" do
-          MangoPay.PreAuthorization.create(preauthorization_hash())
-        end
-      end
-
       def cancel_preauthorization_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/cancel" do
           MangoPay.PreAuthorization.cancel(
             created_preauthorization()["Id"],
-            cancel_preauthorization_hash()
+            build(:cancel_preauthorization)
           )
         end
       end

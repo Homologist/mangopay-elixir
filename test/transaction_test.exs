@@ -32,6 +32,9 @@ defmodule TransactionTest do
       assert {:ok, response} = MangoPay.Transaction.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Transaction.all_by_user!(build(:created_user)["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all transaction by wallet" do
@@ -39,6 +42,9 @@ defmodule TransactionTest do
       assert {:ok, response} = MangoPay.Transaction.all_by_wallet(created_wallet()["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Transaction.all_by_wallet!(created_wallet()["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all transaction by dispute" do
@@ -46,6 +52,9 @@ defmodule TransactionTest do
       assert {:ok, response} = MangoPay.Transaction.all_by_dispute(build(:created_dispute)["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Transaction.all_by_dispute!(build(:created_dispute)["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all transaction by client" do
@@ -53,6 +62,9 @@ defmodule TransactionTest do
       assert {:ok, response} = MangoPay.Transaction.all_by_client(created_client()["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response = MangoPay.Transaction.all_by_client!(created_client()["Id"])
+    assert length(Poison.decode!(response.body)) > 0
   end
 
   test "all transaction by client_wallet" do
@@ -65,6 +77,14 @@ defmodule TransactionTest do
 
       assert length(Poison.decode!(response.body)) > 0
     end
+
+    assert response =
+             MangoPay.Transaction.all_by_client_wallet!(
+               created_client_wallet()["FundsType"],
+               created_client_wallet()["Currency"]
+             )
+
+    assert length(Poison.decode!(response.body)) > 0
   end
 
   test "all transaction by preauthorization" do
@@ -74,6 +94,11 @@ defmodule TransactionTest do
 
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response =
+             MangoPay.Transaction.all_by_pre_authorization!(created_preauthorization()["Id"])
+
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all transaction by bank_account" do
@@ -83,6 +108,11 @@ defmodule TransactionTest do
 
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response =
+             MangoPay.Transaction.all_by_bank_account!(build(:created_bank_account)["Id"])
+
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all transaction by card" do
@@ -90,6 +120,9 @@ defmodule TransactionTest do
       assert {:ok, response} = MangoPay.Transaction.all_by_card(created_card()["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Transaction.all_by_card!(created_card()["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "all transaction by mandate" do
@@ -97,5 +130,8 @@ defmodule TransactionTest do
       assert {:ok, response} = MangoPay.Transaction.all_by_mandate(build(:created_mandate)["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+
+    assert response = MangoPay.Transaction.all_by_mandate!(build(:created_mandate)["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 end

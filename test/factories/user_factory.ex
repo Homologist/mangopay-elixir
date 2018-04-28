@@ -86,7 +86,7 @@ defmodule MangoPay.UserFactory do
 
       def user_legal_factory do
         %{
-          Tag: "custom meta",
+          Tag: "Test legal user",
           HeadquartersAddress: %{
             AddressLine1: "1 MangoPay Street",
             AddressLine2: "The Loop",

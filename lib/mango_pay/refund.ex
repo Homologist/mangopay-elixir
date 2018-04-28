@@ -28,6 +28,9 @@ defmodule MangoPay.Refund do
   end
 
   defmodule PayIn do
+    @moduledoc """
+    Functions for MangoPay [refund](https://docs.mangopay.com/endpoints/v2.01/refunds#e316_the-refund-object).
+    """
     use MangoPay.Query.Base, "refunds"
 
     @doc """
@@ -52,9 +55,35 @@ defmodule MangoPay.Refund do
     def create pay_in_id, params do
       _create params, [MangoPay.PayIn.path(pay_in_id), resource()]
     end
+
+    @doc """
+    Create a refund for a pay in.
+
+    ## Examples
+        params        = %{
+          "Tag": "custom meta",
+          "AuthorId": "8494514",
+          "DebitedFunds": %{
+            "Currency": "EUR",
+            "Amount": 12
+          },
+          "Fees": %{
+            "Currency": "EUR",
+            "Amount": 12
+          }
+        }
+        refund = MangoPay.Refund.PayIn.create("pay_in_id", params)
+
+    """
+    def create! pay_in_id, params do
+      _create! params, [MangoPay.PayIn.path(pay_in_id), resource()]
+    end
   end
 
   defmodule Transfer do
+    @moduledoc """
+    Functions for MangoPay [refund](https://docs.mangopay.com/endpoints/v2.01/refunds#e316_the-refund-object).
+    """
     use MangoPay.Query.Base, "refunds"
     @doc """
     Create a refund for a transfer.
@@ -70,6 +99,21 @@ defmodule MangoPay.Refund do
     def create transfer_id, params do
       _create params, [MangoPay.Transfer.path(transfer_id), resource()]
     end
+
+    @doc """
+    Create a refund for a transfer.
+
+    ## Examples
+        params        = %{
+          "Tag": "custom meta",
+          "AuthorId": "8494514"
+        }
+        refund = MangoPay.Refund.Transfer.create!("transfer_id", params)
+
+    """
+    def create! transfer_id, params do
+      _create! params, [MangoPay.Transfer.path(transfer_id), resource()]
+    end
   end
 
   @doc """
@@ -84,6 +128,17 @@ defmodule MangoPay.Refund do
   end
 
   @doc """
+  List all refund by pay out.
+
+  ## Examples
+      refund = MangoPay.Refund.all_by_pay_out!("pay_out_id")
+
+  """
+  def all_by_pay_out! id, query \\ nil do
+    _all! [MangoPay.PayOut.path(id), resource()], query
+  end
+
+  @doc """
   List all refunds by pay in.
 
   ## Examples
@@ -92,6 +147,17 @@ defmodule MangoPay.Refund do
   """
   def all_by_pay_in id, query \\ nil do
     _all [MangoPay.PayIn.path(id), resource()], query
+  end
+
+  @doc """
+  List all refunds by pay in.
+
+  ## Examples
+      refunds = MangoPay.Refund.all_by_pay_in!("pay_in_id")
+
+  """
+  def all_by_pay_in! id, query \\ nil do
+    _all! [MangoPay.PayIn.path(id), resource()], query
   end
 
   @doc """
@@ -106,6 +172,17 @@ defmodule MangoPay.Refund do
   end
 
   @doc """
+  List all refunds by transfer.
+
+  ## Examples
+      refunds = MangoPay.Refund.all_by_transfer!("transfer_id")
+
+  """
+  def all_by_transfer! id, query \\ nil do
+    _all! [MangoPay.Transfer.path(id), resource()], query
+  end
+
+  @doc """
   List all refunds by repudiation.
 
   ## Examples
@@ -114,5 +191,16 @@ defmodule MangoPay.Refund do
   """
   def all_by_repudiation id, query \\ nil do
     _all [MangoPay.Repudiation.path(id), resource()], query
+  end
+
+  @doc """
+  List all refunds by repudiation.
+
+  ## Examples
+      refunds = MangoPay.Refund.all_by_repudiation!("repudiation_id")
+
+  """
+  def all_by_repudiation! id, query \\ nil do
+    _all! [MangoPay.Repudiation.path(id), resource()], query
   end
 end

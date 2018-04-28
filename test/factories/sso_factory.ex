@@ -30,6 +30,16 @@ defmodule MangoPay.SsoFactory do
         }
       end
 
+      def sso_bis_hash do
+        %{
+          Tag: "custom meta",
+          FirstName: "Joe",
+          LastName: "Blogs",
+          Email: "#{build(:created_user)["Id"]}@mangopays.com",
+          PermissionGroupId: created_permission_group()["Id"]
+        }
+      end
+
       def update_sso_hash do
         %{
           Tag: "custom meta",

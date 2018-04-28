@@ -49,4 +49,27 @@ defmodule MangoPay.SettlementTransfer do
   def create id, params do
     _create params, [MangoPay.Repudiation.path(id), "settlementtransfer"]
   end
+
+  @doc """
+  Get a client object.
+
+  ## Examples
+      params                     = %{
+        "Tag": "custom meta",
+        "AuthorId": "8494514",
+        "DebitedFunds": %{
+          "Currency": "EUR",
+          "Amount": 12
+        },
+        "Fees": %{
+          "Currency": "EUR",
+          "Amount": 12
+        }
+      }
+      settlement_transfer = MangoPay.SettlementTransfer.create!("settlement_transfer_id", params)
+
+  """
+  def create! id, params do
+    _create! params, [MangoPay.Repudiation.path(id), "settlementtransfer"]
+  end
 end
