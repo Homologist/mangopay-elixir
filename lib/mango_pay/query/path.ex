@@ -14,10 +14,17 @@ defmodule MangoPay.Query.Path do
       Get path called.
     
       ## Examples
-          "/users/id" = MangoPay.User.path(id)
+          "/users" = MangoPay.User.path()
     
       """
       def path(), do: resource()
+      @doc """
+      Get path called.
+    
+      ## Examples
+          "/users/#{id}" = MangoPay.User.path(id)
+    
+      """
       def path(id), do: resource(id)
     end
   end
