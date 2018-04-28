@@ -80,6 +80,28 @@ defmodule Helper do
         end
       end
 
+      def create_kyc_document_bis_cassette do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_bis" do
+          MangoPay.KycDocument.create(build(:created_user)["Id"], build(:kyc_document_bis))
+        end
+
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/user/create_page_bis" do
+          MangoPay.KycDocument.create_page(
+            build(:created_user)["Id"],
+            build(:created_kyc_document_bis)["Id"],
+            build(:kyc_document_page_bis)
+          )
+        end
+
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/kyc_document/submit_bis" do
+          MangoPay.KycDocument.submit(
+            build(:created_user)["Id"],
+            build(:created_kyc_document_bis)["Id"],
+            build(:submit_kyc_document)
+          )
+        end
+      end
+
       def create_mandate_cassette do
         create_bank_account_cassette()
 
@@ -97,6 +119,24 @@ defmodule Helper do
       def create_pay_in_direct_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/card/direct/create" do
           MangoPay.PayIn.Card.Direct.create(build(:pay_in_card_direct))
+        end
+      end
+
+      def create_pay_in_direct_bis_cassette do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/pay_in/card/direct/create_bis" do
+          MangoPay.PayIn.Card.Direct.create(build(:pay_in_card_direct))
+        end
+      end
+
+      def create_preauthorization_cassette do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/create" do
+          MangoPay.PreAuthorization.create(build(:preauthorization))
+        end
+      end
+
+      def create_preauthorization_bis_cassette do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/preauthorization/create_bis" do
+          MangoPay.PreAuthorization.create(build(:preauthorization))
         end
       end
 
@@ -120,6 +160,12 @@ defmodule Helper do
 
       def create_transfer_cassette do
         use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transfer/create" do
+          MangoPay.Transfer.create(build(:transfer))
+        end
+      end
+
+      def create_transfer_bis_cassette do
+        use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transfer/create_bis" do
           MangoPay.Transfer.create(build(:transfer))
         end
       end

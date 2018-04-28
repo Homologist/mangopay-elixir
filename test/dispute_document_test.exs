@@ -35,9 +35,14 @@ defmodule DisputeDocumentTest do
                  build(:created_dispute)["Id"],
                  created_dispute_document()["Id"]
                )
-
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
+    assert response =
+             MangoPay.DisputeDocument.submit!(
+               build(:created_dispute)["Id"],
+               created_dispute_document()["Id"]
+             )
+    assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
   test "create page to dispute dispute_document" do
@@ -52,6 +57,8 @@ defmodule DisputeDocumentTest do
       assert {:ok, response} = MangoPay.DisputeDocument.consult(created_dispute_document()["Id"])
       assert length(Poison.decode!(response.body)) == 0
     end
+    assert response = MangoPay.DisputeDocument.consult!(created_dispute_document()["Id"])
+    assert length(Poison.decode!(response.body)) == 0
   end
 
   test "get dispute document" do
@@ -59,14 +66,18 @@ defmodule DisputeDocumentTest do
       assert {:ok, response} = MangoPay.DisputeDocument.get(created_dispute_document()["Id"])
       assert Poison.decode!(response.body)["Id"] == created_dispute_document()["Id"]
     end
+    assert response = MangoPay.DisputeDocument.get!(created_dispute_document()["Id"])
+    assert Poison.decode!(response.body)["Id"] == created_dispute_document()["Id"]
   end
 
   test "all dispute_document by dispute" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/dispute_document/dispute/all" do
       assert {:ok, response} =
                MangoPay.DisputeDocument.all_by_dispute(build(:created_dispute)["Id"])
-
       assert length(Poison.decode!(response.body)) > 0
     end
+    assert response =
+             MangoPay.DisputeDocument.all_by_dispute!(build(:created_dispute)["Id"])
+    assert length(Poison.decode!(response.body)) > 0
   end
 end

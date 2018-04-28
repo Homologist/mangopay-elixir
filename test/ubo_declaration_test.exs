@@ -17,6 +17,8 @@ defmodule UboDeclarationTest do
       assert {:ok, response} = MangoPay.UboDeclaration.get(build(:created_ubo_declaration)["Id"])
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
+    assert response = MangoPay.UboDeclaration.get!(build(:created_ubo_declaration)["Id"])
+    assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
   test "create ubo_declaration" do
@@ -33,9 +35,14 @@ defmodule UboDeclarationTest do
                  build(:created_ubo_declaration)["Id"],
                  build(:update_ubo_declaration)
                )
-
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
+    assert response =
+             MangoPay.UboDeclaration.update!(
+               build(:created_ubo_declaration)["Id"],
+               build(:update_ubo_declaration)
+             )
+    assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
   test "all ubo_declaration" do

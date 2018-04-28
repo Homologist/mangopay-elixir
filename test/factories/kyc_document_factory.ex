@@ -20,6 +20,24 @@ defmodule MangoPay.KycDocumentFactory do
         )
       end
 
+      def created_kyc_document_bis_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
+          Enum.join(
+            Enum.filter(
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "kyc_document",
+                "user",
+                "create_bis.json"
+              ],
+              &(!is_nil(&1))
+            ),
+            "/"
+          )
+        )
+      end
+
       def created_kyc_document_page_factory(module_name \\ nil) do
         Factories.SharedFunctions.get_json(
           Enum.join(
@@ -45,6 +63,13 @@ defmodule MangoPay.KycDocumentFactory do
         }
       end
 
+      def kyc_document_bis_factory do
+        %{
+          Tag: "custom meta",
+          Type: "IDENTITY_PROOF"
+        }
+      end
+
       def submit_kyc_document_factory do
         %{
           Tag: "custom meta",
@@ -53,6 +78,12 @@ defmodule MangoPay.KycDocumentFactory do
       end
 
       def kyc_document_page_factory do
+        %{
+          File: Base.encode64(File.read!("test/kyc_document_spec.png"))
+        }
+      end
+
+      def kyc_document_page_bis_factory do
         %{
           File: Base.encode64(File.read!("test/kyc_document_spec.png"))
         }

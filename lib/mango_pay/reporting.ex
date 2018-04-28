@@ -50,6 +50,9 @@ defmodule MangoPay.Reporting do
   end
 
   defmodule Wallet do
+    @moduledoc """
+    Functions for MangoPay [reporting](https://docs.mangopay.com/endpoints/v2.01/reporting#e824_the-report-object).
+    """
     use MangoPay.Query.Base
     set_path "reports/wallets"
     @doc """
@@ -112,6 +115,9 @@ defmodule MangoPay.Reporting do
   end
 
   defmodule Transaction do
+    @moduledoc """
+    Functions for MangoPay [reporting](https://docs.mangopay.com/endpoints/v2.01/reporting#e824_the-report-object).
+    """
     use MangoPay.Query.Base
     set_path "reports/transactions"
 

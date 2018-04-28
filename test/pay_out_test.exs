@@ -26,6 +26,8 @@ defmodule PayOutTest do
       assert {:ok, response} = MangoPay.PayOut.create(pay_out_hash())
       assert Poison.decode!(response.body)["Status"] == "CREATED"
     end
+    assert response = MangoPay.PayOut.create!(pay_out_hash())
+    assert Poison.decode!(response.body)["Status"] == "CREATED"
   end
 
   test "get pay_out" do
@@ -33,5 +35,7 @@ defmodule PayOutTest do
       assert {:ok, response} = MangoPay.PayOut.get(created_pay_out()["Id"])
       assert Poison.decode!(response.body)["Id"] == created_pay_out()["Id"]
     end
+    assert response = MangoPay.PayOut.get!(created_pay_out()["Id"])
+    assert Poison.decode!(response.body)["Id"] == created_pay_out()["Id"]
   end
 end

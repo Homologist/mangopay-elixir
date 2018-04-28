@@ -14,5 +14,7 @@ defmodule EventTest do
       assert {:ok, response} = MangoPay.Event.all()
       assert length(Poison.decode!(response.body)) > 0
     end
+    assert response = MangoPay.Event.all!()
+    assert length(Poison.decode!(response.body)) > 0
   end
 end

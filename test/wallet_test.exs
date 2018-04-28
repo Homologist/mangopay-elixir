@@ -18,15 +18,19 @@ defmodule WalletTest do
       assert {:ok, response} = MangoPay.Wallet.create(build(:wallet))
       assert List.first(Poison.decode!(response.body)["Owners"]) == build(:created_user)["Id"]
     end
+    assert response = MangoPay.Wallet.create!(build(:wallet))
+    assert List.first(Poison.decode!(response.body)["Owners"]) == build(:created_user)["Id"]
   end
 
   test "update wallet" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/wallet/update" do
       assert {:ok, response} =
                MangoPay.Wallet.update(build(:created_user)["Id"], build(:update_wallet))
-
       assert Poison.decode!(response.body)["Tag"] == build(:update_wallet)["Tag"]
     end
+    assert response =
+             MangoPay.Wallet.update!(build(:created_user)["Id"], build(:update_wallet))
+    assert Poison.decode!(response.body)["Tag"] == build(:update_wallet)["Tag"]
   end
 
   test "get user" do
@@ -34,6 +38,8 @@ defmodule WalletTest do
       assert {:ok, response} = MangoPay.Wallet.get(created_wallet()["Id"])
       assert Poison.decode!(response.body)["Id"] == created_wallet()["Id"]
     end
+    assert response = MangoPay.Wallet.get!(created_wallet()["Id"])
+    assert Poison.decode!(response.body)["Id"] == created_wallet()["Id"]
   end
 
   test "all wallet by user" do
@@ -41,5 +47,7 @@ defmodule WalletTest do
       assert {:ok, response} = MangoPay.Wallet.all_by_user(build(:created_user)["Id"])
       assert length(Poison.decode!(response.body)) > 0
     end
+    assert response = MangoPay.Wallet.all_by_user!(build(:created_user)["Id"])
+    assert length(Poison.decode!(response.body)) > 0
   end
 end

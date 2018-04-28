@@ -16,6 +16,18 @@ defmodule MangoPay.TransferFactory do
         )
       end
 
+      def created_transfer_bis_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
+          Enum.join(
+            Enum.filter(
+              ["", Factories.SharedFunctions.module_name(__MODULE__), "transfer", "create_bis.json"],
+              &(!is_nil(&1))
+            ),
+            "/"
+          )
+        )
+      end
+
       def transfer_factory do
         %{
           Tag: "custom meta",
@@ -23,7 +35,7 @@ defmodule MangoPay.TransferFactory do
           CreditedUserId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 499
+            Amount: 40
           },
           Fees: %{
             Currency: "EUR",

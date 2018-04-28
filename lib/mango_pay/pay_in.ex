@@ -41,6 +41,9 @@ defmodule MangoPay.PayIn do
 
   defmodule Card do
     defmodule Web do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "payins/card/web"
       
@@ -112,6 +115,9 @@ defmodule MangoPay.PayIn do
     end
 
     defmodule Direct do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "payins/card/direct"
 
@@ -195,6 +201,9 @@ defmodule MangoPay.PayIn do
     end
 
     defmodule PreAuthorized do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "payins/preauthorized/direct"
 
@@ -254,6 +263,9 @@ defmodule MangoPay.PayIn do
 
   defmodule BankWire do
     defmodule Wallet do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "clients/payins/bankwire/direct"
 
@@ -305,6 +317,9 @@ defmodule MangoPay.PayIn do
     end
 
     defmodule Direct do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "payins/bankwire/direct"
 
@@ -363,6 +378,9 @@ defmodule MangoPay.PayIn do
 
   defmodule DirectDebit do
     defmodule Web do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "payins/directdebit/web"
 
@@ -418,6 +436,9 @@ defmodule MangoPay.PayIn do
     end
 
     defmodule Direct do
+      @moduledoc """
+      Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
+      """
       use MangoPay.Query.Base
       set_path "payins/directdebit/direct"
   

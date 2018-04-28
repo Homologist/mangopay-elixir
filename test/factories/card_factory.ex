@@ -97,13 +97,13 @@ defmodule MangoPay.CardFactory do
       def created_registration_card_preregistrationdata do
         "data=#{created_registration_card()["PreregistrationData"]}&accessKeyRef=#{
           created_registration_card()["AccessKey"]
-        }&cardNumber=4970101122334422&cardExpirationDate=1219&cardCvx=123"
+        }&cardNumber=4706750000000017&cardExpirationDate=1219&cardCvx=123"
       end
 
       def created_registration_card_preregistrationdata(registration_card) do
         "data=#{registration_card["PreregistrationData"]}&accessKeyRef=#{
           registration_card["AccessKey"]
-        }&cardNumber=4970101122334422&cardExpirationDate=1219&cardCvx=123"
+        }&cardNumber=4706750000000017&cardExpirationDate=1219&cardCvx=123"
       end
 
       def update_card_hash do
@@ -214,7 +214,7 @@ defmodule MangoPay.CardFactory do
             MangoPay.request(
               :post,
               body["CardRegistrationURL"],
-              "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4970101122334422&cardExpirationDate=1219&cardCvx=123"
+              "data=#{body["PreregistrationData"]}&accessKeyRef=#{body["AccessKey"]}&cardNumber=4706750000000017&cardExpirationDate=1219&cardCvx=123"
             )
 
           data = response.body

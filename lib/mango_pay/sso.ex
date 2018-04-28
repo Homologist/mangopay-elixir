@@ -126,6 +126,18 @@ defmodule MangoPay.Sso do
   end
 
   @doc """
+  Extend sso invitation.
+
+  ## Examples
+
+      sso = MangoPay.Sso.extend_invitation!("sso_id")
+
+  """
+  def extend_invitation! id do
+   _update! %{}, [resource(), "#{id}", "extendinvitation"]
+  end
+
+  @doc """
   List all sso by permission group.
 
   ## Examples
@@ -135,5 +147,17 @@ defmodule MangoPay.Sso do
   """
   def all_by_permission_group(id, query \\ nil) do
     _all([MangoPay.Client.path(), "permissiongroups", id, "ssos"], query)
+  end
+
+  @doc """
+  List all sso by permission group.
+
+  ## Examples
+
+      sso = MangoPay.Sso.all_by_permission_group!("sso_id")
+
+  """
+  def all_by_permission_group!(id, query \\ nil) do
+    _all!([MangoPay.Client.path(), "permissiongroups", id, "ssos"], query)
   end
 end

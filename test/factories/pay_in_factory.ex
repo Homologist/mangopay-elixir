@@ -23,6 +23,25 @@ defmodule MangoPay.PayInFactory do
         )
       end
 
+      def created_pay_in_bis_factory(module_name \\ nil) do
+        Factories.SharedFunctions.get_json(
+          Enum.join(
+            Enum.filter(
+              [
+                "",
+                Factories.SharedFunctions.module_name(__MODULE__),
+                "pay_in",
+                "card",
+                "direct",
+                "create_bis.json"
+              ],
+              &(!is_nil(&1))
+            ),
+            "/"
+          )
+        )
+      end
+
       def pay_in_card_web_factory do
         %{
           Tag: "custom meta",
@@ -30,11 +49,11 @@ defmodule MangoPay.PayInFactory do
           CreditedUserId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           Fees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           },
           ReturnURL: "http://www.my-site.com/returnURL/",
           CreditedWalletId: created_wallet(__MODULE__)["Id"],
@@ -55,11 +74,11 @@ defmodule MangoPay.PayInFactory do
           CreditedWalletId: created_wallet(__MODULE__)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           Fees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           },
           SecureModeReturnURL: "http://www.my-site.com/returnURL",
           CardId: created_card(__MODULE__)["Id"],
@@ -70,7 +89,7 @@ defmodule MangoPay.PayInFactory do
               AddressLine2: "The Loop",
               City: "Paris",
               Region: "Ile de France",
-              PostalCode: "755001",
+              PostalCode: "74501",
               Country: "FR"
             }
           },
@@ -85,13 +104,30 @@ defmodule MangoPay.PayInFactory do
           CreditedWalletId: created_wallet(__MODULE__)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           Fees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           },
           PreauthorizationId: created_preauthorization(__MODULE__)["Id"]
+        }
+      end
+
+      def pay_in_card_preauthorized_bis_factory do
+        %{
+          Tag: "custom meta",
+          AuthorId: build(:created_user)["Id"],
+          CreditedWalletId: created_wallet(__MODULE__)["Id"],
+          DebitedFunds: %{
+            Currency: "EUR",
+            Amount: 450
+          },
+          Fees: %{
+            Currency: "EUR",
+            Amount: 30
+          },
+          PreauthorizationId: created_preauthorization_bis(__MODULE__)["Id"]
         }
       end
 
@@ -102,11 +138,11 @@ defmodule MangoPay.PayInFactory do
           CreditedWalletId: created_wallet()["Id"],
           DeclaredDebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           DeclaredFees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           }
         }
       end
@@ -117,11 +153,11 @@ defmodule MangoPay.PayInFactory do
           CreditedWalletId: "CREDIT_EUR",
           DeclaredDebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           DeclaredFees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           }
         }
       end
@@ -132,11 +168,11 @@ defmodule MangoPay.PayInFactory do
           AuthorId: build(:created_user)["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           Fees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           },
           ReturnURL: "http://www.my-site.com/returnURL/",
           CreditedWalletId: created_wallet()["Id"],
@@ -156,11 +192,11 @@ defmodule MangoPay.PayInFactory do
           CreditedWalletId: created_wallet()["Id"],
           DebitedFunds: %{
             Currency: "EUR",
-            Amount: 550
+            Amount: 450
           },
           Fees: %{
             Currency: "EUR",
-            Amount: 3
+            Amount: 30
           },
           MandateId: build(:created_mandate)["Id"],
           StatementDescriptor: "Nov2016"
