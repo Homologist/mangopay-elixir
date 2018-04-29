@@ -22,7 +22,7 @@ defmodule MangoPay.Query.Path do
       Get path called.
     
       ## Examples
-          "/users/#{id}" = MangoPay.User.path(id)
+          "/users/id" = MangoPay.User.path(id)
     
       """
       def path(id), do: resource(id)

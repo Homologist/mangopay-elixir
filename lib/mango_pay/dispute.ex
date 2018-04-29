@@ -75,7 +75,7 @@ defmodule MangoPay.Dispute do
       dispute = MangoPay.Dispute.close!("dispute_id")
 
   """
-  def close id do
+  def close! id do
     _update! %{}, id
   end
 
