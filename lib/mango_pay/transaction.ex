@@ -12,8 +12,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all
 
   """
-  def all id, query \\ %{} do
-    _all id, query
+  def all query \\ %{} do
+    _all nil, query
   end
 
   @doc """
@@ -23,8 +23,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all!
 
   """
-  def all! id, query \\ %{} do
-    _all! id, query
+  def all! query \\ %{} do
+    _all! nil, query
   end
 
   @doc """
@@ -32,8 +32,8 @@ defmodule MangoPay.Transaction do
 
   ## Examples
 
-      user_id           = Id of a user
-      query        = %{
+      user_id             = Id of a user
+      query               = %{
         "Page": 1,
         "Per_Page": 25,
         "Sort": "CreationDate:DESC",
