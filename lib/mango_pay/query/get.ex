@@ -1,4 +1,5 @@
 defmodule MangoPay.Query.Get do
+  @moduledoc false
   defmacro set_get do
     quote do
       def _get_path(url_list) when is_list(url_list) do

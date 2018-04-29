@@ -1,4 +1,5 @@
 defmodule MangoPay.Query.Create do
+  @moduledoc false
   defmacro set_create do
     quote do
       def _create_path do
