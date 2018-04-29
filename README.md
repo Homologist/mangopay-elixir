@@ -5,8 +5,9 @@
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mangopay` to your list of dependencies in `mix.exs`:
+An Elixir library for MangoPay [MangoPay](https://mangopay.com/).
+
+The package can be installed by adding `mangopay` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,8 +16,6 @@ def deps do
   ]
 end
 ```
-
-An Elixir library for MangoPay [MangoPay](https://mangopay.com/).
 
 ## Usage
 
