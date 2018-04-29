@@ -1,4 +1,5 @@
 defmodule MangoPay.Query.All do
+  @moduledoc false
   defmacro set_all do
     quote do
       def _all_path(url_list) when is_list(url_list) do

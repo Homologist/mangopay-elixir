@@ -40,6 +40,7 @@ defmodule MangoPay.PayIn do
   end
 
   defmodule Card do
+    @moduledoc false
     defmodule Web do
       @moduledoc """
       Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
@@ -262,6 +263,7 @@ defmodule MangoPay.PayIn do
   end
 
   defmodule BankWire do
+    @moduledoc false
     defmodule Wallet do
       @moduledoc """
       Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).
@@ -377,6 +379,7 @@ defmodule MangoPay.PayIn do
   end
 
   defmodule DirectDebit do
+    @moduledoc false
     defmodule Web do
       @moduledoc """
       Functions for MangoPay [pay in](https://docs.mangopay.com/endpoints/v2.01/payins#e264_the-payin-object).

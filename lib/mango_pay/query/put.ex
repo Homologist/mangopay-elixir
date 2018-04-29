@@ -1,4 +1,5 @@
 defmodule MangoPay.Query.Put do
+  @moduledoc false
   defmacro set_put do
     quote do
       def _update_path(url_list) when is_list(url_list) do

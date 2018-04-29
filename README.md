@@ -5,7 +5,7 @@
 
 ## Installation
 
-An Elixir library for MangoPay [MangoPay](https://mangopay.com/).
+An Elixir library for [MangoPay](https://mangopay.com/).
 
 The package can be installed by adding `mangopay` to your list of dependencies in `mix.exs`:
 
@@ -40,12 +40,12 @@ To call mangopay your needs your client id and passphrase.
 ```ex
 use Mix.Config
 
-config :mangopay, client_id: "YOUR CONNECT CLIENT ID"
+config :mangopay, client_id: "YOUR CLIENT ID"
 config :mangoapy, passphrase: "YOUR KEY"
 ```
 
 ## The API
-The full documentation of the API is avaiable
+The full documentation of the API is avaiable [here](https://hexdocs.pm/mangopay/api-reference.html)
 
 ## Contributing
 
