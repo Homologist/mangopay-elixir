@@ -100,8 +100,8 @@ defmodule MangoPay.Wallet do
       {:ok, wallets} = MangoPay.Wallet.all_by_user!("wallet_id")
 
   """
-  def all_by_user id, query \\ nil do
-    _all [MangoPay.User.path(id), MangoPay.Wallet.path()], query
+  def all_by_user id do
+    _all [MangoPay.User.path(id), MangoPay.Wallet.path()]
   end
 
   @doc """
@@ -112,7 +112,7 @@ defmodule MangoPay.Wallet do
       wallets = MangoPay.Wallet.all_by_user!("wallet_id")
 
   """
-  def all_by_user! id, query \\ nil do
-    _all! [MangoPay.User.path(id), MangoPay.Wallet.path()], query
+  def all_by_user! id do
+    _all! [MangoPay.User.path(id), MangoPay.Wallet.path()]
   end
 end

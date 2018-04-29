@@ -120,8 +120,8 @@ defmodule MangoPay.DisputeDocument do
       {:ok, dispute_documents} = MangoPay.DisputeDocument.all_by_dispute("dispute_id")
 
   """
-  def all_by_dispute id, query \\ nil do
-    _all resource_document(id), query
+  def all_by_dispute id do
+    _all resource_document(id)
   end
 
   @doc """
@@ -131,8 +131,8 @@ defmodule MangoPay.DisputeDocument do
       dispute_documents = MangoPay.DisputeDocument.all_by_dispute!("dispute_id")
 
   """
-  def all_by_dispute! id, query \\ nil do
-    _all! resource_document(id), query
+  def all_by_dispute! id do
+    _all! resource_document(id)
   end
 
   @doc """

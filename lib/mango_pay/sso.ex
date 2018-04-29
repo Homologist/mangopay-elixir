@@ -145,8 +145,8 @@ defmodule MangoPay.Sso do
       {:ok, sso} = MangoPay.Sso.all_by_permission_group("sso_id")
 
   """
-  def all_by_permission_group(id, query \\ nil) do
-    _all([MangoPay.Client.path(), "permissiongroups", id, "ssos"], query)
+  def all_by_permission_group(id) do
+    _all([MangoPay.Client.path(), "permissiongroups", id, "ssos"])
   end
 
   @doc """
@@ -157,7 +157,7 @@ defmodule MangoPay.Sso do
       sso = MangoPay.Sso.all_by_permission_group!("sso_id")
 
   """
-  def all_by_permission_group!(id, query \\ nil) do
-    _all!([MangoPay.Client.path(), "permissiongroups", id, "ssos"], query)
+  def all_by_permission_group!(id) do
+    _all!([MangoPay.Client.path(), "permissiongroups", id, "ssos"])
   end
 end
