@@ -119,21 +119,31 @@ defmodule MangoPay.PermissionGroup do
   List all permission groups.
 
   ## Examples
-      {:ok, permission_groups} = MangoPay.PermissionGroups.all()
+      query                    = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      {:ok, permission_groups} = MangoPay.PermissionGroups.all(query)
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all permission groups.
 
   ## Examples
-      permission_groups = MangoPay.PermissionGroups.all!()
+      query             = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      permission_groups = MangoPay.PermissionGroups.all!(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 end

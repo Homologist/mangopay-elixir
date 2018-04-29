@@ -31,22 +31,36 @@ defmodule MangoPay.User do
   List all users.
 
   ## Examples
-      {:ok, users} = MangoPay.User.all
+      query        = %{
+                       "Page": 1,
+                       "Per_Page": 25,
+                       "Sort": "CreationDate:DESC",
+                       "BeforeDate": 1463440221,
+                       "AfterDate": 1431817821
+                     }
+      {:ok, users} = MangoPay.User.all query
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all users.
 
   ## Examples
-      users = MangoPay.User.all!
+      query        = %{
+                       "Page": 1,
+                       "Per_Page": 25,
+                       "Sort": "CreationDate:DESC",
+                       "BeforeDate": 1463440221,
+                       "AfterDate": 1431817821
+                     }
+      users = MangoPay.User.all! query
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 
   @doc """

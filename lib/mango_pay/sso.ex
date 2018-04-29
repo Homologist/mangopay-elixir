@@ -31,7 +31,7 @@ defmodule MangoPay.Sso do
   Create a sso.
 
   ## Examples
-      params         = %{
+      params     = %{
         "Tag": "custom meta",
         "EventType": "PAYIN_NORMAL_CREATED",
         "Url": "http://www.my-site.com/ssos/"
@@ -47,12 +47,12 @@ defmodule MangoPay.Sso do
   Create a sso.
 
   ## Examples
-      params         = %{
+      params = %{
         "Tag": "custom meta",
         "EventType": "PAYIN_NORMAL_CREATED",
         "Url": "http://www.my-site.com/ssos/"
       }
-      sso = MangoPay.Sso.create!(params)
+      sso    = MangoPay.Sso.create!(params)
 
   """
   def create! params do
@@ -63,7 +63,7 @@ defmodule MangoPay.Sso do
   Update a sso.
 
   ## Examples
-      params         = %{
+      params     = %{
         "Tag": "custom meta",
         "Status": "ENABLED",
         "Url": "http://www.my-site.com/ssos/"
@@ -95,22 +95,32 @@ defmodule MangoPay.Sso do
   List all ssos.
 
   ## Examples
-      {:ok, ssos} = MangoPay.Sso.all()
+      query = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      {:ok, ssos} = MangoPay.Sso.all(query)
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all ssos.
 
   ## Examples
-      ssos = MangoPay.Sso.all!()
+      query = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      ssos  = MangoPay.Sso.all!(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 
   @doc """
@@ -118,7 +128,8 @@ defmodule MangoPay.Sso do
 
   ## Examples
 
-      {:ok, sso} = MangoPay.Sso.extend_invitation("sso_id")
+      sso_id     = Id of a Sso
+      {:ok, sso} = MangoPay.Sso.extend_invitation(sso_id)
 
   """
   def extend_invitation id do
@@ -130,7 +141,8 @@ defmodule MangoPay.Sso do
 
   ## Examples
 
-      sso = MangoPay.Sso.extend_invitation!("sso_id")
+      sso_id     = Id of a Sso
+      sso = MangoPay.Sso.extend_invitation!(sso_id)
 
   """
   def extend_invitation! id do
@@ -141,11 +153,16 @@ defmodule MangoPay.Sso do
   List all sso by permission group.
 
   ## Examples
-
-      {:ok, sso} = MangoPay.Sso.all_by_permission_group("sso_id")
+      sso_id     = Id of a Sso
+      query  = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      {:ok, sso} = MangoPay.Sso.all_by_permission_group(sso_id, query)
 
   """
-  def all_by_permission_group(id, query \\ nil) do
+  def all_by_permission_group(id, query \\ %{}) do
     _all([MangoPay.Client.path(), "permissiongroups", id, "ssos"], query)
   end
 
@@ -153,11 +170,16 @@ defmodule MangoPay.Sso do
   List all sso by permission group.
 
   ## Examples
-
-      sso = MangoPay.Sso.all_by_permission_group!("sso_id")
+      sso_id = Id of a Sso
+      query  = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      sso    = MangoPay.Sso.all_by_permission_group!(sso_id, query)
 
   """
-  def all_by_permission_group!(id, query \\ nil) do
+  def all_by_permission_group!(id, query \\ %{}) do
     _all!([MangoPay.Client.path(), "permissiongroups", id, "ssos"], query)
   end
 end

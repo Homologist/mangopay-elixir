@@ -13,8 +13,8 @@ defmodule MangoPay.ClientWallet do
       {:ok, client_wallets} = MangoPay.ClientWallet.all
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
@@ -25,8 +25,8 @@ defmodule MangoPay.ClientWallet do
       client_wallets = MangoPay.ClientWallet.all!
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 
   @doc """
@@ -34,11 +34,11 @@ defmodule MangoPay.ClientWallet do
 
   ## Examples
 
-      {:ok, client_wallet} = MangoPay.ClientWallet.get_by_funds_type("funds_type")
+      {:ok, client_wallet} = MangoPay.ClientWallet.get_by_funds_type(funds_type, query)
 
   """
-  def all_by_funds_type funds_type do
-    _get [resource(), "#{funds_type}"]
+  def all_by_funds_type(funds_type, query \\ %{}) do
+    _all [resource(), "#{funds_type}"], query
   end
 
   @doc """
@@ -46,11 +46,11 @@ defmodule MangoPay.ClientWallet do
 
   ## Examples
 
-      client_wallet = MangoPay.ClientWallet.get_by_funds_type!("funds_type")
+      client_wallet = MangoPay.ClientWallet.get_by_funds_type!(funds_type, query)
 
   """
-  def all_by_funds_type! funds_type do
-    _get! [resource(), "#{funds_type}"]
+  def all_by_funds_type! funds_type, query \\ %{} do
+    _all! [resource(), "#{funds_type}"], query
   end
 
   @doc """

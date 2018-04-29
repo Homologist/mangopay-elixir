@@ -9,21 +9,37 @@ defmodule MangoPay.Event do
   List all disputes.
 
   ## Examples
-      {:ok, events} = MangoPay.Event.all()
+      query         = %{
+                        "Page": 1,
+                        "Per_Page": 25,
+                        "Sort": "CreationDate:DESC",
+                        "BeforeDate": 1463440221,
+                        "AfterDate": 1431817821,
+                        "EventType": "PAYIN_NORMAL_CREATED"
+      }
+      {:ok, events} = MangoPay.Event.all(query)
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all disputes.
 
   ## Examples
-      events = MangoPay.Event.all!()
+      query  = %{
+                 "Page": 1,
+                 "Per_Page": 25,
+                 "Sort": "CreationDate:DESC",
+                 "BeforeDate": 1463440221,
+                 "AfterDate": 1431817821,
+                 "EventType": "PAYIN_NORMAL_CREATED"
+      }
+      events = MangoPay.Event.all!(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 end

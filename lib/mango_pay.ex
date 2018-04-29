@@ -57,13 +57,10 @@ defmodule MangoPay do
   end
 
   def request! {method, url, query} do
-    case {method, query} do
-      {:get, nil} -> request!(:get, url)
-      {:get, _} -> request!(:get, url, query)
-    end
+    request!(:get, url, "", "", query)
   end
 
-  def request!(method, url, body \\ "", headers \\ "", query \\ "") do
+  def request!(method, url, body \\ "", headers \\ "", query \\ %{}) do
     {method, url, body, headers, _} = full_header_request(method, url, body, headers, query)
     filter_and_send(method, url, body, headers, query, true)
   end
@@ -81,10 +78,7 @@ defmodule MangoPay do
   end
 
   def request {method, url, query} do
-    case {method, query} do
-      {:get, nil} -> request(:get, url)
-      {:get, _} -> request(:get, url, query)
-    end
+    request(:get, url, "", "", query)
   end
 
   @doc """
@@ -95,7 +89,7 @@ defmodule MangoPay do
       {:ok, response} = MangoPay.request("get", "users")
 
   """
-  def request(method, url, body \\ "", headers \\ "", query \\ "") do
+  def request(method, url, body \\ "", headers \\ "", query \\ %{}) do
     {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
     filter_and_send(method, url, body, headers, query, false)
   end
@@ -144,13 +138,13 @@ defmodule MangoPay do
     cond do
       bang ->
         case {Mix.env, method} do
-          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [timeout: 4600, recv_timeout: 5000])
-          {:test, _} -> HTTPoison.request!(method, url, body, headers, [timeout: 500000, recv_timeout: 500000])
+          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [params: query, timeout: 4600, recv_timeout: 5000])
+          {:test, _} -> HTTPoison.request!(method, url, body, headers, [params: query, timeout: 500000, recv_timeout: 500000])
         end
       true ->
         case {Mix.env, method, query} do
-          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [timeout: 4600, recv_timeout: 4600])
-          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [timeout: 500000, recv_timeout: 500000])
+          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [params: query, timeout: 4600, recv_timeout: 5000])
+          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [params: query, timeout: 500000, recv_timeout: 500000])
         end
     end
   end

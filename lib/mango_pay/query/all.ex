@@ -14,20 +14,16 @@ defmodule MangoPay.Query.All do
       end
 
       def _all_params(id_or_list, params) do
-        id_or_list
-        |> case do
-          nil -> {:get, _all_path(), params}
-          _ -> {:get, _all_path(id_or_list), params}
-        end
+        {:get, _all_path(id_or_list), params}
       end
 
-      defp _all(id_or_list \\ nil, params \\ nil) do
+      defp _all(id_or_list \\ nil, params \\ %{}) do
         id_or_list
         |> _all_params(params)
         |> MangoPay.request
       end
 
-      defp _all!(id_or_list \\ nil, params \\ nil) do
+      defp _all!(id_or_list \\ nil, params \\ %{}) do
         id_or_list
         |> _all_params(params)
         |> MangoPay.request!

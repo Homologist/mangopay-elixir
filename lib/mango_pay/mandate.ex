@@ -65,22 +65,36 @@ defmodule MangoPay.Mandate do
   List all mandates.
 
   ## Examples
-      {:ok, mandates} = MangoPay.Mandates.all()
+      query    = %{
+                   "Page": 1,
+                   "Per_Page": 25,
+                   "Sort": "CreationDate:DESC",
+                   "BeforeDate": 1463440221,
+                   "AfterDate": 1431817821
+      }
+      {:ok, mandates} = MangoPay.Mandates.all(query)
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all mandates.
 
   ## Examples
-      mandates = MangoPay.Mandates.all!()
+      query    = %{
+                   "Page": 1,
+                   "Per_Page": 25,
+                   "Sort": "CreationDate:DESC",
+                   "BeforeDate": 1463440221,
+                   "AfterDate": 1431817821
+      }
+      mandates = MangoPay.Mandates.all!(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 
   @doc """
@@ -109,10 +123,18 @@ defmodule MangoPay.Mandate do
   List all mandates for a user.
 
   ## Examples
-      {:ok, mandates} = MangoPay.Mandate.all_by_user("user_id")
+      user_id     = Id of user object
+      query    = %{
+                   "Page": 1,
+                   "Per_Page": 25,
+                   "Sort": "CreationDate:DESC",
+                   "BeforeDate": 1463440221,
+                   "AfterDate": 1431817821
+      }
+      {:ok, mandates} = MangoPay.Mandate.all_by_user(user_id, query)
 
   """
-  def all_by_user user_id, query \\ nil do
+  def all_by_user user_id, query \\ %{} do
     _all [MangoPay.User.path(user_id), resource()], query
   end
 
@@ -120,10 +142,18 @@ defmodule MangoPay.Mandate do
   List all mandates for a user.
 
   ## Examples
-      mandates = MangoPay.Mandate.all_by_user!("user_id")
+      user_id  = Id of a user object
+      query    = %{
+                   "Page": 1,
+                   "Per_Page": 25,
+                   "Sort": "CreationDate:DESC",
+                   "BeforeDate": 1463440221,
+                   "AfterDate": 1431817821
+      }
+      mandates = MangoPay.Mandate.all_by_user!(user_id, query)
 
   """
-  def all_by_user! user_id, query \\ nil do
+  def all_by_user! user_id, query \\ %{} do
     _all! [MangoPay.User.path(user_id), resource()], query
   end
 
@@ -131,10 +161,19 @@ defmodule MangoPay.Mandate do
   List all mandates for a bank account.
 
   ## Examples
-      {:ok, mandates} = MangoPay.Mandate.all_by_bank_account("user_id", "bank_account_id")
+      user_id         = Id of a User object
+      bank_account_id = Id of a BankAccount object
+      query           = %{
+                          "Page": 1,
+                          "Per_Page": 25,
+                          "Sort": "CreationDate:DESC",
+                          "BeforeDate": 1463440221,
+                          "AfterDate": 1431817821
+      }
+      {:ok, mandates} = MangoPay.Mandate.all_by_bank_account(user_id, bank_account_id)
 
   """
-  def all_by_bank_account user_id, bank_account_id, query \\ nil do
+  def all_by_bank_account user_id, bank_account_id, query \\ %{} do
     _all [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
   end
 
@@ -142,10 +181,19 @@ defmodule MangoPay.Mandate do
   List all mandates for a bank account.
 
   ## Examples
-      mandates = MangoPay.Mandate.all_by_bank_account!("user_id", "bank_account_id")
+      user_id         = Id of a user object
+      bank_account_id = Id of a bank account object
+      query           = %{
+                          "Page": 1,
+                          "Per_Page": 25,
+                          "Sort": "CreationDate:DESC",
+                          "BeforeDate": 1463440221,
+                          "AfterDate": 1431817821
+      }
+      mandates        = MangoPay.Mandate.all_by_bank_account!(user_id, bank_account_id, query)
 
   """
-  def all_by_bank_account! user_id, bank_account_id, query \\ nil do
+  def all_by_bank_account! user_id, bank_account_id, query \\ %{} do
     _all! [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
   end
 end
