@@ -75,9 +75,6 @@ defmodule MangoPay.User do
 
   defmodule Natural do
     @moduledoc """
-    Functions for MangoPay [client](https://docs.mangopay.com/endpoints/v2.01/users#e253_the-user-object).
-    """
-    @moduledoc """
     Functions for MangoPay user natural.
 
     MangoPay official API documentation: https://docs.mangopay.com/endpoints/v2.01/users#e253_the-user-object

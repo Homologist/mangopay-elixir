@@ -36,7 +36,7 @@ end
 
 ## Configuration
 
-To call mangopay setup your client id and passphrase.
+To call mangopay your needs your client id and passphrase.
 
 ```ex
 use Mix.Config

@@ -17,40 +17,6 @@ defmodule MangoPay do
 
   @payline_header %{"Accept-Encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3", "Accept": "*/*", "Host": "homologation-webpayment.payline.com"}
 
-  @doc """
-  Request to mangopay web API.
-
-  ## Examples
-
-      {:ok, response} = MangoPay.request("get", "users")
-
-  """
-  def request {method, url, body, headers} do
-    request(method, url, body, headers)
-  end
-
-  def request(method, url, body \\ "", headers \\ "", query \\ "") do
-    {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
-    filter_and_send(method, url, body, headers, query, false)
-  end
-
-  @doc """
-  Request to mangopay web API.
-
-  ## Examples
-
-      response = MangoPay.request("get", "users")
-
-  """
-  def request! {method, url, body, headers} do
-    request!(method, url, body, headers)
-  end
-
-  def request!(method, url, body \\ "", headers \\ "", query \\ "") do
-    {method, url, body, headers, _} = full_header_request(method, url, body, headers, query)
-    filter_and_send(method, url, body, headers, query, true)
-  end
-
   def base_header do
     @base_header
   end
@@ -78,11 +44,16 @@ defmodule MangoPay do
     "/#{mangopay_version()}/#{MangoPay.client()[:id]}"
   end
 
-  def request {method, url, query} do
-    case {method, query} do
-      {:get, nil} -> request(:get, url)
-      {:get, _} -> request(:get, url, query)
-    end
+  @doc """
+  Request to mangopay web API.
+
+  ## Examples
+
+      response = MangoPay.request!("get", "users")
+
+  """
+  def request! {method, url, body, headers} do
+    request!(method, url, body, headers)
   end
 
   def request! {method, url, query} do
@@ -90,6 +61,35 @@ defmodule MangoPay do
       {:get, nil} -> request!(:get, url)
       {:get, _} -> request!(:get, url, query)
     end
+  end
+
+  def request!(method, url, body \\ "", headers \\ "", query \\ "") do
+    {method, url, body, headers, _} = full_header_request(method, url, body, headers, query)
+    filter_and_send(method, url, body, headers, query, true)
+  end
+
+  @doc """
+  Request to mangopay web API.
+
+  ## Examples
+
+      {:ok, response} = MangoPay.request("get", "users")
+
+  """
+  def request {method, url, body, headers} do
+    request(method, url, body, headers)
+  end
+
+  def request {method, url, query} do
+    case {method, query} do
+      {:get, nil} -> request(:get, url)
+      {:get, _} -> request(:get, url, query)
+    end
+  end
+
+  def request(method, url, body \\ "", headers \\ "", query \\ "") do
+    {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
+    filter_and_send(method, url, body, headers, query, false)
   end
 
   defp full_header_request(method, url, body, headers, query) do
@@ -136,13 +136,13 @@ defmodule MangoPay do
     cond do
       bang ->
         case {Mix.env, method} do
-          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [{"timeout", 4600, "recv_timeout", 5000}])
-          {:test, _} -> HTTPoison.request!(method, url, body, headers, [{"timeout", 50000, "recv_timeout", 50000}])
+          {:dev, _}  -> HTTPoison.request!(method, url, body, headers, [timeout: 4600, recv_timeout: 5000])
+          {:test, _} -> HTTPoison.request!(method, url, body, headers, [timeout: 500000, recv_timeout: 500000])
         end
       true ->
         case {Mix.env, method, query} do
-          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [{"timeout", 4600, "recv_timeout", 4600}])
-          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [{"timeout", :timeout, "recv_timeout", :timeout}])
+          {:dev, _, _}  -> HTTPoison.request(method, url, body, headers, [timeout: 4600, recv_timeout: 4600])
+          {:test, _, _} -> HTTPoison.request(method, url, body, headers, [timeout: 500000, recv_timeout: 500000])
         end
     end
   end

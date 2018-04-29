@@ -13,6 +13,7 @@ defmodule MangoPay.Card do
   Get a card object.
 
   ## Examples
+      id is the CardId of the credit card
 
       {:ok, card} = MangoPay.Card.get("card_id")
 
@@ -25,6 +26,7 @@ defmodule MangoPay.Card do
   Get a card object.
 
   ## Examples
+      id is the CardId of the credit card
 
       card = MangoPay.Card.get!("card_id")
 
@@ -37,6 +39,7 @@ defmodule MangoPay.Card do
   Get a card registration object.
 
   ## Examples
+      id is the Id of the Card registration object
 
       {:ok, card} = MangoPay.Card.get_registration("card_id")
 
@@ -49,6 +52,7 @@ defmodule MangoPay.Card do
   Get a card registration object.
 
   ## Examples
+      id is the Id of the Card registration object
 
       card = MangoPay.Card.get_registration!("card_id")
 
@@ -61,6 +65,7 @@ defmodule MangoPay.Card do
   Create a card registration object.
 
   ## Examples
+      params are the infos needed to create a card registration object
 
       {:ok, card} = MangoPay.Card.create("params")
 
@@ -73,6 +78,7 @@ defmodule MangoPay.Card do
   Create a card registration object.
 
   ## Examples
+      params are the infos needed to create a card registration object
 
       card = MangoPay.Card.create!("params")
 
@@ -119,6 +125,7 @@ defmodule MangoPay.Card do
   All card by card fingerprint.
 
   ## Examples
+      fingerprint is the Fingerprint of the object credit card
 
       {:ok, card} = MangoPay.Card.all_by_fingerprint("fingerprint")
 
@@ -131,6 +138,7 @@ defmodule MangoPay.Card do
   All card by card fingerprint.
 
   ## Examples
+      fingerprint is the Fingerprint of the object credit card
 
       card = MangoPay.Card.all_by_fingerprint!("fingerprint")
 
@@ -143,6 +151,7 @@ defmodule MangoPay.Card do
   All cards for a user.
 
   ## Examples
+      id is the Id of the object user
 
       {:ok, card} = MangoPay.Card.all_by_user("user_id")
 
@@ -155,6 +164,7 @@ defmodule MangoPay.Card do
   All cards for a user.
 
   ## Examples
+      id is the Id of the object user
 
       card = MangoPay.Card.all_by_user!("user_id")
 
@@ -167,6 +177,7 @@ defmodule MangoPay.Card do
   All users by card fingerprint.
 
   ## Examples
+      fingerprint is the Fingerprint of the object credit card
 
       {:ok, card} = MangoPay.Card.all_by_fingerprint("fingerprint")
 
@@ -179,6 +190,7 @@ defmodule MangoPay.Card do
   All users by card fingerprint.
 
   ## Examples
+      fingerprint is the Fingerprint of the object credit card
 
       card = MangoPay.Card.all_by_fingerprint!("fingerprint")
 
@@ -191,6 +203,7 @@ defmodule MangoPay.Card do
   Deactivate a card for a user.
 
   ## Examples
+      id is the CardId of the credit card
 
       {:ok, card} = MangoPay.Card.deactivate("card_id", %{Active: false})
 
@@ -203,6 +216,7 @@ defmodule MangoPay.Card do
   Deactivate a card for a user.
 
   ## Examples
+      id is the CardId of the credit card
 
       card = MangoPay.Card.deactivate!("card_id", %{Active: false})
 
@@ -215,6 +229,7 @@ defmodule MangoPay.Card do
   All transactions for a card fingerprint.
 
   ## Examples
+      fingerprint is the Fingerprint of the object credit card
 
       {:ok, card} = MangoPay.Card.all_transactions_by_fingerprint("fingerprint")
 
@@ -227,6 +242,7 @@ defmodule MangoPay.Card do
   All transactions for a card fingerprint.
 
   ## Examples
+      fingerprint is the Fingerprint of the object credit card
 
       card = MangoPay.Card.all_transactions_by_fingerprint!("fingerprint")
 
