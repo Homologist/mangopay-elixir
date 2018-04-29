@@ -29,13 +29,13 @@ defmodule TransactionTest do
 
   test "all transactions" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transaction/all" do
-      query = %{"Page": 1, "Per_Page": 5}
+      query = %{Page: 1, Per_Page: 5}
       assert {:ok, response} = MangoPay.Transaction.all(query)
       list = response.body
       assert Enum.count(Poison.decode!(list)) == 5
     end
 
-    query = %{"Page": 1, "Per_Page": 5}
+    query = %{Page: 1, Per_Page: 5}
     assert {:ok, response} = MangoPay.Transaction.all(query)
     list = response.body
     assert Enum.count(Poison.decode!(list)) == 5
@@ -71,15 +71,15 @@ defmodule TransactionTest do
     assert length(Poison.decode!(response.body)) == 0
   end
 
-#  test "all transaction by client" do
-#    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transaction/client/all" do
-#      assert {:ok, response} = MangoPay.Transaction.all_by_client(created_client()["Id"])
-#      assert length(Poison.decode!(response.body)) > 0
-#    end
-#
-#    assert response = MangoPay.Transaction.all_by_client!(created_client()["Id"])
-#    assert length(Poison.decode!(response.body)) > 0
-#  end
+  #  test "all transaction by client" do
+  #    use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transaction/client/all" do
+  #      assert {:ok, response} = MangoPay.Transaction.all_by_client(created_client()["Id"])
+  #      assert length(Poison.decode!(response.body)) > 0
+  #    end
+  #
+  #    assert response = MangoPay.Transaction.all_by_client!(created_client()["Id"])
+  #    assert length(Poison.decode!(response.body)) > 0
+  #  end
 
   test "all transaction by client_wallet" do
     use_cassette "#{Factories.SharedFunctions.module_name(__MODULE__)}/transaction/client_wallet/all" do
