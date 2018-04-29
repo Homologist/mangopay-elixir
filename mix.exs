@@ -51,5 +51,18 @@ defmodule MangoPay.Mixfile do
     ]
   end
 
+  defp description() do
+    "An elixir client for MangoPay API."
+  end
+
+  defp package do
+    [
+      maintainers: ["Homologist"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/Homologist/mangopay-elixir"},
+      files: ~w(lib mix.exs README.md LICENSE)
+    ]
+  end
+
   defp elixirc_paths, do: ["lib", "web", "test/support/factory.ex", "test/factories/"]
 end
