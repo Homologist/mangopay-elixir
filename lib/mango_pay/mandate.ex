@@ -112,8 +112,8 @@ defmodule MangoPay.Mandate do
       {:ok, mandates} = MangoPay.Mandate.all_by_user("user_id")
 
   """
-  def all_by_user user_id do
-    _all [MangoPay.User.path(user_id), resource()]
+  def all_by_user user_id, query \\ nil do
+    _all [MangoPay.User.path(user_id), resource()], query
   end
 
   @doc """
@@ -123,8 +123,8 @@ defmodule MangoPay.Mandate do
       mandates = MangoPay.Mandate.all_by_user!("user_id")
 
   """
-  def all_by_user! user_id do
-    _all! [MangoPay.User.path(user_id), resource()]
+  def all_by_user! user_id, query \\ nil do
+    _all! [MangoPay.User.path(user_id), resource()], query
   end
 
   @doc """
@@ -134,8 +134,8 @@ defmodule MangoPay.Mandate do
       {:ok, mandates} = MangoPay.Mandate.all_by_bank_account("user_id", "bank_account_id")
 
   """
-  def all_by_bank_account user_id, bank_account_id do
-    _all [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()]
+  def all_by_bank_account user_id, bank_account_id, query \\ nil do
+    _all [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
   end
 
   @doc """
@@ -145,7 +145,7 @@ defmodule MangoPay.Mandate do
       mandates = MangoPay.Mandate.all_by_bank_account!("user_id", "bank_account_id")
 
   """
-  def all_by_bank_account! user_id, bank_account_id do
-    _all! [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()]
+  def all_by_bank_account! user_id, bank_account_id, query \\ nil do
+    _all! [MangoPay.User.path(user_id), MangoPay.BankAccount.path(bank_account_id), resource()], query
   end
 end

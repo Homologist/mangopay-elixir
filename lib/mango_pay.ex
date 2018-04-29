@@ -73,7 +73,7 @@ defmodule MangoPay do
 
   ## Examples
 
-      {:ok, response} = MangoPay.request("get", "users")
+      {:ok, response} = MangoPay.request({"get", "users", nil, nil})
 
   """
   def request {method, url, body, headers} do
@@ -87,6 +87,14 @@ defmodule MangoPay do
     end
   end
 
+  @doc """
+  Request to mangopay web API.
+
+  ## Examples
+
+      {:ok, response} = MangoPay.request("get", "users")
+
+  """
   def request(method, url, body \\ "", headers \\ "", query \\ "") do
     {method, url, body, headers, query} = full_header_request(method, url, body, headers, query)
     filter_and_send(method, url, body, headers, query, false)

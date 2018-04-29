@@ -146,8 +146,8 @@ defmodule MangoPay.KycDocument do
       {:ok, kyc_documents} = MangoPay.KycDocument.all_by_user("user_id")
 
   """
-  def all_by_user user_id do
-    [MangoPay.User.path(user_id), resource()] |> _all()
+  def all_by_user user_id, query \\ nil do
+    [MangoPay.User.path(user_id), resource()] |> _all(query)
   end
 
   @doc """
@@ -157,7 +157,7 @@ defmodule MangoPay.KycDocument do
       kyc_documents = MangoPay.KycDocument.all_by_user!("user_id")
 
   """
-  def all_by_user! user_id do
-    [MangoPay.User.path(user_id), resource()] |> _all!()
+  def all_by_user! user_id, query \\ nil do
+    [MangoPay.User.path(user_id), resource()] |> _all!(query)
   end
 end

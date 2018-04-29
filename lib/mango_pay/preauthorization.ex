@@ -129,8 +129,8 @@ defmodule MangoPay.PreAuthorization do
       {:ok, preauthorizations} = MangoPay.PreAuthorization.all_by_card("card_id")
 
   """
-  def all_by_card id do
-    _all [MangoPay.Card.path(id), resource()]
+  def all_by_card id, query \\ nil do
+    _all [MangoPay.Card.path(id), resource()], query
   end
 
   @doc """
@@ -141,8 +141,8 @@ defmodule MangoPay.PreAuthorization do
       preauthorizations = MangoPay.PreAuthorization.all_by_card!("card_id")
 
   """
-  def all_by_card! id do
-    _all! [MangoPay.Card.path(id), resource()]
+  def all_by_card! id, query \\ nil do
+    _all! [MangoPay.Card.path(id), resource()], query
   end
 
   @doc """
@@ -153,8 +153,8 @@ defmodule MangoPay.PreAuthorization do
       {:ok, preauthorizations} = MangoPay.PreAuthorization.all_by_user("user_id")
 
   """
-  def all_by_user id do
-    _all [MangoPay.User.path(id), resource()]
+  def all_by_user id, query \\ nil do
+    _all [MangoPay.User.path(id), resource()], query
   end
 
   @doc """
@@ -165,7 +165,7 @@ defmodule MangoPay.PreAuthorization do
       preauthorizations = MangoPay.PreAuthorization.all_by_user!("user_id")
 
   """
-  def all_by_user! id do
-    _all! [MangoPay.User.path(id), resource()]
+  def all_by_user! id, query \\ nil do
+    _all! [MangoPay.User.path(id), resource()], query
   end
 end

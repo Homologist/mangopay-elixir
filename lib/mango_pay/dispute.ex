@@ -170,8 +170,8 @@ defmodule MangoPay.Dispute do
       {:ok, dispute} = MangoPay.Dispute.all_by_user("user_id")
 
   """
-  def all_by_user id do
-    _all [MangoPay.User.path(id), resource()]
+  def all_by_user id, query \\ nil do
+    _all [MangoPay.User.path(id), resource()], query
   end
 
   @doc """
@@ -182,8 +182,8 @@ defmodule MangoPay.Dispute do
       dispute = MangoPay.Dispute.all_by_user!("user_id")
 
   """
-  def all_by_user! id do
-    _all! [MangoPay.User.path(id), resource()]
+  def all_by_user! id, query \\ nil do
+    _all! [MangoPay.User.path(id), resource()], query
   end
 
   @doc """
@@ -194,8 +194,8 @@ defmodule MangoPay.Dispute do
       {:ok, dispute} = MangoPay.Dispute.all_by_wallet("user_id")
 
   """
-  def all_by_wallet id do
-    _all [MangoPay.Wallet.path(id), resource()]
+  def all_by_wallet id, query \\ nil do
+    _all [MangoPay.Wallet.path(id), resource()], query
   end
 
   @doc """
@@ -206,8 +206,8 @@ defmodule MangoPay.Dispute do
       dispute = MangoPay.Dispute.all_by_wallet!("user_id")
 
   """
-  def all_by_wallet! id do
-    _all! [MangoPay.Wallet.path(id), resource()]
+  def all_by_wallet! id, query \\ nil do
+    _all! [MangoPay.Wallet.path(id), resource()], query
   end
 
   @doc """

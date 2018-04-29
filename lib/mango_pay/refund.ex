@@ -123,8 +123,8 @@ defmodule MangoPay.Refund do
       {:ok, refund} = MangoPay.Refund.all_by_pay_out("pay_out_id")
 
   """
-  def all_by_pay_out id do
-    _all [MangoPay.PayOut.path(id), resource()]
+  def all_by_pay_out id, query \\ nil do
+    _all [MangoPay.PayOut.path(id), resource()], query
   end
 
   @doc """
@@ -134,8 +134,8 @@ defmodule MangoPay.Refund do
       refund = MangoPay.Refund.all_by_pay_out!("pay_out_id")
 
   """
-  def all_by_pay_out! id do
-    _all! [MangoPay.PayOut.path(id), resource()]
+  def all_by_pay_out! id, query \\ nil do
+    _all! [MangoPay.PayOut.path(id), resource()], query
   end
 
   @doc """
@@ -145,8 +145,8 @@ defmodule MangoPay.Refund do
       {:ok, refunds} = MangoPay.Refund.all_by_pay_in("pay_in_id")
 
   """
-  def all_by_pay_in id do
-    _all [MangoPay.PayIn.path(id), resource()]
+  def all_by_pay_in id, query \\ nil do
+    _all [MangoPay.PayIn.path(id), resource()], query
   end
 
   @doc """
@@ -156,8 +156,8 @@ defmodule MangoPay.Refund do
       refunds = MangoPay.Refund.all_by_pay_in!("pay_in_id")
 
   """
-  def all_by_pay_in! id do
-    _all! [MangoPay.PayIn.path(id), resource()]
+  def all_by_pay_in! id, query \\ nil do
+    _all! [MangoPay.PayIn.path(id), resource()], query
   end
 
   @doc """
@@ -167,8 +167,8 @@ defmodule MangoPay.Refund do
       {:ok, refunds} = MangoPay.Refund.all_by_transfer("transfer_id")
 
   """
-  def all_by_transfer id do
-    _all [MangoPay.Transfer.path(id), resource()]
+  def all_by_transfer id, query \\ nil do
+    _all [MangoPay.Transfer.path(id), resource()], query
   end
 
   @doc """
@@ -178,8 +178,8 @@ defmodule MangoPay.Refund do
       refunds = MangoPay.Refund.all_by_transfer!("transfer_id")
 
   """
-  def all_by_transfer! id do
-    _all! [MangoPay.Transfer.path(id), resource()]
+  def all_by_transfer! id, query \\ nil do
+    _all! [MangoPay.Transfer.path(id), resource()], query
   end
 
   @doc """
@@ -189,8 +189,8 @@ defmodule MangoPay.Refund do
       {:ok, refunds} = MangoPay.Refund.all_by_repudiation("repudiation_id")
 
   """
-  def all_by_repudiation id do
-    _all [MangoPay.Repudiation.path(id), resource()]
+  def all_by_repudiation id, query \\ nil do
+    _all [MangoPay.Repudiation.path(id), resource()], query
   end
 
   @doc """
@@ -200,7 +200,7 @@ defmodule MangoPay.Refund do
       refunds = MangoPay.Refund.all_by_repudiation!("repudiation_id")
 
   """
-  def all_by_repudiation! id do
-    _all! [MangoPay.Repudiation.path(id), resource()]
+  def all_by_repudiation! id, query \\ nil do
+    _all! [MangoPay.Repudiation.path(id), resource()], query
   end
 end

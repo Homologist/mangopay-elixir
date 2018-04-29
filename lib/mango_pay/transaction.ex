@@ -35,8 +35,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_user("user_id")
 
   """
-  def all_by_user id do
-    _all [MangoPay.User.path(id), resource()]
+  def all_by_user id, query \\ nil do
+    _all [MangoPay.User.path(id), resource()], query
   end
 
   @doc """
@@ -47,8 +47,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_user!("user_id")
 
   """
-  def all_by_user! id do
-    _all! [MangoPay.User.path(id), resource()]
+  def all_by_user! id, query \\ nil do
+    _all! [MangoPay.User.path(id), resource()], query
   end
 
   @doc """
@@ -59,8 +59,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_wallet("wallet_id")
 
   """
-  def all_by_wallet id do
-    _all [MangoPay.Wallet.path(id), resource()]
+  def all_by_wallet id, query \\ nil do
+    _all [MangoPay.Wallet.path(id), resource()], query
   end
 
   @doc """
@@ -71,8 +71,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_wallet!("wallet_id")
 
   """
-  def all_by_wallet! id do
-    _all! [MangoPay.Wallet.path(id), resource()]
+  def all_by_wallet! id, query \\ nil do
+    _all! [MangoPay.Wallet.path(id), resource()], query
   end
 
   @doc """
@@ -83,8 +83,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_dispute("dispute_id")
 
   """
-  def all_by_dispute id do
-    _all [MangoPay.Dispute.path(id), resource()]
+  def all_by_dispute id, query \\ nil do
+    _all [MangoPay.Dispute.path(id), resource()], query
   end
 
   @doc """
@@ -95,8 +95,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_dispute!("dispute_id")
 
   """
-  def all_by_dispute! id do
-    _all! [MangoPay.Dispute.path(id), resource()]
+  def all_by_dispute! id, query \\ nil do
+    _all! [MangoPay.Dispute.path(id), resource()], query
   end
 
   @doc """
@@ -107,8 +107,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_client("client_id")
 
   """
-  def all_by_client id do
-    _all [MangoPay.Client.path(id), resource()]
+  def all_by_client id, query \\ nil do
+    _all [MangoPay.Client.path(id), resource()], query
   end
 
   @doc """
@@ -119,8 +119,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_client!("client_id")
 
   """
-  def all_by_client! id do
-    _all! [MangoPay.Client.path(id), resource()]
+  def all_by_client! id, query \\ nil do
+    _all! [MangoPay.Client.path(id), resource()], query
   end
 
   @doc """
@@ -131,8 +131,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_client_wallet("funds_type", "currency")
 
   """
-  def all_by_client_wallet funds_type, currency do
-    _all ["clients", "wallets", funds_type, currency, resource()]
+  def all_by_client_wallet funds_type, currency, query \\ nil do
+    _all ["clients", "wallets", funds_type, currency, resource()], query
   end
 
   @doc """
@@ -143,8 +143,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_client_wallet!("funds_type", "currency")
 
   """
-  def all_by_client_wallet! funds_type, currency do
-    _all! ["clients", "wallets", funds_type, currency, resource()]
+  def all_by_client_wallet! funds_type, currency, query \\ nil do
+    _all! ["clients", "wallets", funds_type, currency, resource()], query
   end
 
   @doc """
@@ -155,8 +155,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_pre_authorization("pre_authorization_id")
 
   """
-  def all_by_pre_authorization id do
-    _all [MangoPay.PreAuthorization.path(id), resource()]
+  def all_by_pre_authorization id, query \\ nil do
+    _all [MangoPay.PreAuthorization.path(id), resource()], query
   end
 
   @doc """
@@ -167,8 +167,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_pre_authorization!("pre_authorization_id")
 
   """
-  def all_by_pre_authorization! id do
-    _all! [MangoPay.PreAuthorization.path(id), resource()]
+  def all_by_pre_authorization! id, query \\ nil do
+    _all! [MangoPay.PreAuthorization.path(id), resource()], query
   end
 
   @doc """
@@ -179,8 +179,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_bank_account("bank_account_id")
 
   """
-  def all_by_bank_account id do
-    _all [MangoPay.BankAccount.path(id), resource()]
+  def all_by_bank_account id, query \\ nil do
+    _all [MangoPay.BankAccount.path(id), resource()], query
   end
 
   @doc """
@@ -191,8 +191,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_bank_account!("bank_account_id")
 
   """
-  def all_by_bank_account! id do
-    _all! [MangoPay.BankAccount.path(id), resource()]
+  def all_by_bank_account! id, query \\ nil do
+    _all! [MangoPay.BankAccount.path(id), resource()], query
   end
 
   @doc """
@@ -203,8 +203,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_card("card_id")
 
   """
-  def all_by_card id do
-    _all [MangoPay.Card.path(id), resource()]
+  def all_by_card id, query \\ nil do
+    _all [MangoPay.Card.path(id), resource()], query
   end
 
   @doc """
@@ -215,8 +215,8 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_card!("card_id")
 
   """
-  def all_by_card! id do
-    _all! [MangoPay.Card.path(id), resource()]
+  def all_by_card! id, query \\ nil do
+    _all! [MangoPay.Card.path(id), resource()], query
   end
 
   @doc """
@@ -227,8 +227,8 @@ defmodule MangoPay.Transaction do
       {:ok, transactions} = MangoPay.Transaction.all_by_mandate("mandate_id")
 
   """
-  def all_by_mandate id do
-    _all [MangoPay.Mandate.path(id), resource()]
+  def all_by_mandate id, query \\ nil do
+    _all [MangoPay.Mandate.path(id), resource()], query
   end
 
   @doc """
@@ -239,7 +239,7 @@ defmodule MangoPay.Transaction do
       transactions = MangoPay.Transaction.all_by_mandate!("mandate_id")
 
   """
-  def all_by_mandate! id do
-    _all! [MangoPay.Mandate.path(id), resource()]
+  def all_by_mandate! id, query \\ nil do
+    _all! [MangoPay.Mandate.path(id), resource()], query
   end
 end
