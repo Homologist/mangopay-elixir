@@ -45,7 +45,7 @@ defmodule MangoPay.Dispute do
   Update a dispute.
 
   ## Examples
-      params         = %{
+      params  = %{
         "Tag": "custom meta"
       }
       dispute = MangoPay.Dispute.update(id, params)
@@ -101,7 +101,7 @@ defmodule MangoPay.Dispute do
   Submit a dispute.
 
   ## Examples
-      params         = %{
+      params  = %{
           "ContestedFunds": %{
             "Currency": "EUR",
             "Amount": 12
@@ -142,12 +142,20 @@ defmodule MangoPay.Dispute do
   List all disputes.
 
   ## Examples
-
-      {:ok, disputes} = MangoPay.Dispute.all()
+      query           = %{
+                          "Page": 1,
+                          "Per_Page": 25,
+                          "Sort": "CreationDate:DESC",
+                          "BeforeDate": 1463440221,
+                          "AfterDate": 1431817821,
+                          "DisputeType": "CONTESTABLE,RETRIEVAL",
+                          "Status": "CREATED, SUCCEEDED"
+                        }
+      {:ok, disputes} = MangoPay.Dispute.all(query)
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
@@ -155,11 +163,20 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      disputes = MangoPay.Dispute.all()
+      query    = %{
+                   "Page": 1,
+                   "Per_Page": 25,
+                   "Sort": "CreationDate:DESC",
+                   "BeforeDate": 1463440221,
+                   "AfterDate": 1431817821,
+                   "DisputeType": "CONTESTABLE,RETRIEVAL",
+                   "Status": "CREATED, SUCCEEDED"
+                 }
+      disputes = MangoPay.Dispute.all(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 
   @doc """
@@ -167,10 +184,19 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      {:ok, dispute} = MangoPay.Dispute.all_by_user("user_id")
+      query          = %{
+                         "Page": 1,
+                         "Per_Page": 25,
+                         "Sort": "CreationDate:DESC",
+                         "BeforeDate": 1463440221,
+                         "AfterDate": 1431817821,
+                         "DisputeType": "CONTESTABLE,RETRIEVAL",
+                         "Status": "CREATED, SUCCEEDED"
+                       }
+      {:ok, dispute} = MangoPay.Dispute.all_by_user("user_id", query)
 
   """
-  def all_by_user id, query \\ nil do
+  def all_by_user id, query \\ %{} do
     _all [MangoPay.User.path(id), resource()], query
   end
 
@@ -179,10 +205,19 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      dispute = MangoPay.Dispute.all_by_user!("user_id")
+      query   = %{
+                  "Page": 1,
+                  "Per_Page": 25,
+                  "Sort": "CreationDate:DESC",
+                  "BeforeDate": 1463440221,
+                  "AfterDate": 1431817821,
+                  "DisputeType": "CONTESTABLE,RETRIEVAL",
+                  "Status": "CREATED, SUCCEEDED"
+                }
+      dispute = MangoPay.Dispute.all_by_user!("user_id", query)
 
   """
-  def all_by_user! id, query \\ nil do
+  def all_by_user! id, query \\ %{} do
     _all! [MangoPay.User.path(id), resource()], query
   end
 
@@ -191,10 +226,19 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      {:ok, dispute} = MangoPay.Dispute.all_by_wallet("user_id")
+      query          = %{
+                         "Page": 1,
+                         "Per_Page": 25,
+                         "Sort": "CreationDate:DESC",
+                         "BeforeDate": 1463440221,
+                         "AfterDate": 1431817821,
+                         "DisputeType": "CONTESTABLE,RETRIEVAL",
+                         "Status": "CREATED, SUCCEEDED"
+                       }
+      {:ok, dispute} = MangoPay.Dispute.all_by_wallet(wallet_id, query)
 
   """
-  def all_by_wallet id, query \\ nil do
+  def all_by_wallet id, query \\ %{} do
     _all [MangoPay.Wallet.path(id), resource()], query
   end
 
@@ -203,10 +247,19 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      dispute = MangoPay.Dispute.all_by_wallet!("user_id")
+      query   = %{
+                  "Page": 1,
+                  "Per_Page": 25,
+                  "Sort": "CreationDate:DESC",
+                  "BeforeDate": 1463440221,
+                  "AfterDate": 1431817821,
+                  "DisputeType": "CONTESTABLE,RETRIEVAL",
+                  "Status": "CREATED, SUCCEEDED"
+                }
+      dispute = MangoPay.Dispute.all_by_wallet!(query)
 
   """
-  def all_by_wallet! id, query \\ nil do
+  def all_by_wallet! id, query \\ %{} do
     _all! [MangoPay.Wallet.path(id), resource()], query
   end
 
@@ -215,11 +268,20 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      {:ok, dispute} = MangoPay.Dispute.all_by_pending_settlement()
+      query          = %{
+                         "Page": 1,
+                         "Per_Page": 25,
+                         "Sort": "CreationDate:DESC",
+                         "BeforeDate": 1463440221,
+                         "AfterDate": 1431817821,
+                         "DisputeType": "CONTESTABLE,RETRIEVAL",
+                         "Status": "CREATED, SUCCEEDED"
+                       }
+      {:ok, dispute} = MangoPay.Dispute.all_by_pending_settlement(query)
 
   """
-  def all_by_pending_settlement do
-    _all [resource(), "pendingsettlement"]
+  def all_by_pending_settlement(query \\ %{}) do
+    _all [resource(), "pendingsettlement"], query
   end
 
   @doc """
@@ -227,11 +289,20 @@ defmodule MangoPay.Dispute do
 
   ## Examples
 
-      dispute = MangoPay.Dispute.all_by_pending_settlement!()
+      query           = %{
+                          "Page": 1,
+                          "Per_Page": 25,
+                          "Sort": "CreationDate:DESC",
+                          "BeforeDate": 1463440221,
+                          "AfterDate": 1431817821,
+                          "DisputeType": "CONTESTABLE,RETRIEVAL",
+                          "Status": "CREATED, SUCCEEDED"
+                        }
+      dispute = MangoPay.Dispute.all_by_pending_settlement!(query)
 
   """
-  def all_by_pending_settlement! do
-    _all! [resource(), "pendingsettlement"]
+  def all_by_pending_settlement!(query \\ %{}) do
+    _all! [resource(), "pendingsettlement"], query
   end
 
   defp resource_submit(id) do

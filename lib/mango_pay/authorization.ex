@@ -16,7 +16,7 @@ defmodule MangoPay.Authorization do
     case Agent.start(fn -> nil end, name: :token) do
       {:ok, _} -> post_authorization() |> get_token()
       _        -> case Agent.get(:token, &(&1)) do
-        %{token: _, expires: expire_date} when expire_date < time
+        %{token: _, expires: expire_date} when expire_date > time
           -> post_authorization()
             |> get_token()
         %{token: token_string, expires: _} when token_string == nil
@@ -31,7 +31,7 @@ defmodule MangoPay.Authorization do
    Ask for authorization token to MangoPay
   """
   def post_authorization do
-    :post |> MangoPay.request!("/v2.01/oauth/token", "{}", authorization_header()) |> get_decoded_response
+    :post |> MangoPay.request!("/v2.01/oauth/token", "{}", authorization_header(), %{}) |> get_decoded_response
   end
 
   defp get_decoded_response response do

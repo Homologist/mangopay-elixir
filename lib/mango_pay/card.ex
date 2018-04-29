@@ -130,7 +130,7 @@ defmodule MangoPay.Card do
       {:ok, card} = MangoPay.Card.all_by_fingerprint("fingerprint")
 
   """
-  def all_by_fingerprint id, query \\ nil do
+  def all_by_fingerprint id, query \\ %{} do
     _all [resource(), "fingerprints", id], query
   end
 
@@ -143,7 +143,7 @@ defmodule MangoPay.Card do
       card = MangoPay.Card.all_by_fingerprint!("fingerprint")
 
   """
-  def all_by_fingerprint! id, query \\ nil do
+  def all_by_fingerprint! id, query \\ %{} do
     _all! [resource(), "fingerprints", id], query
   end
 
@@ -156,7 +156,7 @@ defmodule MangoPay.Card do
       {:ok, card} = MangoPay.Card.all_by_user("user_id")
 
   """
-  def all_by_user id, query \\ nil do
+  def all_by_user id, query \\ %{} do
     _all [User.path(), id, resource()], query
   end
 
@@ -169,7 +169,7 @@ defmodule MangoPay.Card do
       card = MangoPay.Card.all_by_user!("user_id")
 
   """
-  def all_by_user! id, query \\ nil do
+  def all_by_user! id, query \\ %{} do
     _all! [User.path(), id, resource()], query
   end
 
@@ -182,7 +182,7 @@ defmodule MangoPay.Card do
       {:ok, card} = MangoPay.Card.all_by_fingerprint("fingerprint")
 
   """
-  def all_user_by_fingerprint fingerprint, query \\ nil do
+  def all_user_by_fingerprint fingerprint, query \\ %{} do
     _all [resource(), "fingerprints", fingerprint, User.path()], query
   end
 
@@ -195,7 +195,7 @@ defmodule MangoPay.Card do
       card = MangoPay.Card.all_by_fingerprint!("fingerprint")
 
   """
-  def all_user_by_fingerprint! fingerprint, query \\ nil do
+  def all_user_by_fingerprint! fingerprint, query \\ %{} do
     _all! [resource(), "fingerprints", fingerprint, User.path()], query
   end
 
@@ -234,7 +234,7 @@ defmodule MangoPay.Card do
       {:ok, card} = MangoPay.Card.all_transactions_by_fingerprint("fingerprint")
 
   """
-  def all_transactions_by_fingerprint fingerprint, query \\ nil do
+  def all_transactions_by_fingerprint fingerprint, query \\ %{} do
     _all [resource(), "fingerprints", "#{fingerprint}", Transaction.path()], query
   end
 
@@ -247,7 +247,7 @@ defmodule MangoPay.Card do
       card = MangoPay.Card.all_transactions_by_fingerprint!("fingerprint")
 
   """
-  def all_transactions_by_fingerprint! fingerprint, query \\ nil do
+  def all_transactions_by_fingerprint! fingerprint, query \\ %{} do
     _all! [resource(), "fingerprints", "#{fingerprint}", Transaction.path()], query
   end
 end

@@ -31,22 +31,36 @@ defmodule MangoPay.Reporting do
   List all reportings.
 
   ## Examples
-      {:ok, reportings} = MangoPay.Reportings.all()
+      query             = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC",
+        "BeforeDate": 1463440221,
+        "AfterDate": 1431817821
+      }
+      {:ok, reportings} = MangoPay.Reportings.all(query)
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all reportings.
 
   ## Examples
-      reportings = MangoPay.Reportings.all!()
+      query             = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC",
+        "BeforeDate": 1463440221,
+        "AfterDate": 1431817821
+      }
+      reportings = MangoPay.Reportings.all!(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 
   defmodule Wallet do

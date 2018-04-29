@@ -129,7 +129,7 @@ defmodule MangoPay.PreAuthorization do
       {:ok, preauthorizations} = MangoPay.PreAuthorization.all_by_card("card_id")
 
   """
-  def all_by_card id, query \\ nil do
+  def all_by_card id, query \\ %{} do
     _all [MangoPay.Card.path(id), resource()], query
   end
 
@@ -141,7 +141,7 @@ defmodule MangoPay.PreAuthorization do
       preauthorizations = MangoPay.PreAuthorization.all_by_card!("card_id")
 
   """
-  def all_by_card! id, query \\ nil do
+  def all_by_card! id, query \\ %{} do
     _all! [MangoPay.Card.path(id), resource()], query
   end
 
@@ -149,11 +149,19 @@ defmodule MangoPay.PreAuthorization do
   List all preauthorizations for a user.
 
   ## Examples
-
-      {:ok, preauthorizations} = MangoPay.PreAuthorization.all_by_user("user_id")
+      user_id                  = Id of a user object
+      query                    = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC",
+        "ResultCode": "000000,009199",
+        "Status": "CREATED",
+        "PaymentStatus": "WAITING"
+      }
+      {:ok, preauthorizations} = MangoPay.PreAuthorization.all_by_user(user_id, query)
 
   """
-  def all_by_user id, query \\ nil do
+  def all_by_user id, query \\ %{} do
     _all [MangoPay.User.path(id), resource()], query
   end
 
@@ -161,11 +169,19 @@ defmodule MangoPay.PreAuthorization do
   List all preauthorizations for a user.
 
   ## Examples
-
-      preauthorizations = MangoPay.PreAuthorization.all_by_user!("user_id")
+      user_id           = Id of a user
+      query             = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC",
+        "ResultCode": "000000,009199",
+        "Status": "CREATED",
+        "PaymentStatus": "WAITING"
+      }
+      preauthorizations = MangoPay.PreAuthorization.all_by_user!(user_id, query)
 
   """
-  def all_by_user! id, query \\ nil do
+  def all_by_user! id, query \\ %{} do
     _all! [MangoPay.User.path(id), resource()], query
   end
 end

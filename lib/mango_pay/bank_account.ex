@@ -294,7 +294,7 @@ defmodule MangoPay.BankAccount do
       {:ok, bank_accounts} = MangoPay.BankAccount.all_by_user("user_id")
 
   """
-  def all_by_user id, query \\ nil do
+  def all_by_user id, query \\ %{} do
     _all [MangoPay.User.path(id), resource()], query
   end
 
@@ -306,7 +306,7 @@ defmodule MangoPay.BankAccount do
       bank_accounts = MangoPay.BankAccount.all_by_user!("user_id")
 
   """
-  def all_by_user! id, query \\ nil do
+  def all_by_user! id, query \\ %{} do
     _all! [MangoPay.User.path(id), resource()], query
   end
 

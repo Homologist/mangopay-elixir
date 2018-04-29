@@ -97,10 +97,16 @@ defmodule MangoPay.Wallet do
 
   ## Examples
 
-      {:ok, wallets} = MangoPay.Wallet.all_by_user!("wallet_id")
+      user_id = Id of a user
+      query   = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      {:ok, wallets} = MangoPay.Wallet.all_by_user!(user_id, query)
 
   """
-  def all_by_user id, query \\ nil do
+  def all_by_user id, query \\ %{} do
     _all [MangoPay.User.path(id), MangoPay.Wallet.path()], query
   end
 
@@ -108,11 +114,16 @@ defmodule MangoPay.Wallet do
   List all wallets by user.
 
   ## Examples
-
-      wallets = MangoPay.Wallet.all_by_user!("wallet_id")
+      user_id = Id of a user
+      query   = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      wallets = MangoPay.Wallet.all_by_user!(user_id, query)
 
   """
-  def all_by_user! id, query \\ nil do
+  def all_by_user! id, query \\ %{} do
     _all! [MangoPay.User.path(id), MangoPay.Wallet.path()], query
   end
 end

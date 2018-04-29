@@ -95,21 +95,31 @@ defmodule MangoPay.Hook do
   List all hooks.
 
   ## Examples
+      query        = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
       {:ok, hooks} = MangoPay.Hook.all()
 
   """
-  def all() do
-    _all()
+  def all(query \\ %{}) do
+    _all(nil, query)
   end
 
   @doc """
   List all hooks.
 
   ## Examples
-      hooks = MangoPay.Hook.all!()
+      query = %{
+        "Page": 1,
+        "Per_Page": 25,
+        "Sort": "CreationDate:DESC"
+      }
+      hooks = MangoPay.Hook.all!(query)
 
   """
-  def all!() do
-    _all!()
+  def all!(query \\ %{}) do
+    _all!(nil, query)
   end
 end

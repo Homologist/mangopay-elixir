@@ -46,7 +46,7 @@ defmodule MangoPay.DisputeDocument do
   Create a dispute document.
 
   ## Examples
-      params                  = %{
+      params           = %{
         "Tag": "custom meta",
         "Type": "DELIVERY_PROOF"
       }
@@ -75,7 +75,7 @@ defmodule MangoPay.DisputeDocument do
   Create a page for a dispute document.
 
   ## Examples
-      params                  = %{
+      params                = %{
         File: "blahblah"
       }
       dispute_document_page = MangoPay.DisputeDocument.create_page!("dispute_id", "dispute_document_id", params)
@@ -103,7 +103,7 @@ defmodule MangoPay.DisputeDocument do
   Submit a dispute document.
 
   ## Examples
-      params                  = %{
+      params           = %{
         "Status": "CREATED"
       }
       dispute_document = MangoPay.DisputeDocument.submit!("dispute_id", params)
@@ -117,10 +117,20 @@ defmodule MangoPay.DisputeDocument do
   All dispute documents by dispute.
 
   ## Examples
-      {:ok, dispute_documents} = MangoPay.DisputeDocument.all_by_dispute("dispute_id")
+      dispute_id        = Id of a dispute object
+      query             = %{
+                            "Page": 1,
+                            "Per_Page": 25,
+                            "Sort": "CreationDate:DESC",
+                            "BeforeDate": 1463440221,
+                            "AfterDate": 1431817821,
+                            "Status": "CREATED, SUCCEEDED",
+                            "Type": "DELIVERY_PROOF"
+                          }
+      {:ok, dispute_documents} = MangoPay.DisputeDocument.all_by_dispute(dispute_id, query)
 
   """
-  def all_by_dispute id, query \\ nil do
+  def all_by_dispute id, query \\ %{} do
     _all resource_document(id), query
   end
 
@@ -128,10 +138,20 @@ defmodule MangoPay.DisputeDocument do
   All dispute documents by dispute.
 
   ## Examples
-      dispute_documents = MangoPay.DisputeDocument.all_by_dispute!("dispute_id")
+      dispute_id        = Id of a dispute object
+      query             = %{
+                            "Page": 1,
+                            "Per_Page": 25,
+                            "Sort": "CreationDate:DESC",
+                            "BeforeDate": 1463440221,
+                            "AfterDate": 1431817821,
+                            "Status": "CREATED, SUCCEEDED",
+                            "Type": "DELIVERY_PROOF"
+                          }
+      dispute_documents = MangoPay.DisputeDocument.all_by_dispute!(dispute_id, query)
 
   """
-  def all_by_dispute! id, query \\ nil do
+  def all_by_dispute! id, query \\ %{} do
     _all! resource_document(id), query
   end
 
@@ -139,7 +159,7 @@ defmodule MangoPay.DisputeDocument do
   Consult a dispute document page.
 
   ## Examples
-      {:ok, dispute_document} = MangoPay.DisputeDocument.consult("dispute_id")
+      {:ok, dispute_document} = MangoPay.DisputeDocument.consult(dispute_id)
 
   """
   def consult id do
